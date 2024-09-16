@@ -10,4 +10,11 @@ Items: {
 			It's snowing on Mt.Fuji
 			'''
 	}
+
+	HurricaneArrow: {
+		DisplayName: Hurricane Arrow
+		Tooltip: ""
+	}
 }
+
+Projectiles.HurricaneArrow_Proje.DisplayName: Hurricane Arrow_ Proje

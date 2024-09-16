@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NanTing.Content.Ammunition.JuZhiShi
+namespace NanTing.Content.Ammunition.HurricaneArrow
 {
     /// <summary>
     /// 飓风箭 -> 天蓝箭
@@ -38,8 +38,9 @@ namespace NanTing.Content.Ammunition.JuZhiShi
         public override void AI()
         {
             Vector2 MouseVectorWorld = Main.MouseWorld;
+            Vector2 vector2 = Main.MouseScreen;
             Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
-
+            Main.NewText(vector2);
             base.AI();
         }
 
