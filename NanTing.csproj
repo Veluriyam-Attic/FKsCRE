@@ -11,6 +11,11 @@
 	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow.png" />
 	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow_Proje.png" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="CalamityMod">
+	    <HintPath>lib\CalamityMod.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
 
 	<!-- References -->
 
