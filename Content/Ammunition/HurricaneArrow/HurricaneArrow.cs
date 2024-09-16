@@ -5,11 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace NanTing.Content.Ammunition.JuZhiShi
 {
-    public class JuZhiShi_Proje : ModProjectile
+    /// <summary>
+    /// 飓风箭 -> 天蓝箭
+    /// </summary>
+    public class HurricaneArrow : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.damage = 7;
+            //箭矢
+            Item.ammo = AmmoID.Arrow;
+            Item.shoot = ModContent.ProjectileType<HurricaneArrow_Proje>();
+            base.SetDefaults();
+        }
+    }
+
+    public class HurricaneArrow_Proje : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -33,4 +49,5 @@ namespace NanTing.Content.Ammunition.JuZhiShi
             base.OnKill(timeLeft);
         }
     }
+
 }

@@ -7,6 +7,10 @@
 	<PropertyGroup>
 		
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow.png" />
+	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow_Proje.png" />
+	</ItemGroup>
 
 	<!-- References -->
 
