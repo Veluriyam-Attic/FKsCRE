@@ -1,0 +1,3 @@
+displayName = Fake PARADOX's Calamity Ranger Addons
+author = Henceforth
+version = 0.1
