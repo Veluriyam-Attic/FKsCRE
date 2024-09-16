@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,22 +32,32 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
         {
             Projectile.damage = 5;
             Projectile.friendly = true;
-            Projectile.aiStyle = 1;
+            Projectile.timeLeft = 300;
+            //Projectile.aiStyle = 1;
+            Projectile.ai[0] = 0f;
+            //Projectile.soundDelay = 2;
             base.SetDefaults();
         }
-
         public override void AI()
         {
-            Vector2 MouseVectorWorld = Main.MouseWorld;
-            Vector2 vector2 = Main.MouseScreen;
-            Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
-            Main.NewText(vector2);
+            if (Projectile.ai[0] == 0f)
+            {
+                Vector2 MouseVectorWorld = Main.MouseWorld;
+                Vector2 vector2 = Main.MouseScreen;
+                Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
+                Projectile.velocity = Vector2.Normalize(MouseVectorWorld - PlayerVectorWorld) * 17f;
+                //确保角度正确
+                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
+                Projectile.ai[0]++;
+            }
+            //Main.NewText(vector2);
             base.AI();
         }
 
         public override void OnKill(int timeLeft)
         {
-            //Projectile.NewProjectile(default,)
+            //播放声音
+            SoundEngine.PlaySound(SoundID.Chat, Projectile.Center);
             base.OnKill(timeLeft);
         }
     }
