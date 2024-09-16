@@ -12,8 +12,12 @@ Items: {
 	}
 
 	HurricaneArrow: {
-		DisplayName: Hurricane Arrow
-		Tooltip: ""
+		DisplayName: 飓之矢
+		Tooltip:
+			'''
+			不受重力影响
+			“炽热的弹头撕裂悲风”
+			'''
 	}
 }
 

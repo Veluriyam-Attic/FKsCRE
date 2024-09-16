@@ -30,6 +30,11 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
     {
         public override void SetDefaults()
         {
+            //
+            Projectile.ignoreWater = true;
+
+            //伤害类型 远程
+            Projectile.DamageType = DamageClass.Ranged;
             Projectile.damage = 5;
             Projectile.friendly = true;
             Projectile.timeLeft = 300;
@@ -48,7 +53,12 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
                 Projectile.velocity = Vector2.Normalize(MouseVectorWorld - PlayerVectorWorld) * 17f;
                 //确保角度正确
                 Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
-                Projectile.ai[0]++;
+            }
+            Projectile.ai[0]++;
+
+            if (Projectile.ai[0] >= 60)
+            {
+                
             }
             //Main.NewText(vector2);
             base.AI();
