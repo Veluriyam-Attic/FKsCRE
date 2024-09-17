@@ -10,6 +10,8 @@
 	<ItemGroup>
 	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow.png" />
 	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow_Proje.png" />
+	  <None Remove="Content\Ammunition\天蓝子弹\天蓝子弹.png" />
+	  <None Remove="Content\Ammunition\天蓝子弹\天蓝子弹_Proje.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="CalamityMod">

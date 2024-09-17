@@ -19,6 +19,14 @@ Items: {
 			“炽热的弹头撕裂悲风”
 			'''
 	}
+
+	天蓝子弹: {
+		DisplayName: 天蓝子弹
+		Tooltip: ""
+	}
 }
 
-Projectiles.HurricaneArrow_Proje.DisplayName: Hurricane Arrow_ Proje
+Projectiles: {
+	HurricaneArrow_Proje.DisplayName: Hurricane Arrow_ Proje
+	天蓝子弹_Proje.DisplayName: 天蓝子弹_ Proje
+}
