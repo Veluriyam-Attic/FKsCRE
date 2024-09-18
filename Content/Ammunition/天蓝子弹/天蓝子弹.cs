@@ -58,11 +58,14 @@ namespace NanTing.Content.Ammunition.天蓝子弹
         }
 
         int sum = 1;
+        Vector2[] vector = new Vector2[5];
+        int index = 4;
+        bool SpriteBatch_new = false;
         public override void AI()
-        {
+        {            
             if (Projectile.ai[0] == 0)
             {
-                Projectile.velocity = Vector2.Normalize(Main.MouseWorld - Projectile.Center) * 17;
+                Projectile.velocity = Vector2.Normalize(Main.MouseWorld - Main.player[Projectile.owner].Center) * 17;
                 Projectile.rotation = Projectile.velocity.ToRotation() * (float)Math.PI / 2;
                 //Projectile.Center = Main.player[Projectile.owner].Center;
             }
@@ -109,11 +112,11 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             */
             Projectile.ai[0]++;
 
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            spriteBatch.Begin();
+            //SpriteBatch spriteBatch = Main.spriteBatch;
+            //spriteBatch.Begin();
             //spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Content/Ammunition/天蓝子弹/天蓝子弹").Value,Projectile.);
 
-            spriteBatch.End();
+            //spriteBatch.End();
 
             base.AI();
         }
@@ -123,6 +126,37 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             SoundEngine.PlaySound(SoundID.AbigailAttack,Projectile.Center);
             base.OnKill(timeLeft);
         }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture2D = Mod.Assets.Request<Texture2D>("Content/Ammunition/天蓝子弹/天蓝子弹").Value;
+            SpriteBatch spriteBatch = Main.spriteBatch;
+            Vector2 v2 = Projectile.position - Main.screenPosition;
+            if (Projectile.timeLeft % 2 == 0)
+            {
+                vector[index] = v2;
+                index--;
+            }
+            if (index == 0)
+            {
+                index = 4;
+                SpriteBatch_new = true;
+            }
+            if (SpriteBatch_new)
+            {
+                //spriteBatch.Begin();
+                for (int i = 0; i <= 4; i++)
+                {
+                    //Main.NewText(true);
+                    //spriteBatch.Draw(texture2D, vector[i], null, Color.White * 1 * (1 - .2f * i), Projectile.rotation,default, texture2D.Size() * 1 * (1 - .02f * i), SpriteEffects.None, 0);
+                    Main.spriteBatch.Draw(texture2D, vector[i], null, Color.White * 1 * (1 - .2f * i), Projectile.rotation, texture2D.Size() * .5f, 1 * (1 - .02f * i), SpriteEffects.None, 0);
+                }
+                //spriteBatch.End();
+            }
+
+            return false;
+        }
+
     }
 
 }

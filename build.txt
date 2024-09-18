@@ -1,4 +1,4 @@
 displayName = Fake PARADOX's Calamity Ranger Addons
 author = Henceforth
 modReferences = CalamityMod
-version = 0.1
+version = 0.0.1
