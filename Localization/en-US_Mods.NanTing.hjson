@@ -24,9 +24,15 @@ Items: {
 		DisplayName: 天蓝子弹
 		Tooltip: ""
 	}
+
+	海晶箭: {
+		DisplayName: 海晶箭
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
 	HurricaneArrow_Proje.DisplayName: Hurricane Arrow_ Proje
 	天蓝子弹_Proje.DisplayName: 天蓝子弹_ Proje
+	海晶箭_Proje.DisplayName: 海晶箭_ Proje
 }
