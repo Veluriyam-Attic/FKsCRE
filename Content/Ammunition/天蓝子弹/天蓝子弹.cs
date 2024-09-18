@@ -62,11 +62,13 @@ namespace NanTing.Content.Ammunition.天蓝子弹
         int index = 4;
         bool SpriteBatch_new = false;
         public override void AI()
-        {            
+        {
+            Player player = Main.player[Projectile.owner];
+            Vector2 vector = new Vector2(player.position.X+5,player.position.Y + 5);
             if (Projectile.ai[0] == 0)
             {
-                Projectile.velocity = Vector2.Normalize(Main.MouseWorld - Main.player[Projectile.owner].Center) * 17;
-                Projectile.rotation = Projectile.velocity.ToRotation() * (float)Math.PI / 2;
+                Projectile.velocity = Vector2.Normalize(Main.MouseWorld - vector) * 17;
+                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
                 //Projectile.Center = Main.player[Projectile.owner].Center;
             }
             //微弱的最终
