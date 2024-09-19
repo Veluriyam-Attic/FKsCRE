@@ -46,6 +46,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
             if (num == 0)
             {
                 Projectile.velocity = Vector2.Normalize(Mouse - player) * 15f;
+                //鼠标在世界的坐标减去弹幕在世界的坐标 形成新的 v2
                 towardsMouse = Main.MouseWorld - Projectile.position;
                 num++;
             }
@@ -59,7 +60,6 @@ namespace NanTing.Content.Ammunition.棱翼弹
             Item item = pl.inventory[pl.selectedItem];
 
             // 计算从子弹到鼠标的向量  
-            
             float distanceToMouse = towardsMouse.Length();
             if (distanceToMouse > 0)
             {
@@ -72,6 +72,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
                 {
                     int num3 = Main.rand.Next(5);
                     // 计算新子弹的旋转角度（基于原始方向加上随机偏移）  
+                    //Atan2 计算角度（鼠标与弹幕之间的）
                     float angle = (float)Math.Atan2(towardsMouse.Y, towardsMouse.X) + angleIncrement * i + (float)Main.rand.NextDouble() * MathHelper.ToRadians(30) - MathHelper.ToRadians(30); 
                     // 计算新子弹的速度向量  
                     Vector2 newVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10f;
