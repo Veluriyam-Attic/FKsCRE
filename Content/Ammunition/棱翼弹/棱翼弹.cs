@@ -38,13 +38,15 @@ namespace NanTing.Content.Ammunition.棱翼弹
             Projectile.timeLeft = 15;
         }
         int num = 0;
+        Vector2 towardsMouse = Vector2.Zero;
         public override void AI()
         {
             Vector2 player = Main.player[Projectile.owner].Center;
             Vector2 Mouse = Main.MouseWorld;
             if (num == 0)
             {
-                Projectile.velocity = Vector2.Normalize(Mouse - player) * 10f;
+                Projectile.velocity = Vector2.Normalize(Mouse - player) * 15f;
+                towardsMouse = Main.MouseWorld - Projectile.position;
                 num++;
             }
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
@@ -53,18 +55,44 @@ namespace NanTing.Content.Ammunition.棱翼弹
         public override void OnKill(int timeLeft)
         {
             Player pl = Main.player[Projectile.owner];
-            int NUM2 = pl.handon;
             //inventory是背包
             Item item = pl.inventory[pl.selectedItem];
-            Vector2 v2 = Main.rand.NextVector2Square(1, 10);
-            v2.X = v2.X + Projectile.Center.X;
-            v2.Y = v2.Y + Projectile.Center.Y;
-            Vector2 No = Vector2.Normalize(v2 - Projectile.Center);
 
-            ty.主弹幕 = Projectile;
-            Projectile proje = Projectile.NewProjectileDirect(default, Projectile.Center,  default/*No * 5f*/, ModContent.ProjectileType<棱翼弹_霰弹碎片1>(),(item.damage + ty.dam/3) / 3, 1, Projectile.owner);
-            proje.velocity.RotatedBy(Projectile.velocity.ToRotation());  
-            base.OnKill(timeLeft);
+            // 计算从子弹到鼠标的向量  
+            
+            float distanceToMouse = towardsMouse.Length();
+            if (distanceToMouse > 0)
+            {
+                towardsMouse.Normalize(); // 标准化向量  
+                // 分散的角度增量（以弧度为单位）  
+                float angleIncrement = MathHelper.ToRadians(20f); // 80度分散成4个，每个间隔20度  
+
+                // 遍历并创建新子弹  
+                for (int i = 0; i < 4; i++)
+                {
+                    int num3 = Main.rand.Next(5);
+                    // 计算新子弹的旋转角度（基于原始方向加上随机偏移）  
+                    float angle = (float)Math.Atan2(towardsMouse.Y, towardsMouse.X) + angleIncrement * i + (float)Main.rand.NextDouble() * MathHelper.ToRadians(30) - MathHelper.ToRadians(30); 
+                    // 计算新子弹的速度向量  
+                    Vector2 newVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10f;
+                    switch(num3)
+                    {
+                        case 0:
+                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片1>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            break;
+                        case 1:
+                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片2>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            break;
+                        case 2:
+                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片3>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            break;
+                        case 3:
+                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片4>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            break;
+                    }
+                }
+            }
+                base.OnKill(timeLeft);
         }
     }
     public class 棱翼弹_霰弹碎片1 : ModProjectile 
@@ -73,13 +101,13 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
-            //Projectile.aiStyle = 1;
+            Projectile.aiStyle = 1;
             Projectile.timeLeft = 20;
         }
         public override void AI()
         {
-            Vector2 v = new Vector2((float)Math.Cos(Main.rand.NextDouble()), ty.主弹幕.Center.Y);
-            Projectile.velocity = Vector2.Normalize(v - ty.主弹幕.Center);
+            //Vector2 v = new Vector2((float)Math.Cos(Main.rand.NextDouble()), ty.主弹幕.Center.Y);
+            //Projectile.velocity = Vector2.Normalize(v - ty.主弹幕.Center);
             base.AI();
         }
     }
