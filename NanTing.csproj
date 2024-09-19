@@ -12,6 +12,12 @@
 	  <None Remove="Content\Ammunition\HurricaneArrow\HurricaneArrow_Proje.png" />
 	  <None Remove="Content\Ammunition\天蓝子弹\天蓝子弹.png" />
 	  <None Remove="Content\Ammunition\天蓝子弹\天蓝子弹_Proje.png" />
+	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹.png" />
+	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹_弹幕.png" />
+	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹_霰弹碎片1.png" />
+	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹_霰弹碎片2.png" />
+	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹_霰弹碎片3.png" />
+	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹_霰弹碎片4.png" />
 	  <None Remove="Content\Ammunition\海晶箭\海晶箭.png" />
 	  <None Remove="Content\Ammunition\海晶箭\海晶箭_Proje.png" />
 	</ItemGroup>
