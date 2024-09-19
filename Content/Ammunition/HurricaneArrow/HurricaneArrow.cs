@@ -34,7 +34,7 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
         {
             Recipe recipe = CreateRecipe();
             //天蓝锭
-            recipe.AddIngredient(ModContent.GetModItem(ModContent.ItemType<AerialiteBar>()),1);
+            recipe.AddIngredient(ModContent.GetModItem(ModContent.ItemType<AerialiteBar>()), 1);
             //木箭
             recipe.AddIngredient(ItemID.WoodenArrow, 200);
             //日盘
