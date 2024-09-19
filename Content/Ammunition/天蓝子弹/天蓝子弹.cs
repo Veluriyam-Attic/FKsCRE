@@ -1,5 +1,5 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Mounts;
+﻿//using CalamityMod.Items.Materials;
+//using CalamityMod.Items.Mounts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -13,7 +13,7 @@ using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//无合成表
 namespace NanTing.Content.Ammunition.天蓝子弹
 {
     public class 天蓝子弹 : ModItem
@@ -34,7 +34,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             Recipe recipe = CreateRecipe();
             //火枪子弹
             recipe.AddIngredient(ItemID.MusketBall,200);
-            recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 1);
+            //recipe.AddIngredient(ModContent.ItemType<AerialiteBar>(), 1);
             //日盘块
             recipe.AddIngredient(ItemID.SunplateBlock, 1);
             //天魔

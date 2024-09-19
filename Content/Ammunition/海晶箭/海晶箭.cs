@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//无合成表
 namespace NanTing.Content.Ammunition.海晶箭
 {
     public class 海晶箭 : ModItem

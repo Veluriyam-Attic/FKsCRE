@@ -1,4 +1,4 @@
-﻿using CalamityMod.Items.Materials;
+﻿//using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//无合成表
 namespace NanTing.Content.Ammunition.HurricaneArrow
 {
     /// <summary>
@@ -34,7 +34,7 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
         {
             Recipe recipe = CreateRecipe();
             //天蓝锭
-            recipe.AddIngredient(ModContent.GetModItem(ModContent.ItemType<AerialiteBar>()), 1);
+            //recipe.AddIngredient(ModContent.GetModItem(ModContent.ItemType<AerialiteBar>()), 1);
             //木箭
             recipe.AddIngredient(ItemID.WoodenArrow, 200);
             //日盘
