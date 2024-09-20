@@ -53,7 +53,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
             if (Projectile.wet)
             {
                 Projectile.velocity = cs * 3f;
-                Projectile.damage = (int)(ty.dam * 1.5);
+                Projectile.damage = (int)(ty.dam + ty.dam / 2);
             }
             else
             {

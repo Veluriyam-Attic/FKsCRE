@@ -29,13 +29,14 @@ namespace NanTing.Content.Ammunition.海晶箭
             base.SetDefaults();
         }
         int num = 0;
+        Vector2 vector = default;
         public override void AI()
         {
             Vector2 playerCenton = Main.player[Projectile.owner].Center - Main.screenPosition;
             Vector2 MouseCenton = Main.MouseWorld - Main.screenPosition;
             if(num == 0)
             {
-                Projectile.velocity = Vector2.Normalize(MouseCenton - playerCenton) * 15f;
+                vector = Vector2.Normalize(MouseCenton - playerCenton) * 15f;
                 num++;
             }
             //在液体中
@@ -46,13 +47,14 @@ namespace NanTing.Content.Ammunition.海晶箭
                     Projectile.velocity.Y += 0.02f;
                     if (num == 1)
                     {
-                        Projectile.velocity *= 1.3f;
+                        Projectile.velocity = vector * 1.5f;
                         num++;
                     }
                 }
             }
             else
             {
+                Projectile.velocity = vector;
                 //每5帧 下坠 0.2f
                 if(Projectile.timeLeft % 2 == 0)
                 {
@@ -75,20 +77,20 @@ namespace NanTing.Content.Ammunition.海晶箭
         }
 
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            //在液体(水)中
-            if(Projectile.wet)
-            {
-                damageDone = (int)(damageDone * 1.5f);
-            }
-            base.OnHitNPC(target, hit, damageDone);
-        }
+        //public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        //{
+        //    //在液体(水)中
+        //    if(Projectile.wet)
+        //    {
+        //        damageDone += 5;
+        //    }
+        //    base.OnHitNPC(target, hit, damageDone);
+        //}
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if(Projectile.wet)
             {
-                modifiers.FinalDamage *= 1.5f;
+                modifiers.FinalDamage += 5;
             }
             base.ModifyHitNPC(target, ref modifiers);
         }
