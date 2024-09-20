@@ -40,4 +40,22 @@ namespace NanTing
             base.UpdateUI(gameTime);
         }
     }
+
+    public class 弹幕AI类 : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+        private int dam = 10;
+        int num = 0;
+        Vector2 nor = default;
+        public override void AI(Projectile projectile)
+        {
+            if(projectile.Name.Equals("棱翼弹_弹幕"))
+            {
+
+            }
+
+            base.AI(projectile);
+        }
+
+    }
 }

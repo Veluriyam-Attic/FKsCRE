@@ -51,6 +51,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
         Vector2 Mouse_initial = default;
         public override void SetDefaults()
         {
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.friendly = true;
             Projectile.damage = ty.dam;
             Projectile.timeLeft = 999;
@@ -86,7 +87,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
             }
             else
             {
-                target.AddBuff(ModContent.BuffType<钨钢定身DeBuff>(), 1800);
+                target.AddBuff(ModContent.BuffType<钨钢定身DeBuff>(), 600);
             }
             base.OnHitNPC(target, hit, damageDone);
         }
@@ -112,7 +113,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
             {
                 npc.Center = modnpc.getcent();
             }
-            if (modnpc.gettime() >= 1800) modnpc.timeToZero();
+            if (modnpc.gettime() >= 600) modnpc.timeToZero();
             modnpc.settime();
             base.Update(npc, ref buffIndex);
         }
