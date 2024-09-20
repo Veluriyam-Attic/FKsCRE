@@ -41,7 +41,7 @@ namespace NanTing
         }
     }
 
-    public class µ¯Ä»AIÀà : GlobalProjectile
+    public class å¼¹å¹•AIç±» : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
         private int dam = 10;
@@ -49,7 +49,7 @@ namespace NanTing
         Vector2 nor = default;
         public override void AI(Projectile projectile)
         {
-            if(projectile.Name.Equals("ÀâÒíµ¯_µ¯Ä»"))
+            if(projectile.Name.Equals("æ£±ç¿¼å¼¹_å¼¹å¹•"))
             {
 
             }
