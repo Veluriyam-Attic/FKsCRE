@@ -2,55 +2,71 @@
 
 Items: {
 	HurricaneArrow: {
-		DisplayName: 飓之矢
+		DisplayName: Hurricane Bolt
 		Tooltip:
 			'''
 			不受重力影响
-			“炽热的弹头撕裂悲风”
+			“FK's RE”
 			'''
 	}
 
 	天蓝子弹: {
-		DisplayName: 天蓝子弹
-		Tooltip: ""
+		DisplayName: Aerialite Bullet
+		Tooltip: 弹速极快
 	}
 
 	海晶箭: {
-		DisplayName: 海晶箭
-		Tooltip: ""
+		DisplayName: Prism Arrow
+		Tooltip: 
+			'''
+			在陆地上时受到更强的重力影响
+			在液体中时仅受到极小的重力
+			同时速度和伤害同时增加50%，
+			“它仍在向往着海洋...”
+			'''
 	}
 
 	棱翼弹: {
-		DisplayName: 棱翼弹
-		Tooltip: ""
+		DisplayName: Tinkleshard Bullet
+		Tooltip: 
+			'''
+			会在射出0.75s后会分裂
+			在水中获得超高移速，并增加50%伤害
+			“尿分叉！”
+			'''
 	}
 
 	钨钢箭: {
-		DisplayName: 钨钢箭
-		Tooltip: ""
+		DisplayName: Wulfrim Arrow
+		Tooltip: 
+			'''
+			电击并定住受到攻击的敌人！
+			每10s触发一次，每次触发1s
+			“能源核心可不是白装的！”
+			'''
 	}
 }
 
 Projectiles: {
-	HurricaneArrow_Proje.DisplayName: Hurricane Arrow_ Proje
-	天蓝子弹_Proje.DisplayName: 天蓝子弹_ Proje
-	海晶箭_Proje.DisplayName: 海晶箭_ Proje
-	棱翼弹_弹幕.DisplayName: 棱翼弹_弹幕
-	棱翼弹_霰弹碎片1.DisplayName: 棱翼弹_霰弹碎片1
-	棱翼弹_霰弹碎片2.DisplayName: 棱翼弹_霰弹碎片2
-	棱翼弹_霰弹碎片3.DisplayName: 棱翼弹_霰弹碎片3
-	棱翼弹_霰弹碎片4.DisplayName: 棱翼弹_霰弹碎片4
-	钨钢箭_proje.DisplayName: 钨钢箭_proje
+	HurricaneArrow_Proje.DisplayName: Hurricane Bolt
+	天蓝子弹_Proje.DisplayName: Aerialite Bullet
+	海晶箭_Proje.DisplayName: Prism Arrow
+	棱翼弹_弹幕.DisplayName: Tinkleshard Bullet
+	棱翼弹_霰弹碎片1.DisplayName: Piece of Tinkleshard Bullet #1
+	棱翼弹_霰弹碎片2.DisplayName: Piece of Tinkleshard Bullet #2
+	棱翼弹_霰弹碎片3.DisplayName: Piece of Tinkleshard Bullet #3
+	棱翼弹_霰弹碎片4.DisplayName: Piece of Tinkleshard Bullet #4
+	钨钢箭_proje.DisplayName: Wulfrim Arrow
 }
 
 Buffs: {
 	钨钢箭电减_DeBuff: {
-		DisplayName: 钨钢箭电减_ De Buff
-		Description: Mods.NanTing.Buffs.钨钢箭电减_DeBuff.Description
+		DisplayName: Wulfrim Shock
+		Description: 每秒-2生命值
 	}
 
 	钨钢定身DeBuff: {
-		DisplayName: 钨钢定身 De Buff
-		Description: Mods.NanTing.Buffs.钨钢定身DeBuff.Description
+		DisplayName: Wulfrim Hold
+		Description: 使敌怪静止不动
 	}
 }

@@ -56,17 +56,17 @@ Projectiles: {
 	棱翼弹_霰弹碎片2.DisplayName: 棱裂弹
 	棱翼弹_霰弹碎片3.DisplayName: 棱裂弹
 	棱翼弹_霰弹碎片4.DisplayName: 棱裂弹
-	钨钢箭_proje.DisplayName: 钨钢箭_proje
+	钨钢箭_proje.DisplayName: 钨钢箭
 }
 
 Buffs: {
 	钨钢箭电减_DeBuff: {
-		DisplayName: 钨钢箭电减_ De Buff
-		Description: Mods.NanTing.Buffs.钨钢箭电减_DeBuff.Description
+		DisplayName: 钨钢箭电性减益
+		Description: 每秒-2生命值
 	}
 
 	钨钢定身DeBuff: {
-		DisplayName: 钨钢定身 De Buff
-		Description: Mods.NanTing.Buffs.钨钢定身DeBuff.Description
+		DisplayName: 钨钢定身
+		Description: 使敌怪静止不动
 	}
 }
