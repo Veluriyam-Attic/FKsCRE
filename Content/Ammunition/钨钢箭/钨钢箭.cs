@@ -10,9 +10,26 @@ namespace NanTing.Content.Ammunition.钨钢箭
     {
         public static int dam = 10;
     }
-    public class 钨钢箭僵硬 : GlobalNPC
+    public class 僵硬 : GlobalNPC
     {
-
+        int time = 0;
+        Vector2 cent;
+        public int gettime() {  return time;}
+        public void settime() { time++; }
+        public Vector2 getcent() { return cent; }
+        public void timeToZero() { time = 0; }
+        public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
+        {
+            if(projectile.Name.Equals("钨钢箭_proje"))
+            {
+                cent = npc.Center;
+            }
+            //if ((ModContent.GetModProjectile(ModContent.ProjectileType<钨钢箭_proje>()) == projectile.ModProjectile))
+            //{
+            //}
+            base.OnHitByProjectile(npc, projectile, hit, damageDone);
+        }
+        public override bool InstancePerEntity => true;
     }
 
     public class 钨钢箭 : ModItem
@@ -87,20 +104,16 @@ namespace NanTing.Content.Ammunition.钨钢箭
             Main.vanityPet[Type] = false;//宠物?
             base.SetStaticDefaults();
         }
-        int num = 0;
-        Vector2 ver = Vector2.Zero;
+
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if(num == 0)
+            僵硬 modnpc= npc.GetGlobalNPC<僵硬>();
+            if(modnpc.gettime() <= 60)
             {
-                ver = 钨钢箭_proje.Timev2;
+                npc.Center = modnpc.getcent();
             }
-            num ++;
-            if(num <= 60)
-            {
-                npc.Center = ver;
-            }
-            if(num >= 1800)num = 0;
+            if (modnpc.gettime() >= 1800) modnpc.timeToZero();
+            modnpc.settime();
             base.Update(npc, ref buffIndex);
         }
     }
