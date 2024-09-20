@@ -1,3 +1,3 @@
-displayName = Fake PARADOX's Calamity Ranger Addons
+displayName = Fake-PARADOX's Calamity Rangers Expansion（FK's CRE）
 author = Henceforth
-version = 0.2.0.3
+version = 0.2.0.6

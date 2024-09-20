@@ -1,0 +1,75 @@
+# This file will automatically update with entries for new content after a build and reload.
+
+Items: {
+	HurricaneArrow: {
+		DisplayName: 飓之矢
+		Tooltip:
+			'''
+			不受重力影响
+			“FK's RE”
+			'''
+	}
+
+	天蓝子弹: {
+		DisplayName: 天蓝子弹
+		Tooltip: 
+			'''
+			不受重力影响
+			'''
+	}
+
+	海晶箭: {
+		DisplayName: 海晶箭
+		Tooltip: 
+			'''
+			在陆地上时受到更强的重力影响
+			在液体中时仅受到极小的重力
+			同时速度和伤害同时增加50%，
+			“它仍在向往着海洋...”
+			'''
+	}
+
+	棱翼弹: {
+		DisplayName: 棱裂弹
+		Tooltip: 
+			'''
+			会在射出0.75s后会分裂
+			在水中获得超高移速，并增加50%伤害
+			“尿分叉！”
+			'''
+	}
+
+	钨钢箭: {
+		DisplayName: 钨钢箭
+		Tooltip: 
+			'''
+			电击并定住受到攻击的敌人！
+			每10s触发一次，每次触发1s
+			“能源核心可不是白装的！”
+			'''
+	}
+}
+
+Projectiles: {
+	HurricaneArrow_Proje.DisplayName:飓之矢
+	天蓝子弹_Proje.DisplayName: 天蓝子弹
+	海晶箭_Proje.DisplayName: 海晶箭
+	棱翼弹_弹幕.DisplayName: 棱裂弹_弹幕
+	棱翼弹_霰弹碎片1.DisplayName: 棱裂弹
+	棱翼弹_霰弹碎片2.DisplayName: 棱裂弹
+	棱翼弹_霰弹碎片3.DisplayName: 棱裂弹
+	棱翼弹_霰弹碎片4.DisplayName: 棱裂弹
+	钨钢箭_proje.DisplayName: 钨钢箭_proje
+}
+
+Buffs: {
+	钨钢箭电减_DeBuff: {
+		DisplayName: 钨钢箭电减_ De Buff
+		Description: Mods.NanTing.Buffs.钨钢箭电减_DeBuff.Description
+	}
+
+	钨钢定身DeBuff: {
+		DisplayName: 钨钢定身 De Buff
+		Description: Mods.NanTing.Buffs.钨钢定身DeBuff.Description
+	}
+}
