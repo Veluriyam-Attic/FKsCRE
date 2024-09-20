@@ -14,6 +14,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
     {
         public static int dam = 10;
         public static Projectile 主弹幕 = null;
+        public static int 碎片统一存活时长 = 40;
     }
     public class 棱翼弹 : ModItem
     {
@@ -35,20 +36,31 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Projectile.damage = ty.dam;
             Projectile.friendly = true;
-            Projectile.timeLeft = 15;
+            Projectile.timeLeft = 45;
         }
         int num = 0;
         Vector2 towardsMouse = Vector2.Zero;
+        Vector2 cs = default;
         public override void AI()
         {
             Vector2 player = Main.player[Projectile.owner].Center;
             Vector2 Mouse = Main.MouseWorld;
             if (num == 0)
             {
-                Projectile.velocity = Vector2.Normalize(Mouse - player) * 15f;
+                cs = Vector2.Normalize(Mouse - player) * 15f;
                 //鼠标在世界的坐标减去弹幕在世界的坐标 形成新的 v2
                 towardsMouse = Main.MouseWorld - Projectile.position;
                 num++;
+            }
+            if(Projectile.wet)
+            {
+                Projectile.velocity = cs * 3f;
+                Projectile.damage = (int)(ty.dam * 1.5);
+            }
+            else
+            {
+                Projectile.velocity = cs;
+                Projectile.damage = ty.dam;
             }
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
             base.AI();
@@ -65,7 +77,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
             {
                 towardsMouse.Normalize(); // 标准化向量  
                 // 分散的角度增量（以弧度为单位）  
-                float angleIncrement = MathHelper.ToRadians(20f); // 80度分散成4个，每个间隔20度  
+                float angleIncrement = MathHelper.ToRadians(30f); // 80度分散成4个，每个间隔20度  
 
                 // 遍历并创建新子弹  
                 for (int i = 0; i < 4; i++)
@@ -73,22 +85,23 @@ namespace NanTing.Content.Ammunition.棱翼弹
                     int num3 = Main.rand.Next(5);
                     // 计算新子弹的旋转角度（基于原始方向加上随机偏移）  
                     //Atan2 计算角度（鼠标与弹幕之间的）
-                    float angle = (float)Math.Atan2(towardsMouse.Y, towardsMouse.X) + angleIncrement * i + (float)Main.rand.NextDouble() * MathHelper.ToRadians(30) - MathHelper.ToRadians(30); 
+                    float angle = (float)Math.Atan2(towardsMouse.Y, towardsMouse.X) + angleIncrement * i + (float)Main.rand.NextDouble() * MathHelper.ToRadians(30) - MathHelper.ToRadians(60); 
                     // 计算新子弹的速度向量  
-                    Vector2 newVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10f;
+                    Vector2 newVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 12f;
+                    Projectile proje = null;
                     switch(num3)
                     {
                         case 0:
-                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片1>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片1>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                         case 1:
-                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片2>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje =  Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片2>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                         case 2:
-                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片3>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片3>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                         case 3:
-                            Projectile.NewProjectile(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片4>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片4>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                     }
                 }
@@ -102,13 +115,14 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
-            Projectile.aiStyle = 1;
-            Projectile.timeLeft = 20;
+            //Projectile.aiStyle = 1;
+            Projectile.timeLeft = ty.碎片统一存活时长;
         }
         public override void AI()
         {
             //Vector2 v = new Vector2((float)Math.Cos(Main.rand.NextDouble()), ty.主弹幕.Center.Y);
             //Projectile.velocity = Vector2.Normalize(v - ty.主弹幕.Center);
+            Projectile.rotation += 2f;
             base.AI();
         }
     }
@@ -118,9 +132,14 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
-            Projectile.aiStyle = 1;
-            Projectile.timeLeft = 20;
+            //Projectile.aiStyle = 1;
+            Projectile.timeLeft = ty.碎片统一存活时长;
             base.SetDefaults();
+        }
+        public override void AI()
+        {
+            Projectile.rotation *= 2f;
+            base.AI();
         }
     }
     public class 棱翼弹_霰弹碎片3 : ModProjectile 
@@ -129,9 +148,14 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
-            Projectile.aiStyle = 1;
-            Projectile.timeLeft = 20;
+            //Projectile.aiStyle = 1;
+            Projectile.timeLeft = ty.碎片统一存活时长;
             base.SetDefaults();
+        }
+        public override void AI()
+        {
+            Projectile.rotation *= 2f;
+            base.AI();
         }
     }
     public class 棱翼弹_霰弹碎片4 : ModProjectile 
@@ -140,9 +164,14 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
-            Projectile.aiStyle = 1;
-            Projectile.timeLeft = 20;
+            //Projectile.aiStyle = 1;
+            Projectile.timeLeft = ty.碎片统一存活时长;
             base.SetDefaults();
+        }
+        public override void AI()
+        {
+            Projectile.rotation *= 2f;
+            base.AI();
         }
     }
 }
