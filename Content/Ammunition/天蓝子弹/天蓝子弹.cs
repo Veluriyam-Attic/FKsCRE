@@ -42,6 +42,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
         public override void SetDefaults()
         {
             Projectile.damage = 7;
+            Projectile.aiStyle = ProjAIStyleID.Bubble;
             //不受水影响
             Projectile.ignoreWater = true;
             Projectile.ai[0] = 0;
@@ -54,16 +55,19 @@ namespace NanTing.Content.Ammunition.天蓝子弹
         Vector2[] vector = new Vector2[5];
         int index = 4;
         bool SpriteBatch_new = false;
+        Vector2 vector_ = default;
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            Vector2 vector = new Vector2(player.position.X+5,player.position.Y + 5);
+            Vector2 plv2 = player.Center;
+            //Vector2 vector = new Vector2(player.position.X+5,player.position.Y + 5);
             if (Projectile.ai[0] == 0)
             {
-                Projectile.velocity = Vector2.Normalize(Main.MouseWorld - vector) * 17;
-                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
+                vector_ = Vector2.Normalize(Main.MouseWorld - plv2) * 17;
                 //Projectile.Center = Main.player[Projectile.owner].Center;
             }
+            Projectile.velocity = vector_;
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
             //微弱的最终
             //    double sin = vector1._x * vector2._y - vector2._x * vector1._y;  
             //    double cos = vector1._x * vector2._x + vector1._y * vector2._y;
@@ -124,14 +128,14 @@ namespace NanTing.Content.Ammunition.天蓝子弹
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture2D = Mod.Assets.Request<Texture2D>("Content/Ammunition/天蓝子弹/天蓝子弹").Value;
+            Texture2D texture2D = Mod.Assets.Request<Texture2D>("Content/Ammunition/天蓝子弹/天蓝子弹_Proje").Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
             Vector2 v2 = Projectile.position - Main.screenPosition;
-            if (Projectile.timeLeft % 2 == 0)
-            {
+            //if (Projectile.timeLeft % 2 == 0)
+            //{
                 vector[index] = v2;
                 index--;
-            }
+            //}
             if (index == 0)
             {
                 index = 4;
@@ -142,8 +146,6 @@ namespace NanTing.Content.Ammunition.天蓝子弹
                 //spriteBatch.Begin();
                 for (int i = 0; i <= 4; i++)
                 {
-                    //Main.NewText(true);
-                    //spriteBatch.Draw(texture2D, vector[i], null, Color.White * 1 * (1 - .2f * i), Projectile.rotation,default, texture2D.Size() * 1 * (1 - .02f * i), SpriteEffects.None, 0);
                     Main.spriteBatch.Draw(texture2D, vector[i], null, Color.White * 1 * (1 - .2f * i), Projectile.rotation, texture2D.Size() * .5f, 1 * (1 - .02f * i), SpriteEffects.None, 0);
                 }
                 //spriteBatch.End();

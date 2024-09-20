@@ -51,6 +51,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
         Vector2 Mouse_initial = default;
         public override void SetDefaults()
         {
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.friendly = true;
             Projectile.damage = ty.dam;
             Projectile.timeLeft = 999;

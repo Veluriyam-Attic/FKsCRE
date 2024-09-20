@@ -33,6 +33,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
             Projectile.damage = ty.dam;
             Projectile.friendly = true;
             Projectile.timeLeft = 45;
+            Projectile.aiStyle = ProjAIStyleID.Bubble;
         }
         int num = 0;
         Vector2 towardsMouse = Vector2.Zero;
@@ -41,14 +42,15 @@ namespace NanTing.Content.Ammunition.棱翼弹
         {
             Vector2 player = Main.player[Projectile.owner].Center;
             Vector2 Mouse = Main.MouseWorld;
+
             if (num == 0)
             {
                 cs = Vector2.Normalize(Mouse - player) * 15f;
-                //鼠标在世界的坐标减去弹幕在世界的坐标 形成新的 v2
+                //    //鼠标在世界的坐标减去弹幕在世界的坐标 形成新的 v2
                 towardsMouse = Main.MouseWorld - Projectile.position;
                 num++;
             }
-            if(Projectile.wet)
+            if (Projectile.wet)
             {
                 Projectile.velocity = cs * 3f;
                 Projectile.damage = (int)(ty.dam * 1.5);
@@ -61,6 +63,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
             base.AI();
         }
+        
         public override void OnKill(int timeLeft)
         {
             Player pl = Main.player[Projectile.owner];

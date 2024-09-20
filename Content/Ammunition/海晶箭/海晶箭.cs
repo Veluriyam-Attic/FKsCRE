@@ -25,6 +25,7 @@ namespace NanTing.Content.Ammunition.海晶箭
             Projectile.friendly = true;
             Projectile.damage = 10;
             Projectile.timeLeft = 1000;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             base.SetDefaults();
         }
         int num = 0;

@@ -40,4 +40,22 @@ namespace NanTing
             base.UpdateUI(gameTime);
         }
     }
+
+    public class µØƒªAI¿‡ : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+        private int dam = 10;
+        int num = 0;
+        Vector2 nor = default;
+        public override void AI(Projectile projectile)
+        {
+            if(projectile.Name.Equals("¿‚“ÌµØ_µØƒª"))
+            {
+
+            }
+
+            base.AI(projectile);
+        }
+
+    }
 }

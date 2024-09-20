@@ -54,7 +54,7 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
             Projectile.damage = 5;
             Projectile.friendly = true;
             Projectile.timeLeft = 300;
-            //Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.ai[0] = 0f;
             //Projectile.soundDelay = 2;
             base.SetDefaults();
