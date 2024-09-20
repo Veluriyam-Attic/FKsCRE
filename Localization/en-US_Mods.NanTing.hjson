@@ -17,7 +17,7 @@ Items: {
 
 	海晶箭: {
 		DisplayName: Prism Arrow
-		Tooltip: 
+		Tooltip:
 			'''
 			在陆地上时受到更强的重力影响
 			在液体中时仅受到极小的重力
@@ -28,7 +28,7 @@ Items: {
 
 	棱翼弹: {
 		DisplayName: Tinkleshard Bullet
-		Tooltip: 
+		Tooltip:
 			'''
 			会在射出0.75s后会分裂
 			在水中获得超高移速，并增加50%伤害
@@ -38,12 +38,17 @@ Items: {
 
 	钨钢箭: {
 		DisplayName: Wulfrim Arrow
-		Tooltip: 
+		Tooltip:
 			'''
 			电击并定住受到攻击的敌人！
 			每10s触发一次，每次触发1s
 			“能源核心可不是白装的！”
 			'''
+	}
+
+	钨钢弹: {
+		DisplayName: 钨钢弹
+		Tooltip: ""
 	}
 }
 
@@ -57,6 +62,7 @@ Projectiles: {
 	棱翼弹_霰弹碎片3.DisplayName: Piece of Tinkleshard Bullet #3
 	棱翼弹_霰弹碎片4.DisplayName: Piece of Tinkleshard Bullet #4
 	钨钢箭_proje.DisplayName: Wulfrim Arrow
+	钨钢弹_Proje.DisplayName: 钨钢弹_ Proje
 }
 
 Buffs: {

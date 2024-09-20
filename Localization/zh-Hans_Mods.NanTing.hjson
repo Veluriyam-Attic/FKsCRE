@@ -45,6 +45,11 @@ Items: {
 			“能源核心可不是白装的！”
 			'''
 	}
+
+	钨钢弹: {
+		// DisplayName: 钨钢弹
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -57,6 +62,7 @@ Projectiles: {
 	棱翼弹_霰弹碎片3.DisplayName: 棱裂弹
 	棱翼弹_霰弹碎片4.DisplayName: 棱裂弹
 	钨钢箭_proje.DisplayName: 钨钢箭
+	// 钨钢弹_Proje.DisplayName: 钨钢弹_ Proje
 }
 
 Buffs: {
