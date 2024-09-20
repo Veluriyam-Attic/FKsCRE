@@ -20,6 +20,8 @@
 	  <None Remove="Content\Ammunition\棱翼弹\棱翼弹_霰弹碎片4.png" />
 	  <None Remove="Content\Ammunition\海晶箭\海晶箭.png" />
 	  <None Remove="Content\Ammunition\海晶箭\海晶箭_Proje.png" />
+	  <None Remove="Content\Ammunition\钨钢弹\钨钢弹.png" />
+	  <None Remove="Content\Ammunition\钨钢弹\钨钢弹_Proje.png" />
 	  <None Remove="Content\Ammunition\钨钢箭\钨钢定身DeBuff.png" />
 	  <None Remove="Content\Ammunition\钨钢箭\钨钢箭.png" />
 	  <None Remove="Content\Ammunition\钨钢箭\钨钢箭_proje.png" />

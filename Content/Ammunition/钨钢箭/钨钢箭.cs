@@ -10,6 +10,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
     {
         public static int dam = 10;
     }
+    #region 僵硬
     public class 僵硬 : GlobalNPC
     {
         int time = 0;
@@ -31,7 +32,9 @@ namespace NanTing.Content.Ammunition.钨钢箭
         }
         public override bool InstancePerEntity => true;
     }
+    #endregion
 
+    #region 钨钢箭
     public class 钨钢箭 : ModItem
     {
         public override void SetDefaults()
@@ -44,10 +47,11 @@ namespace NanTing.Content.Ammunition.钨钢箭
             Item.shoot = ModContent.ProjectileType<钨钢箭_proje>();
         }
     }
+    #endregion
 
+    #region 钨钢箭弹幕
     public class 钨钢箭_proje : ModProjectile
     {
-        int num = 0;
         Vector2 Mouse_initial = default;
         public override void SetDefaults()
         {
@@ -55,10 +59,12 @@ namespace NanTing.Content.Ammunition.钨钢箭
             Projectile.friendly = true;
             Projectile.damage = ty.dam;
             Projectile.timeLeft = 999;
+            //Projectile.ai[0] = 0;
         }
+        int num = 0;
         public override void AI()
         {
-            if(num == 0)
+            if (num == 0)
             {
                 Mouse_initial = Main.MouseWorld;
                 Projectile.velocity = Vector2.Normalize(Mouse_initial - Main.player[Projectile.owner].Center) * 12;
@@ -92,6 +98,9 @@ namespace NanTing.Content.Ammunition.钨钢箭
             base.OnHitNPC(target, hit, damageDone);
         }
     }
+    #endregion
+
+    #region 钨钢定身
     public class 钨钢定身DeBuff : ModBuff
     {
         public override void SetStaticDefaults()
@@ -118,7 +127,9 @@ namespace NanTing.Content.Ammunition.钨钢箭
             base.Update(npc, ref buffIndex);
         }
     }
+    #endregion
 
+    #region 钨钢箭电减
     public class 钨钢箭电减_DeBuff : ModBuff
     {
         public override void SetStaticDefaults()
@@ -155,4 +166,5 @@ namespace NanTing.Content.Ammunition.钨钢箭
             base.Update(npc, ref buffIndex);
         }
     }
+    #endregion
 }

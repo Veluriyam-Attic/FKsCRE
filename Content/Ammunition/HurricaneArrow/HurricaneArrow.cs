@@ -55,26 +55,35 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
             Projectile.friendly = true;
             Projectile.timeLeft = 300;
             Projectile.aiStyle = ProjAIStyleID.Arrow;
-            Projectile.ai[0] = 0f;
+            //Projectile.ai[0] = 0f;
             //Projectile.soundDelay = 2;
             base.SetDefaults();
         }
+        Vector2 vector = default;
+        int num = 0;
         public override void AI()
         {
             Vector2 v2 = new Vector2(0, 10);
             Vector2 v3 = new Vector2(0, -10);
-            if (Projectile.ai[0] == 0f)
+            NanTingGProje proje = Projectile.GetGlobalProjectile<NanTingGProje>();
+            if (proje.GetItem().Name.Equals("Daedalus Stormbow"))
             {
-                Vector2 MouseVectorWorld = Main.MouseWorld;
-                Vector2 vector2 = Main.MouseScreen;
-                Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
-                Projectile.velocity = Vector2.Normalize(MouseVectorWorld - PlayerVectorWorld) * 17f;
-                //确保角度正确
-                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
+                if (num == 0f) { vector = Projectile.velocity; }
             }
-            Projectile.ai[0]++;
-
-            if (Projectile.ai[0] >= 20)
+            else
+            {
+                if (num == 0f)
+                {
+                    Vector2 MouseVectorWorld = Main.MouseWorld;
+                    Vector2 vector2 = Main.MouseScreen;
+                    Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
+                    vector = Vector2.Normalize(MouseVectorWorld - PlayerVectorWorld) * 17f;
+                }
+                Projectile.velocity = vector;
+            }
+            //确保角度正确
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
+            if (num >= 20)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -84,6 +93,7 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
                     dust2.noGravity = true;
                 }
             }
+            num++;
             //Main.NewText(vector2);
             base.AI();
         }

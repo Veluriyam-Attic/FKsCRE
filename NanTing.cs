@@ -41,20 +41,29 @@ namespace NanTing
         }
     }
 
-    public class 弹幕AI类 : GlobalProjectile
+    public class NanTingGProje : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        private int dam = 10;
-        int num = 0;
-        Vector2 nor = default;
-        public override void AI(Projectile projectile)
+        private int num = 0;
+        private Player player = default;
+        private Item item = default;
+        public override bool PreAI(Projectile projectile)
         {
-            if(projectile.Name.Equals("棱翼弹_弹幕"))
+            if (num == 0)
             {
-
+                player = Main.player[projectile.owner];
+                //手上的物品
+                item = player.inventory[player.selectedItem];
             }
-
-            base.AI(projectile);
+            return base.PreAI(projectile);
+        }
+        public Item GetItem()
+        {
+            return item;
+        }
+        public Player GetPlayer()
+        {
+            return player;
         }
 
     }

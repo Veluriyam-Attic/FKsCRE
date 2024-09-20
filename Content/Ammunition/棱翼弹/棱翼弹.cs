@@ -34,10 +34,11 @@ namespace NanTing.Content.Ammunition.棱翼弹
             Projectile.friendly = true;
             Projectile.timeLeft = 45;
             Projectile.aiStyle = ProjAIStyleID.Bubble;
+            //Projectile.ai[0] = 0;
         }
-        int num = 0;
         Vector2 towardsMouse = Vector2.Zero;
         Vector2 cs = default;
+        int num = 0;
         public override void AI()
         {
             Vector2 player = Main.player[Projectile.owner].Center;

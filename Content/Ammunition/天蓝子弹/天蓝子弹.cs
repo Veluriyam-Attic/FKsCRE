@@ -45,13 +45,13 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             Projectile.aiStyle = ProjAIStyleID.Bubble;
             //不受水影响
             Projectile.ignoreWater = true;
-            Projectile.ai[0] = 0;
+            //Projectile.ai[0] = 0;
             Projectile.timeLeft = 300;
             Projectile.friendly = true;
             base.SetDefaults();
         }
 
-        int sum = 1;
+        int sum = 0;
         Vector2[] vector = new Vector2[5];
         int index = 4;
         bool SpriteBatch_new = false;
@@ -61,7 +61,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             Player player = Main.player[Projectile.owner];
             Vector2 plv2 = player.Center;
             //Vector2 vector = new Vector2(player.position.X+5,player.position.Y + 5);
-            if (Projectile.ai[0] == 0)
+            if (sum == 0)
             {
                 vector_ = Vector2.Normalize(Main.MouseWorld - plv2) * 17;
                 //Projectile.Center = Main.player[Projectile.owner].Center;
@@ -96,7 +96,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             {
                 //Projectile.velocity *= (float)Math.Cos(30);
             }
-            
+
 
             /*
             int sc = Main.screenWidth;
@@ -109,7 +109,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
                 }
             }
             */
-            Projectile.ai[0]++;
+            sum++;
 
             //SpriteBatch spriteBatch = Main.spriteBatch;
             //spriteBatch.Begin();
