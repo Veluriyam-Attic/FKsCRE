@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -63,7 +58,7 @@ namespace NanTing.Content.Ammunition.海晶箭
                     Projectile.velocity.Y += 0.25f;
                     if(num >= 180)
                     {
-                        Projectile.velocity.Y += 0.25f;
+                        Projectile.velocity.Y += 0.45f;
                     }
                 }
             }
