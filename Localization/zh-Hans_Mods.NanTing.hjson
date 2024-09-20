@@ -12,15 +12,12 @@ Items: {
 
 	天蓝子弹: {
 		DisplayName: 天蓝子弹
-		Tooltip: 
-			'''
-			不受重力影响
-			'''
+		Tooltip: 不受重力影响
 	}
 
 	海晶箭: {
 		DisplayName: 海晶箭
-		Tooltip: 
+		Tooltip:
 			'''
 			在陆地上时受到更强的重力影响
 			在液体中时仅受到极小的重力
@@ -31,7 +28,7 @@ Items: {
 
 	棱翼弹: {
 		DisplayName: 棱裂弹
-		Tooltip: 
+		Tooltip:
 			'''
 			会在射出0.75s后会分裂
 			在水中获得超高移速，并增加50%伤害
@@ -41,7 +38,7 @@ Items: {
 
 	钨钢箭: {
 		DisplayName: 钨钢箭
-		Tooltip: 
+		Tooltip:
 			'''
 			电击并定住受到攻击的敌人！
 			每10s触发一次，每次触发1s
@@ -51,7 +48,7 @@ Items: {
 }
 
 Projectiles: {
-	HurricaneArrow_Proje.DisplayName:飓之矢
+	HurricaneArrow_Proje.DisplayName: 飓之矢
 	天蓝子弹_Proje.DisplayName: 天蓝子弹
 	海晶箭_Proje.DisplayName: 海晶箭
 	棱翼弹_弹幕.DisplayName: 棱裂弹_弹幕
