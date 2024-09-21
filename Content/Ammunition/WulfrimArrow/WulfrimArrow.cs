@@ -31,15 +31,15 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
                 if(projectile.ModProjectile.Name.Equals("WulfrimArrow_proje"))
                 {
                     cent = npc.Center;
-
-                    //ModPacket packet = Mod.GetPacket();
-                    //packet.Write(1);
-                    //packet.Write(cent.X);
-                    //packet.Write(cent.Y);
-                    ////npc在Main.npc中的索引
-                    //packet.Write(npc.whoAmI);
+                    npc.netUpdate = true;
+                    ModPacket packet = Mod.GetPacket();
+                    packet.Write(1);
+                    packet.Write(cent.X);
+                    packet.Write(cent.Y);
+                    //npc在Main.npc中的索引
+                    packet.Write(npc.whoAmI);
                     //packet.Write(Main.myPlayer);
-                    //packet.Send();
+                    packet.Send();
                     //MessageID.SyncNPC
                 }
             }
@@ -64,26 +64,33 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             */
             #endregion
             #region 第三次
+            /*
             if(binaryReader.ReadString().Equals("WulfrimArrowHold_NPC"))
             {
                 Console.WriteLine("收到了!");
                 cent = new Vector2(binaryReader.ReadSingle(),binaryReader.ReadSingle());
                 time = binaryReader.ReadInt32();
             }
-
+            */
+            #endregion
+            #region
+            cent.X = binaryReader.ReadSingle();
+            cent.Y = binaryReader.ReadSingle();
+            time = binaryReader.ReadInt32();
             #endregion
             base.ReceiveExtraAI(npc, bitReader, binaryReader);
         }
         public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
         {
-            ModPacket packet = Mod.GetPacket();
-            packet.Write(1);
-            packet.Send();
-            Console.WriteLine(Main.netMode);
+            //ModPacket packet = Mod.GetPacket();
+            //packet.Write(1);
+            //packet.Send();
+            //Console.WriteLine(Main.netMode);
             //Hold e = npc.GetGlobalNPC<Hold>();
             //binaryWriter.Write(MessageID.SyncNPC);
-            //binaryWriter.Write(e.cent.X);
-            //binaryWriter.Write(e.cent.Y);
+            binaryWriter.Write(cent.X);
+            binaryWriter.Write(cent.Y);
+            binaryWriter.Write(time);
             //binaryWriter.Write(e.time);
             base.SendExtraAI(npc, bitWriter, binaryWriter);
         }
@@ -165,16 +172,19 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             }
             else
             {
+                Hold hold = target.GetGlobalNPC<Hold>();
+                hold.setcent(target.Center);
+                Main.NewText("OnHitNPC : "  + hold.getcent());
                 target.AddBuff(ModContent.BuffType<WulfrimHold>(), 600);
                 target.netUpdate = true;
             }
-            Hold e = target.GetGlobalNPC<Hold>();
-            e.setcent(target.Center);
-            //请求同步
-            ModPacket packet = Mod.GetPacket();
-            packet.Write(1);
-            packet.Write(target.whoAmI);
-            packet.Send();
+            //Hold e = target.GetGlobalNPC<Hold>();
+            //e.setcent(target.Center);
+            ////请求同步
+            //ModPacket packet = Mod.GetPacket();
+            //packet.Write(1);
+            //packet.Write(target.whoAmI);
+            //packet.Send();
             base.OnHitNPC(target, hit, damageDone);
         }
     }
@@ -192,7 +202,6 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             }
             if (modnpc.gettime() >= 600) modnpc.timeToZero();
             modnpc.settime();
-            npc.netUpdate = true;
             base.Update(npc, ref buffIndex);
         }
         public override void SetStaticDefaults()

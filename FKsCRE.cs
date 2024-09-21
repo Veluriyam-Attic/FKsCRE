@@ -25,6 +25,7 @@ namespace FKsCRE
 	// Please read https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents for more information about the various files in a mod.
 	public class NanTing : Mod
 	{
+        #region 收发
         //重写这个方法来处理收发包
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
@@ -36,7 +37,12 @@ namespace FKsCRE
             switch(a)
             {
                 case 1:
-                    WulfrimArrowHold_npc = Main.npc[reader.ReadInt32()];
+                    //WulfrimArrowHold_npc = Main.npc[reader.ReadInt32()];
+                    WulfrimArrowHold_cent.X = reader.ReadSingle();
+                    WulfrimArrowHold_cent.Y = reader.ReadSingle();
+                    NPC npc = Main.npc[reader.ReadInt32()];
+                    Hold hold  = npc.GetGlobalNPC<Hold>();
+                    hold.setcent(WulfrimArrowHold_cent);
                     break;
             }
             if(WulfrimArrowHold_npc != null)
@@ -72,6 +78,7 @@ namespace FKsCRE
             }
             base.HandlePacket(reader, whoAmI);
         }
+        #endregion
     }
 
     public class ModTime : ModSystem
