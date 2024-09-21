@@ -7,9 +7,9 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 //无合成表
-namespace NanTing.Content.Ammunition.天蓝子弹
+namespace FKsCRE.Content.Ammunition.AerialiteBullet
 {
-    public class 天蓝子弹 : ModItem
+    public class AerialiteBullet : ModItem
     {
         public override void SetDefaults()
         {
@@ -18,7 +18,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             Item.damage = 7;
             //暴击率
             Item.crit = 5;
-            Item.shoot = ModContent.ProjectileType<天蓝子弹_Proje>();
+            Item.shoot = ModContent.ProjectileType<AerialiteBullet_Proje>();
             Item.maxStack = 9999;
         }
 
@@ -32,12 +32,12 @@ namespace NanTing.Content.Ammunition.天蓝子弹
             recipe.AddIngredient(ItemID.SunplateBlock, 1);
             //天魔
             recipe.AddTile(TileID.SkyMill);
-            recipe.ReplaceResult(ModContent.ItemType<天蓝子弹>(), 200);
+            recipe.ReplaceResult(ModContent.ItemType<AerialiteBullet>(), 200);
             base.AddRecipes();
         }
     }
 
-    public class 天蓝子弹_Proje : ModProjectile
+    public class AerialiteBullet_Proje : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -128,7 +128,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture2D = Mod.Assets.Request<Texture2D>("Content/Ammunition/天蓝子弹/天蓝子弹_Proje").Value;
+            Texture2D texture2D = Mod.Assets.Request<Texture2D>("Content/Ammunition/AerialiteBullet/AerialiteBullet_Proje").Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
             Vector2 v2 = Projectile.position - Main.screenPosition;
             //if (Projectile.timeLeft % 2 == 0)

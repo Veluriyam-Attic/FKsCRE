@@ -10,12 +10,12 @@ Items: {
 			'''
 	}
 
-	天蓝子弹: {
+	AerialiteBullet: {
 		DisplayName: 天蓝子弹
 		Tooltip: 不受重力影响
 	}
 
-	海晶箭: {
+	PrismArrow: {
 		DisplayName: 海晶箭
 		Tooltip:
 			'''
@@ -26,7 +26,7 @@ Items: {
 			'''
 	}
 
-	棱翼弹: {
+	TinkleshardBullet: {
 		DisplayName: 棱裂弹
 		Tooltip:
 			'''
@@ -36,7 +36,7 @@ Items: {
 			'''
 	}
 
-	钨钢箭: {
+	WulfrimArrow: {
 		DisplayName: 钨钢箭
 		Tooltip:
 			'''
@@ -46,32 +46,32 @@ Items: {
 			'''
 	}
 
-	钨钢弹: {
-		// DisplayName: 钨钢弹
-		// Tooltip: ""
+	WulfrimBullet: {
+		DisplayName: 钨钢弹
+		Tooltip: ""
 	}
 }
 
 Projectiles: {
 	HurricaneArrow_Proje.DisplayName: 飓之矢
-	天蓝子弹_Proje.DisplayName: 天蓝子弹
-	海晶箭_Proje.DisplayName: 海晶箭
-	棱翼弹_弹幕.DisplayName: 棱裂弹_弹幕
-	棱翼弹_霰弹碎片1.DisplayName: 棱裂弹
-	棱翼弹_霰弹碎片2.DisplayName: 棱裂弹
-	棱翼弹_霰弹碎片3.DisplayName: 棱裂弹
-	棱翼弹_霰弹碎片4.DisplayName: 棱裂弹
-	钨钢箭_proje.DisplayName: 钨钢箭
-	// 钨钢弹_Proje.DisplayName: 钨钢弹_ Proje
+	AerialiteBullet_Proje.DisplayName: 天蓝子弹
+	PrismArrow_Proje.DisplayName: 海晶箭
+	TinkleshardBullet_Proje.DisplayName: 棱裂弹_弹幕
+	TinkleshardBullet_Piece1.DisplayName: 棱裂弹
+	TinkleshardBullet_Piece2.DisplayName: 棱裂弹
+	TinkleshardBullet_Piece3.DisplayName: 棱裂弹
+	TinkleshardBullet_Piece4.DisplayName: 棱裂弹
+	WulfrimArrow_proje.DisplayName: 钨钢箭
+	WulfrimBullet_Proje.DisplayName: 钨钢弹
 }
 
 Buffs: {
-	钨钢箭电减_DeBuff: {
+	WulfrimShock: {
 		DisplayName: 钨钢箭电性减益
 		Description: 每秒-2生命值
 	}
 
-	钨钢定身DeBuff: {
+	WulfrimHold: {
 		DisplayName: 钨钢定身
 		Description: 使敌怪静止不动
 	}

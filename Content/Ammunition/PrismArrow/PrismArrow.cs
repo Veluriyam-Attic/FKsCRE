@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 //无合成表
-namespace NanTing.Content.Ammunition.海晶箭
+namespace FKsCRE.Content.Ammunition.PrismArrow
 {
     class ty
     {
         public static int dam = 10;
     }
-    public class 海晶箭 : ModItem
+    public class PrismArrow : ModItem
     {
         public override void SetDefaults()
         {
@@ -18,10 +18,10 @@ namespace NanTing.Content.Ammunition.海晶箭
             Item.damage = ty.dam;
             Item.ammo = AmmoID.Arrow;
             Item.DamageType = DamageClass.Ranged;
-            Item.shoot = ModContent.ProjectileType<海晶箭_Proje>();
+            Item.shoot = ModContent.ProjectileType<PrismArrow_Proje>();
         }
     }
-    public class 海晶箭_Proje : ModProjectile
+    public class PrismArrow_Proje : ModProjectile
     {
         public override void SetDefaults()
         {

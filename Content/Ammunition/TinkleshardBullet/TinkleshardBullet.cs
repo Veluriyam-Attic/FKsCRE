@@ -5,15 +5,15 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace NanTing.Content.Ammunition.棱翼弹
+namespace FKsCRE.Content.Ammunition.TinkleshardBullet
 {
     internal static class ty
     {
         public static int dam = 10;
-        public static Projectile 主弹幕 = null;
-        public static int 碎片统一存活时长 = 40;
+        public static Projectile MainProje = null;
+        public static int PieceDeath = 40;
     }
-    public class 棱翼弹 : ModItem
+    public class TinkleshardBullet : ModItem
     {
         public override void SetDefaults()
         {
@@ -23,11 +23,11 @@ namespace NanTing.Content.Ammunition.棱翼弹
             Item.consumable = true;
             Item.ammo = AmmoID.Bullet;
             Item.crit = 5;
-            Item.shoot = ModContent.ProjectileType<棱翼弹_弹幕>();
+            Item.shoot = ModContent.ProjectileType<TinkleshardBullet_Proje>();
             base.SetDefaults();
         }
     }
-    public class 棱翼弹_弹幕 : ModProjectile 
+    public class TinkleshardBullet_Proje : ModProjectile 
     {
         public override void SetDefaults()
         {
@@ -116,16 +116,16 @@ namespace NanTing.Content.Ammunition.棱翼弹
                     switch(num3)
                     {
                         case 0:
-                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片1>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<TinkleshardBullet_Piece1>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                         case 1:
-                            proje =  Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片2>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje =  Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<TinkleshardBullet_Piece2>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                         case 2:
-                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片3>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<TinkleshardBullet_Piece3>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                         case 3:
-                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<棱翼弹_霰弹碎片4>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
+                            proje = Projectile.NewProjectileDirect(default, Projectile.position, newVelocity, ModContent.ProjectileType<TinkleshardBullet_Piece4>(), (item.damage + ty.dam / 3) / 3, 0f, Projectile.owner);
                             break;
                     }
                 }
@@ -133,31 +133,31 @@ namespace NanTing.Content.Ammunition.棱翼弹
                 base.OnKill(timeLeft);
         }
     }
-    public class 棱翼弹_霰弹碎片1 : ModProjectile 
+    public class TinkleshardBullet_Piece1 : ModProjectile 
     {
         public override void SetDefaults()
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
             //Projectile.aiStyle = 1;
-            Projectile.timeLeft = ty.碎片统一存活时长;
+            Projectile.timeLeft = ty.PieceDeath;
         }
         public override void AI()
         {
-            //Vector2 v = new Vector2((float)Math.Cos(Main.rand.NextDouble()), ty.主弹幕.Center.Y);
-            //Projectile.velocity = Vector2.Normalize(v - ty.主弹幕.Center);
+            //Vector2 v = new Vector2((float)Math.Cos(Main.rand.NextDouble()), ty.MainProje.Center.Y);
+            //Projectile.velocity = Vector2.Normalize(v - ty.MainProje.Center);
             Projectile.rotation += 2f;
             base.AI();
         }
     }
-    public class 棱翼弹_霰弹碎片2 : ModProjectile 
+    public class TinkleshardBullet_Piece2 : ModProjectile 
     {
         public override void SetDefaults()
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
             //Projectile.aiStyle = 1;
-            Projectile.timeLeft = ty.碎片统一存活时长;
+            Projectile.timeLeft = ty.PieceDeath;
             base.SetDefaults();
         }
         public override void AI()
@@ -166,14 +166,14 @@ namespace NanTing.Content.Ammunition.棱翼弹
             base.AI();
         }
     }
-    public class 棱翼弹_霰弹碎片3 : ModProjectile 
+    public class TinkleshardBullet_Piece3 : ModProjectile 
     {
         public override void SetDefaults()
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
             //Projectile.aiStyle = 1;
-            Projectile.timeLeft = ty.碎片统一存活时长;
+            Projectile.timeLeft = ty.PieceDeath;
             base.SetDefaults();
         }
         public override void AI()
@@ -182,14 +182,14 @@ namespace NanTing.Content.Ammunition.棱翼弹
             base.AI();
         }
     }
-    public class 棱翼弹_霰弹碎片4 : ModProjectile 
+    public class TinkleshardBullet_Piece4 : ModProjectile 
     {
         public override void SetDefaults()
         {
             Projectile.damage = ty.dam / 3;
             Projectile.friendly = true;
             //Projectile.aiStyle = 1;
-            Projectile.timeLeft = ty.碎片统一存活时长;
+            Projectile.timeLeft = ty.PieceDeath;
             base.SetDefaults();
         }
         public override void AI()

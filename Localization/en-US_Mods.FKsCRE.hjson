@@ -10,12 +10,12 @@ Items: {
 			'''
 	}
 
-	天蓝子弹: {
+	AerialiteBullet: {
 		DisplayName: Aerialite Bullet
 		Tooltip: 弹速极快
 	}
 
-	海晶箭: {
+	PrismArrow: {
 		DisplayName: Prism Arrow
 		Tooltip:
 			'''
@@ -26,7 +26,7 @@ Items: {
 			'''
 	}
 
-	棱翼弹: {
+	TinkleshardBullet: {
 		DisplayName: Tinkleshard Bullet
 		Tooltip:
 			'''
@@ -36,7 +36,7 @@ Items: {
 			'''
 	}
 
-	钨钢箭: {
+	WulfrimArrow: {
 		DisplayName: Wulfrim Arrow
 		Tooltip:
 			'''
@@ -46,32 +46,32 @@ Items: {
 			'''
 	}
 
-	钨钢弹: {
-		DisplayName: 钨钢弹
+	WulfrimBullet: {
+		DisplayName: Wulfrim Bullet
 		Tooltip: ""
 	}
 }
 
 Projectiles: {
 	HurricaneArrow_Proje.DisplayName: Hurricane Bolt
-	天蓝子弹_Proje.DisplayName: Aerialite Bullet
-	海晶箭_Proje.DisplayName: Prism Arrow
-	棱翼弹_弹幕.DisplayName: Tinkleshard Bullet
-	棱翼弹_霰弹碎片1.DisplayName: Piece of Tinkleshard Bullet #1
-	棱翼弹_霰弹碎片2.DisplayName: Piece of Tinkleshard Bullet #2
-	棱翼弹_霰弹碎片3.DisplayName: Piece of Tinkleshard Bullet #3
-	棱翼弹_霰弹碎片4.DisplayName: Piece of Tinkleshard Bullet #4
-	钨钢箭_proje.DisplayName: Wulfrim Arrow
-	钨钢弹_Proje.DisplayName: 钨钢弹_ Proje
+	AerialiteBullet_Proje.DisplayName: Aerialite Bullet
+	PrismArrow_Proje.DisplayName: Prism Arrow
+	TinkleshardBullet_Proje.DisplayName: Tinkleshard Bullet
+	TinkleshardBullet_Piece1.DisplayName: Piece of Tinkleshard Bullet #1
+	TinkleshardBullet_Piece2.DisplayName: Piece of Tinkleshard Bullet #2
+	TinkleshardBullet_Piece3.DisplayName: Piece of Tinkleshard Bullet #3
+	TinkleshardBullet_Piece4.DisplayName: Piece of Tinkleshard Bullet #4
+	WulfrimArrow_proje.DisplayName: Wulfrim Arrow
+	WulfrimBullet_Proje.DisplayName: Wulfrim Bullet
 }
 
 Buffs: {
-	钨钢箭电减_DeBuff: {
+	WulfrimShock: {
 		DisplayName: Wulfrim Shock
 		Description: 每秒-2生命值
 	}
 
-	钨钢定身DeBuff: {
+	WulfrimHold: {
 		DisplayName: Wulfrim Hold
 		Description: 使敌怪静止不动
 	}

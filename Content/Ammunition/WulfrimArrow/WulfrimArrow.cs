@@ -4,14 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 //无合成表
-namespace NanTing.Content.Ammunition.钨钢箭
+namespace FKsCRE.Content.Ammunition.WulfrimArrow
 {
     static class ty
     {
         public static int dam = 10;
     }
     #region 僵硬
-    public class 僵硬 : GlobalNPC
+    public class Hold : GlobalNPC
     {
         int time = 0;
         Vector2 cent;
@@ -23,12 +23,12 @@ namespace NanTing.Content.Ammunition.钨钢箭
         {
             if (projectile.ModProjectile != null)
             {
-                if(projectile.ModProjectile.Name.Equals("钨钢箭_proje"))
+                if(projectile.ModProjectile.Name.Equals("WulfrimArrow_proje"))
                 {
                     cent = npc.Center;
                 }
             }
-            //if ((ModContent.GetModProjectile(ModContent.ProjectileType<钨钢箭_proje>()) == projectile.ModProjectile))
+            //if ((ModContent.GetModProjectile(ModContent.ProjectileType<WulfrimArrow_proje>()) == projectile.ModProjectile))
             //{
             //}
             base.OnHitByProjectile(npc, projectile, hit, damageDone);
@@ -38,7 +38,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
     #endregion
 
     #region 钨钢箭
-    public class 钨钢箭 : ModItem
+    public class WulfrimArrow : ModItem
     {
         public override void SetDefaults()
         {
@@ -47,13 +47,13 @@ namespace NanTing.Content.Ammunition.钨钢箭
             Item.damage = ty.dam;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
-            Item.shoot = ModContent.ProjectileType<钨钢箭_proje>();
+            Item.shoot = ModContent.ProjectileType<WulfrimArrow_proje>();
         }
     }
     #endregion
 
     #region 钨钢箭弹幕
-    public class 钨钢箭_proje : ModProjectile
+    public class WulfrimArrow_proje : ModProjectile
     {
         Vector2 Mouse_initial = default;
         public override void SetDefaults()
@@ -90,16 +90,16 @@ namespace NanTing.Content.Ammunition.钨钢箭
         {
             Timev2 = target.Center;
             //5秒
-            target.AddBuff(ModContent.BuffType<钨钢箭电减_DeBuff>(), 300);
+            target.AddBuff(ModContent.BuffType<WulfrimShock>(), 300);
             //30秒
             //int[] ints = target.buffType;
             //如果有
-            if (target.HasBuff<钨钢定身DeBuff>())
+            if (target.HasBuff<WulfrimHold>())
             {
             }
             else
             {
-                target.AddBuff(ModContent.BuffType<钨钢定身DeBuff>(), 600);
+                target.AddBuff(ModContent.BuffType<WulfrimHold>(), 600);
             }
             base.OnHitNPC(target, hit, damageDone);
         }
@@ -107,7 +107,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
     #endregion
 
     #region 钨钢定身
-    public class 钨钢定身DeBuff : ModBuff
+    public class WulfrimHold : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -123,7 +123,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            僵硬 modnpc = npc.GetGlobalNPC<僵硬>();
+            Hold modnpc = npc.GetGlobalNPC<Hold>();
             if (modnpc.gettime() <= 60)
             {
                 npc.Center = modnpc.getcent();
@@ -136,7 +136,7 @@ namespace NanTing.Content.Ammunition.钨钢箭
     #endregion
 
     #region 钨钢箭电减
-    public class 钨钢箭电减_DeBuff : ModBuff
+    public class WulfrimShock : ModBuff
     {
         public override void SetStaticDefaults()
         {
