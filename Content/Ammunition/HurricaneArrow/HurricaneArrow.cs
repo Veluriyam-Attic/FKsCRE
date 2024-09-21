@@ -101,6 +101,10 @@ namespace FKsCRE.Content.Ammunition.HurricaneArrow
                 }
             }
             num++;
+            if(Projectile.timeLeft % 3 == 0)
+            {
+                Projectile.netUpdate = true;
+            }
             
             //Main.NewText(vector2);
             base.AI();

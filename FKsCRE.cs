@@ -1,3 +1,4 @@
+using FKsCRE.Content.Ammunition.WulfrimArrow;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Testing;
 
 namespace FKsCRE
 {
@@ -23,17 +26,55 @@ namespace FKsCRE
 	public class NanTing : Mod
 	{
         //重写这个方法来处理收发包
-        //public override void HandlePacket(BinaryReader reader, int whoAmI)
-        //{
-        //    //接收 目前该消息来自 HurricaneArrow
-        //    float st = reader.ReadSingle();
-        //    float st_ = reader.ReadSingle();
-        //    Console.WriteLine(st + st_);
-        //    base.HandlePacket(reader, whoAmI);
-        //}
+        public override void HandlePacket(BinaryReader reader, int whoAmI)
+        {
+            Vector2 WulfrimArrowHold_cent = default;
+            NPC WulfrimArrowHold_npc = null;
+            int WulfrimArrowHold_player = default;
+            //接收 目前该消息来自 HurricaneArrow
+            int a = reader.ReadInt32();
+            switch(a)
+            {
+                case 1:
+                    WulfrimArrowHold_npc = Main.npc[reader.ReadInt32()];
+                    break;
+            }
+            if(WulfrimArrowHold_npc != null)
+            {
+                Hold WulfrimArrowHold = WulfrimArrowHold_npc.GetGlobalNPC<Hold>();
+                ModPacket packet = GetPacket();
+                //标识符
+                packet.Write("WulfrimArrowHold_NPC");
+                //发送x
+                packet.Write(WulfrimArrowHold.getcent().X);
+                //发送y
+                packet.Write(WulfrimArrowHold.getcent().Y);
+                //发送Time
+                packet.Write(WulfrimArrowHold.gettime());
+                packet.Send(default, default);
+            }
+
+            if(WulfrimArrowHold_npc != default && WulfrimArrowHold_npc != null)
+            {
+                ModPacket packet = GetPacket();
+                packet.Write(WulfrimArrowHold_cent.X);
+                packet.Write(WulfrimArrowHold_cent.Y);
+                packet.Send(default,-1);
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    
+                }
+                else
+                {
+                    Hold hold = WulfrimArrowHold_npc.GetGlobalNPC<Hold>();
+                    hold.setcent(WulfrimArrowHold_cent);
+                }
+            }
+            base.HandlePacket(reader, whoAmI);
+        }
     }
 
-	public class ModTime : ModSystem
+    public class ModTime : ModSystem
 	{
 		public static int Time = 0;
         public override void UpdateUI(GameTime gameTime)
@@ -60,18 +101,29 @@ namespace FKsCRE
         {
             if (num == 0)
             {
-                player = Main.player[projectile.owner];
-                //手上的物品
-                item = player.inventory[player.selectedItem];
+                if (Main.player[projectile.owner] != null)
+                {
+                    player = Main.player[projectile.owner];
+                    //手上的物品
+                    item = player.inventory[player.selectedItem];
+                }
             }
             return base.PreAI(projectile);
         }
         public Item GetItem()
         {
+            if (item == null && item == default)
+            {
+                return ModContent.GetModItem(1).Item;
+            }
             return item;
         }
         public Player GetPlayer()
         {
+            if (player == null && player == default)
+            {
+                return Main.player[0];
+            }
             return player;
         }
 

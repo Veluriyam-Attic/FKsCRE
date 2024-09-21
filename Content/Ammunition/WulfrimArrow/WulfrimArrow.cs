@@ -1,8 +1,12 @@
 ﻿//using CalamityMod.Tiles.Furniture;
 using Microsoft.Xna.Framework;
+using System;
+using System.Drawing.Text;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 //无合成表
 namespace FKsCRE.Content.Ammunition.WulfrimArrow
 {
@@ -15,6 +19,7 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
     {
         int time = 0;
         Vector2 cent;
+        public void setcent(Vector2 e) { cent = e; }
         public int gettime() { return time; }
         public void settime() { time++; }
         public Vector2 getcent() { return cent; }
@@ -26,12 +31,61 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
                 if(projectile.ModProjectile.Name.Equals("WulfrimArrow_proje"))
                 {
                     cent = npc.Center;
+
+                    //ModPacket packet = Mod.GetPacket();
+                    //packet.Write(1);
+                    //packet.Write(cent.X);
+                    //packet.Write(cent.Y);
+                    ////npc在Main.npc中的索引
+                    //packet.Write(npc.whoAmI);
+                    //packet.Write(Main.myPlayer);
+                    //packet.Send();
+                    //MessageID.SyncNPC
                 }
             }
             //if ((ModContent.GetModProjectile(ModContent.ProjectileType<WulfrimArrow_proje>()) == projectile.ModProjectile))
             //{
             //}
             base.OnHitByProjectile(npc, projectile, hit, damageDone);
+        }
+        public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
+        {
+            #region 第一次
+            //int a = binaryReader.ReadInt32();
+            //cent = new (binaryReader.ReadSingle(),binaryReader.ReadSingle());
+            //time = binaryReader.ReadInt32();
+            #endregion
+            #region 第二次
+            /*
+            Hold hd = npc.GetGlobalNPC<Hold>();
+            hd.setcent(new(binaryReader.ReadSingle(), binaryReader.ReadSingle()));
+            hd.time = binaryReader.ReadInt32();
+            Console.WriteLine(hd.cent);
+            */
+            #endregion
+            #region 第三次
+            if(binaryReader.ReadString().Equals("WulfrimArrowHold_NPC"))
+            {
+                Console.WriteLine("收到了!");
+                cent = new Vector2(binaryReader.ReadSingle(),binaryReader.ReadSingle());
+                time = binaryReader.ReadInt32();
+            }
+
+            #endregion
+            base.ReceiveExtraAI(npc, bitReader, binaryReader);
+        }
+        public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
+        {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write(1);
+            packet.Send();
+            Console.WriteLine(Main.netMode);
+            //Hold e = npc.GetGlobalNPC<Hold>();
+            //binaryWriter.Write(MessageID.SyncNPC);
+            //binaryWriter.Write(e.cent.X);
+            //binaryWriter.Write(e.cent.Y);
+            //binaryWriter.Write(e.time);
+            base.SendExtraAI(npc, bitWriter, binaryWriter);
         }
         public override bool InstancePerEntity => true;
     }
@@ -56,6 +110,19 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
     public class WulfrimArrow_proje : ModProjectile
     {
         Vector2 Mouse_initial = default;
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Mouse_initial = new(reader.ReadSingle(),reader.ReadSingle());
+            num = reader.ReadInt32();
+            base.ReceiveExtraAI(reader);
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(Mouse_initial.X);
+            writer.Write(Mouse_initial.Y);
+            writer.Write(num);
+            base.SendExtraAI(writer);
+        }
         public override void SetDefaults()
         {
             Projectile.aiStyle = ProjAIStyleID.Arrow;
@@ -83,12 +150,11 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
 
             num++;
+            Projectile.netUpdate = true;
             base.AI();
         }
-        public static Vector2 Timev2 = default;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Timev2 = target.Center;
             //5秒
             target.AddBuff(ModContent.BuffType<WulfrimShock>(), 300);
             //30秒
@@ -100,7 +166,15 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             else
             {
                 target.AddBuff(ModContent.BuffType<WulfrimHold>(), 600);
+                target.netUpdate = true;
             }
+            Hold e = target.GetGlobalNPC<Hold>();
+            e.setcent(target.Center);
+            //请求同步
+            ModPacket packet = Mod.GetPacket();
+            packet.Write(1);
+            packet.Write(target.whoAmI);
+            packet.Send();
             base.OnHitNPC(target, hit, damageDone);
         }
     }
@@ -109,6 +183,18 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
     #region 钨钢定身
     public class WulfrimHold : ModBuff
     {
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            Hold modnpc = npc.GetGlobalNPC<Hold>();
+            if (modnpc.gettime() <= 60)
+            {
+                npc.Center = modnpc.getcent();
+            }
+            if (modnpc.gettime() >= 600) modnpc.timeToZero();
+            modnpc.settime();
+            npc.netUpdate = true;
+            base.Update(npc, ref buffIndex);
+        }
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = true;
@@ -121,17 +207,6 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             base.SetStaticDefaults();
         }
 
-        public override void Update(NPC npc, ref int buffIndex)
-        {
-            Hold modnpc = npc.GetGlobalNPC<Hold>();
-            if (modnpc.gettime() <= 60)
-            {
-                npc.Center = modnpc.getcent();
-            }
-            if (modnpc.gettime() >= 600) modnpc.timeToZero();
-            modnpc.settime();
-            base.Update(npc, ref buffIndex);
-        }
     }
     #endregion
 

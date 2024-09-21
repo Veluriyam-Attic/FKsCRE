@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -35,6 +36,19 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
             DrawOriginOffsetY = -40;
             base.SetDefaults();
         }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(vector.X);
+            writer.Write(vector.Y);
+            writer.Write(num);
+            base.SendExtraAI(writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            vector = new (reader.ReadSingle(),reader.ReadSingle());
+            num = reader.ReadInt32();
+            base.ReceiveExtraAI(reader);
+        }
         Vector2 vector = default;
         int num = 0;
         public override void AI()
@@ -49,12 +63,14 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
                 if (num == 0) vector = Projectile.velocity;
                 if (!Projectile.wet) { Projectile.damage = ty.dam + projectile.GetItem().damage; Projectile.velocity = vector; }
                 if (Projectile.wet) {Projectile.damage = (int)(ty.dam * 1.5f + projectile.GetItem().damage); Projectile.velocity = vector * 2.5f; }
+                Projectile.netUpdate = true;
             }
             else
             {
                 if (num == 0)
                 {
                     vector = Vector2.Normalize(MouseCenton - playerCenton) * 15f;
+                    Projectile.netUpdate = true;
                 }
                 //在液体中
                 if (Projectile.wet) Projectile.damage = (int)(ty.dam * 1.5f + projectile.GetItem().damage);
@@ -64,33 +80,6 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
                 if (!Projectile.wet) Projectile.velocity = vector;
                 if (!Projectile.wet) vector.Y += 0.25f;
             }
-            //if (Projectile.wet)
-            //{
-            //    Projectile.damage = (int)(ty.dam * 1.5);
-            //    if (Projectile.timeLeft % 2 == 0)
-            //    {
-            //        Projectile.velocity.Y += 0.02f;
-            //        if (num == 1)
-            //        {
-            //            Projectile.velocity = vector * 2.5f;
-            //            num++;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    Projectile.damage = ty.dam;
-            //    Projectile.velocity = vector;
-            //    //每5帧 下坠 0.2f
-            //    if(Projectile.timeLeft % 2 == 0)
-            //    {
-            //        Projectile.velocity.Y += 0.25f;
-            //        if(num >= 180)
-            //        {
-            //            Projectile.velocity.Y += 0.45f;
-            //        }
-            //    }
-            //}
             //弹幕永远存在 除非被破坏
             if(Projectile.timeLeft <= 10)
             {
@@ -99,6 +88,14 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
             //速度角 + 180°
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
             num++;
+            if(num == 0)
+            {
+                Projectile.netUpdate = true;
+            }
+            else if(num % 2==0)
+            { 
+                Projectile.netUpdate = true; 
+            }
             base.AI();
         }
         public int Getproj()

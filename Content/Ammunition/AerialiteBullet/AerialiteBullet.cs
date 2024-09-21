@@ -2,6 +2,7 @@
 //using CalamityMod.Items.Mounts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -110,7 +111,8 @@ namespace FKsCRE.Content.Ammunition.AerialiteBullet
             }
             */
             sum++;
-
+            //同步
+            Projectile.netUpdate = true;
             //SpriteBatch spriteBatch = Main.spriteBatch;
             //spriteBatch.Begin();
             //spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Content/Ammunition/天蓝子弹/天蓝子弹").Value,Projectile.);
@@ -119,7 +121,23 @@ namespace FKsCRE.Content.Ammunition.AerialiteBullet
 
             base.AI();
         }
-
+        //读
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            index = reader.ReadInt32();
+            vector_ = new(reader.ReadSingle(), reader.ReadSingle());
+            sum = reader.ReadInt32();
+            base.ReceiveExtraAI(reader);
+        }
+        //写
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(index);
+            writer.Write(vector_.X);
+            writer.Write(vector_.Y);
+            writer.Write(sum);
+            base.SendExtraAI(writer);
+        }
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.AbigailAttack, Projectile.Center);
