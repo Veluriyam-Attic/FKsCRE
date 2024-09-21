@@ -59,6 +59,9 @@ namespace NanTing.Content.Ammunition.钨钢箭
             Projectile.friendly = true;
             Projectile.damage = ty.dam;
             Projectile.timeLeft = 999;
+            //碰撞箱修复
+            DrawOffsetX = -12;
+            DrawOriginOffsetY = -45;
             //Projectile.ai[0] = 0;
         }
         int num = 0;

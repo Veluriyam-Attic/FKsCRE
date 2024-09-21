@@ -30,6 +30,9 @@ namespace NanTing.Content.Ammunition.海晶箭
             Projectile.damage = ty.dam;
             Projectile.timeLeft = 1000;
             Projectile.aiStyle = ProjAIStyleID.Arrow;
+            //碰撞箱
+            DrawOffsetX = -8;
+            DrawOriginOffsetY = -40;
             base.SetDefaults();
         }
         Vector2 vector = default;
