@@ -1,5 +1,7 @@
 ﻿//using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -61,8 +63,15 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
         }
         Vector2 vector = default;
         int num = 0;
+        int Servernum = 0;
         public override void AI()
         {
+            Vector2 MouseVectorWorld = Main.MouseWorld;
+            Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
+            //联机客户端  Server = 服务端 还有个单机
+            //if (Main.netMode == NetmodeID.MultiplayerClient)
+            //{                
+            //}
             Vector2 v2 = new Vector2(0, 10);
             Vector2 v3 = new Vector2(0, -10);
             NanTingGProje proje = Projectile.GetGlobalProjectile<NanTingGProje>();
@@ -74,12 +83,10 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
             {
                 if (num == 0f)
                 {
-                    Vector2 MouseVectorWorld = Main.MouseWorld;
-                    Vector2 vector2 = Main.MouseScreen;
-                    Vector2 PlayerVectorWorld = Main.player[Projectile.owner].Center;
                     vector = Vector2.Normalize(MouseVectorWorld - PlayerVectorWorld) * 17f;
                 }
                 Projectile.velocity = vector;
+                Projectile.netUpdate = true;
             }
             //确保角度正确
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.Pi / 2;
@@ -94,10 +101,23 @@ namespace NanTing.Content.Ammunition.HurricaneArrow
                 }
             }
             num++;
+            
             //Main.NewText(vector2);
             base.AI();
         }
-
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(vector.X);
+            writer.Write(vector.Y);
+            base.SendExtraAI(writer);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            float x = reader.ReadSingle();
+            float y = reader.ReadSingle();
+            vector = new(x, y);
+            base.ReceiveExtraAI(reader);
+        }
         public override void OnKill(int timeLeft)
         {
             //播放声音

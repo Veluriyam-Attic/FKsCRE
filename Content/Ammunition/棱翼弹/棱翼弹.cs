@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -50,6 +51,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
                 //    //鼠标在世界的坐标减去弹幕在世界的坐标 形成新的 v2
                 towardsMouse = Main.MouseWorld - Projectile.position;
                 num++;
+                Projectile.netUpdate = true;
             }
             if (Projectile.wet)
             {
@@ -62,9 +64,31 @@ namespace NanTing.Content.Ammunition.棱翼弹
                 Projectile.damage = ty.dam;
             }
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
+            
             base.AI();
         }
-        
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            float x = reader.ReadSingle();
+            float y = reader.ReadSingle();
+            float twx = reader.ReadSingle();
+            float twy = reader.ReadSingle();
+            int num = reader.ReadInt32();
+            this.num = num;
+            towardsMouse = new(twx, twy);
+            cs = new Vector2(x, y)*15f;
+            base.ReceiveExtraAI(reader);
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(cs.X);
+            writer.Write(cs.Y);
+            writer.Write(towardsMouse.X);
+            writer.Write(towardsMouse.Y);
+            writer.Write(num);
+            base.SendExtraAI(writer);
+        }
+
         public override void OnKill(int timeLeft)
         {
             Player pl = Main.player[Projectile.owner];

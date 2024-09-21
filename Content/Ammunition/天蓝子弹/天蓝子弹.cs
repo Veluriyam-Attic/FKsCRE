@@ -122,7 +122,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.AbigailAttack,Projectile.Center);
+            SoundEngine.PlaySound(SoundID.AbigailAttack, Projectile.Center);
             base.OnKill(timeLeft);
         }
 
@@ -150,6 +150,7 @@ namespace NanTing.Content.Ammunition.天蓝子弹
                 }
                 //spriteBatch.End();
             }
+
 
             return false;
         }
