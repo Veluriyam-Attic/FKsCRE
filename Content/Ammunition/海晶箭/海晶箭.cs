@@ -42,6 +42,7 @@ namespace NanTing.Content.Ammunition.海晶箭
             Vector2 playerCenton = Main.player[Projectile.owner].Center - Main.screenPosition;
             Vector2 MouseCenton = Main.MouseWorld - Main.screenPosition;
             NanTingGProje projectile =  Projectile.GetGlobalProjectile<NanTingGProje>();
+            Projectile.spriteDirection = Projectile.direction;
             //速度确定 只进行一次
             if (projectile.GetItem().Name.Equals("Daedalus Stormbow"))
             {

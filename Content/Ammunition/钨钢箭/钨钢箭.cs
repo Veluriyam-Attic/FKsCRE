@@ -15,15 +15,18 @@ namespace NanTing.Content.Ammunition.钨钢箭
     {
         int time = 0;
         Vector2 cent;
-        public int gettime() {  return time;}
+        public int gettime() { return time; }
         public void settime() { time++; }
         public Vector2 getcent() { return cent; }
         public void timeToZero() { time = 0; }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
-            if(projectile.Name.Equals("钨钢箭_proje"))
+            if (projectile.ModProjectile != null)
             {
-                cent = npc.Center;
+                if(projectile.ModProjectile.Name.Equals("钨钢箭_proje"))
+                {
+                    cent = npc.Center;
+                }
             }
             //if ((ModContent.GetModProjectile(ModContent.ProjectileType<钨钢箭_proje>()) == projectile.ModProjectile))
             //{
@@ -87,12 +90,12 @@ namespace NanTing.Content.Ammunition.钨钢箭
         {
             Timev2 = target.Center;
             //5秒
-            target.AddBuff(ModContent.BuffType<钨钢箭电减_DeBuff>(),300);
+            target.AddBuff(ModContent.BuffType<钨钢箭电减_DeBuff>(), 300);
             //30秒
             //int[] ints = target.buffType;
             //如果有
             if (target.HasBuff<钨钢定身DeBuff>())
-            { 
+            {
             }
             else
             {
@@ -120,8 +123,8 @@ namespace NanTing.Content.Ammunition.钨钢箭
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            僵硬 modnpc= npc.GetGlobalNPC<僵硬>();
-            if(modnpc.gettime() <= 60)
+            僵硬 modnpc = npc.GetGlobalNPC<僵硬>();
+            if (modnpc.gettime() <= 60)
             {
                 npc.Center = modnpc.getcent();
             }
@@ -146,22 +149,22 @@ namespace NanTing.Content.Ammunition.钨钢箭
             Main.vanityPet[Type] = false;//宠物?
             base.SetStaticDefaults();
         }
-        int num  = 0;
+        int num = 0;
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if(num == 0)
+            if (num == 0)
             {
                 npc.defense -= 3;
             }
             if (num % 60 == 0)
             {
                 //扣血 2点
-                Rectangle rectangle = new Rectangle((int)npc.Center.X,(int)npc.Center.Y,10,10);
+                Rectangle rectangle = new Rectangle((int)npc.Center.X, (int)npc.Center.Y, 10, 10);
                 npc.life -= 2;
                 CombatText.NewText(rectangle /*npc.getRect()*/, Color.Aqua, "2");
-                
+
             }
-            Dust du = Dust.NewDustDirect(npc.position, npc.width,npc.height, DustID.UltraBrightTorch, 2F, 2F);
+            Dust du = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.UltraBrightTorch, 2F, 2F);
             Dust du2 = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.UltraBrightTorch, -2F, 2F);
             du.noGravity = true;
             du2.noGravity = true;
