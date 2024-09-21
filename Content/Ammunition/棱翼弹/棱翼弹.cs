@@ -76,7 +76,7 @@ namespace NanTing.Content.Ammunition.棱翼弹
             int num = reader.ReadInt32();
             this.num = num;
             towardsMouse = new(twx, twy);
-            cs = new Vector2(x, y)*15f;
+            cs = new Vector2(x, y);
             base.ReceiveExtraAI(reader);
         }
         public override void SendExtraAI(BinaryWriter writer)
