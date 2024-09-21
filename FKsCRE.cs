@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace NanTing
+namespace FKsCRE
 {
     public class TimeVer
     {

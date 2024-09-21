@@ -2,14 +2,14 @@
 using Terraria;
 using Terraria.ID;
 
-namespace NanTing.Content.Ammunition.钨钢弹
+namespace FKsCRE.Content.Ammunition.WulfrimBullet
 {
-    public class 钨钢弹_Proje : ModProjectile
+    public class WulfrimBullet_Proje : ModProjectile
     {
         public override void SetDefaults()
         {
             Projectile.friendly = true;
-            Projectile.damage = 统一.伤害;
+            Projectile.damage = All.Damage;
             Projectile.knockBack = 1.0f;
             Projectile.aiStyle = ProjAIStyleID.Bubble;
             //10秒

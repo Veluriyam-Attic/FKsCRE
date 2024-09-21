@@ -7,7 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 //无合成表
-namespace NanTing.Content.Ammunition.HurricaneArrow
+namespace FKsCRE.Content.Ammunition.HurricaneArrow
 {
     /// <summary>
     /// 飓风箭 -> 天蓝箭
