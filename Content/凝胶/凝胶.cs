@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -100,8 +101,9 @@ namespace FKsCRE.Content.凝胶
             #region 霁云凝胶
             bool 霁云凝胶_是否被附魔 = projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔;
             //霁云凝胶  如果弹幕被附魔 并且敌人没有凝胶buff
-            if (霁云凝胶_是否被附魔 && target.HasBuff<霁云凝胶_DeBuff>() == false)
+            if (霁云凝胶_是否被附魔 && target.HasBuff<霁云凝胶_DeBuff>() == false && target.GetGlobalNPC<效果上身>().霁云凝胶_Time ==0)
             {
+                target.GetGlobalNPC<效果上身>().霁云凝胶_是否上身 = true;
                 target.GetGlobalNPC<效果上身>().cnet = target.Center;
                 if(Main.netMode == NetmodeID.MultiplayerClient)
                 {
@@ -143,6 +145,19 @@ namespace FKsCRE.Content.凝胶
                 binaryWriter.Write(999);
             }
             base.SendExtraAI(projectile, bitWriter, binaryWriter);
+        }
+
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
+        {
+            //source.
+            if (source is EntitySource_ItemUse_WithAmmo)
+            {
+                if ((source as EntitySource_ItemUse_WithAmmo).AmmoItemIdUsed == ModContent.ItemType<霁云凝胶.霁云凝胶>())
+                {
+                    projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔 = true;
+                }
+            }
+            base.OnSpawn(projectile, source);
         }
     }
 }
