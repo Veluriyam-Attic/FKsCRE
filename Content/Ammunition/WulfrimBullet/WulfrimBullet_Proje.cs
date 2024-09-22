@@ -4,6 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using System;
 using Microsoft.Build.Utilities;
+using System.IO;
 
 namespace FKsCRE.Content.Ammunition.WulfrimBullet
 {
@@ -58,18 +59,37 @@ namespace FKsCRE.Content.Ammunition.WulfrimBullet
             if (num == 0)
             {
                 projev = Vector2.Normalize(Main.MouseWorld - player.Center) * 12;
+                num++;
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                    Projectile.netUpdate = true;
             }
             Projectile.rotation = Projectile.velocity.ToRotation() -  MathHelper.Pi / 2;
             Projectile.velocity = projev;
-            num++;
             base.AI();
         }
-        
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             距离 = (int)Vector2.Distance(target.Center, (Main.player[Projectile.owner].Center));
+            if (Main.netMode == NetmodeID.MultiplayerClient) Projectile.netUpdate = true;
             if (距离 <= 75) { target.life -= 1; CombatText.NewText(new Rectangle((int)target.Center.X, (int)target.Center.Y, 10, 10), Color.Yellow,"1"); }
             base.OnHitNPC(target, hit, damageDone);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            num = reader.ReadInt32();
+            距离 = reader.ReadInt32();
+            projev.X = reader.ReadSingle();
+            projev.Y = reader.ReadSingle();
+            
+            base.ReceiveExtraAI(reader);
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(num);
+            writer.Write(距离);
+            writer.Write(projev.X);
+            writer.Write(projev.Y);
+            base.SendExtraAI(writer);
         }
     }
 }

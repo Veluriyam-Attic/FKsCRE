@@ -16,8 +16,10 @@ namespace FKsCRE.Content.凝胶.霁云凝胶
         public override void Update(NPC npc, ref int buffIndex)
         {
             效果上身 le = npc.GetGlobalNPC<效果上身>();
-            le.cnet.Y = le.cnet.Y - 5f;
-            npc.Center = le.cnet;
+            //le.cnet.Y = le.cnet.Y - 5f;
+            //npc.Center = le.cnet;
+            //npc.netUpdate = true;
+            npc.velocity.Y -= 0.5f;
             //if (Main.netMode == NetmodeID.MultiplayerClient)
             //{
             //    ModPacket packet = Mod.GetPacket();
