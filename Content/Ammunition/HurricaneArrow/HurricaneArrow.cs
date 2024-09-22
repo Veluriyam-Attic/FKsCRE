@@ -12,7 +12,7 @@ namespace FKsCRE.Content.Ammunition.HurricaneArrow
     /// <summary>
     /// 飓风箭 -> 天蓝箭
     /// </summary>
-    public class HurricaneArrow : ModItem
+    public class HurricaneArrow : 子弹
     {
         public override void SetDefaults()
         {

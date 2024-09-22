@@ -10,7 +10,7 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
     {
         public static int dam = 10;
     }
-    public class PrismArrow : ModItem
+    public class PrismArrow : 子弹
     {
         public override void SetDefaults()
         {

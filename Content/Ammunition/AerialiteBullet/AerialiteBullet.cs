@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 //无合成表
 namespace FKsCRE.Content.Ammunition.AerialiteBullet
 {
-    public class AerialiteBullet : ModItem
+    public class AerialiteBullet : 子弹
     {
         public override void SetDefaults()
         {

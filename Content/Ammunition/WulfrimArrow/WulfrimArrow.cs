@@ -99,7 +99,7 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
     #endregion
 
     #region 钨钢箭
-    public class WulfrimArrow : ModItem
+    public class WulfrimArrow : 子弹
     {
         public override void SetDefaults()
         {

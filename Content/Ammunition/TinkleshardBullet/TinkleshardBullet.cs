@@ -13,7 +13,7 @@ namespace FKsCRE.Content.Ammunition.TinkleshardBullet
         public static Projectile MainProje = null;
         public static int PieceDeath = 40;
     }
-    public class TinkleshardBullet : ModItem
+    public class TinkleshardBullet : 子弹
     {
         public override void SetDefaults()
         {
