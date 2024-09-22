@@ -82,14 +82,6 @@ namespace FKsCRE.Content.凝胶
             #endregion
             base.AI(npc);
         }
-        public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
-        {
-            base.ReceiveExtraAI(npc, bitReader, binaryReader);
-        }
-        public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
-        {
-            base.SendExtraAI(npc, bitWriter, binaryWriter);
-        }
     }
 
     public class 被附魔弹幕 : GlobalProjectile

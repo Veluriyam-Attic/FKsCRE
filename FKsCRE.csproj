@@ -7,10 +7,11 @@
 	<PropertyGroup>
 		
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Content\凝胶\霁云凝胶\霁云凝胶.png" />
+	  <None Remove="Content\凝胶\霁云凝胶\霁云凝胶_DeBuff.png" />
+	</ItemGroup>
 
 	<!-- References -->
-	<ItemGroup>
-		
-	</ItemGroup>
 
 </Project>
