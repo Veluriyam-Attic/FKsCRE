@@ -48,12 +48,22 @@ Items: {
 
 	WulfrimBullet: {
 		DisplayName: 钨钢弹
-		Tooltip: ""
+		Tooltip: 
+			'''
+			对受到伤害的敌人造成极弱的击退
+			敌方受到该弹幕伤害时如果玩家距离敌方很近会被子弹的碎屑擦伤
+			“钨钢科技，小子！”
+			'''
 	}
 
 	霁云凝胶: {
-		// Tooltip: ""
-		// DisplayName: 霁云凝胶
+		DisplayName: 霁云凝胶
+		Tooltip: 
+			'''
+			让被喷到的敌怪跳起来，每个敌怪每2秒至多触发一次
+			对BOSS的效果仅为
+			'''
+
 	}
 }
 
