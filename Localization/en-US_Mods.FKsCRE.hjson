@@ -50,6 +50,11 @@ Items: {
 		DisplayName: Wulfrim Bullet
 		Tooltip: ""
 	}
+
+	霁云凝胶: {
+		Tooltip: ""
+		DisplayName: 霁云凝胶
+	}
 }
 
 Projectiles: {
@@ -74,5 +79,10 @@ Buffs: {
 	WulfrimHold: {
 		DisplayName: Wulfrim Hold
 		Description: 使敌怪静止不动
+	}
+
+	霁云凝胶_DeBuff: {
+		Description: Mods.FKsCRE.Buffs.霁云凝胶_DeBuff.Description
+		DisplayName: 霁云凝胶_ De Buff
 	}
 }

@@ -1,4 +1,5 @@
 using FKsCRE.Content.Ammunition.WulfrimArrow;
+using FKsCRE.Content.凝胶;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,11 @@ namespace FKsCRE
         //重写这个方法来处理收发包
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
+            #region 序号说明
+            // 30000 以后做其他 以前用于弹幕
+            // 2 -> 霁云凝胶
+            // 1 -> 钨钢箭 WulfrimArrow
+            #endregion
             Vector2 WulfrimArrowHold_cent = default;
             NPC WulfrimArrowHold_npc = null;
             int WulfrimArrowHold_player = default;
@@ -37,6 +43,7 @@ namespace FKsCRE
             switch(a)
             {
                 case 1:
+                    #region 钨钢箭
                     //WulfrimArrowHold_npc = Main.npc[reader.ReadInt32()];
                     WulfrimArrowHold_cent.X = reader.ReadSingle();
                     WulfrimArrowHold_cent.Y = reader.ReadSingle();
@@ -44,8 +51,29 @@ namespace FKsCRE
                     Hold hold  = npc.GetGlobalNPC<Hold>();
                     hold.setcent(WulfrimArrowHold_cent);
                     break;
+                    #endregion
+                case 2:
+                    # region 霁云凝胶
+                    NPC 霁云凝胶_npc = Main.npc[reader.ReadInt32()];
+                    效果上身 xgss = 霁云凝胶_npc.GetGlobalNPC<效果上身>();
+                    xgss.霁云凝胶_是否上身 = reader.ReadBoolean();
+                    xgss.霁云凝胶_Time = reader.ReadInt32();
+                    xgss.cnet.X = reader.ReadSingle();
+                    xgss.cnet.Y = reader.ReadSingle();
+                    break;
+                case 30000 :
+                    Vector2 ve = default;
+                    ve.X = reader.ReadInt32();
+                    ve.Y = reader.ReadInt32();
+                    NPC 霁云凝胶_npc_坐标同步 = Main.npc[reader.ReadInt32()];
+                    霁云凝胶_npc_坐标同步.GetGlobalNPC<效果上身>().cnet = ve;
+                    break;
+                    #endregion
             }
-            if(WulfrimArrowHold_npc != null)
+
+            #region 废弃代码 置于末尾 2024/9/22 联机同步学习
+            /*
+            if (WulfrimArrowHold_npc != null)
             {
                 Hold WulfrimArrowHold = WulfrimArrowHold_npc.GetGlobalNPC<Hold>();
                 ModPacket packet = GetPacket();
@@ -76,8 +104,11 @@ namespace FKsCRE
                     hold.setcent(WulfrimArrowHold_cent);
                 }
             }
+            */
+            #endregion
             base.HandlePacket(reader, whoAmI);
         }
+            
         #endregion
     }
 
