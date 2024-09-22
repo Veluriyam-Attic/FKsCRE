@@ -61,7 +61,7 @@ namespace FKsCRE
                     xgss.cnet.X = reader.ReadSingle();
                     xgss.cnet.Y = reader.ReadSingle();
                     break;
-                case 30000 :
+                case 30000:
                     Vector2 ve = default;
                     ve.X = reader.ReadInt32();
                     ve.Y = reader.ReadInt32();

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -154,7 +155,9 @@ namespace FKsCRE.Content.凝胶
             {
                 if ((source as EntitySource_ItemUse_WithAmmo).AmmoItemIdUsed == ModContent.ItemType<霁云凝胶.霁云凝胶>())
                 {
+                    Main.NewText(Main.netMode);
                     projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔 = true;
+                    projectile.netUpdate = true;
                 }
             }
             base.OnSpawn(projectile, source);
