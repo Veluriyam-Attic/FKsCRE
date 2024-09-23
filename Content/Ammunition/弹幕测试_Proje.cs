@@ -6,6 +6,9 @@ using Terraria;
 
 namespace FKsCRE.Content.Ammunition
 {
+    /// <summary>
+    /// 本文件别英文化
+    /// </summary>
     public class 弹幕测试_Proje : 子弹弹幕
     {
         public override void SetDefaults()
