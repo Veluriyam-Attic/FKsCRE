@@ -1,4 +1,5 @@
-﻿using FKsCRE.Content.凝胶.霁云凝胶;
+﻿using FKsCRE.Content.凝胶.寒元凝胶;
+using FKsCRE.Content.凝胶.霁云凝胶;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -41,14 +42,38 @@ namespace FKsCRE.Content.凝胶
         }
     }
     #endregion
+
+    public class 玩家得益 : ModPlayer
+    {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (target.HasBuff<寒元凝胶_DeBuff>()) Main.player[Main.myPlayer].AddBuff(ModContent.BuffType<寒元凝胶_Buff>(), 180);
+            base.OnHitNPC(target, hit, damageDone);
+        }
+    }
     public class 效果上身 : GlobalNPC
     {
         //NPC运行在服务端
         public override bool InstancePerEntity => true;
+        #region 霁元凝胶
         public bool 霁云凝胶_是否上身 = false;
         public int 霁云凝胶_Time = 0;
         //cent = 霁云凝胶
         public Vector2 cnet = default;
+        #endregion
+
+        #region 寒元凝胶
+        bool 寒元凝胶 = false;
+        int 寒元凝胶_time = 0;
+        public int 寒元冲刺 = 0;
+        public int 寒元冲刺次数记录 = 0;
+        public Vector2 寒元位置记录 = default;
+        public Vector2 寒元NPC速度记录 = default;
+        public int Get寒元凝胶Time(){ return 寒元凝胶_time; }
+        public void Set寒元凝胶Time(int e) { 寒元凝胶_time = e; }
+        public bool Get寒元凝胶() { return 寒元凝胶; }
+        public void Set寒元凝胶(bool l) { 寒元凝胶 = l; }
+        #endregion
         public override void AI(NPC npc)
         {
             #region 霁云凝胶
@@ -80,7 +105,49 @@ namespace FKsCRE.Content.凝胶
 
             }
             #endregion
+
+            #region 寒元凝胶
+            if(npc.GetGlobalNPC<效果上身>().Get寒元凝胶())
+            {
+                npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time()+1);
+                if(npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time() >= 120)
+                {
+                    npc.GetGlobalNPC<效果上身>().Set寒元凝胶(false);
+                    npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(0);
+                    npc.GetGlobalNPC<效果上身>().寒元冲刺 = 0;
+                    npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 = 0;
+                }
+                if(npc.GetGlobalNPC<效果上身>().寒元冲刺 == 0)
+                {
+                    if(npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 == 0)
+                    {
+                        npc.GetGlobalNPC<效果上身>().寒元位置记录 = npc.Center;
+                        npc.GetGlobalNPC<效果上身>().寒元NPC速度记录 = npc.velocity;
+                        npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录++;
+                        //Vector2 vector = new Vector2((float)Math.Cos(Main.rand.NextDouble()), (float)Math.Sin(Main.rand.NextDouble())); ;
+                        //float r = (float)Math.Atan2(Main.rand.Next(-999, 999), Main.rand.Next(-999, 999));
+                        //npc.velocity = Vector2.Normalize(r.ToRotationVector2()) * 20;
+
+                        //生成一个随机角度
+                        double ange = Main.rand.NextDouble() * 2 * Math.PI;
+                        float x = (float)Math.Cos(ange);
+                        float y = (float)Math.Sin(ange);
+                        npc.velocity = Vector2.Normalize(new Vector2(npc.Center.X + x,npc.Center.Y + y) - npc.Center) * 20f;
+                    }
+                    if (Vector2.Distance(npc.GetGlobalNPC<效果上身>().寒元位置记录,npc.Center) > 100)
+                    {
+                        寒元冲刺++;
+                        npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
+                        //npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
+                    }
+                }
+            }
+            #endregion
             base.AI(npc);
+        }
+        public override void HitEffect(NPC npc, NPC.HitInfo hit)
+        {
+            base.HitEffect(npc, hit);
         }
     }
 
@@ -88,6 +155,7 @@ namespace FKsCRE.Content.凝胶
     {
         public override bool InstancePerEntity => true;
         public bool 霁云凝胶_是否被附魔 = false;
+        public bool 寒元凝胶_是否被附魔 = false;
         //击中NPC时执行
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -111,6 +179,25 @@ namespace FKsCRE.Content.凝胶
                 target.AddBuff(ModContent.BuffType<霁云凝胶_DeBuff>(), 30);
             }
             #endregion 霁云凝胶
+            #region 寒元凝胶
+            bool 寒元凝胶 = projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔;
+            if(寒元凝胶 && target.active && !target.friendly && !target.HasBuff<寒元凝胶_DeBuff>() && target.boss)
+            {
+                target.AddBuff(ModContent.BuffType<寒元凝胶_DeBuff>(),600);
+            }
+            if(寒元凝胶 && target.active && !target.friendly && !target.boss && !target.GetGlobalNPC<效果上身>().Get寒元凝胶())
+            {
+                target.GetGlobalNPC<效果上身>().Set寒元凝胶(true);
+                if(Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    ModPacket packet = Mod.GetPacket();
+                    packet.Write(3);
+                    packet.Write(true);
+                    packet.Write(target.whoAmI);
+                    packet.Send();
+                }
+            }
+            #endregion
             base.OnHitNPC(projectile, target, hit, damageDone);
         }
         public override void ReceiveExtraAI(Projectile projectile, BitReader bitReader, BinaryReader binaryReader)
@@ -145,12 +232,22 @@ namespace FKsCRE.Content.凝胶
             //source.
             if (source is EntitySource_ItemUse_WithAmmo)
             {
+                #region 霁云凝胶
                 if ((source as EntitySource_ItemUse_WithAmmo).AmmoItemIdUsed == ModContent.ItemType<霁云凝胶.霁云凝胶>())
                 {
-                    Main.NewText(Main.netMode);
+                    //Main.NewText(Main.netMode);
                     projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔 = true;
                     projectile.netUpdate = true;
                 }
+                #endregion
+
+                #region 寒元凝胶
+                if((source as EntitySource_ItemUse_WithAmmo).AmmoItemIdUsed == ModContent.ItemType<寒元凝胶.寒元凝胶>())
+                {
+                    projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔 = true;
+                    projectile.netUpdate = true;
+                }
+                #endregion
             }
             base.OnSpawn(projectile, source);
         }

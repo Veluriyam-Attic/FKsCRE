@@ -69,6 +69,11 @@ Items: {
 		// DisplayName: 弹幕测试
 		// Tooltip: ""
 	}
+
+	寒元凝胶: {
+		// DisplayName: 寒元凝胶
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -99,5 +104,15 @@ Buffs: {
 	霁云凝胶_DeBuff: {
 		// Description: Mods.FKsCRE.Buffs.霁云凝胶_DeBuff.Description
 		// DisplayName: 霁云凝胶_ De Buff
+	}
+
+	寒元凝胶_Buff: {
+		// DisplayName: 寒元凝胶_ Buff
+		// Description: Mods.FKsCRE.Buffs.寒元凝胶_Buff.Description
+	}
+
+	寒元凝胶_DeBuff: {
+		// DisplayName: 寒元凝胶_ De Buff
+		// Description: Mods.FKsCRE.Buffs.寒元凝胶_DeBuff.Description
 	}
 }

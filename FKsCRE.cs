@@ -68,6 +68,13 @@ namespace FKsCRE
                     NPC 霁云凝胶_npc_坐标同步 = Main.npc[reader.ReadInt32()];
                     霁云凝胶_npc_坐标同步.GetGlobalNPC<效果上身>().cnet = ve;
                     break;
+                #endregion
+                case 3:
+                    #region 寒元凝胶
+                    bool r = reader.ReadBoolean();
+                    NPC c = Main.npc[reader.ReadInt32()];
+                    c.GetGlobalNPC<效果上身>().Set寒元凝胶(r);
+                    break;
                     #endregion
             }
 
