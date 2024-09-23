@@ -55,6 +55,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: 霁云凝胶
 	}
+
+	弹幕测试: {
+		DisplayName: 弹幕测试
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -68,6 +73,7 @@ Projectiles: {
 	TinkleshardBullet_Piece4.DisplayName: Piece of Tinkleshard Bullet #4
 	WulfrimArrow_proje.DisplayName: Wulfrim Arrow
 	WulfrimBullet_Proje.DisplayName: Wulfrim Bullet
+	弹幕测试_Proje.DisplayName: 弹幕测试_ Proje
 }
 
 Buffs: {

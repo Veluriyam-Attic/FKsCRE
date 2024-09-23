@@ -30,4 +30,14 @@ namespace FKsCRE.Content.Ammunition
             base.AddRecipes();
         }
     }
+
+    public abstract class 子弹弹幕 : ModProjectile
+    {
+        public override void SetDefaults()
+        {
+            Projectile.damage = 10;
+            Projectile.friendly = true;
+            Projectile.aiStyle = ProjAIStyleID.Bubble;
+        }
+    }
 }

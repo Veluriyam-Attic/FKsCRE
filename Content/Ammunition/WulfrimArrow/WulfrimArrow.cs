@@ -32,14 +32,17 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
                 {
                     cent = npc.Center;
                     npc.netUpdate = true;
-                    ModPacket packet = Mod.GetPacket();
-                    packet.Write(1);
-                    packet.Write(cent.X);
-                    packet.Write(cent.Y);
-                    //npc在Main.npc中的索引
-                    packet.Write(npc.whoAmI);
-                    //packet.Write(Main.myPlayer);
-                    packet.Send();
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        ModPacket packet = Mod.GetPacket();
+                        packet.Write(1);
+                        packet.Write(cent.X);
+                        packet.Write(cent.Y);
+                        //npc在Main.npc中的索引
+                        packet.Write(npc.whoAmI);
+                        //packet.Write(Main.myPlayer);
+                        packet.Send();
+                    }
                     //MessageID.SyncNPC
                 }
             }
