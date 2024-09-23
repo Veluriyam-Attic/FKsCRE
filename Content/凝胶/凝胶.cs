@@ -76,6 +76,7 @@ namespace FKsCRE.Content.凝胶
         #endregion
         public override void AI(NPC npc)
         {
+            Main.NewText(npc.getNewNPCName() + npc.velocity);
             #region 霁云凝胶
             if (霁云凝胶_是否上身)
             {
@@ -105,40 +106,46 @@ namespace FKsCRE.Content.凝胶
 
             }
             #endregion
-
             #region 寒元凝胶
-            if(npc.GetGlobalNPC<效果上身>().Get寒元凝胶())
+            for (int i = 0; i < 1; i++)
             {
-                npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time()+1);
-                if(npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time() >= 120)
+                if (npc.GetGlobalNPC<效果上身>().Get寒元凝胶())
                 {
-                    npc.GetGlobalNPC<效果上身>().Set寒元凝胶(false);
-                    npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(0);
-                    npc.GetGlobalNPC<效果上身>().寒元冲刺 = 0;
-                    npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 = 0;
-                }
-                if(npc.GetGlobalNPC<效果上身>().寒元冲刺 == 0)
-                {
-                    if(npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 == 0)
+                    npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time() + 1);
+                    if (npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time() >= 120)
                     {
-                        npc.GetGlobalNPC<效果上身>().寒元位置记录 = npc.Center;
-                        npc.GetGlobalNPC<效果上身>().寒元NPC速度记录 = npc.velocity;
-                        npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录++;
-                        //Vector2 vector = new Vector2((float)Math.Cos(Main.rand.NextDouble()), (float)Math.Sin(Main.rand.NextDouble())); ;
-                        //float r = (float)Math.Atan2(Main.rand.Next(-999, 999), Main.rand.Next(-999, 999));
-                        //npc.velocity = Vector2.Normalize(r.ToRotationVector2()) * 20;
+                        Main.NewText(npc.velocity);
+                        npc.GetGlobalNPC<效果上身>().Set寒元凝胶(false);
+                        npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(0);
+                        npc.GetGlobalNPC<效果上身>().寒元冲刺 = 0;
+                        npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 = 0;
+                        npc.GetGlobalNPC<效果上身>().寒元NPC速度记录 = default;
+                        npc.GetGlobalNPC<效果上身>().寒元位置记录 = default;
+                        break;
+                        Main.NewText(npc.velocity);
 
-                        //生成一个随机角度
-                        double ange = Main.rand.NextDouble() * 2 * Math.PI;
-                        float x = (float)Math.Cos(ange);
-                        float y = (float)Math.Sin(ange);
-                        npc.velocity = Vector2.Normalize(new Vector2(npc.Center.X + x,npc.Center.Y + y) - npc.Center) * 20f;
                     }
-                    if (Vector2.Distance(npc.GetGlobalNPC<效果上身>().寒元位置记录,npc.Center) > 100)
+                    if (npc.GetGlobalNPC<效果上身>().寒元冲刺 == 0)
                     {
-                        寒元冲刺++;
-                        npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
-                        //npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
+                        if (npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 == 0)
+                        {
+                            npc.GetGlobalNPC<效果上身>().寒元位置记录 = npc.Center;
+                            npc.GetGlobalNPC<效果上身>().寒元NPC速度记录 = npc.velocity;
+                            npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录++;
+
+                            //生成一个随机角度
+                            double ange = Main.rand.NextDouble() * 2 * Math.PI;
+                            float x = (float)Math.Cos(ange);
+                            float y = (float)Math.Sin(ange);
+                            npc.velocity = Vector2.Normalize(new Vector2(x, y)) * 20f;
+                        }
+                        if (Vector2.Distance(npc.GetGlobalNPC<效果上身>().寒元位置记录, npc.Center) > 100)
+                        {
+                            寒元冲刺++;
+                            npc.velocity = Vector2.Zero;
+                            //npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
+                            //npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
+                        }
                     }
                 }
             }
