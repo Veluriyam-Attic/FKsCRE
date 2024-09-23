@@ -69,6 +69,7 @@ namespace FKsCRE.Content.凝胶
         public int 寒元冲刺次数记录 = 0;
         public Vector2 寒元位置记录 = default;
         public Vector2 寒元NPC速度记录 = default;
+        public Double ange;
         public int Get寒元凝胶Time(){ return 寒元凝胶_time; }
         public void Set寒元凝胶Time(int e) { 寒元凝胶_time = e; }
         public bool Get寒元凝胶() { return 寒元凝胶; }
@@ -76,7 +77,6 @@ namespace FKsCRE.Content.凝胶
         #endregion
         public override void AI(NPC npc)
         {
-            Main.NewText(npc.getNewNPCName() + npc.velocity);
             #region 霁云凝胶
             if (霁云凝胶_是否上身)
             {
@@ -114,15 +114,22 @@ namespace FKsCRE.Content.凝胶
                     npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time() + 1);
                     if (npc.GetGlobalNPC<效果上身>().Get寒元凝胶Time() >= 120)
                     {
-                        Main.NewText(npc.velocity);
                         npc.GetGlobalNPC<效果上身>().Set寒元凝胶(false);
                         npc.GetGlobalNPC<效果上身>().Set寒元凝胶Time(0);
                         npc.GetGlobalNPC<效果上身>().寒元冲刺 = 0;
                         npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录 = 0;
                         npc.GetGlobalNPC<效果上身>().寒元NPC速度记录 = default;
                         npc.GetGlobalNPC<效果上身>().寒元位置记录 = default;
+                        npc.netUpdate = true;
+                        if(Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            ModPacket packet = Mod.GetPacket();
+                            //30001
+                            packet.Write(30001);
+                            packet.Write(npc.whoAmI);
+                            packet.Send();
+                        }
                         break;
-                        Main.NewText(npc.velocity);
 
                     }
                     if (npc.GetGlobalNPC<效果上身>().寒元冲刺 == 0)
@@ -134,7 +141,25 @@ namespace FKsCRE.Content.凝胶
                             npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录++;
 
                             //生成一个随机角度
-                            double ange = Main.rand.NextDouble() * 2 * Math.PI;
+                            ange = Main.rand.NextDouble() * 2 * Math.PI;
+                            #region 寒元联机同步 部分-001
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                            {
+                                ModPacket packet = Mod.GetPacket();
+                                //30002
+                                packet.Write(30002);
+                                packet.Write(npc.whoAmI);
+                                //寒元位置记录
+                                packet.Write(npc.GetGlobalNPC<效果上身>().寒元位置记录.X);
+                                packet.Write(npc.GetGlobalNPC<效果上身>().寒元位置记录.Y);
+                                //寒元NPC速度记录
+                                packet.Write(npc.GetGlobalNPC<效果上身>().寒元NPC速度记录.X);
+                                packet.Write(npc.GetGlobalNPC<效果上身>().寒元NPC速度记录.Y);
+                                //寒元冲刺次数记录
+                                packet.Write(npc.GetGlobalNPC<效果上身>().寒元冲刺次数记录);
+                                packet.Send();
+                            }
+                            #endregion
                             float x = (float)Math.Cos(ange);
                             float y = (float)Math.Sin(ange);
                             npc.velocity = Vector2.Normalize(new Vector2(x, y)) * 20f;
@@ -143,6 +168,13 @@ namespace FKsCRE.Content.凝胶
                         {
                             寒元冲刺++;
                             npc.velocity = Vector2.Zero;
+                            if (Main.netMode == NetmodeID.MultiplayerClient)
+                            {
+                                ModPacket packet = Mod.GetPacket();
+                                packet.Write(30003);
+                                packet.Write(npc.whoAmI);
+                                packet.Send();
+                            }
                             //npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
                             //npc.velocity = npc.GetGlobalNPC<效果上身>().寒元NPC速度记录;
                         }
@@ -215,6 +247,9 @@ namespace FKsCRE.Content.凝胶
                 case 0:
                     projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔 = binaryReader.ReadBoolean();
                     break;
+                case 1:
+                    projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔 = binaryReader.ReadBoolean();
+                    break;
             }
             base.ReceiveExtraAI(projectile, bitReader, binaryReader);
         }
@@ -225,6 +260,14 @@ namespace FKsCRE.Content.凝胶
             {
                 binaryWriter.Write(0);
                 binaryWriter.Write(projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔);
+            }
+            #endregion
+
+            #region 寒元凝胶
+            else if(projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔)
+            {
+                binaryWriter.Write(1);
+                binaryWriter.Write(projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔);
             }
             #endregion
             else

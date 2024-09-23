@@ -32,6 +32,10 @@ namespace FKsCRE
         {
             #region 序号说明
             // 30000 以后做其他 以前用于弹幕
+            /*
+             * 目前已使用 1 2 30000 30001
+             * 30001 -> 寒元凝胶
+            */
             // 2 -> 霁云凝胶
             // 1 -> 钨钢箭 WulfrimArrow
             #endregion
@@ -74,6 +78,28 @@ namespace FKsCRE
                     bool r = reader.ReadBoolean();
                     NPC c = Main.npc[reader.ReadInt32()];
                     c.GetGlobalNPC<效果上身>().Set寒元凝胶(r);
+                    break;
+                case 30001:
+                    NPC npc_ = Main.npc[reader.ReadInt32()];
+                    效果上身 x = npc_.GetGlobalNPC<效果上身>();
+                    x.Set寒元凝胶(false);
+                    x.Set寒元凝胶Time(0);
+                    x.寒元冲刺 = 0;
+                    x.寒元冲刺次数记录 = 0;
+                    x.寒元NPC速度记录 = default;
+                    x.寒元位置记录 = default;
+                    break;
+                case 30002: //凝胶 - 寒元联机同步 部分-001
+                    NPC 寒元凝胶 = Main.npc[reader.ReadInt32()];
+                    效果上身 寒元NPC = 寒元凝胶.GetGlobalNPC<效果上身>();
+                    寒元NPC.寒元位置记录.X = reader.ReadSingle();
+                    寒元NPC.寒元位置记录.X = reader.ReadSingle();
+                    寒元NPC.寒元NPC速度记录.X = reader.ReadSingle();
+                    寒元NPC.寒元NPC速度记录.Y = reader.ReadSingle();
+                    寒元NPC.寒元冲刺次数记录 = reader.ReadInt32();
+                    break;
+                case 30003:
+                    Main.npc[reader.ReadInt32()].velocity = Vector2.Zero;
                     break;
                     #endregion
             }
