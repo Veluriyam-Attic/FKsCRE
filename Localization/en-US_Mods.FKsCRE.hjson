@@ -70,6 +70,11 @@ Items: {
 		DisplayName: Wulfrim Gel
 		Tooltip: ""
 	}
+
+	天蓝矢: {
+		DisplayName: 天蓝矢
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -84,6 +89,8 @@ Projectiles: {
 	WulfrimArrow_proje.DisplayName: Wulfrim Arrow
 	WulfrimBullet_Proje.DisplayName: Wulfrim Bullet
 	弹幕测试_Proje.DisplayName: 弹幕测试_ Proje
+	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
+	天蓝旋风.DisplayName: 天蓝旋风
 }
 
 Buffs: {

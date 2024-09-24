@@ -79,7 +79,7 @@ namespace FKsCRE.Content.凝胶
         public override void AI(NPC npc)
         {
             #region 霁云凝胶
-            if (霁云凝胶_是否上身)
+            if (霁云凝胶_是否上身 && !npc.boss)
             {
                 霁云凝胶_Time++;
                 npc.GetGlobalNPC<效果上身>().cnet.X = npc.Center.X; 
@@ -104,7 +104,6 @@ namespace FKsCRE.Content.凝胶
                     packet.Send();
                 }
                 #endregion
-
             }
             #endregion
             #region 寒元凝胶
@@ -185,6 +184,15 @@ namespace FKsCRE.Content.凝胶
             #endregion
             base.AI(npc);
         }
+        public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
+        {
+            if(npc.HasBuff<霁云凝胶_DeBuff>())
+            {
+                modifiers.FinalDamage *= 0.95f;
+            }
+            base.ModifyHitPlayer(npc, target, ref modifiers);
+        }
+
         public override void HitEffect(NPC npc, NPC.HitInfo hit)
         {
             base.HitEffect(npc, hit);
@@ -203,7 +211,7 @@ namespace FKsCRE.Content.凝胶
             #region 霁云凝胶
             bool 霁云凝胶_是否被附魔 = projectile.GetGlobalProjectile<被附魔弹幕>().霁云凝胶_是否被附魔;
             //霁云凝胶  如果弹幕被附魔 并且敌人没有凝胶buff
-            if (霁云凝胶_是否被附魔 && target.HasBuff<霁云凝胶_DeBuff>() == false && target.GetGlobalNPC<效果上身>().霁云凝胶_Time ==0)
+            if (霁云凝胶_是否被附魔 && target.HasBuff<霁云凝胶_DeBuff>() == false && target.GetGlobalNPC<效果上身>().霁云凝胶_Time ==0 && !target.boss)
             {
                 target.GetGlobalNPC<效果上身>().霁云凝胶_是否上身 = true;
                 target.GetGlobalNPC<效果上身>().cnet = target.Center;
@@ -218,6 +226,17 @@ namespace FKsCRE.Content.凝胶
                 }
                 //给它上buff
                 target.AddBuff(ModContent.BuffType<霁云凝胶_DeBuff>(), 30);
+            }
+            if(霁云凝胶_是否被附魔 && target.HasBuff<霁云凝胶_DeBuff>() == false)
+            {
+                target.AddBuff(ModContent.BuffType<霁云凝胶_DeBuff>(),300);
+                if(Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    ModPacket packet = Mod.GetPacket();
+                    packet.Write(30004);
+                    packet.Write(target.whoAmI);
+                    packet.Send();
+                }
             }
             #endregion 霁云凝胶
             #region 寒元凝胶

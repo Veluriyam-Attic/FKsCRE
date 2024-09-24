@@ -10,6 +10,9 @@
 	<ItemGroup>
 	  <None Remove="Content\Ammunition\弹幕测试.png" />
 	  <None Remove="Content\Ammunition\弹幕测试_Proje.png" />
+	  <None Remove="Content\Arrows\天蓝矢s\天蓝旋风.png" />
+	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢.png" />
+	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢_Proje.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGel.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGelBuff.png" />
 	  <None Remove="Content\凝胶\寒元凝胶\寒元凝胶.png" />

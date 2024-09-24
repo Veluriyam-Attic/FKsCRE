@@ -1,5 +1,6 @@
 using FKsCRE.Content.Arrows.WulfrimArrow;
 using FKsCRE.Content.凝胶;
+using FKsCRE.Content.凝胶.霁云凝胶;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,8 @@ namespace FKsCRE
             NPC WulfrimArrowHold_npc = null;
             int WulfrimArrowHold_player = default;
             //接收 目前该消息来自 HurricaneArrow
+            //目前已经使用 1 2 3 30001 30002 30003 30004
+            //霁云凝胶 2 30000 30004
             int a = reader.ReadInt32();
             switch(a)
             {
@@ -71,6 +74,10 @@ namespace FKsCRE
                     ve.Y = reader.ReadInt32();
                     NPC 霁云凝胶_npc_坐标同步 = Main.npc[reader.ReadInt32()];
                     霁云凝胶_npc_坐标同步.GetGlobalNPC<效果上身>().cnet = ve;
+                    break;
+                case 30004:
+                    NPC npc云凝胶 = Main.npc[reader.ReadInt32()];
+                    npc云凝胶.AddBuff(ModContent.BuffType<霁云凝胶_DeBuff>(),300);
                     break;
                 #endregion
                 case 3:
