@@ -149,11 +149,8 @@ namespace FKsCRE.Content.Ammunition.AerialiteBullet
             Texture2D texture2D = Mod.Assets.Request<Texture2D>("Content/Ammunition/AerialiteBullet/AerialiteBullet_Proje").Value;
             SpriteBatch spriteBatch = Main.spriteBatch;
             Vector2 v2 = Projectile.position - Main.screenPosition;
-            //if (Projectile.timeLeft % 2 == 0)
-            //{
-                vector[index] = v2;
-                index--;
-            //}
+            vector[index] = v2;
+            index--;
             if (index == 0)
             {
                 index = 4;
@@ -161,12 +158,10 @@ namespace FKsCRE.Content.Ammunition.AerialiteBullet
             }
             if (SpriteBatch_new)
             {
-                //spriteBatch.Begin();
                 for (int i = 0; i <= 4; i++)
                 {
                     Main.spriteBatch.Draw(texture2D, vector[i], null, Color.White * 1 * (1 - .2f * i), Projectile.rotation, texture2D.Size() * .5f, 1 * (1 - .02f * i), SpriteEffects.None, 0);
                 }
-                //spriteBatch.End();
             }
 
 
