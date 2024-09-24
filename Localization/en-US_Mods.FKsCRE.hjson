@@ -65,6 +65,11 @@ Items: {
 		DisplayName: 寒元凝胶
 		Tooltip: ""
 	}
+
+	WulfrimGel: {
+		DisplayName: Wulfrim Gel
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -105,5 +110,10 @@ Buffs: {
 	寒元凝胶_DeBuff: {
 		DisplayName: 寒元凝胶_ De Buff
 		Description: Mods.FKsCRE.Buffs.寒元凝胶_DeBuff.Description
+	}
+
+	WulfrimGelBuff: {
+		DisplayName: Wulfrim Gel Buff
+		Description: Mods.FKsCRE.Buffs.WulfrimGelBuff.Description
 	}
 }

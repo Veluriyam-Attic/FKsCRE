@@ -1,4 +1,5 @@
-﻿using FKsCRE.Content.凝胶.寒元凝胶;
+﻿using FKsCRE.Content.凝胶.WulfrimGels;
+using FKsCRE.Content.凝胶.寒元凝胶;
 using FKsCRE.Content.凝胶.霁云凝胶;
 using Microsoft.Xna.Framework;
 using System;
@@ -195,6 +196,7 @@ namespace FKsCRE.Content.凝胶
         public override bool InstancePerEntity => true;
         public bool 霁云凝胶_是否被附魔 = false;
         public bool 寒元凝胶_是否被附魔 = false;
+        public bool WulfrimGel = false;//钨钢凝胶
         //击中NPC时执行
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -237,6 +239,12 @@ namespace FKsCRE.Content.凝胶
                 }
             }
             #endregion
+            #region 钨钢凝胶
+            if(projectile.GetGlobalProjectile<被附魔弹幕>().WulfrimGel)
+            {
+                target.AddBuff(ModContent.BuffType<WulfrimGelBuff>(),300);
+            }
+            #endregion
             base.OnHitNPC(projectile, target, hit, damageDone);
         }
         public override void ReceiveExtraAI(Projectile projectile, BitReader bitReader, BinaryReader binaryReader)
@@ -249,6 +257,9 @@ namespace FKsCRE.Content.凝胶
                     break;
                 case 1:
                     projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔 = binaryReader.ReadBoolean();
+                    break;
+                case 2:
+                    projectile.GetGlobalProjectile<被附魔弹幕>().WulfrimGel = binaryReader.ReadBoolean();
                     break;
             }
             base.ReceiveExtraAI(projectile, bitReader, binaryReader);
@@ -268,6 +279,14 @@ namespace FKsCRE.Content.凝胶
             {
                 binaryWriter.Write(1);
                 binaryWriter.Write(projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔);
+            }
+            #endregion
+
+            #region 钨钢凝胶
+            else if(projectile.GetGlobalProjectile<被附魔弹幕>().WulfrimGel)
+            {
+                binaryWriter.Write(2);
+                binaryWriter.Write(projectile.GetGlobalProjectile<被附魔弹幕>().WulfrimGel);
             }
             #endregion
             else
@@ -295,6 +314,14 @@ namespace FKsCRE.Content.凝胶
                 if((source as EntitySource_ItemUse_WithAmmo).AmmoItemIdUsed == ModContent.ItemType<寒元凝胶.寒元凝胶>())
                 {
                     projectile.GetGlobalProjectile<被附魔弹幕>().寒元凝胶_是否被附魔 = true;
+                    projectile.netUpdate = true;
+                }
+                #endregion
+
+                #region 钨钢凝胶 WulfrimGel
+                if((source as EntitySource_ItemUse_WithAmmo).AmmoItemIdUsed == ModContent.ItemType<WulfrimGels.WulfrimGel>())
+                {
+                    projectile.GetGlobalProjectile<被附魔弹幕>().WulfrimGel = true;
                     projectile.netUpdate = true;
                 }
                 #endregion

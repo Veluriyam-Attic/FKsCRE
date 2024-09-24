@@ -7,12 +7,12 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 //无合成表
-namespace FKsCRE.Content.Ammunition.HurricaneArrow
+namespace FKsCRE.Content.Arrows.HurricaneArrow
 {
     /// <summary>
     /// 飓风箭 -> 天蓝箭
     /// </summary>
-    public class HurricaneArrow : 子弹
+    public class HurricaneArrow : Arrow
     {
         public override void SetDefaults()
         {
@@ -94,18 +94,18 @@ namespace FKsCRE.Content.Ammunition.HurricaneArrow
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Dust dust1 = Dust.NewDustDirect((Projectile.Center - v2), 1, 20, DustID.Adamantite, 0, 5);
-                    Dust dust2 = Dust.NewDustDirect((Projectile.Center - v3), 1, -20, DustID.Adamantite, 0, -5);
+                    Dust dust1 = Dust.NewDustDirect(Projectile.Center - v2, 1, 20, DustID.Adamantite, 0, 5);
+                    Dust dust2 = Dust.NewDustDirect(Projectile.Center - v3, 1, -20, DustID.Adamantite, 0, -5);
                     dust1.noGravity = true;
                     dust2.noGravity = true;
                 }
             }
             num++;
-            if(Projectile.timeLeft % 3 == 0)
+            if (Projectile.timeLeft % 3 == 0)
             {
                 Projectile.netUpdate = true;
             }
-            
+
             //Main.NewText(vector2);
             base.AI();
         }

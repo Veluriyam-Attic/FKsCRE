@@ -1,4 +1,4 @@
-using FKsCRE.Content.Ammunition.WulfrimArrow;
+using FKsCRE.Content.Arrows.WulfrimArrow;
 using FKsCRE.Content.凝胶;
 using Microsoft.Xna.Framework;
 using System;

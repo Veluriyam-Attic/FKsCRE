@@ -4,13 +4,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 //无合成表
-namespace FKsCRE.Content.Ammunition.PrismArrow
+namespace FKsCRE.Content.Arrows.PrismArrow
 {
     class ty
     {
         public static int dam = 10;
     }
-    public class PrismArrow : 子弹
+    public class PrismArrow : Arrow
     {
         public override void SetDefaults()
         {
@@ -45,7 +45,7 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            vector = new (reader.ReadSingle(),reader.ReadSingle());
+            vector = new(reader.ReadSingle(), reader.ReadSingle());
             num = reader.ReadInt32();
             base.ReceiveExtraAI(reader);
         }
@@ -55,14 +55,14 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
         {
             Vector2 playerCenton = Main.player[Projectile.owner].Center - Main.screenPosition;
             Vector2 MouseCenton = Main.MouseWorld - Main.screenPosition;
-            NanTingGProje projectile =  Projectile.GetGlobalProjectile<NanTingGProje>();
+            NanTingGProje projectile = Projectile.GetGlobalProjectile<NanTingGProje>();
             Projectile.spriteDirection = Projectile.direction;
             //速度确定 只进行一次
             if (projectile.GetItem().Name.Equals("Daedalus Stormbow"))
             {
                 if (num == 0) vector = Projectile.velocity;
                 if (!Projectile.wet) { Projectile.damage = ty.dam + projectile.GetItem().damage; Projectile.velocity = vector; }
-                if (Projectile.wet) {Projectile.damage = (int)(ty.dam * 1.5f + projectile.GetItem().damage); Projectile.velocity = vector * 2.5f; }
+                if (Projectile.wet) { Projectile.damage = (int)(ty.dam * 1.5f + projectile.GetItem().damage); Projectile.velocity = vector * 2.5f; }
                 Projectile.netUpdate = true;
             }
             else
@@ -81,20 +81,20 @@ namespace FKsCRE.Content.Ammunition.PrismArrow
                 if (!Projectile.wet) vector.Y += 0.25f;
             }
             //弹幕永远存在 除非被破坏
-            if(Projectile.timeLeft <= 10)
+            if (Projectile.timeLeft <= 10)
             {
                 Projectile.timeLeft = 1000;
             }
             //速度角 + 180°
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.Pi / 2;
             num++;
-            if(num == 0)
+            if (num == 0)
             {
                 Projectile.netUpdate = true;
             }
-            else if(num % 2==0)
-            { 
-                Projectile.netUpdate = true; 
+            else if (num % 2 == 0)
+            {
+                Projectile.netUpdate = true;
             }
             base.AI();
         }

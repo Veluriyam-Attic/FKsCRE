@@ -1,4 +1,5 @@
 ﻿//using CalamityMod.Tiles.Furniture;
+using FKsCRE.Content.Arrows;
 using Microsoft.Xna.Framework;
 using System;
 using System.Drawing.Text;
@@ -8,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 //无合成表
-namespace FKsCRE.Content.Ammunition.WulfrimArrow
+namespace FKsCRE.Content.Arrows.WulfrimArrow
 {
     static class ty
     {
@@ -28,7 +29,7 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
         {
             if (projectile.ModProjectile != null)
             {
-                if(projectile.ModProjectile.Name.Equals("WulfrimArrow_proje"))
+                if (projectile.ModProjectile.Name.Equals("WulfrimArrow_proje"))
                 {
                     cent = npc.Center;
                     npc.netUpdate = true;
@@ -102,7 +103,7 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
     #endregion
 
     #region 钨钢箭
-    public class WulfrimArrow : 子弹
+    public class WulfrimArrow : Arrow
     {
         public override void SetDefaults()
         {
@@ -122,7 +123,7 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
         Vector2 Mouse_initial = default;
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            Mouse_initial = new(reader.ReadSingle(),reader.ReadSingle());
+            Mouse_initial = new(reader.ReadSingle(), reader.ReadSingle());
             num = reader.ReadInt32();
             base.ReceiveExtraAI(reader);
         }
@@ -177,7 +178,7 @@ namespace FKsCRE.Content.Ammunition.WulfrimArrow
             {
                 Hold hold = target.GetGlobalNPC<Hold>();
                 hold.setcent(target.Center);
-                Main.NewText("OnHitNPC : "  + hold.getcent());
+                Main.NewText("OnHitNPC : " + hold.getcent());
                 target.AddBuff(ModContent.BuffType<WulfrimHold>(), 600);
                 target.netUpdate = true;
             }
