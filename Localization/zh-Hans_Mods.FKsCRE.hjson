@@ -84,6 +84,26 @@ Items: {
 		// DisplayName: 天蓝矢
 		// Tooltip: ""
 	}
+
+	PlasmaDriveCorePrototypeArrow: {
+		// Tooltip: ""
+		// DisplayName: Plasma Drive Core Prototype Arrow
+	}
+
+	AerialiteArrow: {
+		Tooltip: 命中时召唤旋风
+		DisplayName: 天蓝箭
+	}
+
+	PerennialArrow: {
+		Tooltip: 标记敌人让敌人受到更多的伤害，同时治疗自己
+		DisplayName: 永恒箭
+	}
+
+	ScoriaArrow: {
+		Tooltip: 击中时产生爆炸并释放追踪熔岩
+		DisplayName: 熔渣箭
+	}
 }
 
 Projectiles: {
@@ -100,6 +120,13 @@ Projectiles: {
 	// 弹幕测试_Proje.DisplayName: 弹幕测试_ Proje
 	// 天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
 	// 天蓝旋风.DisplayName: 天蓝旋风
+	// PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
+	// AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
+	// AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
+	// PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
+	// PerennialArrowFlower.DisplayName: Perennial Arrow Flower
+	// ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+	// ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 }
 
 Buffs: {
@@ -131,5 +158,10 @@ Buffs: {
 	WulfrimGelBuff: {
 		// DisplayName: Wulfrim Gel Buff
 		// Description: Mods.FKsCRE.Buffs.WulfrimGelBuff.Description
+	}
+
+	PerennialArrowEBuff: {
+		// DisplayName: Perennial Arrow E Buff
+		// Description: Mods.FKsCRE.Buffs.PerennialArrowEBuff.Description
 	}
 }

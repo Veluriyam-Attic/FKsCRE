@@ -10,6 +10,13 @@
 	<ItemGroup>
 	  <None Remove="Content\Ammunition\弹幕测试.png" />
 	  <None Remove="Content\Ammunition\弹幕测试_Proje.png" />
+	  <None Remove="Content\Arrows\AerialiteArrow\AerialiteArrow.png" />
+	  <None Remove="Content\Arrows\AerialiteArrow\AerialiteArrowPROJ.png" />
+	  <None Remove="Content\Arrows\AerialiteArrow\AerialiteArrowWIND.png" />
+	  <None Remove="Content\Arrows\PerennialArrow\PerennialArrowEBuff.png" />
+	  <None Remove="Content\Arrows\ScoriaArrow\ScoriaArrow.png" />
+	  <None Remove="Content\Arrows\ScoriaArrow\ScoriaArrowFireball.png" />
+	  <None Remove="Content\Arrows\ScoriaArrow\ScoriaArrowPROJ.png" />
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝旋风.png" />
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢.png" />
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢_Proje.png" />
@@ -20,6 +27,11 @@
 	  <None Remove="Content\凝胶\寒元凝胶\寒元凝胶_DeBuff.png" />
 	  <None Remove="Content\凝胶\霁云凝胶\霁云凝胶.png" />
 	  <None Remove="Content\凝胶\霁云凝胶\霁云凝胶_DeBuff.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="CalamityMod">
+	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<!-- References -->
