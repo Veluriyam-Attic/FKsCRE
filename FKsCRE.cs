@@ -51,13 +51,13 @@ namespace FKsCRE
             {
                 case 1:
                     #region 钨钢箭
-                    //WulfrimArrowHold_npc = Main.npc[reader.ReadInt32()];
-                    WulfrimArrowHold_cent.X = reader.ReadSingle();
-                    WulfrimArrowHold_cent.Y = reader.ReadSingle();
-                    NPC npc = Main.npc[reader.ReadInt32()];
-                    Hold hold  = npc.GetGlobalNPC<Hold>();
-                    hold.setcent(WulfrimArrowHold_cent);
-                    break;
+                    ////WulfrimArrowHold_npc = Main.npc[reader.ReadInt32()];
+                    //WulfrimArrowHold_cent.X = reader.ReadSingle();
+                    //WulfrimArrowHold_cent.Y = reader.ReadSingle();
+                    //NPC npc = Main.npc[reader.ReadInt32()];
+                    //Hold hold  = npc.GetGlobalNPC<Hold>();
+                    //hold.setcent(WulfrimArrowHold_cent);
+                    //break;
                     #endregion
                 case 2:
                     # region 霁云凝胶

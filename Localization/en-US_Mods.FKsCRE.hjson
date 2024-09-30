@@ -95,6 +95,21 @@ Items: {
 		Tooltip: ""
 		DisplayName: Scoria Arrow
 	}
+
+	AstralArrow: {
+		Tooltip: ""
+		DisplayName: Astral Arrow
+	}
+
+	UelibloomArrow: {
+		DisplayName: Uelibloom Arrow
+		Tooltip: ""
+	}
+
+	AuricArrow: {
+		DisplayName: Auric Arrow
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -118,6 +133,15 @@ Projectiles: {
 	PerennialArrowFlower.DisplayName: Perennial Arrow Flower
 	ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
 	ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
+	AstralArrowPROJ.DisplayName: Astral Arrow P R O J
+	AstralArrowSTAR.DisplayName: Astral Arrow S T A R
+	UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
+	UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
+	UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
+	AuricArrowBALL.DisplayName: Auric Arrow B A L L
+	AuricArrowPROJ.DisplayName: Auric Arrow P R O J
+	WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
+	PrismArrowPROJ.DisplayName: Prism Arrow P R O J
 }
 
 Buffs: {
@@ -154,5 +178,26 @@ Buffs: {
 	PerennialArrowEBuff: {
 		DisplayName: Perennial Arrow E Buff
 		Description: Mods.FKsCRE.Buffs.PerennialArrowEBuff.Description
+	}
+
+	UelibloomArrowEBuff: {
+		DisplayName: Uelibloom Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
+	}
+
+	WulfrimArrowEBuff: {
+		DisplayName: Wulfrim Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.WulfrimArrowEBuff.Description
+	}
+}
+
+Configs: {
+	CREsConfigs: {
+		DisplayName: C R Es Configs
+
+		EnableSpecialEffects: {
+			Label: 开启全部特效
+			Tooltip: 用于开关弹药的所有特效
+		}
 	}
 }

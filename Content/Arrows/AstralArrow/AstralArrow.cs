@@ -7,9 +7,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FKsCRE.Content.Arrows.PrismArrow
+namespace FKsCRE.Content.Arrows.AstralArrow
 {
-    public class PrismArrow : ModItem
+    public class AstralArrow : ModItem
     {
         public override void SetDefaults()
         {
@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Arrows.PrismArrow
             Item.knockBack = 3.5f;
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
-            Item.shoot = ModContent.ProjectileType<PrismArrowPROJ>();
+            Item.shoot = ModContent.ProjectileType<AstralArrowPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }

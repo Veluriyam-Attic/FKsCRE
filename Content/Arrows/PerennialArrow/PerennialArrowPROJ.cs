@@ -33,6 +33,8 @@ namespace FKsCRE.Content.Arrows.PerennialArrow
             Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
             Projectile.timeLeft = 600;
             Projectile.ignoreWater = true;
+            Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
+            Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
         }
 
         public override void AI()
