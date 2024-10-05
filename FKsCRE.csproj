@@ -10,24 +10,60 @@
 	<ItemGroup>
 	  <None Remove="Content\Ammunition\弹幕测试.png" />
 	  <None Remove="Content\Ammunition\弹幕测试_Proje.png" />
-	  <None Remove="Content\Arrows\AerialiteArrow\AerialiteArrow.png" />
-	  <None Remove="Content\Arrows\AerialiteArrow\AerialiteArrowPROJ.png" />
-	  <None Remove="Content\Arrows\AerialiteArrow\AerialiteArrowWIND.png" />
-	  <None Remove="Content\Arrows\AstralArrow\AstralArrow.png" />
-	  <None Remove="Content\Arrows\AstralArrow\AstralArrowPROJ.png" />
-	  <None Remove="Content\Arrows\AstralArrow\AstralArrowSTAR.png" />
-	  <None Remove="Content\Arrows\AuricArrow\AuricArrow.png" />
-	  <None Remove="Content\Arrows\AuricArrow\AuricArrowBALL.png" />
-	  <None Remove="Content\Arrows\AuricArrow\AuricArrowPROJ.png" />
-	  <None Remove="Content\Arrows\PerennialArrow\PerennialArrowEBuff.png" />
-	  <None Remove="Content\Arrows\ScoriaArrow\ScoriaArrow.png" />
-	  <None Remove="Content\Arrows\ScoriaArrow\ScoriaArrowFireball.png" />
-	  <None Remove="Content\Arrows\ScoriaArrow\ScoriaArrowPROJ.png" />
-	  <None Remove="Content\Arrows\UelibloomArrow\UelibloomArrow.png" />
-	  <None Remove="Content\Arrows\UelibloomArrow\UelibloomArrowEBuff.png" />
-	  <None Remove="Content\Arrows\UelibloomArrow\UelibloomArrowPROJ.png" />
-	  <None Remove="Content\Arrows\UelibloomArrow\UelibloomArrowVine.png" />
-	  <None Remove="Content\Arrows\UelibloomArrow\龙蒿箭.png" />
+	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrow.png" />
+	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowPROJ.png" />
+	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowWIND.png" />
+	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\BloodBeadsArrow.png" />
+	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\BloodBeadsArrowPROJ.png" />
+	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\血珠箭.txt" />
+	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\PurifiedGelArrow.png" />
+	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\PurifiedGelArrowPROJ.png" />
+	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\纯净凝胶箭.txt" />
+	  <None Remove="Content\Arrows\BPrePlantera\PlasmaDriveCorePrototypeArrow\PlasmaDriveCorePrototypeArrow.png" />
+	  <None Remove="Content\Arrows\BPrePlantera\PlasmaDriveCorePrototypeArrow\PlasmaDriveCorePrototypeArrowPROJ.png" />
+	  <None Remove="Content\Arrows\BPrePlantera\PlasmaDriveCorePrototypeArrow\等离子驱动核心箭.txt" />
+	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrow.png" />
+	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrowPROJ.png" />
+	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\调星箭.txt" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrow.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowEBuff.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowPROJ.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowSTAR.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\炫星箭.txt" />
+	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\CoreofCalamityArrow.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\CoreofCalamityArrowPROJ.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\灾劫核心箭.txt" />
+	  <None Remove="Content\Arrows\CPreMoodLord\LifeAlloyArrow\LifeAlloyArrow.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\LifeAlloyArrow\LifeAlloyArrowPROJ.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\LifeAlloyArrow\生命合金箭.txt" />
+	  <None Remove="Content\Arrows\CPreMoodLord\PerennialArrow\永恒箭.txt" />
+	  <None Remove="Content\Arrows\CPreMoodLord\ScoriaArrow\熔渣箭.txt" />
+	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrow.png" />
+	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPROJ.png" />
+	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\神圣晶石箭.txt" />
+	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrow.png" />
+	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrowPROJ.png" />
+	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\闪耀金羽箭.txt" />
+	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrow.png" />
+	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrowPROJ.png" />
+	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\灵质箭.txt" />
+	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\龙蒿箭.txt" />
+	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrow.png" />
+	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowBALL.png" />
+	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowPROJ.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\PerennialArrow\PerennialArrowEBuff.png" />
+	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\古圣金源箭.txt" />
+	  <None Remove="Content\Arrows\EAfterDog\MiracleMatterArrow\MiracleMatterArrow.png" />
+	  <None Remove="Content\Arrows\EAfterDog\MiracleMatterArrow\MiracleMatterArrowPROJ.png" />
+	  <None Remove="Content\Arrows\EAfterDog\MiracleMatterArrow\奇迹物质箭.txt" />
+	  <None Remove="Content\Arrows\PrismArrow\PrismArrow_Proje.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\ScoriaArrow\ScoriaArrow.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\ScoriaArrow\ScoriaArrowFireball.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\ScoriaArrow\ScoriaArrowPROJ.png" />
+	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrow.png" />
+	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrowEBuff.png" />
+	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrowPROJ.png" />
+	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrowVine.png" />
 	  <None Remove="Content\Arrows\WulfrimArrow\WulfrimArrowEBuff.png" />
 	  <None Remove="Content\Arrows\WulfrimArrow\WulfrimArrowPROJ.png" />
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝旋风.png" />
@@ -45,6 +81,13 @@
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Content\Ammunition\APreHardMode\" />
+	  <Folder Include="Content\Ammunition\BPrePlantera\" />
+	  <Folder Include="Content\Ammunition\CPreMoodLord\" />
+	  <Folder Include="Content\Ammunition\DPreDog\" />
+	  <Folder Include="Content\Ammunition\EAfterDog\" />
 	</ItemGroup>
 
 	<!-- References -->

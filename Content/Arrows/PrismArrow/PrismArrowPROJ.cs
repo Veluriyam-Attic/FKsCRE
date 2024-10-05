@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FKsCRE.Content.Ammunition.TinkleshardBullet;
 
 namespace FKsCRE.Content.Arrows.PrismArrow
 {
@@ -28,15 +29,15 @@ namespace FKsCRE.Content.Arrows.PrismArrow
             Projectile.arrow = true;  // 继承箭矢的 AI
             Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.penetrate = 1; // 只穿透一次敌人
-            Projectile.timeLeft = 300; // 弹幕的持续时间
+            Projectile.timeLeft = 1800; // 弹幕的持续时间
 
-            // 如果弹幕在水中，增强其初始属性
-            if (Main.player[Projectile.owner].wet)
-            {
-                Projectile.velocity *= 1.5f; // 初始速度增加1.5倍
-                Projectile.extraUpdates += 2; // 弹幕的额外更新次数+2
-                Projectile.damage = (int)(Projectile.damage * 1.2f); // 增加20%的伤害
-            }
+            //// 如果弹幕在水中，增强其初始属性
+            //if (Main.player[Projectile.owner].wet)
+            //{
+            //    Projectile.velocity *= 1.5f; // 初始速度增加1.5倍
+            //    Projectile.extraUpdates += 2; // 弹幕的额外更新次数+2
+            //    Projectile.damage = (int)(Projectile.damage * 1.2f); // 增加20%的伤害
+            //}
         }
 
         public override void AI()
@@ -44,28 +45,16 @@ namespace FKsCRE.Content.Arrows.PrismArrow
             // 让 y 轴速度逐渐增加
             Projectile.velocity.Y += 0.05f;
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
-            // 添加光效
-            Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.5f);
+            Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.5f); // 添加光效
 
-            // 使用一个计数器追踪每 5 帧调用一次增强
+            // 在水中时增强弹幕的速度和伤害
             if (Projectile.wet)
             {
-                // 每 5 帧进行一次速度和伤害的提升
-                if (Projectile.ai[0] % 5 == 0) // Projectile.ai[0] 作为计数器使用
-                {
-                    // 速度提升5%
-                    Projectile.velocity *= 1.03f;
-
-                    // 增加3%的伤害
-                    Projectile.damage = (int)(Projectile.damage * 1.03f);
-                }
-                // 更新计数器，每帧加1
-                Projectile.ai[0]++;
+                Projectile.velocity = Projectile.velocity * 2.5f; // 速度加快至原来的2.5倍
+                Projectile.damage = (int)(ty.dam * 1.5f); // 将伤害提升1.5倍
+                Projectile.velocity.Y = 0; // 取消重力影响，保持y轴不再受重力影响
             }
         }
-
-
-
 
 
         public override void OnKill(int timeLeft)
@@ -82,6 +71,7 @@ namespace FKsCRE.Content.Arrows.PrismArrow
                 waterDust.fadeIn = 1.5f; // 增加粒子的亮度和淡入效果
             }
         }
+
         public override bool PreDraw(ref Color lightColor)
         {
             // 如果投射物不在水中，直接返回不绘制拖尾效果

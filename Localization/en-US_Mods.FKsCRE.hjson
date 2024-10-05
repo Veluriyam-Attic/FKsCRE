@@ -110,6 +110,51 @@ Items: {
 		DisplayName: Auric Arrow
 		Tooltip: ""
 	}
+
+	BloodBeadsArrow: {
+		DisplayName: Blood Beads Arrow
+		Tooltip: ""
+	}
+
+	PurifiedGelArrow: {
+		DisplayName: Purified Gel Arrow
+		Tooltip: ""
+	}
+
+	StarblightSootArrow: {
+		DisplayName: Starblight Soot Arrow
+		Tooltip: ""
+	}
+
+	CoreofCalamityArrow: {
+		DisplayName: Coreof Calamity Arrow
+		Tooltip: ""
+	}
+
+	LifeAlloyArrow: {
+		DisplayName: Life Alloy Arrow
+		Tooltip: ""
+	}
+
+	DivineGeodeArrow: {
+		DisplayName: Divine Geode Arrow
+		Tooltip: ""
+	}
+
+	EffulgentFeatherArrow: {
+		DisplayName: Effulgent Feather Arrow
+		Tooltip: ""
+	}
+
+	PolterplasmArrow: {
+		DisplayName: Polterplasm Arrow
+		Tooltip: ""
+	}
+
+	MiracleMatterArrow: {
+		DisplayName: Miracle Matter Arrow
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -142,6 +187,16 @@ Projectiles: {
 	AuricArrowPROJ.DisplayName: Auric Arrow P R O J
 	WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
 	PrismArrowPROJ.DisplayName: Prism Arrow P R O J
+	BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
+	PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
+	StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
+	CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
+	LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
+	DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
+	EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
+	PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
+	MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+	LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
 }
 
 Buffs: {
@@ -189,6 +244,11 @@ Buffs: {
 		DisplayName: Wulfrim Arrow E Buff
 		Description: Mods.FKsCRE.Buffs.WulfrimArrowEBuff.Description
 	}
+
+	AstralArrowEBuff: {
+		DisplayName: Astral Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.AstralArrowEBuff.Description
+	}
 }
 
 Configs: {
@@ -198,6 +258,11 @@ Configs: {
 		EnableSpecialEffects: {
 			Label: 开启全部特效
 			Tooltip: 用于开关弹药的所有特效
+		}
+
+		EnableAmmoChecking: {
+			Tooltip: ""
+			Label: Enable Ammo Checking
 		}
 	}
 }
