@@ -1,5 +1,5 @@
 displayName = Fake-PARADOX's Calamity Rangers Expansion（FK's CRE）
 author = Henceforth
-version = 0.2.0.11
+version = 0.2.0.13
 modReferences = CalamityMod
 sortAfter = CalamityMod
