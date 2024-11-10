@@ -18,6 +18,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityMod.Particles;
 using FKsCRE.CREConfigs;
+using CalamityThrowingSpear.Weapons.NewWeapons.BPrePlantera.TheLastLance;
 
 namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
 {
@@ -113,21 +114,36 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
 
 
         }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            // 0.5% 的概率为敌人施加 1 秒钟的 PolterplasmArrowEDeBuff
+            if (Main.rand.NextFloat() < 0.005f)
+            {
+                target.AddBuff(ModContent.BuffType<PolterplasmArrowEDeBuff>(), 60); // 60 帧相当于 1 秒钟
+                target.AddBuff(ModContent.BuffType<PolterplasmArrowEDeBuff2>(), 300); // 300 帧相当于 5 秒钟
+
+                // 在原地往周围 360 度随机选择三个角度释放 PolterplasmArrowsSoul 弹幕 (一倍伤害)
+                for (int i = 0; i < 3; i++)
+                {
+                    float randomAngle = Main.rand.NextFloat(MathHelper.TwoPi); // 360 度随机角度
+                    Vector2 direction = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * 10f; // 自定义速度
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<PolterplasmArrowsSoul>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                }
+
+                // 在半径为 20 个方块的圆环上随机选择 6 个点并向中心发射 PolterplasmArrowsSoul 弹幕 (5 倍伤害)
+                float radius = 20 * 16f; // 20 个方块的半径 (20 * 16 像素)
+                for (int i = 0; i < 6; i++)
+                {
+                    float randomAngle = Main.rand.NextFloat(MathHelper.TwoPi); // 360 度随机角度
+                    Vector2 spawnPosition = Projectile.Center + new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * radius; // 计算圆周上的点
+                    Vector2 directionToCenter = Vector2.Normalize(Projectile.Center - spawnPosition) * 10f; // 方向向内，速度自定义
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, directionToCenter, ModContent.ProjectileType<PolterplasmArrowsSoul>(), (int)(Projectile.damage * 5), Projectile.knockBack, Projectile.owner);
+                }
+            }
+        }
 
         public override void OnKill(int timeLeft)
         {
-            //// 规则扩散的粉红色粒子特效（原版粒子）
-            //int points = 25;
-            //float radians = MathHelper.TwoPi / points;
-            //Vector2 spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));
-            //for (int k = 0; k < points; k++)
-            //{
-            //    Vector2 velocity = spinningPoint.RotatedBy(radians * k) * 3f; // 生成扩散的速度
-            //    Dust pinkDust = Dust.NewDustPerfect(Projectile.Center, DustID.PinkTorch, velocity, 0, Color.Pink, 1.5f);
-            //    pinkDust.noGravity = true;
-            //    pinkDust.scale = 1.2f;
-            //}
-
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {

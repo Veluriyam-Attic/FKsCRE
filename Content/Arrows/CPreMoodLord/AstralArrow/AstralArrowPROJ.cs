@@ -15,6 +15,8 @@ using Terraria.ID;
 using Terraria.Map;
 using Terraria.Audio;
 using FKsCRE.CREConfigs;
+using CalamityMod.Particles;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 {
@@ -26,6 +28,19 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 画残影效果
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+                return false;
+            }
+            return true;
+        }
+
 
         public override void SetDefaults()
         {
@@ -43,9 +58,78 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             Projectile.timeLeft = 300; // 存在时间
             Projectile.light = 0.9f; // 设置发光亮度
         }
+        private bool touchedSun = false; // 记录是否触碰太阳
+        private bool touchedMoon = false; // 记录是否触碰月亮
+        private bool sunParticlesReleased = false;
+        private bool moonParticlesReleased = false;
 
         public override void AI()
         {
+            // 确保只在第一次进入 AI 时执行一次
+            if (Projectile.localAI[0] == 0f)
+            {
+                Player player = Main.player[Projectile.owner];
+
+                // 给予玩家 10 秒钟的 AstralArrowPBuff
+                if (player.HasBuff(ModContent.BuffType<AstralArrowPBuff>()))
+                {
+                    player.AddBuff(ModContent.BuffType<AstralArrowPBuff>(), 600); // 更新为 10 秒 (600 帧)
+                }
+                else
+                {
+                    player.AddBuff(ModContent.BuffType<AstralArrowPBuff>(), 600); // 添加 10 秒 (600 帧)
+                }
+
+                // 检查场上是否存在太阳和月亮弹幕
+                bool sunExists = false;
+                bool moonExists = false;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.owner == Projectile.owner)
+                    {
+                        if (proj.type == ModContent.ProjectileType<AstralArrowSUN>())
+                        {
+                            sunExists = true;
+                        }
+                        else if (proj.type == ModContent.ProjectileType<AstralArrowMOON>())
+                        {
+                            moonExists = true;
+                        }
+                    }
+                }
+
+                // 根据存在情况生成弹幕
+                if (!sunExists && !moonExists)
+                {
+                    // 生成太阳和月亮
+                    float radius = 10 * 16f; // 半径为 10 格方块 (160 像素)
+                    Vector2 sunPosition = player.Center + new Vector2(radius, 0).RotatedBy(MathHelper.PiOver2); // 逆时针 90 度位置
+                    Vector2 moonPosition = player.Center + new Vector2(-radius, 0).RotatedBy(MathHelper.PiOver2); // 顺时针 90 度位置
+
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), sunPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowSUN>(), 0, 0f, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), moonPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowMOON>(), 0, 0f, Projectile.owner);
+                }
+                else if (!sunExists)
+                {
+                    // 只生成太阳
+                    float radius = 10 * 16f;
+                    Vector2 sunPosition = player.Center + new Vector2(radius, 0).RotatedBy(MathHelper.PiOver2);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), sunPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowSUN>(), 0, 0f, Projectile.owner);
+                }
+                else if (!moonExists)
+                {
+                    // 只生成月亮
+                    float radius = 10 * 16f;
+                    Vector2 moonPosition = player.Center + new Vector2(-radius, 0).RotatedBy(MathHelper.PiOver2);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), moonPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowMOON>(), 0, 0f, Projectile.owner);
+                }
+
+                // 确保该逻辑只执行一次
+                Projectile.localAI[0] = 1f;
+            }
+
+
+
             // 保持弹幕旋转
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
 
@@ -53,7 +137,65 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             Lighting.AddLight(Projectile.Center, Color.DeepPink.ToVector3() * 0.55f);
 
             // 弹幕保持直线运动并逐渐加速
-            Projectile.velocity *= 1.02f;
+            Projectile.velocity *= 1.007f;
+
+
+            // 检查与太阳的接触
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (proj.active && proj.type == ModContent.ProjectileType<AstralArrowSUN>() && Projectile.Hitbox.Intersects(proj.Hitbox))
+                {
+                    touchedSun = true; // 标记为已触碰太阳
+
+                    // 释放橙色粒子特效
+                    if (!sunParticlesReleased)
+                    {
+                        ReleaseParticles(Color.Orange, 20);
+                        sunParticlesReleased = true;
+                    }
+                    break; // 一旦触碰太阳，跳出循环
+                }
+            }
+
+            // 如果已触碰太阳，则减速
+            if (touchedSun)
+            {
+                Projectile.velocity *= 0.995f; // 每帧减速
+                if (Projectile.velocity.Length() < 0.01f) // 当速度降为零时
+                {
+                    Projectile.Kill(); // 消除自己
+                }
+            }
+            else // 仅当未触碰太阳时检查月亮
+            {
+                // 检查与月亮的接触
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<AstralArrowMOON>() && Projectile.Hitbox.Intersects(proj.Hitbox))
+                    {
+                        touchedMoon = true; // 标记为已触碰月亮
+
+                        // 释放蓝色粒子特效
+                        if (!moonParticlesReleased)
+                        {
+                            ReleaseParticles(Color.LightBlue, 20);
+                            moonParticlesReleased = true;
+                        }
+                        break; // 一旦触碰月亮，跳出循环
+                    }
+                }
+            }
+
+            // 如果已触碰月亮，则获得追踪效果
+            if (touchedMoon)
+            {
+                NPC target = Projectile.Center.ClosestNPCAt(1800); // 查找范围内最近的敌人
+                if (target != null)
+                {
+                    Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 20f, 0.08f); // 追踪速度为 20f
+                }
+            }
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
@@ -105,6 +247,18 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             }
                 
         }
+        // 释放粒子特效的方法
+        private void ReleaseParticles(Color particleColor, int numberOfParticles)
+        {
+            float angleStep = MathHelper.TwoPi / numberOfParticles;
+            for (int i = 0; i < numberOfParticles; i++)
+            {
+                float angle = i * angleStep;
+                Vector2 velocity = angle.ToRotationVector2() * 4f; // 调整粒子的速度
+                Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Torch, velocity, 0, particleColor);
+                dust.noGravity = true; // 确保粒子不受重力影响
+            }
+        }
 
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -129,7 +283,6 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             }
 
             int buffDuration = 300; // Buff持续时间为5秒 (300帧)
-            target.AddBuff(ModContent.BuffType<AstralArrowEBuff>(), buffDuration);
 
             //// 在屏幕边缘的随机位置召唤彗星
             //Player player = Main.player[Projectile.owner];
@@ -254,36 +407,43 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 
         }
 
-        public override bool PreDraw(ref Color lightColor)
+
+
+
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 检查是否启用了特效
-            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            // 仅当未触碰太阳并触碰月亮时才触发感染效果
+            if (touchedMoon && !touchedSun)
             {
-                // 画残影效果
-                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
-                return false;
+                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300); // 5 秒的感染效果
             }
-            return true;
         }
-
-        //public override void OnKill(int timeLeft)
-        //{
-        //    int spawnDustAmount = 3;
-        //    for (int i = 0; i < spawnDustAmount; i++)
-        //    {
-        //        Color newColor = Main.hslToRgb(1f, 1f, 0.5f); // 结束时的彩虹色粒子
-        //        int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowMk2, 0f, 0f, 0, newColor);
-        //        Main.dust[dust].position = Projectile.Center + Main.rand.NextVector2Circular((float)Projectile.width, (float)Projectile.height);
-        //        Main.dust[dust].velocity *= Main.rand.NextFloat() * 2.4f;
-        //        Main.dust[dust].noGravity = true;
-        //        Main.dust[dust].fadeIn = 0.6f + Main.rand.NextFloat();
-        //        Main.dust[dust].scale = 1.4f;
-        //    }
-        //}
-
-
         public override void OnKill(int timeLeft)
         {
+            // 仅当未触碰月亮并触碰太阳时触发爆炸效果
+            if (touchedSun && !touchedMoon)
+            {
+                // 增大碰撞体积并模拟群体爆炸效果
+                Projectile.ExpandHitboxBy(250);
+                Projectile.maxPenetrate = -1;
+                Projectile.penetrate = -1;
+                Projectile.usesLocalNPCImmunity = true;
+                Projectile.localNPCHitCooldown = 10;
+                Projectile.Damage();
+
+                // 释放爆炸特效
+                int Dusts = 150; // 数量变为原来的 10 倍
+                float radians = MathHelper.TwoPi / Dusts;
+                Vector2 spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));
+                for (int i = 0; i < Dusts; i++)
+                {
+                    Vector2 dustVelocity = spinningPoint.RotatedBy(radians * i).RotatedBy(0.5f) * Main.rand.NextFloat(1f, 2.6f); // 增加随机性
+                    Particle smoke = new HeavySmokeParticle(Projectile.Center, dustVelocity, Main.rand.NextBool() ? Color.Orange : Color.LightBlue, 18, Main.rand.NextFloat(0.9f, 1.6f), 0.35f, Main.rand.NextFloat(-1, 1), true);
+                    GeneralParticleHandler.SpawnParticle(smoke);
+                }
+            }
+
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {

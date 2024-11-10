@@ -26,6 +26,16 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
 
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Type], lightColor, 1);
+                return false;
+            }
+            return true;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 14; // 假设箭的宽度
@@ -190,16 +200,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
 
         }
 
-        public override bool PreDraw(ref Color lightColor)
-        {
-            // 检查是否启用了特效
-            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
-            {
-                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Type], lightColor, 1);
-                return false;
-            }
-            return true;
-        }
+      
 
     }
 }

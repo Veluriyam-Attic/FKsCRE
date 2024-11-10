@@ -110,6 +110,35 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             // Lighting - 添加浅橙色光源，光照强度为 0.49
             Lighting.AddLight(Projectile.Center, Color.Lerp(Color.LightSalmon, Color.OrangeRed, 0.5f).ToVector3() * 0.49f);
 
+            // 维持 EffulgentFeatherArrowAura 的存在
+            if (Projectile.localAI[0] == 0f)
+            {
+                // 在第一次执行时生成 Aura 弹幕，并记录其 ID
+                int auraProjectileID = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<EffulgentFeatherArrowAura>(), (int)(Projectile.damage * 0.15f), 0, Projectile.owner, Projectile.whoAmI);
+                Projectile.localAI[0] = auraProjectileID + 1; // 存储 Aura 的 ID，+1 以防止冲突
+            }
+            else
+            {
+                // 确保 Aura 与箭头保持同步
+                int auraProjectileID = (int)(Projectile.localAI[0] - 1);
+                if (Main.projectile.IndexInRange(auraProjectileID))
+                {
+                    Projectile auraProjectile = Main.projectile[auraProjectileID];
+                    if (auraProjectile.active && auraProjectile.type == ModContent.ProjectileType<EffulgentFeatherArrowAura>() && auraProjectile.ai[0] == Projectile.whoAmI)
+                    {
+                        // 将 Aura 位置设置为与箭头匹配
+                        auraProjectile.Center = Projectile.Center;
+                        auraProjectile.velocity = Vector2.Zero; // 确保 Aura 不移动
+                    }
+                    else
+                    {
+                        // 如果 Aura 不存在或失效，则重新生成
+                        Projectile.localAI[0] = 0f;
+                    }
+                }
+            }
+
+
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {

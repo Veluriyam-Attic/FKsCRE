@@ -22,7 +22,16 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             ProjectileID.Sets.TrailCacheLength[Type] = 4;
             ProjectileID.Sets.TrailingMode[Type] = 0;
         }
-
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Type], lightColor, 1);
+                return false;
+            }
+            return true;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -37,16 +46,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
         }
 
-        public override bool PreDraw(ref Color lightColor)
-        {
-            // 检查是否启用了特效
-            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
-            {
-                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Type], lightColor, 1);
-                return false;
-            }
-            return true;
-        }
+
 
         public override void AI()
         {
@@ -76,6 +76,33 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 
         public override void OnKill(int timeLeft)
         {
+            // 射出三片叶子
+            // 获取弹幕的当前方向
+            Vector2 direction = Projectile.velocity.SafeNormalize(Vector2.Zero); // 归一化方向向量
+            float speed = Projectile.velocity.Length(); // 保持初始速度
+
+            // 计算角度偏移
+            float angleOffset = MathHelper.ToRadians(5); // 5度偏移量
+
+            // 创建三个弹幕
+            Vector2 frontDirection = direction; // 正前方方向
+            Vector2 leftDirection = direction.RotatedBy(-angleOffset); // 向左偏转5度
+            Vector2 rightDirection = direction.RotatedBy(angleOffset); // 向右偏转5度
+
+            // 生成 UelibloomArrowLeaf 弹幕
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, frontDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, leftDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, rightDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+
+
+
+
+
+
+
+
+
+
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
@@ -92,18 +119,13 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             }
               
 
-            // 召唤藤蔓
-            // if (Main.rand.NextFloat() <= 0.5f) // 如果想要让他有概率召唤藤蔓
-            {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowVine>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
-            }
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
 
                 // 召唤生命之光
-                Vector2 direction = -Projectile.velocity.SafeNormalize(Vector2.UnitX); // 反向的方向，即弹幕的反向
+                direction = -Projectile.velocity.SafeNormalize(Vector2.UnitX); // 反向的方向，即弹幕的反向
 
                 Vector2 spawnPosition = Projectile.Center;
                 Vector2 velocity = direction * 10f; // 速度为反方向，力度设置为10f
@@ -127,47 +149,11 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
                     dust2.noGravity = true;
                 }
             }
-            //// 生成深绿色粒子特效
-            //Dusts = 8;
-            //radians = MathHelper.TwoPi / Dusts;
-            //spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));
-            //for (int d = 0; d < Dusts; d++)
-            //{
-            //    Vector2 dustVelocity = spinningPoint.RotatedBy(radians * d) * 3.5f;
-            //    Dust dust = Dust.NewDustPerfect(spawnPosition, Main.rand.NextBool() ? 262 : 87, dustVelocity, 0, Color.DarkGreen, 0.9f);
-            //    dust.noGravity = true;
-
-            //    Dust dust2 = Dust.NewDustPerfect(spawnPosition, Main.rand.NextBool() ? 262 : 87, dustVelocity * 0.6f, 0, Color.DarkGreen, 1.2f);
-            //    dust2.noGravity = true;
-            //}
-
-
-
-
-
-
-
-            //if (Main.rand.NextFloat() <= 0.2f)
-            //{
-            //    for (int i = 0; i < 3; i++)
-            //    {
-            //        Vector2 spawnPos = new Vector2(Main.rand.NextFloat(-Main.screenWidth, Main.screenWidth), Main.rand.NextFloat(-Main.screenHeight, Main.screenHeight));
-            //        Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowLight>(), 0, 0, Projectile.owner);
-            //    }
-            //}
+         
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            //if (Main.rand.NextFloat() <= 0.2f)
-            //{
-            //    for (int i = 0; i < 3; i++)
-            //    {
-            //        Vector2 spawnPos = new Vector2(Main.rand.NextFloat(-Main.screenWidth, Main.screenWidth), Main.rand.NextFloat(-Main.screenHeight, Main.screenHeight));
-            //        Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowLight>(), 0, 0, Projectile.owner);
-            //    }
-            //}
-
             target.AddBuff(ModContent.BuffType<UelibloomArrowEBuff>(), 300);  // 5 seconds
         }
     }

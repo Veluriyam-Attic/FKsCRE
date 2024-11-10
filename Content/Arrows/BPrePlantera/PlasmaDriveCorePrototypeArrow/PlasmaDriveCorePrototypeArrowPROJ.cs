@@ -104,7 +104,7 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.PlasmaDriveCorePrototypeArrow
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             // 在弹幕消失时，释放SHPExplosion
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SHPExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);

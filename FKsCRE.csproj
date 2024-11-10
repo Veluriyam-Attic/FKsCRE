@@ -8,8 +8,25 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Content\Ammunition\BPrePlantera\寒元子弹.png" />
+	  <None Remove="Content\Ammunition\BPrePlantera\寒元弹弹幕.png" />
 	  <None Remove="Content\Ammunition\弹幕测试.png" />
 	  <None Remove="Content\Ammunition\弹幕测试_Proje.png" />
+	  <None Remove="Content\Ammunition\星幻子弹.png" />
+	  <None Remove="Content\Ammunition\星幻子弹弹幕.png" />
+	  <None Remove="Content\Ammunition\星流子弹.png" />
+	  <None Remove="Content\Ammunition\星流子弹弹幕.png" />
+	  <None Remove="Content\Ammunition\星流弹弹幕.png" />
+	  <None Remove="Content\Ammunition\永恒弹.png" />
+	  <None Remove="Content\Ammunition\炫星弹弹幕.png" />
+	  <None Remove="Content\Ammunition\熔渣子弹.png" />
+	  <None Remove="Content\Ammunition\熔渣子弹弹幕.png" />
+	  <None Remove="Content\Ammunition\熔渣弹弹幕.png" />
+	  <None Remove="Content\Ammunition\金源子弹.png" />
+	  <None Remove="Content\Ammunition\金源子弹弹幕.png" />
+	  <None Remove="Content\Ammunition\金源弹弹幕.png" />
+	  <None Remove="Content\Ammunition\龙蒿子弹.png" />
+	  <None Remove="Content\Ammunition\龙蒿子弹弹幕.png" />
 	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrow.png" />
 	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowPROJ.png" />
 	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowWIND.png" />
@@ -26,9 +43,11 @@
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrowPROJ.png" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\调星箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrow.png" />
-	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowEBuff.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowMOON.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowPBuff.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowPROJ.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowSTAR.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowSUN.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\炫星箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\CoreofCalamityArrow.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\CoreofCalamityArrowPROJ.png" />
@@ -42,10 +61,12 @@
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\神圣晶石箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrow.png" />
+	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrowAura.png" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\闪耀金羽箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrow.png" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrowPROJ.png" />
+	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrowsSoul.png" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\灵质箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\龙蒿箭.txt" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrow.png" />
@@ -69,6 +90,11 @@
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝旋风.png" />
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢.png" />
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢_Proje.png" />
+	  <None Remove="Content\DeveloperItems\TheDrill\TheDrill.png" />
+	  <None Remove="Content\DeveloperItems\TheEmpty\TheEmpty.png" />
+	  <None Remove="Content\DeveloperItems\TimeLeaper\TimeLeaperPROJ.png" />
+	  <None Remove="Content\Weapon\45646.png" />
+	  <None Remove="Content\Weapon\UNGun.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGel.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGelBuff.png" />
 	  <None Remove="Content\凝胶\寒元凝胶\寒元凝胶.png" />
@@ -84,7 +110,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Content\Ammunition\APreHardMode\" />
-	  <Folder Include="Content\Ammunition\BPrePlantera\" />
 	  <Folder Include="Content\Ammunition\CPreMoodLord\" />
 	  <Folder Include="Content\Ammunition\DPreDog\" />
 	  <Folder Include="Content\Ammunition\EAfterDog\" />

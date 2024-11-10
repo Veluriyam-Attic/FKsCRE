@@ -85,19 +85,38 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
  
 
         }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            // 检查是否有至少一个 PerennialArrowFlower 存在于目标身上
+            bool hasExistingFlower = false;
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (proj.active && proj.type == ModContent.ProjectileType<PerennialArrowFlower>() && proj.ai[0] == target.whoAmI)
+                {
+                    hasExistingFlower = true;
+                    break;
+                }
+            }
+
+            // 如果不存在 PerennialArrowFlower，则生成新的
+            if (!hasExistingFlower)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<PerennialArrowFlower>(), (int)(damageDone * 1.0f), Projectile.knockBack, Projectile.owner, target.whoAmI);
+            }
+        }
 
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             // 确保弹幕可以黏附并且在敌人身上触发效果
-            Projectile.ModifyHitNPCSticky(1);
+            //Projectile.ModifyHitNPCSticky(1);
 
             // 为敌人添加10秒的增伤Buff
             target.AddBuff(ModContent.BuffType<PerennialArrowEBuff>(), 600);
 
             // 为玩家回复生命
-            Main.player[Projectile.owner].statLife += 2;
-            Main.player[Projectile.owner].HealEffect(2);
+            //Main.player[Projectile.owner].statLife += 2;
+            //Main.player[Projectile.owner].HealEffect(2);
 
         }
 

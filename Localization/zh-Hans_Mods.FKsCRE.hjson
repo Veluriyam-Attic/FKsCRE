@@ -194,6 +194,31 @@ Items: {
 			攻击方式留空
 			'''
 	}
+
+	UNGun: {
+		// DisplayName: U N Gun
+		// Tooltip: ""
+	}
+
+	CryonicBullet: {
+		// DisplayName: Cryonic Bullet
+		// Tooltip: ""
+	}
+
+	MaoMaoChong: {
+		// DisplayName: Mao Mao Chong
+		// Tooltip: ""
+	}
+
+	TheEmpty: {
+		// DisplayName: The Empty
+		// Tooltip: ""
+	}
+
+	TimeLeaper: {
+		// DisplayName: Time Leaper
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -236,6 +261,16 @@ Projectiles: {
 	// PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
 	// MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
 	// LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
+	// Melee.StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+	// UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
+	// AstralArrowMOON.DisplayName: Astral Arrow M O O N
+	// AstralArrowSUN.DisplayName: Astral Arrow S U N
+	// EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
+	// PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
+	// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
+	// MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
+	// TheEmptyPROJ.DisplayName: The Empty P R O J
+	// TimeLeaperPROJ.DisplayName: Time Leaper P R O J
 }
 
 Buffs: {
@@ -288,6 +323,11 @@ Buffs: {
 		// DisplayName: Astral Arrow E Buff
 		// Description: Mods.FKsCRE.Buffs.AstralArrowEBuff.Description
 	}
+
+	AstralArrowPBuff: {
+		// DisplayName: Astral Arrow P Buff
+		// Description: Mods.FKsCRE.Buffs.AstralArrowPBuff.Description
+	}
 }
 
 Configs: {
@@ -303,5 +343,17 @@ Configs: {
 			// Tooltip: ""
 			// Label: Enable Ammo Checking
 		}
+	}
+}
+
+ModBuff: {
+	PolterplasmArrowEDeBuff: {
+		// DisplayName: Polterplasm Arrow E De Buff
+		// Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff.Description
+	}
+
+	PolterplasmArrowEDeBuff2: {
+		// DisplayName: Polterplasm Arrow E De Buff2
+		// Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
 	}
 }

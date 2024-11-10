@@ -27,6 +27,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.tileCollide = false;
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
+            Projectile.alpha = 255;
         }
 
         public override void AI()
@@ -34,7 +35,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             if (Projectile.ai[1] == 0f)
             {
-                Projectile.alpha -= 100;
+                Projectile.alpha -= 150;
                 if (Projectile.alpha <= 0)
                 {
                     Projectile.alpha = 0;
