@@ -2,7 +2,7 @@
 
 Items: {
 	HurricaneArrow: {
-		DisplayName: 飓之矢
+		DisplayName: 飓之矢*
 		Tooltip:
 			'''
 			不受重力影响
@@ -11,17 +11,17 @@ Items: {
 	}
 
 	AerialiteBullet: {
-		DisplayName: 天蓝子弹
+		DisplayName: 天蓝子弹*
 		Tooltip: 不受重力影响
 	}
 
 	PrismArrow: {
-		DisplayName: 海晶箭
+		DisplayName: 海晶箭*
 		Tooltip: 在水中时会发光并随时间提升移动速度和伤害
 	}
 
 	TinkleshardBullet: {
-		DisplayName: 棱裂弹
+		DisplayName: 棱裂弹*
 		Tooltip:
 			'''
 			会在射出0.75s后会分裂
@@ -31,7 +31,7 @@ Items: {
 	}
 
 	WulfrimArrow: {
-		DisplayName: 钨钢箭
+		DisplayName: 钨钢箭*
 		Tooltip:
 			'''
 			向敌人释放电击，定住他们
@@ -40,7 +40,7 @@ Items: {
 	}
 
 	WulfrimBullet: {
-		DisplayName: 钨钢弹
+		DisplayName: 钨钢弹*
 		Tooltip:
 			'''
 			对受到伤害的敌人造成极弱的击退
@@ -55,27 +55,27 @@ Items: {
 			让被喷到的敌怪跳起来，每个敌怪每2秒至多触发一次
 			对BOSS的效果仅为
 			'''
-		DisplayName: 霁云凝胶
+		DisplayName: 霁云凝胶*
 	}
 
 	弹幕测试: {
-		// DisplayName: 弹幕测试
-		// Tooltip: ""
+		DisplayName: 弹幕测试
+		Tooltip: ""
 	}
 
 	寒元凝胶: {
-		// DisplayName: 寒元凝胶
-		// Tooltip: ""
+		DisplayName: 寒元凝胶*
+		Tooltip: ""
 	}
 
 	WulfrimGel: {
-		// DisplayName: Wulfrim Gel
-		// Tooltip: ""
+		DisplayName: Wulfrim Gel
+		Tooltip: ""
 	}
 
 	天蓝矢: {
-		// DisplayName: 天蓝矢
-		// Tooltip: ""
+		DisplayName: 天蓝矢
+		Tooltip: ""
 	}
 
 	PlasmaDriveCorePrototypeArrow: {
@@ -89,31 +89,31 @@ Items: {
 
 	AerialiteArrow: {
 		Tooltip: 命中时召唤旋风
-		DisplayName: 天蓝箭
+		DisplayName: 天蓝箭*
 	}
 
 	PerennialArrow: {
 		Tooltip: 标记敌人让敌人受到更多的伤害，同时治疗自己
-		DisplayName: 永恒箭
+		DisplayName: 永恒箭*
 	}
 
 	ScoriaArrow: {
 		Tooltip: 击中时产生爆炸并释放追踪熔岩
-		DisplayName: 熔渣箭
+		DisplayName: 熔渣箭*
 	}
 
 	AstralArrow: {
 		Tooltip: 命中时产生额外的坠星攻击敌人
-		DisplayName: 炫星箭
+		DisplayName: 炫星箭*
 	}
 
 	UelibloomArrow: {
-		DisplayName: 龙蒿箭
+		DisplayName: 龙蒿箭*
 		Tooltip: 击中敌人时产生藤蔓和生命之光
 	}
 
 	AuricArrow: {
-		DisplayName: 圣金源箭
+		DisplayName: 圣金源箭*
 		Tooltip:
 			'''
 			穿透一次敌人后引发小规模爆炸，向周围散射圣金源能量光球
@@ -141,13 +141,13 @@ Items: {
 	}
 
 	StarblightSootArrow: {
-		// DisplayName: Starblight Soot Arrow
-		// Tooltip: ""
+		DisplayName: Starblight Soot Arrow
+		Tooltip: ""
 	}
 
 	CoreofCalamityArrow: {
-		// DisplayName: Coreof Calamity Arrow
-		// Tooltip: ""
+		DisplayName: Coreof Calamity Arrow
+		Tooltip: ""
 	}
 
 	LifeAlloyArrow: {
@@ -232,45 +232,7 @@ Projectiles: {
 	TinkleshardBullet_Piece4.DisplayName: 棱裂弹
 	WulfrimArrow_proje.DisplayName: 钨钢箭
 	WulfrimBullet_Proje.DisplayName: 钨钢弹
-	// 弹幕测试_Proje.DisplayName: 弹幕测试_ Proje
-	// 天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
-	// 天蓝旋风.DisplayName: 天蓝旋风
-	// PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
-	// AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
-	// AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
-	// PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
-	// PerennialArrowFlower.DisplayName: Perennial Arrow Flower
-	// ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
-	// ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
-	// AstralArrowPROJ.DisplayName: Astral Arrow P R O J
-	// AstralArrowSTAR.DisplayName: Astral Arrow S T A R
-	// UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
-	// UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
-	// UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
-	// AuricArrowBALL.DisplayName: Auric Arrow B A L L
-	// AuricArrowPROJ.DisplayName: Auric Arrow P R O J
-	// WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
-	// PrismArrowPROJ.DisplayName: Prism Arrow P R O J
-	// BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
-	// PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
-	// StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
-	// CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
-	// LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
-	// DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
-	// EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
-	// PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
-	// MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
-	// LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
-	// Melee.StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
-	// UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
-	// AstralArrowMOON.DisplayName: Astral Arrow M O O N
-	// AstralArrowSUN.DisplayName: Astral Arrow S U N
-	// EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
-	// PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
-	// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
-	// MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
-	// TheEmptyPROJ.DisplayName: The Empty P R O J
-	// TimeLeaperPROJ.DisplayName: Time Leaper P R O J
+
 }
 
 Buffs: {
@@ -285,43 +247,43 @@ Buffs: {
 	}
 
 	霁云凝胶_DeBuff: {
-		// Description: Mods.FKsCRE.Buffs.霁云凝胶_DeBuff.Description
-		// DisplayName: 霁云凝胶_ De Buff
+		Description: Mods.FKsCRE.Buffs.霁云凝胶_DeBuff.Description
+		DisplayName: 霁云凝胶_ De Buff
 	}
 
 	寒元凝胶_Buff: {
-		// DisplayName: 寒元凝胶_ Buff
-		// Description: Mods.FKsCRE.Buffs.寒元凝胶_Buff.Description
+		DisplayName: 寒元凝胶_ Buff
+		Description: Mods.FKsCRE.Buffs.寒元凝胶_Buff.Description
 	}
 
 	寒元凝胶_DeBuff: {
-		// DisplayName: 寒元凝胶_ De Buff
-		// Description: Mods.FKsCRE.Buffs.寒元凝胶_DeBuff.Description
+		DisplayName: 寒元凝胶_ De Buff
+		Description: Mods.FKsCRE.Buffs.寒元凝胶_DeBuff.Description
 	}
 
 	WulfrimGelBuff: {
-		// DisplayName: Wulfrim Gel Buff
-		// Description: Mods.FKsCRE.Buffs.WulfrimGelBuff.Description
+		DisplayName: Wulfrim Gel Buff
+		Description: Mods.FKsCRE.Buffs.WulfrimGelBuff.Description
 	}
 
 	PerennialArrowEBuff: {
-		// DisplayName: Perennial Arrow E Buff
-		// Description: Mods.FKsCRE.Buffs.PerennialArrowEBuff.Description
+		DisplayName: Perennial Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.PerennialArrowEBuff.Description
 	}
 
 	UelibloomArrowEBuff: {
-		// DisplayName: Uelibloom Arrow E Buff
-		// Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
+		DisplayName: Uelibloom Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
 	}
 
 	WulfrimArrowEBuff: {
-		// DisplayName: Wulfrim Arrow E Buff
-		// Description: Mods.FKsCRE.Buffs.WulfrimArrowEBuff.Description
+		DisplayName: Wulfrim Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.WulfrimArrowEBuff.Description
 	}
 
 	AstralArrowEBuff: {
-		// DisplayName: Astral Arrow E Buff
-		// Description: Mods.FKsCRE.Buffs.AstralArrowEBuff.Description
+		DisplayName: Astral Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.AstralArrowEBuff.Description
 	}
 
 	AstralArrowPBuff: {
@@ -332,7 +294,7 @@ Buffs: {
 
 Configs: {
 	CREsConfigs: {
-		// DisplayName: C R Es Configs
+		DisplayName: C R Es Configs
 
 		EnableSpecialEffects: {
 			Label: 开启全部特效
@@ -340,8 +302,8 @@ Configs: {
 		}
 
 		EnableAmmoChecking: {
-			// Tooltip: ""
-			// Label: Enable Ammo Checking
+			Tooltip: ""
+			Label: Enable Ammo Checking
 		}
 	}
 }
