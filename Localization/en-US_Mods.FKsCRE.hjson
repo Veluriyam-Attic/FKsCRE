@@ -1,15 +1,3 @@
-ModBuff: {
-	PolterplasmArrowEDeBuff: {
-		DisplayName: Polterplasm Arrow E De Buff
-		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff.Description
-	}
-
-	PolterplasmArrowEDeBuff2: {
-		DisplayName: Polterplasm Arrow E De Buff2
-		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
-	}
-}
-
 Buffs: {
 	AstralArrowPBuff: {
 		DisplayName: Astral Arrow P Buff
@@ -69,6 +57,11 @@ Buffs: {
 	PolterplasmArrowEDeBuff2: {
 		DisplayName: Polterplasm Arrow E De Buff2
 		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
+	}
+
+	AstralBulletEBuff: {
+		DisplayName: Astral Bullet E Buff
+		Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 	}
 }
 
@@ -315,6 +308,16 @@ DeveloperItems: {
 
 		TheEmptyPROJ.DisplayName: The Empty P R O J
 	}
+
+	UltraLowTemp: {
+		UltraLowTemp: {
+			DisplayName: Ultra Low Temp
+			Tooltip: ""
+		}
+
+		UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
+		UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -335,6 +338,14 @@ Projectiles: {
 	WulfrimArrow_proje.DisplayName: Wulfrim Arrow_proje
 	天蓝旋风.DisplayName: 天蓝旋风
 	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
+	AstralBulletPROJ.DisplayName: Astral Bullet P R O J
+	PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
+	ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
+	UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+	AuricBuletPROJ.DisplayName: Auric Bulet P R O J
+	MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
+	UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
+	UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
 }
 
 Projectile: {
@@ -348,6 +359,7 @@ Projectile: {
 	BPrePlantera: {
 		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
 		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
 	}
 
 	CPreMoodLord: {
@@ -360,6 +372,10 @@ Projectile: {
 		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
 		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		AstralBulletPROJ.DisplayName: Astral Bullet P R O J
+		AstralBulletSTAR.DisplayName: Astral Bullet S T A R
+		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
+		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
 	}
 
 	DPreDog: {
@@ -372,6 +388,7 @@ Projectile: {
 		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
 		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
 		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
+		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
 	}
 
 	EAfterDog: {
@@ -379,6 +396,9 @@ Projectile: {
 		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
 		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
 		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+		AuricBuletPROJ.DisplayName: Auric Bulet P R O J
+		MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
+		AuricBuletBALL.DisplayName: Auric Bulet B A L L
 	}
 }
 
@@ -393,6 +413,51 @@ Configs: {
 
 		EnableAmmoChecking: {
 			Label: Enable Ammo Checking
+			Tooltip: ""
+		}
+	}
+}
+
+Ammunition: {
+	BPrePlantera: {
+		CryonicBullet: {
+			DisplayName: Cryonic Bullet
+			Tooltip: ""
+		}
+	}
+
+	CPreMoodLord: {
+		AstralBullet: {
+			DisplayName: Astral Bullet
+			Tooltip: ""
+		}
+
+		PerennialBullet: {
+			DisplayName: Perennial Bullet
+			Tooltip: ""
+		}
+
+		ScoriaBullet: {
+			DisplayName: Scoria Bullet
+			Tooltip: ""
+		}
+	}
+
+	DPreDog: {
+		UelibloomBullet: {
+			DisplayName: Uelibloom Bullet
+			Tooltip: ""
+		}
+	}
+
+	EAfterDog: {
+		AuricBulet: {
+			DisplayName: Auric Bulet
+			Tooltip: ""
+		}
+
+		MiracleMatterBullet: {
+			DisplayName: Miracle Matter Bullet
 			Tooltip: ""
 		}
 	}

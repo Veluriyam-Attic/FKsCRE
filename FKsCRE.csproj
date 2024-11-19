@@ -8,8 +8,17 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\寒元弹.txt" />
 	  <None Remove="Content\Ammunition\BPrePlantera\寒元子弹.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\寒元弹弹幕.png" />
+	  <None Remove="Content\Ammunition\CPreMoodLord\AstralBullet\炫星弹.txt" />
+	  <None Remove="Content\Ammunition\CPreMoodLord\PerennialBullet\PerennialBulletPROJ.png" />
+	  <None Remove="Content\Ammunition\CPreMoodLord\PerennialBullet\永恒弹.txt" />
+	  <None Remove="Content\Ammunition\CPreMoodLord\ScoriaBullet\熔渣弹.txt" />
+	  <None Remove="Content\Ammunition\DPreDog\UelibloomBullet\龙蒿弹.txt" />
+	  <None Remove="Content\Ammunition\EAfterDog\AuricBulet\AuricBuletBALL.png" />
+	  <None Remove="Content\Ammunition\EAfterDog\AuricBulet\金源弹.txt" />
+	  <None Remove="Content\Ammunition\EAfterDog\MiracleMatterBullet\星流弹.txt" />
 	  <None Remove="Content\Ammunition\弹幕测试.png" />
 	  <None Remove="Content\Ammunition\弹幕测试_Proje.png" />
 	  <None Remove="Content\Ammunition\星幻子弹.png" />
@@ -101,6 +110,7 @@
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShotPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\TheEmpty\TheEmpty.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TimeLeaper\TimeLeaperPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\UltraLowTemp\UltraLowTempSPIT.png" />
 	  <None Remove="Content\DeveloperItems\炎爆.png" />
 	  <None Remove="Content\Weapon\45646.png" />
 	  <None Remove="Content\Weapon\UNGun.png" />
@@ -119,9 +129,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Content\Ammunition\APreHardMode\" />
-	  <Folder Include="Content\Ammunition\CPreMoodLord\" />
-	  <Folder Include="Content\Ammunition\DPreDog\" />
-	  <Folder Include="Content\Ammunition\EAfterDog\" />
+	  <Folder Include="Content\Arrows\CPreMoodLord\AstralArrow\废案\" />
 	  <Folder Include="Content\Arrows\EAfterDog\AuricArrow\废弃\" />
 	</ItemGroup>
 

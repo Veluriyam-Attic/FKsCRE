@@ -95,7 +95,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
                     direction *= 8f; // 设定飞行速度
 
                     // 生成新的弹幕
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<ShuangHuaArrowSPLIT>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<ShuangHuaArrowSPLIT>(), (int)(Projectile.damage * 0.35f), Projectile.knockBack, Projectile.owner);
                 }
 
 

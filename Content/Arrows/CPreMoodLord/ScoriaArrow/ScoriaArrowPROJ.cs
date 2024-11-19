@@ -118,7 +118,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
         private void TriggerDownwardMovement()
         {
             // 40%的概率触发爆炸效果
-            if (Main.rand.NextFloat() < 0.4f)
+            //if (Main.rand.NextFloat() < 0.4f)
             {
                 // 生成爆炸弹幕
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), Projectile.damage, Projectile.knockBack, Projectile.owner);

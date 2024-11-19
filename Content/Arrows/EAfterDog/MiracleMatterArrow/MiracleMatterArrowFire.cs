@@ -59,7 +59,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                 if (target != null)
                 {
                     Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 18f, 0.08f);
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 10f, 0.08f);
                 }
             }
 

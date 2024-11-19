@@ -1,15 +1,3 @@
-ModBuff: {
-	PolterplasmArrowEDeBuff: {
-		// DisplayName: Polterplasm Arrow E De Buff
-		// Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff.Description
-	}
-
-	PolterplasmArrowEDeBuff2: {
-		// DisplayName: Polterplasm Arrow E De Buff2
-		// Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
-	}
-}
-
 Buffs: {
 	AstralArrowPBuff: {
 		DisplayName: Astral Arrow P Buff
@@ -69,6 +57,11 @@ Buffs: {
 	PolterplasmArrowEDeBuff2: {
 		DisplayName: Polterplasm Arrow E De Buff2
 		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
+	}
+
+	AstralBulletEBuff: {
+		// DisplayName: Astral Bullet E Buff
+		// Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 	}
 }
 
@@ -381,7 +374,7 @@ DeveloperItems: {
 				无限穿透，但在鼠标位置生成
 				但往玩家处回收，但没有击中敌人时给玩家回血
 				但击中的敌人越多越是会扣除玩家更多的血量
-				“看来你没搞懂祖父悖论”
+				“生存还是毁灭，这是一个问题”
 				'''
 		}
 
@@ -395,7 +388,7 @@ DeveloperItems: {
 				'''
 				较为自然的随机曲线转向飞行
 				但无论如何都会必定命中
-				“鸟の大群”
+				“一大群鸟”
 				'''
 		}
 
@@ -431,6 +424,21 @@ DeveloperItems: {
 
 		TheEmptyPROJ.DisplayName: The Empty P R O J
 	}
+
+	UltraLowTemp: {
+		UltraLowTemp: {
+			DisplayName: 霜华弹
+			Tooltip:
+				'''
+				击中后在外围释放分裂弹幕
+				造成冰河时代
+				“岩王帝君，这玩意儿比箭好用多了！”
+				'''
+		}
+
+		// UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
+		// UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -451,6 +459,14 @@ Projectiles: {
 	WulfrimArrow_proje.DisplayName: Wulfrim Arrow_proje
 	天蓝旋风.DisplayName: 天蓝旋风
 	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
+	// AstralBulletPROJ.DisplayName: Astral Bullet P R O J
+	// PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
+	// ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
+	// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+	// AuricBuletPROJ.DisplayName: Auric Bulet P R O J
+	// MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
+	// UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
+	// UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
 }
 
 Projectile: {
@@ -464,6 +480,7 @@ Projectile: {
 	BPrePlantera: {
 		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
 		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+		// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
 	}
 
 	CPreMoodLord: {
@@ -476,6 +493,10 @@ Projectile: {
 		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
 		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		// AstralBulletPROJ.DisplayName: Astral Bullet P R O J
+		// AstralBulletSTAR.DisplayName: Astral Bullet S T A R
+		// PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
+		// ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
 	}
 
 	DPreDog: {
@@ -488,6 +509,7 @@ Projectile: {
 		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
 		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
 		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
+		// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
 	}
 
 	EAfterDog: {
@@ -495,6 +517,9 @@ Projectile: {
 		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
 		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
 		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+		// AuricBuletPROJ.DisplayName: Auric Bulet P R O J
+		// MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
+		// AuricBuletBALL.DisplayName: Auric Bulet B A L L
 	}
 }
 
@@ -516,6 +541,80 @@ Configs: {
 			Tooltip:
 				'''
 				开启后会在左下角显示当前使用的弹药
+				(目前没做)
+				'''
+		}
+	}
+}
+
+Ammunition: {
+	BPrePlantera: {
+		CryonicBullet: {
+			DisplayName: 寒元弹
+			Tooltip:
+				'''
+				随便写点东西
+				(目前没做)
+				'''
+		}
+	}
+
+	CPreMoodLord: {
+		AstralBullet: {
+			DisplayName: 炫星弹
+			Tooltip:
+				'''
+				击中敌人时以敌人为中心不断的释放彗星砸向这个倒霉蛋
+				彗星继承手持武器的面板
+				“陨者尽己”
+				'''
+		}
+
+		PerennialBullet: {
+			DisplayName: 永恒弹
+			Tooltip:
+				'''
+				随便写点东西
+				(目前没做)
+				'''
+		}
+
+		ScoriaBullet: {
+			DisplayName: 熔渣弹
+			Tooltip:
+				'''
+				随便写点东西
+				(目前没做)
+				'''
+		}
+	}
+
+	DPreDog: {
+		UelibloomBullet: {
+			DisplayName: 龙蒿弹
+			Tooltip:
+				'''
+				随便写点东西
+				(目前没做)
+				'''
+		}
+	}
+
+	EAfterDog: {
+		AuricBulet: {
+			DisplayName: 金源弹
+			Tooltip:
+				'''
+				击中敌人时爆发出多个不断公转的金源珠
+				“百鬼夜行”
+				'''
+		}
+
+		MiracleMatterBullet: {
+			DisplayName: 星流弹
+			Tooltip:
+				'''
+				随便写点东西
 				(目前没做)
 				'''
 		}

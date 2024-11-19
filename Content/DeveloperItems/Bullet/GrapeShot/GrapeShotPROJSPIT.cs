@@ -40,7 +40,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.GrapeShot
             Projectile.height = 24; // 弹幕高度
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
-            Projectile.penetrate = 6; // 穿透力为6，击中6个敌人后消失
+            Projectile.penetrate = 3; // 穿透力为6，击中6个敌人后消失
             Projectile.timeLeft = 300; // 弹幕存在时间为300帧
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧

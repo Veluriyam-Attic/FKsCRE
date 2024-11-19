@@ -45,7 +45,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 
             // 在飞行过程中逐渐变透明和加速
             Projectile.alpha += 5;
-            Projectile.velocity *= 1.01f;
+            Projectile.velocity *= 1.06f;
 
             // 如果触碰到屏幕边缘，则删除该弹幕
             //if (!ProjectileWithinScreen())
@@ -65,7 +65,11 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
                 Main.dust[idx].scale = scale;
             }
 
+            Time++;
         }
+        public ref float Time => ref Projectile.ai[1];
+
+        public override bool? CanDamage() => Time >= 10f; // 初始的时候不会造成伤害，直到x为止
 
         private bool ProjectileWithinScreen()
         {

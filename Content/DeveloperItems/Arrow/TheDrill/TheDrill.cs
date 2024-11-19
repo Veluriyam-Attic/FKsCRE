@@ -16,7 +16,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
         public new string LocalizationCategory => "DeveloperItems.TheDrill";
         public override void SetDefaults()
         {
-            Item.damage = 1;
+            Item.damage = 150;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
@@ -38,7 +38,24 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
             //recipe.AddIngredient<WulfrumDiggingTurtle>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
+
+            Recipe recipe2 = CreateRecipe(1);
+            // 所有原版花前的钻头
+            recipe2.AddIngredient(ItemID.CobaltDrill, 1);
+            recipe2.AddIngredient(ItemID.PalladiumDrill, 1);
+            recipe2.AddIngredient(ItemID.MythrilDrill, 1);
+            recipe2.AddIngredient(ItemID.OrichalcumDrill, 1);
+            recipe2.AddIngredient(ItemID.AdamantiteDrill, 1);
+            recipe2.AddIngredient(ItemID.TitaniumDrill, 1);
+            recipe2.AddIngredient(ItemID.Drax, 1);
+            recipe2.AddIngredient(ItemID.ChlorophyteDrill, 1);
+
+            // 大钻石
+            recipe2.AddIngredient(ItemID.LargeDiamond, 1);
+            recipe2.AddTile(TileID.Anvils);
+            recipe2.Register();
         }
+
 
     }
 }

@@ -15,7 +15,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.MaoMaoChong
         public new string LocalizationCategory => "DeveloperItems.MaoMaoChong";
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 21;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

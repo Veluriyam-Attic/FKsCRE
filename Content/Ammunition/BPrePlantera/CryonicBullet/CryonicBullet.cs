@@ -11,22 +11,21 @@ using CalamityMod.Projectiles.Ranged;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityMod.Items.Materials;
+using CalamityMod.NPCs.NormalNPCs;
+using CalamityMod.Projectiles.Pets;
 
 namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
 {
-    public class CryonicBullet : ModItem
+    public class CryonicBullet : ModItem, ILocalizedModType
     {
-
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 99;
-        }
+        public new string LocalizationCategory => "Ammunition.BPrePlantera";
 
         public override void SetDefaults()
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 20;
+            Item.damage = 10;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;
@@ -40,11 +39,10 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
 
         public override void AddRecipes()
         {
-            CreateRecipe(100).
-                AddIngredient(ItemID.EmptyBullet, 100).
-                AddIngredient(ItemID.HallowedBar).
-                AddTile(TileID.MythrilAnvil).
-                Register();
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient<CryonicBar>(1);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
         }
     }
 }

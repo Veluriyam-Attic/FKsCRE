@@ -82,7 +82,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             // 在飞行路径上留下冰元素粒子特效
             if (Main.rand.NextBool(4)) // 控制粒子生成频率（1/4 概率）
             {
-                Dust iceDust = Dust.NewDustPerfect(Projectile.Center, DustID.Ice, Projectile.velocity * 0.5f, 150, Color.LightBlue, 1.2f);
+                Dust iceDust = Dust.NewDustPerfect(Projectile.Center, DustID.SnowflakeIce, Projectile.velocity * 0.5f, 150, Color.LightBlue, 1.2f);
                 iceDust.noGravity = true; // 使粒子无重力
                 iceDust.velocity *= 0.3f; // 调整粒子速度
                 iceDust.fadeIn = 1.5f; // 使粒子有一个渐入效果

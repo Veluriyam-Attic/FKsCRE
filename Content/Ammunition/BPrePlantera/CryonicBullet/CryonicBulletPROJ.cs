@@ -18,17 +18,23 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
 
 namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
 {
-    public class CryonicBulletPROJ : ModProjectile
+    public class CryonicBulletPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.BPrePlantera";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
-
+        public override bool PreDraw(ref Color lightColor)
+        {
+            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+            return false;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -39,16 +45,16 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
             Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
             Projectile.MaxUpdates = 5;
-
-            // Invisible for the first few frames
             Projectile.alpha = 255;
-            //Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 14;
         }
 
         public override void AI()
         {
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-            Lighting.AddLight(Projectile.Center, 0.7f, 0.5f, 0.3f);
+            Projectile.rotation = Projectile.velocity.ToRotation();
+
+            Lighting.AddLight(Projectile.Center, Color.Lerp(Color.Blue, Color.AliceBlue, 0.5f).ToVector3() * 0.49f);
 
             // Projectile becomes visible after a few frames
             if (Projectile.timeLeft == 298)
@@ -65,23 +71,20 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
             }
         }
 
-        public override bool PreDraw(ref Color lightColor)
+        public override void OnSpawn(IEntitySource source)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+
         }
 
-        // Deal bonus flat damage on hit.
-        // This is a flat addition to the source damage of the hit, meaning the following:
-        // - The bonus damage is pre-mitigation
-        // - The bonus damage transfers to on-hit effects, if any
-        // - It is applied in a different way than whip tag bonus damage, preventing interference
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            modifiers.SourceDamage.Flat += HallowPointRound.BonusDamageOnHit;
+
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+
         }
 
-        // On impact, make impact sparkle and play a sound.
         public override void OnKill(int timeLeft)
         {
             Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);

@@ -41,7 +41,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             {
                 Vector2 direction = target.Center - NPC.Center;
                 direction.Normalize();
-                NPC.velocity = Vector2.Lerp(NPC.velocity, direction * 10f, 0.005f); // Gradually accelerate
+                NPC.velocity = Vector2.Lerp(NPC.velocity, direction * 30f, 0.005f); // 能够逐渐加速
             }
         }
 

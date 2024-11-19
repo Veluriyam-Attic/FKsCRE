@@ -96,7 +96,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.GrapeShot
             {
                 float angle = MathHelper.ToRadians(Main.rand.Next(360));
                 Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<GrapeShotPROJSPIT>(), (int)(Projectile.damage * 0.25f), Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<GrapeShotPROJSPIT>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
             }
 
             // 检查是否启用了特效

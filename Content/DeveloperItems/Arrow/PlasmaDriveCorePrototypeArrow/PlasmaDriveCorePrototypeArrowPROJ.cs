@@ -18,7 +18,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
     {
         public new string LocalizationCategory => "DeveloperItems.SHPA";
         // 定义初始速度、减速速度和减速时间
-        public const float InitialSpeed = 44f;
+        public const float InitialSpeed = 30f;
         public const float SlowdownSpeed = 7f;
         public const int SlowdownTime = 50;
         public static readonly float SlowdownFactor = (float)Math.Pow(SlowdownSpeed / InitialSpeed, 1f / SlowdownTime);

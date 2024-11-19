@@ -197,7 +197,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
                     if (target != null)
                     {
                         Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                        Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 18f, 0.08f); // 追踪速度为18f
+                        Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 10f, 0.08f); // 追踪速度为xf
                     }
 
                     // 触发追踪能力激活的效果

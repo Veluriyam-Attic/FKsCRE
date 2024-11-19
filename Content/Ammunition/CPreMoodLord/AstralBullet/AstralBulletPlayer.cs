@@ -7,7 +7,7 @@
 //using Terraria;
 //using Terraria.ModLoader;
 
-//namespace FKsCRE.Content.Arrows.AstralArrow
+//namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
 //{
 //    public class AstralArrowPlayer : ModPlayer
 //    {

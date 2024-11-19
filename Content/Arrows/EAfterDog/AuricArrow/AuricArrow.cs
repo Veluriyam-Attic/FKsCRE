@@ -15,7 +15,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
         public new string LocalizationCategory => "Arrows.EAfterDog";
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 35;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

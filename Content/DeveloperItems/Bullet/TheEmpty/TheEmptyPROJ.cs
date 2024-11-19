@@ -112,7 +112,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
             }
 
             // 根据记录决定变大或变小的逻辑
-            float scaleChangeFactor = sizeChangeDirection[target.whoAmI] ? 1.05f : 0.95f;
+            float scaleChangeFactor = sizeChangeDirection[target.whoAmI] ? 1.01f : 0.99f;
             target.scale *= scaleChangeFactor;
             target.width = (int)(originalScale[target.whoAmI] * target.width * scaleChangeFactor);
             target.height = (int)(originalScale[target.whoAmI] * target.height * scaleChangeFactor);

@@ -104,14 +104,14 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TimeLeaper
                     // 计算扣除或增加的血量
                     //int healthChange = -hitCounter / 2; // 每两个命中扣 1 点血，如果命中 1 次，则加 1 点
                     int healthChange = -hitCounter * 3; // 每命中 1 次扣 3 点血
-                    if (hitCounter % 2 == 1) // 奇数次命中时，增加 1 点血
-                        healthChange++;
+                    //if (hitCounter % 2 == 1) // 奇数次命中时，增加 1 点血
+                    //    healthChange++;
 
                     player.statLife += healthChange;
                     if (healthChange > 0)
                         player.HealEffect(healthChange);
                     else if (healthChange < 0)
-                        player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason("看来你还是搞不明白祖父悖论"), -healthChange, 0);
+                        player.Hurt(Terraria.DataStructures.PlayerDeathReason.ByCustomReason($"{player.name}，搞不明白祖父悖论"), -healthChange, 0);
                 }
 
                 Projectile.Kill(); // 销毁弹幕

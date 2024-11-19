@@ -17,7 +17,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
         public new string LocalizationCategory => "DeveloperItems.TheEmpty";
         public override void SetDefaults()
         {
-            Item.width = 8;
+            Item.width = 12;
             Item.height = 18;
             Item.damage = 20;
             Item.DamageType = DamageClass.Ranged;
@@ -34,10 +34,9 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ItemID.EmptyBullet, 3996);
-            recipe.AddIngredient<NullificationPistol>(1);
+            recipe.AddIngredient<NullificationPistol>(3);
             recipe.AddCondition(Condition.NearShimmer);
-            recipe.AddTile(TileID.Anvils);
+            //recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
 

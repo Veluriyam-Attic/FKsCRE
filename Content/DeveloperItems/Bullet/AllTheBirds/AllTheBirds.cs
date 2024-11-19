@@ -15,7 +15,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
         public new string LocalizationCategory => "DeveloperItems.AllTheBirds";
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 2;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

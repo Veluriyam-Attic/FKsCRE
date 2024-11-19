@@ -29,7 +29,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 
         public override void SetDefaults()
         {
-            Projectile.width = Projectile.height = 38;
+            Projectile.width = Projectile.height = 100;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;

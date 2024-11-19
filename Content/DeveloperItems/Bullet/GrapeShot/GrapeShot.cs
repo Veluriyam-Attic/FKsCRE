@@ -16,7 +16,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.GrapeShot
         public new string LocalizationCategory => "DeveloperItems.GrapeShot";
         public override void SetDefaults()
         {
-            Item.damage = 1;
+            Item.damage = 5;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

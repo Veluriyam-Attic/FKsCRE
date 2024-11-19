@@ -18,7 +18,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
         public new string LocalizationCategory => "DeveloperItems.ShuangHuaArrow";
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 45;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

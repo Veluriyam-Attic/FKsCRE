@@ -16,7 +16,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
         public new string LocalizationCategory => "Arrows.APreHardMode";
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 1;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
