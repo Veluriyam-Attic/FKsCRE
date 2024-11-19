@@ -11,8 +11,9 @@ using CalamityMod;
 
 namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
 {
-    public class EffulgentFeatherArrowAura : ModProjectile
+    public class EffulgentFeatherArrowAura : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         private const float radius = 98f;
         private const int framesX = 3;
         private const int framesY = 6;

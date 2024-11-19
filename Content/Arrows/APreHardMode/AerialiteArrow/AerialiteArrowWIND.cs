@@ -12,8 +12,9 @@ using CalamityMod;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 {
-    public class AerialiteArrowWIND : ModProjectile
+    public class AerialiteArrowWIND : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.APreHardMode";
         public override void SetStaticDefaults()
         {
             // 设置拖尾效果和长度

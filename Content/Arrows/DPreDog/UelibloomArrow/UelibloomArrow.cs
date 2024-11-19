@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -9,8 +10,9 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 {
-    public class UelibloomArrow : ModItem
+    public class UelibloomArrow : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Arrows.DPreDog";
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -29,9 +31,8 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WoodenArrow, 100); // 配方示例
-            recipe.AddIngredient(ItemID.FallenStar, 1);
+            Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient<UelibloomBar>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

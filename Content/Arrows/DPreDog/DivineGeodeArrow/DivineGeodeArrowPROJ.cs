@@ -21,8 +21,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
 {
-    public class DivineGeodeArrowPROJ : ModProjectile
+    public class DivineGeodeArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

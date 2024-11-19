@@ -13,8 +13,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 {
-    internal class AuricArrowBALL : ModProjectile
+    internal class AuricArrowBALL : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.EAfterDog";
         private const int NoDamageTime = 2;  // 0.15秒不造成伤害（60帧/秒）
 
         public override void SetDefaults()

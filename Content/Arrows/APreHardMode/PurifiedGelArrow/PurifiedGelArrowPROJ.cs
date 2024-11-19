@@ -15,8 +15,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.PurifiedGelArrow
 {
-    public class PurifiedGelArrowPROJ : ModProjectile
+    public class PurifiedGelArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.APreHardMode";
 
         public static int MaxUpdate = 1; // 弹幕每次更新的最大次数
         private int Lifetime = 110; // 弹幕的生命周期为110

@@ -11,8 +11,9 @@ using CalamityMod;
 
 namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 {
-    public class UelibloomArrowLeaf : ModProjectile
+    public class UelibloomArrowLeaf : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
 
         private bool hasLockedOn = false;  // 是否已经开始追踪
         private NPC target;  // 被追踪的目标
@@ -30,7 +31,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 60;
+            Projectile.timeLeft = 180;
             Projectile.tileCollide = false; // 不允许与方块碰撞
             Projectile.ignoreWater = true; // 无视水
             Projectile.aiStyle = 0; // 自定义AI

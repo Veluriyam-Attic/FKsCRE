@@ -16,15 +16,28 @@ using CalamityMod.Projectiles.Ranged;
 using Terraria.DataStructures;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.CoreofCalamityArrow
 {
-    public class CoreofCalamityArrowPROJ : ModProjectile
+    public class CoreofCalamityArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.CPreMoodLord";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 画残影效果
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -55,7 +68,10 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.CoreofCalamityArrow
 
         }
 
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
 
+        }
         public override void OnKill(int timeLeft)
         {
 

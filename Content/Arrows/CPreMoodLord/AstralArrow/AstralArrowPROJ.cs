@@ -20,8 +20,9 @@ using CalamityMod.Buffs.DamageOverTime;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 {
-    public class AstralArrowPROJ : ModProjectile
+    public class AstralArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.CPreMoodLord";
         public override void SetStaticDefaults()
         {
             // 设置拖尾长度和模式

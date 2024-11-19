@@ -15,8 +15,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 {
-    internal class AuricArrowPROJ : ModProjectile
+    internal class AuricArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.EAfterDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -71,6 +72,27 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
         //    CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 2);
         //    return false;
         //}
+
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            base.OnHitNPC(target, hit, damageDone);
+            // 5% 概率生成 AuricArrowNPC
+            if (Main.rand.NextFloat() < 0.05f) // 5%
+            {
+                int npcIndex = NPC.NewNPC(Projectile.GetSource_FromThis(), Main.player[Projectile.owner].position.ToTileCoordinates().X * 16, Main.player[Projectile.owner].position.ToTileCoordinates().Y * 16, ModContent.NPCType<AuricArrowNPC>());
+                if (npcIndex >= 0 && Main.npc[npcIndex] != null)
+                {
+                    AuricArrowNPC auricArrowNPC = Main.npc[npcIndex].ModNPC as AuricArrowNPC;
+                    if (auricArrowNPC != null)
+                    {
+                        auricArrowNPC.StoredDamage = Projectile.damage;
+                    }
+                }
+            }
+        }
+
+
 
 
 

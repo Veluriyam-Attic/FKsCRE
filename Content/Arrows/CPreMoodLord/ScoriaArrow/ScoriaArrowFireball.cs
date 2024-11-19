@@ -7,8 +7,9 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
 {
-    public class ScoriaArrowFireball : ModProjectile
+    public class ScoriaArrowFireball : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.CPreMoodLord";
         private bool hasLockedOn = false;  // 是否已经开始追踪
         private NPC target;  // 被追踪的目标
 

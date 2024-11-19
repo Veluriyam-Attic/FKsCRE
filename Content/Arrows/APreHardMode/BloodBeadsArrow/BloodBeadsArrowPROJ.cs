@@ -21,8 +21,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
 {
-    public class BloodBeadsArrowPROJ : ModProjectile
+    public class BloodBeadsArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.APreHardMode";
         //public bool splitShot = false;
 
         public override void SetStaticDefaults()

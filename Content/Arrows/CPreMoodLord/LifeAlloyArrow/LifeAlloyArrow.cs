@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -9,8 +10,9 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
 {
-    public class LifeAlloyArrow : ModItem
+    public class LifeAlloyArrow : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Arrows.CPreMoodLord";
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -23,15 +25,14 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<LifeAlloyArrowPROJ>();
-            Item.shootSpeed = 3f;
+            Item.shootSpeed = 0.1f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WoodenArrow, 100); // 配方示例
-            recipe.AddIngredient(ItemID.FallenStar, 1);
+            Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient<LifeAlloy>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

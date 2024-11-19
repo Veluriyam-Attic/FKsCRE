@@ -12,8 +12,9 @@ using CalamityMod.Items.Materials;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 {
-    public class AerialiteArrow : ModItem
+    public class AerialiteArrow : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Arrows.APreHardMode";
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -32,9 +33,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WoodenArrow, 100); // 配方示例
-            recipe.AddIngredient<CalamityMod.Items.Materials.AerialiteBar>();
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient<AerialiteBar>();
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

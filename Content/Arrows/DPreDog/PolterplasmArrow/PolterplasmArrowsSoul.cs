@@ -13,8 +13,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
 {
-    public class PolterplasmArrowsSoul : ModProjectile
+    public class PolterplasmArrowsSoul : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
 
         private const int TimeLeft = 660;
         private float HomingBuff = 1;

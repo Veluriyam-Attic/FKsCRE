@@ -22,8 +22,9 @@ using CalamityThrowingSpear.Weapons.NewWeapons.BPrePlantera.TheLastLance;
 
 namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
 {
-    public class PolterplasmArrowPROJ : ModProjectile
+    public class PolterplasmArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

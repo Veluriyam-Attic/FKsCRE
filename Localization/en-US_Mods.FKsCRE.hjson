@@ -1,268 +1,19 @@
-# This file will automatically update with entries for new content after a build and reload.
-
-Items: {
-	HurricaneArrow: {
-		DisplayName: Hurricane Bolt
-		Tooltip:
-			'''
-			不受重力影响
-			“FK's CRE”
-			'''
+ModBuff: {
+	PolterplasmArrowEDeBuff: {
+		DisplayName: Polterplasm Arrow E De Buff
+		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff.Description
 	}
 
-	AerialiteBullet: {
-		DisplayName: Aerialite Bullet
-		Tooltip: 弹速极快
+	PolterplasmArrowEDeBuff2: {
+		DisplayName: Polterplasm Arrow E De Buff2
+		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
 	}
-
-	PrismArrow: {
-		DisplayName: Prism Arrow
-		Tooltip:
-			'''
-			在陆地上时受到更强的重力影响
-			在液体中时仅受到极小的重力
-			同时速度和伤害同时增加50%，
-			“它仍在向往着海洋...”
-			'''
-	}
-
-	TinkleshardBullet: {
-		DisplayName: Tinkleshard Bullet
-		Tooltip:
-			'''
-			会在射出0.75s后会分裂
-			在水中获得超高移速，并增加50%伤害
-			“尿分叉！”
-			'''
-	}
-
-	WulfrimArrow: {
-		DisplayName: Wulfrim Arrow
-		Tooltip:
-			'''
-			电击并定住受到攻击的敌人！
-			每10s触发一次，每次触发1s
-			“能源核心可不是白装的！”
-			'''
-	}
-
-	WulfrimBullet: {
-		DisplayName: Wulfrim Bullet
-		Tooltip: ""
-	}
-
-	霁云凝胶: {
-		Tooltip: ""
-		DisplayName: 霁云凝胶
-	}
-
-	弹幕测试: {
-		DisplayName: 弹幕测试
-		Tooltip: ""
-	}
-
-	寒元凝胶: {
-		DisplayName: 寒元凝胶
-		Tooltip: ""
-	}
-
-	WulfrimGel: {
-		DisplayName: Wulfrim Gel
-		Tooltip: ""
-	}
-
-	天蓝矢: {
-		DisplayName: 天蓝矢
-		Tooltip: ""
-	}
-
-	PlasmaDriveCorePrototypeArrow: {
-		Tooltip: ""
-		DisplayName: Plasma Drive Core Prototype Arrow
-	}
-
-	AerialiteArrow: {
-		Tooltip: ""
-		DisplayName: Aerialite Arrow
-	}
-
-	PerennialArrow: {
-		Tooltip: ""
-		DisplayName: Perennial Arrow
-	}
-
-	ScoriaArrow: {
-		Tooltip: ""
-		DisplayName: Scoria Arrow
-	}
-
-	AstralArrow: {
-		Tooltip: ""
-		DisplayName: Astral Arrow
-	}
-
-	UelibloomArrow: {
-		DisplayName: Uelibloom Arrow
-		Tooltip: ""
-	}
-
-	AuricArrow: {
-		DisplayName: Auric Arrow
-		Tooltip: ""
-	}
-
-	BloodBeadsArrow: {
-		DisplayName: Blood Beads Arrow
-		Tooltip: ""
-	}
-
-	PurifiedGelArrow: {
-		DisplayName: Purified Gel Arrow
-		Tooltip: ""
-	}
-
-	StarblightSootArrow: {
-		DisplayName: Starblight Soot Arrow
-		Tooltip: ""
-	}
-
-	CoreofCalamityArrow: {
-		DisplayName: Coreof Calamity Arrow
-		Tooltip: ""
-	}
-
-	LifeAlloyArrow: {
-		DisplayName: Life Alloy Arrow
-		Tooltip: ""
-	}
-
-	DivineGeodeArrow: {
-		DisplayName: Divine Geode Arrow
-		Tooltip: ""
-	}
-
-	EffulgentFeatherArrow: {
-		DisplayName: Effulgent Feather Arrow
-		Tooltip: ""
-	}
-
-	PolterplasmArrow: {
-		DisplayName: Polterplasm Arrow
-		Tooltip: ""
-	}
-
-	MiracleMatterArrow: {
-		DisplayName: Miracle Matter Arrow
-		Tooltip: ""
-	}
-
-	UNGun: {
-		DisplayName: U N Gun
-		Tooltip: ""
-	}
-
-	CryonicBullet: {
-		DisplayName: Cryonic Bullet
-		Tooltip: ""
-	}
-
-	MaoMaoChong: {
-		DisplayName: Mao Mao Chong
-		Tooltip: ""
-	}
-
-	TheEmpty: {
-		DisplayName: The Empty
-		Tooltip: ""
-	}
-
-	TimeLeaper: {
-		DisplayName: Time Leaper
-		Tooltip: ""
-	}
-}
-
-Projectiles: {
-	HurricaneArrow_Proje.DisplayName: Hurricane Bolt
-	AerialiteBullet_Proje.DisplayName: Aerialite Bullet
-	PrismArrow_Proje.DisplayName: Prism Arrow
-	TinkleshardBullet_Proje.DisplayName: Tinkleshard Bullet
-	TinkleshardBullet_Piece1.DisplayName: Piece of Tinkleshard Bullet #1
-	TinkleshardBullet_Piece2.DisplayName: Piece of Tinkleshard Bullet #2
-	TinkleshardBullet_Piece3.DisplayName: Piece of Tinkleshard Bullet #3
-	TinkleshardBullet_Piece4.DisplayName: Piece of Tinkleshard Bullet #4
-	WulfrimArrow_proje.DisplayName: Wulfrim Arrow
-	WulfrimBullet_Proje.DisplayName: Wulfrim Bullet
-	弹幕测试_Proje.DisplayName: 弹幕测试_ Proje
-	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
-	天蓝旋风.DisplayName: 天蓝旋风
-	PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
-	AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
-	AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
-	PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
-	PerennialArrowFlower.DisplayName: Perennial Arrow Flower
-	ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
-	ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
-	AstralArrowPROJ.DisplayName: Astral Arrow P R O J
-	AstralArrowSTAR.DisplayName: Astral Arrow S T A R
-	UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
-	UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
-	UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
-	AuricArrowBALL.DisplayName: Auric Arrow B A L L
-	AuricArrowPROJ.DisplayName: Auric Arrow P R O J
-	WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
-	PrismArrowPROJ.DisplayName: Prism Arrow P R O J
-	BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
-	PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
-	StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
-	CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
-	LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
-	DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
-	EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
-	PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
-	MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
-	LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
-	Melee.StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
-	UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
-	AstralArrowMOON.DisplayName: Astral Arrow M O O N
-	AstralArrowSUN.DisplayName: Astral Arrow S U N
-	EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
-	PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
-	CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
-	MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
-	TheEmptyPROJ.DisplayName: The Empty P R O J
-	TimeLeaperPROJ.DisplayName: Time Leaper P R O J
 }
 
 Buffs: {
-	WulfrimShock: {
-		DisplayName: Wulfrim Shock
-		Description: 每秒-2生命值
-	}
-
-	WulfrimHold: {
-		DisplayName: Wulfrim Hold
-		Description: 使敌怪静止不动
-	}
-
-	霁云凝胶_DeBuff: {
-		Description: Mods.FKsCRE.Buffs.霁云凝胶_DeBuff.Description
-		DisplayName: 霁云凝胶_ De Buff
-	}
-
-	寒元凝胶_Buff: {
-		DisplayName: 寒元凝胶_ Buff
-		Description: Mods.FKsCRE.Buffs.寒元凝胶_Buff.Description
-	}
-
-	寒元凝胶_DeBuff: {
-		DisplayName: 寒元凝胶_ De Buff
-		Description: Mods.FKsCRE.Buffs.寒元凝胶_DeBuff.Description
-	}
-
-	WulfrimGelBuff: {
-		DisplayName: Wulfrim Gel Buff
-		Description: Mods.FKsCRE.Buffs.WulfrimGelBuff.Description
+	AstralArrowPBuff: {
+		DisplayName: Astral Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.AstralArrowPBuff.Description
 	}
 
 	PerennialArrowEBuff: {
@@ -275,19 +26,359 @@ Buffs: {
 		Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
 	}
 
-	WulfrimArrowEBuff: {
-		DisplayName: Wulfrim Arrow E Buff
-		Description: Mods.FKsCRE.Buffs.WulfrimArrowEBuff.Description
+	AuricArrowPBuff: {
+		DisplayName: Auric Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.AuricArrowPBuff.Description
 	}
 
-	AstralArrowEBuff: {
-		DisplayName: Astral Arrow E Buff
-		Description: Mods.FKsCRE.Buffs.AstralArrowEBuff.Description
+	WulfrimHold: {
+		DisplayName: Wulfrim Hold
+		Description: Mods.FKsCRE.Buffs.WulfrimHold.Description
 	}
 
-	AstralArrowPBuff: {
-		DisplayName: Astral Arrow P Buff
-		Description: Mods.FKsCRE.Buffs.AstralArrowPBuff.Description
+	WulfrimShock: {
+		DisplayName: Wulfrim Shock
+		Description: Mods.FKsCRE.Buffs.WulfrimShock.Description
+	}
+
+	WulfrimGelBuff: {
+		DisplayName: Wulfrim Gel Buff
+		Description: Mods.FKsCRE.Buffs.WulfrimGelBuff.Description
+	}
+
+	寒元凝胶_Buff: {
+		DisplayName: 寒元凝胶_ Buff
+		Description: Mods.FKsCRE.Buffs.寒元凝胶_Buff.Description
+	}
+
+	寒元凝胶_DeBuff: {
+		DisplayName: 寒元凝胶_ De Buff
+		Description: Mods.FKsCRE.Buffs.寒元凝胶_DeBuff.Description
+	}
+
+	霁云凝胶_DeBuff: {
+		DisplayName: 霁云凝胶_ De Buff
+		Description: Mods.FKsCRE.Buffs.霁云凝胶_DeBuff.Description
+	}
+
+	PolterplasmArrowEDeBuff: {
+		DisplayName: Polterplasm Arrow E De Buff
+		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff.Description
+	}
+
+	PolterplasmArrowEDeBuff2: {
+		DisplayName: Polterplasm Arrow E De Buff2
+		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
+	}
+}
+
+Items: {
+	AerialiteBullet: {
+		DisplayName: Aerialite Bullet
+		Tooltip: ""
+	}
+
+	CryonicBullet: {
+		DisplayName: Cryonic Bullet
+		Tooltip: ""
+	}
+
+	TinkleshardBullet: {
+		DisplayName: Tinkleshard Bullet
+		Tooltip: ""
+	}
+
+	WulfrimBullet: {
+		DisplayName: Wulfrim Bullet
+		Tooltip: ""
+	}
+
+	弹幕测试: {
+		DisplayName: 弹幕测试
+		Tooltip: ""
+	}
+
+	AuricArrowNPCDrop: {
+		DisplayName: Auric Arrow N P C Drop
+		Tooltip: ""
+	}
+
+	HurricaneArrow: {
+		DisplayName: Hurricane Arrow
+		Tooltip: ""
+	}
+
+	PrismArrow: {
+		DisplayName: Prism Arrow
+		Tooltip: ""
+	}
+
+	WulfrimArrow: {
+		DisplayName: Wulfrim Arrow
+		Tooltip: ""
+	}
+
+	天蓝矢: {
+		DisplayName: 天蓝矢
+		Tooltip: ""
+	}
+
+	UNGun: {
+		DisplayName: U N Gun
+		Tooltip: ""
+	}
+
+	WulfrimGel: {
+		DisplayName: Wulfrim Gel
+		Tooltip: ""
+	}
+
+	寒元凝胶: {
+		DisplayName: 寒元凝胶
+		Tooltip: ""
+	}
+
+	霁云凝胶: {
+		DisplayName: 霁云凝胶
+		Tooltip: ""
+	}
+}
+
+Arrows: {
+	APreHardMode: {
+		AerialiteArrow: {
+			DisplayName: Aerialite Arrow
+			Tooltip: ""
+		}
+
+		BloodBeadsArrow: {
+			DisplayName: Blood Beads Arrow
+			Tooltip: ""
+		}
+
+		PurifiedGelArrow: {
+			DisplayName: Purified Gel Arrow
+			Tooltip: ""
+		}
+	}
+
+	BPrePlantera: {
+		StarblightSootArrow: {
+			DisplayName: Starblight Soot Arrow
+			Tooltip: ""
+		}
+	}
+
+	CPreMoodLord: {
+		AstralArrow: {
+			DisplayName: Astral Arrow
+			Tooltip: ""
+		}
+
+		CoreofCalamityArrow: {
+			DisplayName: Coreof Calamity Arrow
+			Tooltip: ""
+		}
+
+		LifeAlloyArrow: {
+			DisplayName: Life Alloy Arrow
+			Tooltip: ""
+		}
+
+		PerennialArrow: {
+			DisplayName: Perennial Arrow
+			Tooltip: ""
+		}
+
+		ScoriaArrow: {
+			DisplayName: Scoria Arrow
+			Tooltip: ""
+		}
+	}
+
+	DPreDog: {
+		DivineGeodeArrow: {
+			DisplayName: Divine Geode Arrow
+			Tooltip: ""
+		}
+
+		EffulgentFeatherArrow: {
+			DisplayName: Effulgent Feather Arrow
+			Tooltip: ""
+		}
+
+		PolterplasmArrow: {
+			DisplayName: Polterplasm Arrow
+			Tooltip: ""
+		}
+
+		UelibloomArrow: {
+			DisplayName: Uelibloom Arrow
+			Tooltip: ""
+		}
+	}
+
+	EAfterDog: {
+		AuricArrow: {
+			DisplayName: Auric Arrow
+			Tooltip: ""
+		}
+
+		MiracleMatterArrow: {
+			DisplayName: Miracle Matter Arrow
+			Tooltip: ""
+		}
+	}
+}
+
+DeveloperItems: {
+	MaoMaoChong: {
+		MaoMaoChong: {
+			DisplayName: Mao Mao Chong
+			Tooltip: ""
+		}
+
+		MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
+	}
+
+	SHPA: {
+		PlasmaDriveCorePrototypeArrow: {
+			DisplayName: Plasma Drive Core Prototype Arrow
+			Tooltip: ""
+		}
+
+		PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
+		PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
+	}
+
+	ShadowsArrow: {
+		ShadowsArrow: {
+			DisplayName: Shadows Arrow
+			Tooltip: ""
+		}
+
+		ShadowsArrowPROJ.DisplayName: Shadows Arrow P R O J
+	}
+
+	ShuangHuaArrow: {
+		ShuangHuaArrow: {
+			DisplayName: Shuang Hua Arrow
+			Tooltip: ""
+		}
+
+		ShuangHuaArrowPROJ.DisplayName: Shuang Hua Arrow P R O J
+		ShuangHuaArrowSPLIT.DisplayName: Shuang Hua Arrow S P L I T
+	}
+
+	TheDrill: {
+		TheDrill: {
+			DisplayName: The Drill
+			Tooltip: ""
+		}
+
+		TheDrillPROJ.DisplayName: The Drill P R O J
+	}
+
+	TimeLeaper: {
+		TimeLeaper: {
+			DisplayName: Time Leaper
+			Tooltip: ""
+		}
+
+		TimeLeaperPROJ.DisplayName: Time Leaper P R O J
+	}
+
+	AllTheBirds: {
+		AllTheBirds: {
+			DisplayName: All The Birds
+			Tooltip: ""
+		}
+
+		AllTheBirdsPROJ.DisplayName: All The Birds P R O J
+	}
+
+	GrapeShot: {
+		GrapeShot: {
+			DisplayName: Grape Shot
+			Tooltip: ""
+		}
+
+		GrapeShotPROJ.DisplayName: Grape Shot P R O J
+		GrapeShotPROJSPIT.DisplayName: Grape Shot P R O J S P I T
+	}
+
+	TheEmpty: {
+		TheEmpty: {
+			DisplayName: The Empty
+			Tooltip: ""
+		}
+
+		TheEmptyPROJ.DisplayName: The Empty P R O J
+	}
+}
+
+NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
+
+Projectiles: {
+	AerialiteBullet_Proje.DisplayName: Aerialite Bullet_ Proje
+	CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
+	TinkleshardBullet_Piece1.DisplayName: Tinkleshard Bullet_ Piece1
+	TinkleshardBullet_Piece2.DisplayName: Tinkleshard Bullet_ Piece2
+	TinkleshardBullet_Piece3.DisplayName: Tinkleshard Bullet_ Piece3
+	TinkleshardBullet_Piece4.DisplayName: Tinkleshard Bullet_ Piece4
+	TinkleshardBullet_Proje.DisplayName: Tinkleshard Bullet_ Proje
+	WulfrimBullet_Proje.DisplayName: Wulfrim Bullet_ Proje
+	弹幕测试_Proje.DisplayName: 弹幕测试_ Proje
+	HurricaneArrow_Proje.DisplayName: Hurricane Arrow_ Proje
+	PrismArrow_Proje.DisplayName: Prism Arrow_ Proje
+	PrismArrowPROJ.DisplayName: Prism Arrow P R O J
+	WulfrimArrow_proje.DisplayName: Wulfrim Arrow_proje
+	天蓝旋风.DisplayName: 天蓝旋风
+	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
+}
+
+Projectile: {
+	APreHardMode: {
+		AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
+		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
+		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
+		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
+	}
+
+	BPrePlantera: {
+		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
+		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+	}
+
+	CPreMoodLord: {
+		AstralArrowMOON.DisplayName: Astral Arrow M O O N
+		AstralArrowPROJ.DisplayName: Astral Arrow P R O J
+		AstralArrowSUN.DisplayName: Astral Arrow S U N
+		CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
+		LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
+		PerennialArrowFlower.DisplayName: Perennial Arrow Flower
+		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
+		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
+		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+	}
+
+	DPreDog: {
+		DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
+		EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
+		EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
+		PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
+		PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
+		UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
+		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
+		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
+		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
+	}
+
+	EAfterDog: {
+		AuricArrowBALL.DisplayName: Auric Arrow B A L L
+		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
+		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
+		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
 	}
 }
 
@@ -296,25 +387,13 @@ Configs: {
 		DisplayName: C R Es Configs
 
 		EnableSpecialEffects: {
-			Label: 开启全部特效
-			Tooltip: 用于开关弹药的所有特效
+			Label: Enable Special Effects
+			Tooltip: ""
 		}
 
 		EnableAmmoChecking: {
-			Tooltip: ""
 			Label: Enable Ammo Checking
+			Tooltip: ""
 		}
-	}
-}
-
-ModBuff: {
-	PolterplasmArrowEDeBuff: {
-		DisplayName: Polterplasm Arrow E De Buff
-		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff.Description
-	}
-
-	PolterplasmArrowEDeBuff2: {
-		DisplayName: Polterplasm Arrow E De Buff2
-		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
 	}
 }

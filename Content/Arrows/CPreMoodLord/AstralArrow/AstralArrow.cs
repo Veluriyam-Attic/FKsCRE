@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Materials;
+using CalamityMod.Projectiles.Pets;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -9,8 +11,9 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 {
-    public class AstralArrow : ModItem
+    public class AstralArrow : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Arrows.CPreMoodLord";
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -29,9 +32,8 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WoodenArrow, 100); // 配方示例
-            recipe.AddIngredient(ItemID.FallenStar, 1);
+            Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient<AstralBar>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

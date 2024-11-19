@@ -12,7 +12,7 @@ namespace CalamityThrowingSpear.Weapons.NewWeapons.BPrePlantera.TheLastLance
     public class PolterplasmArrowEDeBuff : ModBuff, ILocalizedModType
     {
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
-        public new string LocalizationCategory => "ModBuff";
+        public new string LocalizationCategory => "Buffs";
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = true; // 减益

@@ -21,8 +21,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
 {
-    public class StarblightSootArrowPROJ : ModProjectile
+    public class StarblightSootArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.BPrePlantera";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

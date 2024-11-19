@@ -16,8 +16,9 @@ using CalamityMod;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 {
-    public class AstralArrowMOON : ModProjectile
+    public class AstralArrowMOON : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.CPreMoodLord";
         private bool start = true;
 
         public override void SetStaticDefaults()
@@ -84,7 +85,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             double dist = 160; // 设置距离为 10 格方块 (160 像素)
             Projectile.position.X = player.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
             Projectile.position.Y = player.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
-            Projectile.ai[2] -= 2.5f; // 控制旋转速度，反方向旋转
+            Projectile.ai[2] -= 1.1f; // 控制旋转速度，反方向旋转
 
             // 动画帧更新
             Projectile.frameCounter++;

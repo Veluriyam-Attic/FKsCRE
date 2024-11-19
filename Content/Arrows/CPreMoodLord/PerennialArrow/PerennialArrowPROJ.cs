@@ -14,9 +14,9 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
 {
-    public class PerennialArrowPROJ : ModProjectile
+    public class PerennialArrowPROJ : ModProjectile, ILocalizedModType
     {
-
+        public new string LocalizationCategory => "Projectile.CPreMoodLord";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 6;
@@ -101,7 +101,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
             // 如果不存在 PerennialArrowFlower，则生成新的
             if (!hasExistingFlower)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<PerennialArrowFlower>(), (int)(damageDone * 1.0f), Projectile.knockBack, Projectile.owner, target.whoAmI);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<PerennialArrowFlower>(), (int)(damageDone * 0.15f), Projectile.knockBack, Projectile.owner, target.whoAmI);
             }
         }
 

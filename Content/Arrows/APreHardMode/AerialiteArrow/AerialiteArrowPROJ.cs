@@ -21,8 +21,9 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 {
-    public class AerialiteArrowPROJ : ModProjectile
+    public class AerialiteArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.APreHardMode";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;

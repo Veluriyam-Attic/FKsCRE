@@ -7,7 +7,7 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
 {
     public class StarblightSootArrowSpark : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Melee";
+        public new string LocalizationCategory => "Projectile.BPrePlantera";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public override void SetDefaults()

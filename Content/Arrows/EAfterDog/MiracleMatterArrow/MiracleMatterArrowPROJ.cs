@@ -24,8 +24,9 @@ using Terraria.Graphics.Shaders;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 {
-    public class MiracleMatterArrowPROJ : ModProjectile
+    public class MiracleMatterArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.EAfterDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -50,9 +51,21 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
         public override void AI()
         {
             // 调整旋转
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
+            Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
 
+            // 计算正前方三格（48个像素）的位置
+            Vector2 forwardPosition = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f;
 
+            // 检测该位置是否存在敌人
+            foreach (NPC npc in Main.npc)
+            {
+                if (npc.active && !npc.friendly && npc.CanBeChasedBy(this) && npc.Hitbox.Contains(forwardPosition.ToPoint()))
+                {
+                    // 如果正前方三格处有敌人，销毁自身
+                    Projectile.Kill();
+                    return; // 确保方法中止，避免执行后续代码
+                }
+            }
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
@@ -119,7 +132,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             {
                 // 获取纹理资源和位置
                 Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-                Texture2D textureGlow = ModContent.Request<Texture2D>("FKsCRE/Content/Arrows/EAfterDog/MiracleMatterArrow/MiracleMatterArrow").Value;
+                Texture2D textureGlow = ModContent.Request<Texture2D>("FKsCRE/Content/Arrows/EAfterDog/MiracleMatterArrow/MiracleMatterArrowPROJ").Value;
                 Vector2 origin = texture.Size() * 0.5f;
                 Vector2 drawPosition = Projectile.Center - Main.screenPosition;
 
@@ -137,14 +150,12 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                 Color chargeColor = Color.Lerp(Color.Lime, Color.Cyan, (float)Math.Cos(Main.GlobalTimeWrappedHourly * 7.1f) * 0.5f + 0.5f) * 0.6f;
                 chargeColor.A = 0; // 透明度
 
-                // 处理旋转方向，确保正确绘制朝向
-                float rotation = Projectile.rotation;
-                SpriteEffects direction = SpriteEffects.None;
-                if (Math.Cos(rotation) < 0f)
-                {
-                    direction = SpriteEffects.FlipHorizontally;
-                    rotation += MathHelper.Pi;
-                }
+                // 设置固定的旋转角度，使弹幕始终保持一个方向
+                Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
+                float rotation = Projectile.rotation; // 使用Projectile.rotation作为旋转值
+
+                // 去除原有的方向翻转逻辑
+                SpriteEffects direction = SpriteEffects.None; // 保持默认值，不进行水平翻转
 
                 // 绘制充能效果 - 圆周上绘制多个充能光效
                 for (int i = 0; i < 8; i++)
@@ -171,19 +182,40 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 
                 return false;
             }
-            return true;
+            else
+            {
+                return true;
+            }
         }
+
 
         public float PrimitiveWidthFunction(float completionRatio) => Projectile.scale * 30f;
 
         public Color PrimitiveColorFunction(float _) => Color.Lime * Projectile.Opacity;
 
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            base.OnHitNPC(target, hit, damageDone);
+        }
+
         public override void OnKill(int timeLeft)
         {
+            // 计算随机初始角度
+            float initialAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi); // 在 0 到 2π 之间随机选择一个角度
+            float angleIncrement = MathHelper.ToRadians(120f); // 每个角度之间的夹角为 120 度
+
+            // 计算并发射三个弹幕
+            for (int i = 0; i < 3; i++)
+            {
+                float currentAngle = initialAngle + i * angleIncrement; // 计算当前的角度
+                Vector2 newVelocity = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(currentAngle) * 10f; // 旋转基础速度并保持大小
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<MiracleMatterArrowFire>(), (int)(Projectile.damage * 1.0f), Projectile.knockBack, Projectile.owner);
+            }
+
             Vector2 armPosition = Projectile.Center;
             Vector2 tipPosition = armPosition + Projectile.velocity * Projectile.width * 0.45f;
 
-            // 特效在弹幕消失时可以添加额外效果
+            // 释放原有的菱形粒子效果
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 SoundEngine.PlaySound(SoundID.Item158 with { Volume = 1.6f }, Projectile.Center);
@@ -200,8 +232,36 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                     magic.color = CalamityUtils.MulticolorLerp(i / 75f, CalamityUtils.ExoPalette);
                     magic.noGravity = true;
                 }
+
+                // 新增：正前方和正后方半圆粒子效果
+                Vector2 frontCenter = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f; // 正前方三个方块处
+                Vector2 backCenter = Projectile.Center - Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f;  // 正后方三个方块处
+
+                int halfCircleParticles = 38; // 每个半圆生成的粒子数量
+                for (int i = 0; i < halfCircleParticles; i++)
+                {
+                    // 计算半圆角度范围 (-90 度到 90 度)
+                    float angle = MathHelper.Pi * (i / (float)halfCircleParticles) - MathHelper.PiOver2;
+
+                    // 生成正前方半圆的粒子
+                    Vector2 frontOffset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 16f; // 半径调整
+                    Dust frontMagic = Dust.NewDustPerfect(frontCenter + frontOffset, 267, Vector2.Zero);
+                    frontMagic.scale = 1.8f;
+                    frontMagic.fadeIn = 0.5f;
+                    frontMagic.color = CalamityUtils.MulticolorLerp(i / (float)halfCircleParticles, CalamityUtils.ExoPalette);
+                    frontMagic.noGravity = true;
+
+                    // 生成正后方半圆的粒子
+                    Vector2 backOffset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 16f;
+                    Dust backMagic = Dust.NewDustPerfect(backCenter + backOffset, 267, Vector2.Zero);
+                    backMagic.scale = 1.8f;
+                    backMagic.fadeIn = 0.5f;
+                    backMagic.color = CalamityUtils.MulticolorLerp(i / (float)halfCircleParticles, CalamityUtils.ExoPalette);
+                    backMagic.noGravity = true;
+                }
             }
         }
+
 
 
 

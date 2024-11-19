@@ -15,8 +15,9 @@ using CalamityMod.Items.Accessories;
 
 namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 {
-    internal class UelibloomArrowPROJ : ModProjectile
+    internal class UelibloomArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 4;
@@ -91,14 +92,8 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 
             // 生成 UelibloomArrowLeaf 弹幕
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, frontDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, leftDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, rightDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-
-
-
-
-
-
+            //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, leftDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, rightDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 
 
 
@@ -154,7 +149,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<UelibloomArrowEBuff>(), 300);  // 5 seconds
+            //target.AddBuff(ModContent.BuffType<UelibloomArrowEBuff>(), 300);  // 5 seconds
         }
     }
 }

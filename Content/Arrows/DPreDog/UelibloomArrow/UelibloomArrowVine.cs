@@ -13,8 +13,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 {
-    internal class UelibloomArrowVine : ModProjectile
+    internal class UelibloomArrowVine : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         public static int TotalSegments = 10;
 
         public override void SetDefaults()
@@ -26,7 +27,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = false;
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
-            Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
+            Projectile.localNPCHitCooldown = 50; // 无敌帧冷却时间为14帧
             Projectile.alpha = 255;
         }
 

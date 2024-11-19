@@ -25,8 +25,9 @@ using CalamityMod;
 
 namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 {
-    public class UelibloomArrowLight : ModProjectile
+    public class UelibloomArrowLight : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public static int MaxUpdate = 7; // 定义一个静态变量，表示弹幕每次更新的最大次数

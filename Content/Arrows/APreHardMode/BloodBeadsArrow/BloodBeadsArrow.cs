@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Materials;
+using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -9,8 +11,9 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
 {
-    public class BloodBeadsArrow : ModItem
+    public class BloodBeadsArrow : ModItem, ILocalizedModType
     {
+        public new string LocalizationCategory => "Arrows.APreHardMode";
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -29,9 +32,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.WoodenArrow, 100); // 配方示例
-            recipe.AddIngredient(ItemID.FallenStar, 1);
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient<BloodOrb>();
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

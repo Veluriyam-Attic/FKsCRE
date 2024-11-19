@@ -21,8 +21,9 @@ using CalamityMod.Particles;
 
 namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
 {
-    public class EffulgentFeatherArrowPROJ : ModProjectile
+    public class EffulgentFeatherArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.DPreDog";
         private float rotationSpeed = 0.05f; // 设置旋转速度
         private float rotationAngle = 0f;    // 初始化旋转角度
 

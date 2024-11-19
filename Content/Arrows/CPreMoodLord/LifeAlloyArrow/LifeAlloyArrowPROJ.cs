@@ -23,8 +23,9 @@ using FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
 {
-    public class LifeAlloyArrowPROJ : ModProjectile
+    public class LifeAlloyArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public new string LocalizationCategory => "Projectile.CPreMoodLord";
         private Color currentColor = Color.Black; // 初始化为黑色
         private float bendAngle = 0f;
         private bool growing = false;
@@ -221,8 +222,9 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
                     break;
             }
 
-            // 发射弹幕，初始速度为主弹幕速度的1.0倍，瞄准主弹幕击中敌人的位置
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, directionToTarget, selectedProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
+            // 发射弹幕，让新生成的弹幕速度是本体速度的x倍
+            Vector2 adjustedVelocity = directionToTarget * 50f;
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, adjustedVelocity, selectedProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
