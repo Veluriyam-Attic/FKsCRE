@@ -18,7 +18,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 44;
+            Item.damage = 1;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;
@@ -26,7 +26,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
             Item.value = Item.sellPrice(copper: 12);
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<MiracleMatterBulletPROJ>();
-            Item.shootSpeed = 10f;
+            Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Bullet;
         }
 

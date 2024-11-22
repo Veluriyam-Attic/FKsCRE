@@ -63,6 +63,21 @@ Buffs: {
 		// DisplayName: Astral Bullet E Buff
 		// Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 	}
+
+	PerennialBulletPBuff: {
+		// DisplayName: Perennial Bullet P Buff
+		// Description: Mods.FKsCRE.Buffs.PerennialBulletPBuff.Description
+	}
+
+	DivineGeodeBulletPBuff: {
+		// DisplayName: Divine Geode Bullet P Buff
+		// Description: Mods.FKsCRE.Buffs.DivineGeodeBulletPBuff.Description
+	}
+
+	StarblightSootBulletEBuff: {
+		// DisplayName: Starblight Soot Bullet E Buff
+		// Description: Mods.FKsCRE.Buffs.StarblightSootBulletEBuff.Description
+	}
 }
 
 Items: {
@@ -430,14 +445,69 @@ DeveloperItems: {
 			DisplayName: 霜华弹
 			Tooltip:
 				'''
-				击中后在外围释放分裂弹幕
-				造成冰河时代
+				击中后在外围释放分裂弹幕，造成冰河时代
+				命中水时将水冻结成冰块
 				“岩王帝君，这玩意儿比箭好用多了！”
 				'''
 		}
 
 		// UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
 		// UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
+	}
+
+	Pyroblast: {
+		Pyroblast: {
+			DisplayName: 炎爆
+			Tooltip:
+				'''
+				握在手中倾泻出独特的爆炸子弹
+				随着倾泻的时间增长，也会获得额外的攻击手段
+				如子弹追踪，额外激光，大范围爆炸等等
+				受到伤害时清空等级并给予惩罚
+				右键直接射出四发火箭弹
+				赤焰火箭弹造成小范围持续轰炸
+				烈焰火箭弹持续灼烧敌人，并造成最大生命值的伤害
+				离子火箭弹能够瘫痪敌人
+				聚变火箭弹造成超大范围的单次爆炸
+				手持该武器时点击武器技能按键能够释放终结技：主观缓时
+				主观缓时能让超大范围内的敌人以及敌方弹幕大幅减速
+				“烈焰于掌心涌动，随时间燃烧愈烈”
+				'''
+		}
+
+		// PyroblastPROJ.DisplayName: Pyroblast P R O J
+		// PyroblastAirburstGrenade.DisplayName: Pyroblast Airburst Grenade
+		// PyroblastExoFire.DisplayName: Pyroblast Exo Fire
+		// PyroblastGhostFire.DisplayName: Pyroblast Ghost Fire
+		// PyroblastPlanet.DisplayName: Pyroblast Planet
+		// PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
+		// CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
+	}
+
+	ExplodingRabbit: {
+		ExplodingRabbit: {
+			DisplayName: 自爆兔
+			Tooltip:
+				'''
+				我明白我的使命，听从你的呼唤
+				我甘愿奉献一切，义无反顾的前进
+				我愿用我的残躯照亮这个世界
+				'''
+		}
+	}
+
+	YuanZiDan: {
+		YuanZiDan: {
+			DisplayName: 原子弹
+			Tooltip:
+				'''
+				撞击后弹至周围敌人并提升自己50%的伤害
+				凝聚了微观原子学以及量子力学的力量
+				“不，不是你想的那种原子弹”
+				'''
+		}
+
+		// YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
 	}
 }
 
@@ -467,6 +537,9 @@ Projectiles: {
 	// MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
 	// UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
 	// UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
+	// Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+	// Ranged.DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+	// StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
 }
 
 Projectile: {
@@ -481,6 +554,8 @@ Projectile: {
 		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
 		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
 		// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
+		// CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
+		// StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
 	}
 
 	CPreMoodLord: {
@@ -510,6 +585,10 @@ Projectile: {
 		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
 		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
 		// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+		// UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
+		// DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+		// PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
+		// ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 	}
 
 	EAfterDog: {
@@ -553,9 +632,14 @@ Ammunition: {
 			DisplayName: 寒元弹
 			Tooltip:
 				'''
-				随便写点东西
-				(目前没做)
+				赋予敌人冰冷的标记并增加伤害
+				弹射出冰刺
 				'''
+		}
+
+		StarblightSootBullet: {
+			// DisplayName: Starblight Soot Bullet
+			// Tooltip: ""
 		}
 	}
 
@@ -574,8 +658,8 @@ Ammunition: {
 			DisplayName: 永恒弹
 			Tooltip:
 				'''
-				随便写点东西
-				(目前没做)
+				不断的命中能使玩家提升防御力上限为20点
+				使敌人中毒
 				'''
 		}
 
@@ -583,8 +667,17 @@ Ammunition: {
 			DisplayName: 熔渣弹
 			Tooltip:
 				'''
-				随便写点东西
-				(目前没做)
+				产生爆炸和火柱
+				命中后给予玩家可堆叠的加速度与伤害提升
+				'''
+		}
+
+		DivineGeodeBullet: {
+			DisplayName: 圣晶石子弹
+			Tooltip:
+				'''
+				降落陨星,产生爆炸
+				并给予额外飞行时长
 				'''
 		}
 	}
@@ -597,6 +690,11 @@ Ammunition: {
 				随便写点东西
 				(目前没做)
 				'''
+		}
+
+		PolterplasmBullet: {
+			// DisplayName: Polterplasm Bullet
+			// Tooltip: ""
 		}
 	}
 
@@ -614,8 +712,8 @@ Ammunition: {
 			DisplayName: 星流弹
 			Tooltip:
 				'''
-				随便写点东西
-				(目前没做)
+				它似乎有点自己的想法
+				为何不顺着它的意思来？
 				'''
 		}
 	}

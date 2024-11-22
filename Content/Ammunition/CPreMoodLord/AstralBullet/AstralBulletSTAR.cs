@@ -37,6 +37,8 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
             Projectile.timeLeft = 300;
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
             Projectile.MaxUpdates = 3;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 14;
         }
 
         public override void AI()
@@ -92,14 +94,12 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.DamageType != DamageClass.Ranged)
-                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 120);
+            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 120);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            if (Projectile.DamageType != DamageClass.Ranged)
-                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 120);
+            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 120);
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(200, 100, 250, Projectile.alpha);

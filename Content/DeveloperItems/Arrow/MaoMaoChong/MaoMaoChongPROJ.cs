@@ -121,7 +121,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.MaoMaoChong
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 10; // 允许x次伤害
+            Projectile.penetrate = 3; // 允许x次伤害
             Projectile.timeLeft = 600;
             Projectile.light = 0.5f;
             Projectile.ignoreWater = true;

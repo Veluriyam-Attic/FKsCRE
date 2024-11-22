@@ -87,23 +87,25 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 检查是否有至少一个 PerennialArrowFlower 存在于目标身上
-            bool hasExistingFlower = false;
-            foreach (Projectile proj in Main.projectile)
-            {
-                if (proj.active && proj.type == ModContent.ProjectileType<PerennialArrowFlower>() && proj.ai[0] == target.whoAmI)
-                {
-                    hasExistingFlower = true;
-                    break;
-                }
-            }
+            // 检查当前世界中是否已经存在至少一个 PerennialArrowFlower
+            bool hasExistingFlowerInWorld = Main.projectile.Any(proj => proj.active && proj.type == ModContent.ProjectileType<PerennialArrowFlower>());
 
-            // 如果不存在 PerennialArrowFlower，则生成新的
-            if (!hasExistingFlower)
+            // 如果当前世界中不存在 PerennialArrowFlower，则生成新的
+            if (!hasExistingFlowerInWorld)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<PerennialArrowFlower>(), (int)(damageDone * 0.15f), Projectile.knockBack, Projectile.owner, target.whoAmI);
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    target.Center,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<PerennialArrowFlower>(),
+                    (int)(damageDone * 0.15f),
+                    Projectile.knockBack,
+                    Projectile.owner,
+                    target.whoAmI
+                );
             }
         }
+
 
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

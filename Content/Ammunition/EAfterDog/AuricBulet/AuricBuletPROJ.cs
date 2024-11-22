@@ -36,7 +36,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 600;
             Projectile.MaxUpdates = 7;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
@@ -52,23 +52,24 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             Lighting.AddLight(Projectile.Center, Color.Lerp(Color.Blue, Color.AliceBlue, 0.5f).ToVector3() * 0.49f);
 
             // 子弹在出现之后很短一段时间会变得可见
-            if (Projectile.timeLeft == 296)
+            if (Projectile.timeLeft == 595)
                 Projectile.alpha = 0;
 
 
-
-            // 定期生成金色的线性粒子特效
-            float positionVariation = 5f; // 位置偏移范围，可根据需求调整
-            LineParticle spark = new LineParticle(
-                Projectile.Center + Main.rand.NextVector2Circular(positionVariation, positionVariation),
-                -Projectile.velocity * Main.rand.NextFloat(0.3f, 1.1f),
-                false,
-                4,
-                1.45f,
-                Main.rand.NextBool() ? (Projectile.timeLeft < 570 ? Color.Goldenrod : Color.OrangeRed) : (Projectile.timeLeft > 590 ? Color.Red : Color.DarkGoldenrod)
-            );
-            GeneralParticleHandler.SpawnParticle(spark);
-
+            // 只有在 timeLeft <= 590 时生成金色粒子
+            if (Projectile.timeLeft <= 595)
+            {
+                float positionVariation = 5f; // 位置偏移范围，可根据需求调整
+                LineParticle spark = new LineParticle(
+                    Projectile.Center + Main.rand.NextVector2Circular(positionVariation, positionVariation),
+                    -Projectile.velocity * Main.rand.NextFloat(0.3f, 1.1f),
+                    false,
+                    4,
+                    1.45f,
+                    Main.rand.NextBool() ? (Projectile.timeLeft < 570 ? Color.Goldenrod : Color.OrangeRed) : (Projectile.timeLeft > 590 ? Color.Red : Color.DarkGoldenrod)
+                );
+                GeneralParticleHandler.SpawnParticle(spark);
+            }
 
         }
 
@@ -153,7 +154,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
                 // 访问生成的投射物，并设置其公转半径
                 if (Main.projectile[proj].ModProjectile is AuricBuletBALL auricBall)
                 {
-                    auricBall.GetType().GetField("X").SetValue(auricBall, radius); // 设置AuricBuletBALL的公转半径X
+                    //auricBall.GetType().GetField("X").SetValue(auricBall, radius); // 设置AuricBuletBALL的公转半径X
                 }
             }
 

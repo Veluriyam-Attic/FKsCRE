@@ -1,4 +1,4 @@
-﻿using CalamityMod.Projectiles.Magic;
+﻿using FKsCRE.Content.DeveloperItems.Weapon.Pyroblast;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -84,7 +84,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TestWeapon
                     if (type == ProjectileID.WoodenArrowFriendly) // 检查是否为木箭
                     {
                         // 转换为 LazharSolarBeam
-                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), offsetPosition, velocity, ModContent.ProjectileType<LazharSolarBeam>(), damage, knockback, player.whoAmI);
+                        Projectile.NewProjectile(player.GetSource_ItemUse(Item), offsetPosition, velocity, ModContent.ProjectileType<PyroblastSolarBeam>(), damage, knockback, player.whoAmI);
                     }
                     else
                     {

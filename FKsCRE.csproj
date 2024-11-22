@@ -8,16 +8,28 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\CryonicBulletFragment.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\寒元弹.txt" />
+	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBullet.png" />
+	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBulletEBuff.png" />
+	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\寒元子弹.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\寒元弹弹幕.png" />
 	  <None Remove="Content\Ammunition\CPreMoodLord\AstralBullet\炫星弹.txt" />
+	  <None Remove="Content\Ammunition\CPreMoodLord\PerennialBullet\PerennialBulletPBuff.png" />
 	  <None Remove="Content\Ammunition\CPreMoodLord\PerennialBullet\PerennialBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\CPreMoodLord\PerennialBullet\永恒弹.txt" />
+	  <None Remove="Content\Ammunition\CPreMoodLord\ScoriaBullet\ScoriaBulletFlameburst.png" />
 	  <None Remove="Content\Ammunition\CPreMoodLord\ScoriaBullet\熔渣弹.txt" />
+	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBullet.png" />
+	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBulletPROJ.png" />
+	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\神圣之矛弹幕.png" />
+	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\PolterplasmBullet.png" />
+	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\PolterplasmBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\DPreDog\UelibloomBullet\龙蒿弹.txt" />
 	  <None Remove="Content\Ammunition\EAfterDog\AuricBulet\AuricBuletBALL.png" />
 	  <None Remove="Content\Ammunition\EAfterDog\AuricBulet\金源弹.txt" />
+	  <None Remove="Content\Ammunition\EAfterDog\MiracleMatterBullet\AstralBulletEBuff.png" />
 	  <None Remove="Content\Ammunition\EAfterDog\MiracleMatterBullet\星流弹.txt" />
 	  <None Remove="Content\Ammunition\弹幕测试.png" />
 	  <None Remove="Content\Ammunition\弹幕测试_Proje.png" />
@@ -47,6 +59,7 @@
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\纯净凝胶箭.txt" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPC.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPCDrop.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShadowsArrow\闪光金羽弃用贴图.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirds.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirdsPROJ.png" />
@@ -111,6 +124,10 @@
 	  <None Remove="Content\DeveloperItems\Bullet\TheEmpty\TheEmpty.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TimeLeaper\TimeLeaperPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\UltraLowTemp\UltraLowTempSPIT.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDan.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDanPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastHoldOut.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastPROJ.png" />
 	  <None Remove="Content\DeveloperItems\炎爆.png" />
 	  <None Remove="Content\Weapon\45646.png" />
 	  <None Remove="Content\Weapon\UNGun.png" />

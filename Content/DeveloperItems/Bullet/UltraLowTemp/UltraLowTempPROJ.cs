@@ -28,14 +28,19 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
-        }   
+        }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
-            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, baseColor with { A = 0 }, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-            return false;
+            // 判断 timeLeft 是否小于或等于 x
+            if (Projectile.timeLeft <= 200)
+            {
+                Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, baseColor with { A = 0 }, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+            }
+            return false; // 禁止默认绘制行为
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -76,6 +81,29 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
                 {
                     Particle iceParticle = new LineParticle(Projectile.Center - Projectile.velocity * 3, -Projectile.velocity * 0.05f, false, 5, 2f, Color.Cyan * 0.65f);
                     GeneralParticleHandler.SpawnParticle(iceParticle);
+                }
+            }
+
+
+            // 检测水并替换为冰块
+            {
+                int tileX = (int)(Projectile.position.X / 16f);
+                int tileY = (int)(Projectile.position.Y / 16f);
+                // 检查是否在地图有效范围内
+                if (tileX >= 0 && tileX < Main.maxTilesX && tileY >= 0 && tileY < Main.maxTilesY)
+                {
+                    Tile tile = Framing.GetTileSafely(tileX, tileY); // 获取当前的 Tile
+
+                    // 检测是否是水并且有液体
+                    if (tile.LiquidType == LiquidID.Water && tile.LiquidAmount > 0)
+                    {
+                        // 将水替换为冰块
+                        WorldGen.PlaceTile(tileX, tileY, TileID.IceBlock, true, true);
+                        NetMessage.SendTileSquare(-1, tileX, tileY, 1); // 同步地图更新
+
+                        // 销毁弹幕
+                        Projectile.Kill();
+                    }
                 }
             }
 

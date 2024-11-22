@@ -63,6 +63,21 @@ Buffs: {
 		DisplayName: Astral Bullet E Buff
 		Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 	}
+
+	PerennialBulletPBuff: {
+		DisplayName: Perennial Bullet P Buff
+		Description: Mods.FKsCRE.Buffs.PerennialBulletPBuff.Description
+	}
+
+	DivineGeodeBulletPBuff: {
+		DisplayName: Divine Geode Bullet P Buff
+		Description: Mods.FKsCRE.Buffs.DivineGeodeBulletPBuff.Description
+	}
+
+	StarblightSootBulletEBuff: {
+		DisplayName: Starblight Soot Bullet E Buff
+		Description: Mods.FKsCRE.Buffs.StarblightSootBulletEBuff.Description
+	}
 }
 
 Items: {
@@ -318,6 +333,37 @@ DeveloperItems: {
 		UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
 		UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
 	}
+
+	Pyroblast: {
+		Pyroblast: {
+			DisplayName: Pyroblast
+			Tooltip: ""
+		}
+
+		PyroblastPROJ.DisplayName: Pyroblast P R O J
+		PyroblastAirburstGrenade.DisplayName: Pyroblast Airburst Grenade
+		PyroblastExoFire.DisplayName: Pyroblast Exo Fire
+		PyroblastGhostFire.DisplayName: Pyroblast Ghost Fire
+		PyroblastPlanet.DisplayName: Pyroblast Planet
+		PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
+		CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
+	}
+
+	ExplodingRabbit: {
+		ExplodingRabbit: {
+			DisplayName: Exploding Rabbit
+			Tooltip: ""
+		}
+	}
+
+	YuanZiDan: {
+		YuanZiDan: {
+			DisplayName: Yuan Zi Dan
+			Tooltip: ""
+		}
+
+		YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -346,6 +392,9 @@ Projectiles: {
 	MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
 	UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
 	UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
+	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+	Ranged.DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
 }
 
 Projectile: {
@@ -360,6 +409,8 @@ Projectile: {
 		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
 		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
 		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
+		CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
+		StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
 	}
 
 	CPreMoodLord: {
@@ -389,6 +440,10 @@ Projectile: {
 		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
 		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
 		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+		UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
+		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
+		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 	}
 
 	EAfterDog: {
@@ -424,6 +479,11 @@ Ammunition: {
 			DisplayName: Cryonic Bullet
 			Tooltip: ""
 		}
+
+		StarblightSootBullet: {
+			DisplayName: Starblight Soot Bullet
+			Tooltip: ""
+		}
 	}
 
 	CPreMoodLord: {
@@ -441,11 +501,21 @@ Ammunition: {
 			DisplayName: Scoria Bullet
 			Tooltip: ""
 		}
+
+		DivineGeodeBullet: {
+			DisplayName: Divine Geode Bullet
+			Tooltip: ""
+		}
 	}
 
 	DPreDog: {
 		UelibloomBullet: {
 			DisplayName: Uelibloom Bullet
+			Tooltip: ""
+		}
+
+		PolterplasmBullet: {
+			DisplayName: Polterplasm Bullet
 			Tooltip: ""
 		}
 	}
