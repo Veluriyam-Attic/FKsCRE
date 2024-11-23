@@ -114,6 +114,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.extraUpdates = 1; // 增加更新次数
+            Projectile.arrow = true;
         }
 
         public override void AI()

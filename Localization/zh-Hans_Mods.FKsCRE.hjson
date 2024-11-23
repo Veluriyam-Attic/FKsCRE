@@ -78,6 +78,21 @@ Buffs: {
 		// DisplayName: Starblight Soot Bullet E Buff
 		// Description: Mods.FKsCRE.Buffs.StarblightSootBulletEBuff.Description
 	}
+
+	DestructionBulletDestruction: {
+		// DisplayName: Destruction Bullet Destruction
+		// Description: Mods.FKsCRE.Buffs.DestructionBulletDestruction.Description
+	}
+
+	DestructionBulletPoisonIvy: {
+		// DisplayName: Destruction Bullet Poison Ivy
+		// Description: Mods.FKsCRE.Buffs.DestructionBulletPoisonIvy.Description
+	}
+
+	PolterplasmBulletFlowerPBuff: {
+		// DisplayName: Polterplasm Bullet Flower P Buff
+		// Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
+	}
 }
 
 Items: {
@@ -149,6 +164,11 @@ Items: {
 	霁云凝胶: {
 		DisplayName: 霁云凝胶
 		Tooltip: ""
+	}
+
+	TestDASH: {
+		// DisplayName: Test D A S H
+		// Tooltip: ""
 	}
 }
 
@@ -509,6 +529,54 @@ DeveloperItems: {
 
 		// YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
 	}
+
+	DestructionBullet: {
+		DestructionBullet: {
+			DisplayName: 灭世灵液弹
+			Tooltip:
+				'''
+				释放积攒已久的仇恨与爆炸
+				对敌人释放破晓，带电，灵液，翼龙怒火
+				诅咒狱火，迈达斯，酸性毒液
+				元素紊乱，死亡标记，常春藤毒素，灭世
+				灭世能够降低敌人30%的接触伤害
+				常春藤毒素能够使敌人快速流失生命值
+				“有些事情他们早已忘记，那么现在是时候帮他们恢复一下记忆了”
+				'''
+		}
+
+		// DestructionBulletEXP.DisplayName: Destruction Bullet E X P
+		// DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
+	}
+
+	Terratoarrow: {
+		Terratoarrow: {
+			DisplayName: 泰拉巨箭
+			Tooltip:
+				'''
+				快速飞行并分裂成多支强力追踪的分裂箭
+				直接命中敌人造成2.5倍伤害
+				“远古传奇”
+				'''
+		}
+
+		// TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
+		// TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
+		// TerratoarrowSlash.DisplayName: Terratoarrow Slash
+	}
+
+	SuperCriticalBullet: {
+		SuperCriticalBullet: {
+			DisplayName: 超暴击弹
+			Tooltip:
+				'''
+				无限穿透，基础暴击率极高
+				如果你足够幸运，那么能够触发那万里挑一的效果
+				'''
+		}
+
+		// SuperCriticalBulletPROJ.DisplayName: Super Critical Bullet P R O J
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -589,6 +657,7 @@ Projectile: {
 		// DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
 		// PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
 		// ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
+		// PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
 	}
 
 	EAfterDog: {
@@ -687,14 +756,20 @@ Ammunition: {
 			DisplayName: 龙蒿弹
 			Tooltip:
 				'''
-				随便写点东西
-				(目前没做)
+				爆发出强大并且具有追踪性的生命之光
+				“他简直是生命体”
 				'''
 		}
 
 		PolterplasmBullet: {
-			// DisplayName: Polterplasm Bullet
-			// Tooltip: ""
+			DisplayName: 花灵弹
+			Tooltip:
+				'''
+				命中后释放多个弧线飞行并强力追踪的花灵
+				花灵再次命中敌人后给予玩家末路狂花效果
+				存在期间，玩家可以进行强力冲刺
+				“你说当天你夜闯秋名山看见的就是这家伙？”
+				'''
 		}
 	}
 

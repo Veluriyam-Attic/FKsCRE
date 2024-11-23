@@ -41,6 +41,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
             Projectile.Opacity = 1f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
+            Projectile.arrow = true;
 
             //// 确保初始速度被设置正确
             //if (Projectile.velocity == Vector2.Zero)
@@ -108,7 +109,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
         public override void OnKill(int timeLeft)
         {
             // 在弹幕消失时，释放SHPExplosion
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PlasmaDriveCorePrototypeArrowEXP>(), (int)((Projectile.damage) * 0.25), Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PlasmaDriveCorePrototypeArrowEXP>(), (int)((Projectile.damage) * 1.0), Projectile.knockBack, Projectile.owner);
         }
 
         public override bool PreDraw(ref Color lightColor)

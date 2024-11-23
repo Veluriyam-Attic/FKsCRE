@@ -10,7 +10,7 @@ using Terraria;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
 {
-    internal class PolterplasmBullet : ModItem, ILocalizedModType
+    public class PolterplasmBullet : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Ammunition.DPreDog";
 

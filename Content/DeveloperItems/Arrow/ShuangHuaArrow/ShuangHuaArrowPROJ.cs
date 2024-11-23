@@ -48,8 +48,8 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
-            Projectile.extraUpdates = 1;
-            Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
+            Projectile.extraUpdates = 3;
+            //Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
         }
 
 
@@ -90,7 +90,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
                 Vector2 baseDirection = Vector2.UnitY; // 绝对正下方方向
                 for (int i = -2; i <= 2; i++) // 5 个方向
                 {
-                    float offsetAngle = MathHelper.ToRadians(i * 5); // 每个方向的偏移角度（-10度到10度）
+                    float offsetAngle = MathHelper.ToRadians(i * 3); // 每个方向的偏移角度（i*x，x就是每两个之间的夹角）
                     Vector2 direction = baseDirection.RotatedBy(offsetAngle); // 相对绝对正下方生成新的方向
                     direction *= 8f; // 设定飞行速度
 

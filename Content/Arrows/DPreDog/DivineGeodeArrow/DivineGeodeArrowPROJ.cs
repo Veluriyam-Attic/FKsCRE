@@ -121,8 +121,17 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
                     dust.color = Color.LightYellow;
                     dust.noGravity = true;
                 }
+
+                // 消亡时释放明黄色爆炸特效
+                Particle blastRing = new CustomPulse(
+                    Projectile.Center, Vector2.Zero, Color.Yellow,
+                    "CalamityMod/Particles/FlameExplosion",
+                    Vector2.One * 0.33f, Main.rand.NextFloat(-10f, 10f),
+                    0.07f, 0.33f, 30
+                );
+                GeneralParticleHandler.SpawnParticle(blastRing);
             }
-              
+
         }
 
 

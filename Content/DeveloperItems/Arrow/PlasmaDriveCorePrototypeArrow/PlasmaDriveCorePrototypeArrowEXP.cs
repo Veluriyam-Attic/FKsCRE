@@ -24,7 +24,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 60;
+            Projectile.timeLeft = 120;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;
         }

@@ -41,7 +41,6 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
         public override void SetDefaults() // 设置弹幕的默认值
         {
             Projectile.width = Projectile.height = 24;
-            Projectile.arrow = true;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = false;
@@ -50,7 +49,8 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
             Projectile.MaxUpdates = MaxUpdate;
             Projectile.penetrate = 201;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 2;
+            Projectile.localNPCHitCooldown = Main.getGoodWorld ? 1 : 15;
+            Projectile.arrow = Main.getGoodWorld;
         }
 
         private bool collidedWithNPC = false; // 是否与敌人发生过碰撞

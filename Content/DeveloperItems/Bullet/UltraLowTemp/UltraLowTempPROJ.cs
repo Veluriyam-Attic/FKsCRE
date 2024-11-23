@@ -127,12 +127,50 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             SoundEngine.PlaySound(SoundID.Item50, Projectile.position);
             Vector2 center = Projectile.Center;
             float radius = 25 * 16; // 半径25格
-            for (int i = 0; i < 2; i++)
+
+            // 初始数量为2
+            int extraProjectileCount = 2;
+
+            // 检测玩家所在环境
+            Player owner = Main.player[Projectile.owner];
+
+            // 如果玩家在雪地
+            if (owner.ZoneSnow)
+            {
+                extraProjectileCount += 1; // 增加1
+            }
+
+            // 如果是夜晚
+            if (!Main.dayTime)
+            {
+                extraProjectileCount += 1; // 再增加1
+            }
+
+            // 如果启用了 getGoodWorld
+            if (Main.getGoodWorld)
+            {
+                extraProjectileCount *= 4; // 数量翻x倍
+            }
+
+            // 生成额外弹幕
+            for (int i = 0; i < extraProjectileCount; i++)
             {
                 Vector2 spawnPos = center + Main.rand.NextVector2Circular(radius, radius); // 随机选择圆周上的位置
                 Vector2 direction = (Projectile.Center - spawnPos).SafeNormalize(Vector2.Zero);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, direction * 10f, ModContent.ProjectileType<UltraLowTempSPIT>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    spawnPos,
+                    direction * 10f,
+                    ModContent.ProjectileType<UltraLowTempSPIT>(),
+                    (int)(Projectile.damage * 0.6f),
+                    Projectile.knockBack,
+                    Main.myPlayer
+                );
             }
         }
+
+
+
+
     }
 }

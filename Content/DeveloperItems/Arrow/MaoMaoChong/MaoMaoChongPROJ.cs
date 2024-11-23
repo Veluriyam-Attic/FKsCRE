@@ -130,7 +130,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.MaoMaoChong
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
             Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
-
+            Projectile.arrow = true;
         }
 
         public override void AI()

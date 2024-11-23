@@ -15,7 +15,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
         public new string LocalizationCategory => "DeveloperItems.SHPA";
         public override void SetDefaults()
         {
-            Item.damage = 1;
+            Item.damage = 20;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

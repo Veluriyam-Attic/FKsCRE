@@ -48,6 +48,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TimeLeaper
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
             Projectile.extraUpdates = 1;
+            Projectile.arrow = true;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

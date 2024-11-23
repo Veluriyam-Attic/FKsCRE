@@ -38,6 +38,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             Projectile.extraUpdates = 2;  // 更多帧更新
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
+            Projectile.arrow = true;
         }
 
         public override void AI()

@@ -22,7 +22,6 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
         {
             hasAstralBulletBuff = false;
         }
-
         public override void AI(NPC npc)
         {
             if (hasAstralBulletBuff)
@@ -30,15 +29,19 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
                 // 粒子生成逻辑：每帧生成6个粒子
                 GenerateParticles(npc);
 
-                // 彗星生成逻辑保持不变
+                // 彗星生成逻辑
                 cometTimer++;
-                if (cometTimer >= 5) // 每 x 帧生成一个彗星
+
+                int cometSpawnRate = Main.getGoodWorld ? 1 : 5; // 根据模式设置生成间隔
+
+                if (cometTimer >= cometSpawnRate)
                 {
                     cometTimer = 0;
                     SummonComet(npc);
                 }
             }
         }
+
 
         private void GenerateParticles(NPC npc)
         {

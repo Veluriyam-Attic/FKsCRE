@@ -28,7 +28,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<ShuangHuaArrowPROJ>();
-            Item.shootSpeed = 15f;
+            Item.shootSpeed = 12f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 

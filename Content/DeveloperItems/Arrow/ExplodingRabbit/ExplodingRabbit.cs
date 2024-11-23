@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items.Materials;
 
 namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
 {
@@ -34,9 +36,17 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             Recipe recipe = CreateRecipe(99);
             recipe.AddIngredient(ItemID.Bunny, 1);
             recipe.AddIngredient(ItemID.Dynamite, 999);
-            //recipe.AddCondition(Condition.DownedMoonLord);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient<CosmiliteBar>(1);
+            recipe.AddCondition(Condition.NotForTheWorthy);
+            recipe.AddTile<CosmicAnvil>();
             recipe.Register();
+
+            Recipe recipe2 = CreateRecipe(999);
+            recipe2.AddIngredient(ItemID.Bunny, 1);
+            recipe2.AddIngredient(ItemID.Dynamite, 999);
+            recipe2.AddCondition(Condition.ForTheWorthyWorld);
+            recipe.AddTile(TileID.Anvils);
+            recipe2.Register();
         }
 
     }

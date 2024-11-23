@@ -45,6 +45,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
+            Projectile.arrow = true;
         }
 
 

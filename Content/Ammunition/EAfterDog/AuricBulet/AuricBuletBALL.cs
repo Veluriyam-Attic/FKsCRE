@@ -24,12 +24,12 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             Projectile.height = 10;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 2;  // 穿透次数
+            Projectile.penetrate = 3;  // 穿透次数
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            Projectile.timeLeft = 420;  // 存活时间
+            Projectile.timeLeft = 600;  // 存活时间
             Projectile.alpha = 80;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
         }

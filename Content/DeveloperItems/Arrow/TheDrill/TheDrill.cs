@@ -16,7 +16,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
         public new string LocalizationCategory => "DeveloperItems.TheDrill";
         public override void SetDefaults()
         {
-            Item.damage = 150;
+            Item.damage = Main.getGoodWorld ? 15000 : 150; // 根据模式设置伤害
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

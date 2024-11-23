@@ -38,8 +38,8 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
             Projectile.height = 14;
             Projectile.friendly = true;
             Projectile.hostile = false;
-            Projectile.DamageType = DamageClass.Melee;
-            Projectile.penetrate = 1;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.penetrate = Main.getGoodWorld ? -1 : 1; // 根据模式设置穿透次数
             Projectile.timeLeft = 600;
             Projectile.light = 0.5f;
             Projectile.ignoreWater = true;
@@ -80,15 +80,18 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
                 }
             }
 
-
-            // 追踪逻辑，前15帧不追踪
-            if (Projectile.ai[1] > 15)
+            // 追踪逻辑
+            if (Main.getGoodWorld || Projectile.ai[1] > 15)
             {
-                NPC target = Projectile.Center.ClosestNPCAt(1800);
+                // 根据模式决定追踪范围和速度
+                float trackingRange = Main.getGoodWorld ? 3800f : 1800f;
+                float trackingSpeed = Main.getGoodWorld ? 15f : 12f;
+
+                NPC target = Projectile.Center.ClosestNPCAt(trackingRange);
                 if (target != null)
                 {
                     Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 12f, 0.08f);
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * trackingSpeed, 0.08f);
                 }
             }
             else

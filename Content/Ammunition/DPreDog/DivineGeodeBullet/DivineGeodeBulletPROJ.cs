@@ -27,7 +27,6 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
             Projectile.height = 10;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.arrow = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
             //Projectile.aiStyle = ProjAIStyleID.Arrow;

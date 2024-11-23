@@ -154,8 +154,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
                 );
                 GeneralParticleHandler.SpawnParticle(pulse);
 
-                // 提升50%的伤害
-                Projectile.damage = (int)(Projectile.damage * 1.5f);
+                // 提升x%的伤害
+                Projectile.damage = Main.getGoodWorld
+                    ? (int)(Projectile.damage * 3.0f) // getGoodWorld 启用时，伤害乘以 X
+                    : (int)(Projectile.damage * 1.2f); // 否则，伤害乘以 1.2
             }
         }
 

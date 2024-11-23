@@ -78,6 +78,21 @@ Buffs: {
 		DisplayName: Starblight Soot Bullet E Buff
 		Description: Mods.FKsCRE.Buffs.StarblightSootBulletEBuff.Description
 	}
+
+	DestructionBulletDestruction: {
+		DisplayName: Destruction Bullet Destruction
+		Description: Mods.FKsCRE.Buffs.DestructionBulletDestruction.Description
+	}
+
+	DestructionBulletPoisonIvy: {
+		DisplayName: Destruction Bullet Poison Ivy
+		Description: Mods.FKsCRE.Buffs.DestructionBulletPoisonIvy.Description
+	}
+
+	PolterplasmBulletFlowerPBuff: {
+		DisplayName: Polterplasm Bullet Flower P Buff
+		Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
+	}
 }
 
 Items: {
@@ -148,6 +163,11 @@ Items: {
 
 	霁云凝胶: {
 		DisplayName: 霁云凝胶
+		Tooltip: ""
+	}
+
+	TestDASH: {
+		DisplayName: Test D A S H
 		Tooltip: ""
 	}
 }
@@ -364,6 +384,36 @@ DeveloperItems: {
 
 		YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
 	}
+
+	DestructionBullet: {
+		DestructionBullet: {
+			DisplayName: Destruction Bullet
+			Tooltip: ""
+		}
+
+		DestructionBulletEXP.DisplayName: Destruction Bullet E X P
+		DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
+	}
+
+	Terratoarrow: {
+		Terratoarrow: {
+			DisplayName: Terratoarrow
+			Tooltip: ""
+		}
+
+		TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
+		TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
+		TerratoarrowSlash.DisplayName: Terratoarrow Slash
+	}
+
+	SuperCriticalBullet: {
+		SuperCriticalBullet: {
+			DisplayName: Super Critical Bullet
+			Tooltip: ""
+		}
+
+		SuperCriticalBulletPROJ.DisplayName: Super Critical Bullet P R O J
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -444,6 +494,7 @@ Projectile: {
 		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
 		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
 		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
+		PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
 	}
 
 	EAfterDog: {

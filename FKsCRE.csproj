@@ -25,7 +25,10 @@
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\神圣之矛弹幕.png" />
 	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\PolterplasmBullet.png" />
+	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\PolterplasmBulletFlower.png" />
+	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\PolterplasmBulletFlowerPBuff.png" />
 	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\PolterplasmBulletPROJ.png" />
+	  <None Remove="Content\Ammunition\DPreDog\PolterplasmBullet\TestDASH.png" />
 	  <None Remove="Content\Ammunition\DPreDog\UelibloomBullet\龙蒿弹.txt" />
 	  <None Remove="Content\Ammunition\EAfterDog\AuricBulet\AuricBuletBALL.png" />
 	  <None Remove="Content\Ammunition\EAfterDog\AuricBulet\金源弹.txt" />
@@ -61,6 +64,7 @@
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPCDrop.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShadowsArrow\闪光金羽弃用贴图.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\Terratoarrow\春芽箭 (1).png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirds.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirdsPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\MaoMaoChong\MeowCreature.png" />
@@ -119,8 +123,14 @@
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢_Proje.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShuangHuaArrow\ShuangHuaArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TheDrill\TheDrill.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBullet.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletDestruction.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletPoisonIvy.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShot.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShotPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\SuperCriticalBullet\SuperCriticalBullet.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\SuperCriticalBullet\SuperCriticalBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\TheEmpty\TheEmpty.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TimeLeaper\TimeLeaperPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\UltraLowTemp\UltraLowTempSPIT.png" />
