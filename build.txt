@@ -1,4 +1,4 @@
-displayName = YuBell's Calamity Ammunition Expansion
+displayName = YuBell's Calamity Community Expansion
 author = Henceforth
 version = 0.2.0.16
 modReferences = CalamityMod
