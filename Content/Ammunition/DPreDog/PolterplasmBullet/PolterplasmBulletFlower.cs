@@ -63,7 +63,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
             Projectile.localNPCHitCooldown = 14;
             Projectile.penetrate = 200;
             Projectile.extraUpdates = 2;
-            Projectile.timeLeft = 60000;
+            Projectile.timeLeft = 600;
         }
 
         public override void AI()
@@ -125,10 +125,10 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
         public override void OnKill(int timeLeft)
         {
             // 在弹幕死亡位置释放轻型烟雾
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 // 生成360度随机方向的速度
-                Vector2 dustVelocity = Main.rand.NextVector2Circular(6f, 6f);
+                Vector2 dustVelocity = Main.rand.NextVector2Circular(4f, 4f);
                 // 设置颜色为x色
                 Color smokeColor = Color.AliceBlue;
 

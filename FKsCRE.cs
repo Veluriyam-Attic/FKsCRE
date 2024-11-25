@@ -1,4 +1,5 @@
 using FKsCRE.Content.Arrows.WulfrimArrow;
+using FKsCRE.Content.Gel.ZBag;
 using FKsCRE.Content.凝胶;
 using FKsCRE.Content.凝胶.霁云凝胶;
 using Microsoft.Xna.Framework;
@@ -12,9 +13,55 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Testing;
+using Terraria.UI;
 
 namespace FKsCRE
 {
+    public class ZBagSystem : ModSystem
+    {
+        private UserInterface zBagInterface;
+
+        public override void Load()
+        {
+            if (!Main.dedServ)
+            {
+                zBagInterface = new UserInterface();
+                ZBagGUI.Instance = new ZBagGUI();
+                zBagInterface.SetState(ZBagGUI.Instance);
+            }
+        }
+
+        public override void UpdateUI(GameTime gameTime)
+        {
+            if (zBagInterface?.CurrentState != null)
+            {
+                zBagInterface.Update(gameTime);
+            }
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            int inventoryLayerIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
+
+            if (inventoryLayerIndex != -1)
+            {
+                layers.Insert(inventoryLayerIndex, new LegacyGameInterfaceLayer(
+                    "FKsCRE: ZBag UI",
+                    delegate
+                    {
+                        if (zBagInterface?.CurrentState != null)
+                        {
+                            zBagInterface.Draw(Main.spriteBatch, new GameTime());
+                        }
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+            }
+        }
+    }
+
+
     public class TimeVer
     {
         public Vector2 v2 = default;
@@ -27,6 +74,26 @@ namespace FKsCRE
 	// Please read https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents for more information about the various files in a mod.
 	public class NanTing : Mod
 	{
+
+        //private UserInterface zBagInterface;
+
+        //public override void Load()
+        //{
+        //    if (!Main.dedServ)
+        //    {
+        //        zBagInterface = new UserInterface();
+        //        Content.Gel.ZBag.ZBagGUI.Instance = new Content.Gel.ZBag.ZBagGUI();
+        //        zBagInterface.SetState(Content.Gel.ZBag.ZBagGUI.Instance);
+        //    }
+        //}
+
+        //public override void UpdateUI(GameTime gameTime)
+        //{
+        //    if (zBagInterface?.CurrentState != null)
+        //    {
+        //        zBagInterface.Update(gameTime);
+        //    }
+        //}
         #region 收发
         //重写这个方法来处理收发包
         public override void HandlePacket(BinaryReader reader, int whoAmI)

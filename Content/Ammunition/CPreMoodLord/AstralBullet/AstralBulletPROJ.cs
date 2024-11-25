@@ -51,7 +51,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
         {
             // 由于我们是水平贴图，因此什么也不需要转动
             Projectile.rotation = Projectile.velocity.ToRotation();
-
+            Projectile.velocity *= 1.005f;
             // 添加光效
             Lighting.AddLight(Projectile.Center, Color.Lerp(Color.Blue, Color.AliceBlue, 0.5f).ToVector3() * 0.49f);
 

@@ -23,6 +23,8 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
 {
     public class StarblightSootArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/BPrePlantera/StarblightSootArrow/StarblightSootArrow";
+
         public new string LocalizationCategory => "Projectile.BPrePlantera";
         public override void SetStaticDefaults()
         {

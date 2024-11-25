@@ -12,6 +12,8 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
 {
     public class DestructionBulletDestruction : ModBuff, ILocalizedModType
     {
+        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+
         public new string LocalizationCategory => "Buffs";
 
         public override void SetStaticDefaults()

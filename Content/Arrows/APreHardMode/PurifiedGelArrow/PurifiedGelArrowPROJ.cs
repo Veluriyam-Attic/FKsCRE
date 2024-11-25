@@ -17,6 +17,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PurifiedGelArrow
 {
     public class PurifiedGelArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/APreHardMode/PurifiedGelArrow/PurifiedGelArrow";
+
         public new string LocalizationCategory => "Projectile.APreHardMode";
 
         public static int MaxUpdate = 1; // 弹幕每次更新的最大次数

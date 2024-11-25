@@ -16,6 +16,8 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
 {
     public class PerennialArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/CPreMoodLord/PerennialArrow/PerennialArrow";
+
         public new string LocalizationCategory => "Projectile.CPreMoodLord";
         public override void SetStaticDefaults()
         {

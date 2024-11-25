@@ -8,6 +8,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.GrapeShot
 {
@@ -23,8 +26,9 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.GrapeShot
             Item.maxStack = 9999;
             Item.consumable = true; // 弹药是消耗品
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().donorItem = true;
             Item.shoot = ModContent.ProjectileType<GrapeShotPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Bullet; // 这是箭矢类型的弹药

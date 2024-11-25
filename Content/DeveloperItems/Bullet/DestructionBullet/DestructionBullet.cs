@@ -8,10 +8,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
 {
-    internal class DestructionBullet : ModItem, ILocalizedModType
+    public class DestructionBullet : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "DeveloperItems.DestructionBullet";
         public override void SetDefaults()
@@ -23,8 +26,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
             Item.maxStack = 9999;
             Item.consumable = true; // 弹药是消耗品
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<DestructionBulletPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet; // 这是子弹类型的弹药
@@ -32,11 +37,15 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe1 = CreateRecipe(333);
+            Recipe recipe1 = CreateRecipe(1665);
             recipe1.AddIngredient(ItemID.IchorBullet, 333); // 灵液弹
             recipe1.AddIngredient(ItemID.CursedBullet, 333); // 诅咒弹
             recipe1.AddIngredient(ItemID.VenomBullet, 333); // 毒液弹
             recipe1.AddIngredient(ItemID.GoldenBullet, 333); // 金子弹
+            recipe1.AddIngredient(ItemID.ExplodingBullet, 333); // 爆破弹            
+            recipe1.AddIngredient(ItemID.FragmentSolar, 1); // 日耀碎片
+            recipe1.AddIngredient(ItemID.MartianConduitPlating, 1); // 火星管道护板
+            recipe1.AddIngredient(ItemID.DefenderMedal, 1); // 护卫奖章
             recipe1.AddIngredient<GalacticaSingularity>(1); // 星系异石
             recipe1.AddIngredient<DivineGeode>(1); // 神圣晶石
             recipe1.AddIngredient<UelibloomBar>(1); // 龙蒿锭

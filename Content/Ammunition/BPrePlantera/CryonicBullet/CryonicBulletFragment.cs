@@ -43,8 +43,11 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
 
         public override void AI()
         {
+            // 使用主弹幕传递的减速度因子
+            float decelerationFactor = Projectile.ai[0];
+
             // 每帧速度逐渐降低
-            Projectile.velocity *= 0.99f;
+            Projectile.velocity *= decelerationFactor;
 
             // 每帧旋转
             Projectile.rotation += 0.6f;
@@ -66,7 +69,7 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
         }
         public ref float Time => ref Projectile.ai[1];
 
-        public override bool? CanDamage() => Time >= 3f; // 初始的时候不会造成伤害，直到x为止
+        public override bool? CanDamage() => Time >= 9f; // 初始的时候不会造成伤害，直到x为止
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

@@ -51,12 +51,12 @@ Buffs: {
 
 	PolterplasmArrowEDeBuff: {
 		DisplayName: Polterplasm Arrow E De Buff
-		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff.Description
+		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff.Description
 	}
 
 	PolterplasmArrowEDeBuff2: {
 		DisplayName: Polterplasm Arrow E De Buff2
-		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
+		Description: Mods.FKsCRE.ModBuff.PolterplasmArrowEDeBuff2.Description
 	}
 
 	AstralBulletEBuff: {
@@ -70,13 +70,9 @@ Buffs: {
 	}
 
 	DivineGeodeBulletPBuff: {
-		DisplayName: Divine Geode Bullet P Buff
-		Description: Mods.FKsCRE.Buffs.DivineGeodeBulletPBuff.Description
 	}
 
 	StarblightSootBulletEBuff: {
-		DisplayName: Starblight Soot Bullet E Buff
-		Description: Mods.FKsCRE.Buffs.StarblightSootBulletEBuff.Description
 	}
 
 	DestructionBulletDestruction: {
@@ -92,6 +88,16 @@ Buffs: {
 	PolterplasmBulletFlowerPBuff: {
 		DisplayName: Polterplasm Bullet Flower P Buff
 		Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
+	}
+
+	DivineGeodeArrowPBuff: {
+		DisplayName: Divine Geode Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.DivineGeodeArrowPBuff.Description
+	}
+
+	CosmosGelEDebuff: {
+		DisplayName: Cosmos Gel E Debuff
+		Description: Mods.FKsCRE.Buffs.CosmosGelEDebuff.Description
 	}
 }
 
@@ -170,91 +176,176 @@ Items: {
 		DisplayName: Test D A S H
 		Tooltip: ""
 	}
+
+	GelBag: {
+		DisplayName: 凝胶袋
+		Tooltip:
+			'''
+			容量很大
+			用于存放凝胶
+			'''
+	}
+
+	DPSItem: {
+	}
 }
 
 Arrows: {
 	APreHardMode: {
 		AerialiteArrow: {
-			DisplayName: Aerialite Arrow
-			Tooltip: ""
+			DisplayName: 天蓝箭
+			Tooltip:
+				'''
+				命中时召唤旋风
+				旋风会停滞一段时间后开始追踪
+				“只有风暴才能击倒大树”
+				'''
 		}
 
 		BloodBeadsArrow: {
-			DisplayName: Blood Beads Arrow
-			Tooltip: ""
+			DisplayName: 血珠箭
+			Tooltip:
+				'''
+				命中造成随机的debuff
+				“混合血清”
+				'''
 		}
 
 		PurifiedGelArrow: {
-			DisplayName: Purified Gel Arrow
-			Tooltip: ""
+			DisplayName: 纯净凝胶箭
+			Tooltip:
+				'''
+				已完成特效部分
+				暂未完成具体实现
+				'''
 		}
 	}
 
 	BPrePlantera: {
 		StarblightSootArrow: {
-			DisplayName: Starblight Soot Arrow
-			Tooltip: ""
+			DisplayName: 调星箭
+			Tooltip:
+				'''
+				击中后迸发出星空粒子
+				不可穿透
+				“微不足道的力量”
+				'''
 		}
 	}
 
 	CPreMoodLord: {
 		AstralArrow: {
-			DisplayName: Astral Arrow
-			Tooltip: ""
+			DisplayName: 炫星箭
+			Tooltip:
+				'''
+				击中敌人时给予玩家持续的明星之佑
+				存在期间召唤太阳与月亮围绕玩家旋转
+				穿过太阳将造成剧烈爆炸，穿过月亮将获得强追踪效果
+				“核聚变”
+				'''
 		}
 
 		CoreofCalamityArrow: {
-			DisplayName: Coreof Calamity Arrow
-			Tooltip: ""
+			DisplayName: 灾劫核心箭
+			Tooltip:
+				'''
+				已完成特效部分
+				暂未完成具体实现
+				'''
 		}
 
 		LifeAlloyArrow: {
-			DisplayName: Life Alloy Arrow
-			Tooltip: ""
+			DisplayName: 生命合金箭
+			Tooltip:
+				'''
+				击中后随机释放三份力量中的一个
+				“三合一”
+				'''
 		}
 
 		PerennialArrow: {
-			DisplayName: Perennial Arrow
-			Tooltip: ""
+			DisplayName: 永恒箭
+			Tooltip:
+				'''
+				标记敌人，持续造成并受到更多的伤害
+				同时治疗自己
+				“万物复苏”
+				'''
 		}
 
 		ScoriaArrow: {
-			DisplayName: Scoria Arrow
-			Tooltip: ""
+			DisplayName: 熔渣箭
+			Tooltip:
+				'''
+				击中时产生爆炸并快速下落
+				最后释放追踪熔岩
+				“1100度的火成岩”
+				'''
 		}
 	}
 
 	DPreDog: {
 		DivineGeodeArrow: {
-			DisplayName: Divine Geode Arrow
-			Tooltip: ""
+			DisplayName: 神圣晶石箭
+			Tooltip:
+				'''
+				以神圣之力炸毁敌人
+				赋予玩家【净化邪神】增益：大幅提升飞行时间
+				“翅膀的上升之火被重新燃起”
+				'''
 		}
 
 		EffulgentFeatherArrow: {
-			DisplayName: Effulgent Feather Arrow
-			Tooltip: ""
+			DisplayName: 闪耀金羽箭
+			Tooltip:
+				'''
+				以静电之力携带特斯拉电场快速前进
+				“该换羽毛了”
+				'''
 		}
 
 		PolterplasmArrow: {
-			DisplayName: Polterplasm Arrow
-			Tooltip: ""
+			DisplayName: 灵质箭
+			Tooltip:
+				'''
+				小概率鬼叫并造成严重伤害
+				大概率什么也不会发生
+				“他们在迷宫里尘封的太久了”
+				'''
 		}
 
 		UelibloomArrow: {
-			DisplayName: Uelibloom Arrow
-			Tooltip: ""
+			DisplayName: 龙蒿箭
+			Tooltip:
+				'''
+				击中敌人时产生追踪叶片和生命之光
+				叶片命中时造成藤蔓
+				“石化树皮的力量”
+				'''
 		}
 	}
 
 	EAfterDog: {
 		AuricArrow: {
-			DisplayName: Auric Arrow
-			Tooltip: ""
+			DisplayName: 圣金源箭
+			Tooltip:
+				'''
+				造成小规模爆炸并散射能量光球
+				小概率在原地产生一个拥有生命力的火球
+				尝试碰撞敌人并造成自爆伤害
+				“来自远古的电磁碰撞”
+				'''
 		}
 
 		MiracleMatterArrow: {
-			DisplayName: Miracle Matter Arrow
-			Tooltip: ""
+			DisplayName: 星流箭
+			Tooltip:
+				'''
+				命中后释放强力追踪的光球能量弹
+				“星河贯穿，光芒跃动！”
+				那名掌握至尊死灵术的魔女似乎不喜欢这个和一把来自天堂的神器
+				所以你不应该在战斗中同时使用这两个？
+				'''
 		}
 	}
 }
@@ -262,8 +353,13 @@ Arrows: {
 DeveloperItems: {
 	MaoMaoChong: {
 		MaoMaoChong: {
-			DisplayName: Mao Mao Chong
-			Tooltip: ""
+			DisplayName: 猫猫虫咖波
+			Tooltip:
+				'''
+				发出猫叫
+				碰到敌人或方块时反弹
+				“猫猫虫？ 猫猫虫！”
+				'''
 		}
 
 		MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
@@ -271,8 +367,13 @@ DeveloperItems: {
 
 	SHPA: {
 		PlasmaDriveCorePrototypeArrow: {
-			DisplayName: Plasma Drive Core Prototype Arrow
-			Tooltip: ""
+			DisplayName: SHPA
+			Tooltip:
+				'''
+				命中时引发小型等离子爆炸
+				“我很好奇这东西是怎么装在箭矢上并射出去的”
+				“我更好奇的是这居然还能保持自己的形状而不被摧毁”
+				'''
 		}
 
 		PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
@@ -281,8 +382,12 @@ DeveloperItems: {
 
 	ShadowsArrow: {
 		ShadowsArrow: {
-			DisplayName: Shadows Arrow
-			Tooltip: ""
+			DisplayName: 魔影箭
+			Tooltip:
+				'''
+				它蕴含了一切事物
+				“特效库限时免费.jpg”
+				'''
 		}
 
 		ShadowsArrowPROJ.DisplayName: Shadows Arrow P R O J
@@ -290,8 +395,12 @@ DeveloperItems: {
 
 	ShuangHuaArrow: {
 		ShuangHuaArrow: {
-			DisplayName: Shuang Hua Arrow
-			Tooltip: ""
+			DisplayName: 霜华箭
+			Tooltip:
+				'''
+				击中后往上飞行，然后往下释放五道冰锥
+				“为了岩王帝君”
+				'''
 		}
 
 		ShuangHuaArrowPROJ.DisplayName: Shuang Hua Arrow P R O J
@@ -300,8 +409,14 @@ DeveloperItems: {
 
 	TheDrill: {
 		TheDrill: {
-			DisplayName: The Drill
-			Tooltip: ""
+			DisplayName: 赤金切削工具
+			Tooltip:
+				'''
+				可破坏方块
+				Boss存活或玩家持有创意震撼时无效
+				无论何时何地，只要摁下鼠标右键就可以直接清除所有场上的钻头
+				“我的钻头可是突破天际的”
+				'''
 		}
 
 		TheDrillPROJ.DisplayName: The Drill P R O J
@@ -309,8 +424,15 @@ DeveloperItems: {
 
 	TimeLeaper: {
 		TimeLeaper: {
-			DisplayName: Time Leaper
-			Tooltip: ""
+			DisplayName: 时空交叉箭
+			Tooltip:
+				'''
+				无限穿透，但在鼠标位置生成
+				但往玩家处回收，但没有击中敌人时给玩家回血
+				但击中的敌人越多越是会扣除玩家更多的血量
+				玩家可能会因为其而死亡
+				“生存还是毁灭，这是一个问题”
+				'''
 		}
 
 		TimeLeaperPROJ.DisplayName: Time Leaper P R O J
@@ -318,8 +440,13 @@ DeveloperItems: {
 
 	AllTheBirds: {
 		AllTheBirds: {
-			DisplayName: All The Birds
-			Tooltip: ""
+			DisplayName: 玄凤鹦鹉
+			Tooltip:
+				'''
+				较为自然的随机曲线转向飞行
+				但无论如何都会必定命中
+				“一大群鸟”
+				'''
 		}
 
 		AllTheBirdsPROJ.DisplayName: All The Birds P R O J
@@ -327,8 +454,15 @@ DeveloperItems: {
 
 	GrapeShot: {
 		GrapeShot: {
-			DisplayName: Grape Shot
-			Tooltip: ""
+			DisplayName: 散霰弹
+			Tooltip:
+				'''
+				爆裂出碎片
+				每攻击50次就会提高一个碎片数量等级
+				停止攻击每1秒就会下降一个碎片等级
+				碎片数量上限为10，达到上限之后不会再提升
+				“如风暴般撕裂你的敌人！”
+				'''
 		}
 
 		GrapeShotPROJ.DisplayName: Grape Shot P R O J
@@ -337,8 +471,13 @@ DeveloperItems: {
 
 	TheEmpty: {
 		TheEmpty: {
-			DisplayName: The Empty
-			Tooltip: ""
+			DisplayName: 空弹
+			Tooltip:
+				'''
+				让敌人随地大小变，可改变碰撞箱
+				对于Boss也有效
+				“容易让游戏崩溃”
+				'''
 		}
 
 		TheEmptyPROJ.DisplayName: The Empty P R O J
@@ -346,8 +485,13 @@ DeveloperItems: {
 
 	UltraLowTemp: {
 		UltraLowTemp: {
-			DisplayName: Ultra Low Temp
-			Tooltip: ""
+			DisplayName: 霜华弹
+			Tooltip:
+				'''
+				击中后在外围释放分裂弹幕，造成冰河时代
+				命中水时将水冻结成冰块
+				“凝冰渡河真君”
+				'''
 		}
 
 		UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
@@ -356,30 +500,66 @@ DeveloperItems: {
 
 	Pyroblast: {
 		Pyroblast: {
-			DisplayName: Pyroblast
+			DisplayName: 炎爆
+			Tooltip:
+				'''
+				握在手中倾泻出独特的爆炸子弹
+				随着倾泻的时间增长，也会获得额外的攻击手段
+				如子弹追踪，额外激光，大范围爆炸等等
+				受到伤害时清空等级并给予惩罚
+				右键直接射出四发火箭弹
+				赤焰火箭弹造成小范围持续轰炸
+				烈焰火箭弹持续灼烧敌人，并造成最大生命值的伤害
+				离子火箭弹能够瘫痪敌人
+				聚变火箭弹造成超大范围的单次爆炸
+				手持该武器时点击武器技能按键能够释放终结技：主观缓时
+				主观缓时能让超大范围内的敌人以及敌方弹幕大幅减速
+				“烈焰于掌心涌动，随时间燃烧愈烈”
+				'''
+		}
+
+		// PyroblastPROJ.DisplayName: Pyroblast P R O J
+		// PyroblastAirburstGrenade.DisplayName: Pyroblast Airburst Grenade
+		// PyroblastExoFire.DisplayName: Pyroblast Exo Fire
+		// PyroblastGhostFire.DisplayName: Pyroblast Ghost Fire
+		// PyroblastPlanet.DisplayName: Pyroblast Planet
+		// PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
+		// CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
+		
+		DPYROItem: {
+			DisplayName: D P Y R O Item
 			Tooltip: ""
 		}
 
-		PyroblastPROJ.DisplayName: Pyroblast P R O J
+		CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
 		PyroblastAirburstGrenade.DisplayName: Pyroblast Airburst Grenade
 		PyroblastExoFire.DisplayName: Pyroblast Exo Fire
 		PyroblastGhostFire.DisplayName: Pyroblast Ghost Fire
 		PyroblastPlanet.DisplayName: Pyroblast Planet
+		PyroblastPROJ.DisplayName: Pyroblast P R O J
 		PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
-		CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
 	}
 
 	ExplodingRabbit: {
 		ExplodingRabbit: {
-			DisplayName: Exploding Rabbit
-			Tooltip: ""
+			DisplayName: 自爆兔
+			Tooltip:
+				'''
+				击中敌人时产生爆炸并弹飞
+				在一个“好世界”中获得超强追踪能力和巨额爆炸伤害
+				'''
 		}
 	}
 
 	YuanZiDan: {
 		YuanZiDan: {
-			DisplayName: Yuan Zi Dan
-			Tooltip: ""
+			DisplayName: 原子弹
+			Tooltip:
+				'''
+				撞击后弹至周围敌人并将自己的伤害乘以1.25
+				凝聚了微观原子学以及量子力学的力量
+				“不，不是你想的那种原子弹”
+				'''
 		}
 
 		YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
@@ -387,8 +567,18 @@ DeveloperItems: {
 
 	DestructionBullet: {
 		DestructionBullet: {
-			DisplayName: Destruction Bullet
-			Tooltip: ""
+			DisplayName: 灭世弹
+			Tooltip:
+				'''
+				释放积攒已久的仇恨与爆炸
+				对敌人施加：
+				破晓，带电，灵液，翼龙怒火
+				诅咒狱火，迈达斯，酸性毒液
+				元素紊乱，死亡标记，常春藤毒素，灭世
+				灭世能够降低敌人30%的接触伤害
+				常春藤毒素能够使敌人快速流失生命值
+				“有些事情他们早已忘记，那么现在是时候帮他们恢复一下记忆了”
+				'''
 		}
 
 		DestructionBulletEXP.DisplayName: Destruction Bullet E X P
@@ -397,22 +587,132 @@ DeveloperItems: {
 
 	Terratoarrow: {
 		Terratoarrow: {
-			DisplayName: Terratoarrow
-			Tooltip: ""
+			DisplayName: 泰拉巨箭
+			Tooltip:
+				'''
+				快速飞行并分裂成多支强力追踪的分裂箭
+				直接命中敌人造成2.5倍伤害
+				“远古传奇”
+				'''
 		}
 
 		TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
-		TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
 		TerratoarrowSlash.DisplayName: Terratoarrow Slash
+		TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
 	}
 
 	SuperCriticalBullet: {
 		SuperCriticalBullet: {
-			DisplayName: Super Critical Bullet
-			Tooltip: ""
+			DisplayName: 超暴击弹
+			Tooltip:
+				'''
+				无限穿透，基础暴击率极高
+				如果你足够幸运，那么能够触发那万里挑一的效果
+				'''
 		}
 
+		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
 		SuperCriticalBulletPROJ.DisplayName: Super Critical Bullet P R O J
+	}
+
+	TheGoldenFire: {
+		TheGoldenFire: {
+			DisplayName: 虞金引焰
+			Tooltip:
+				'''
+				喷射出追踪火焰
+				他拥有惊人的成长能力
+				'''
+		}
+
+		TheGoldenFirePROJ.DisplayName: The Golden Fire P R O J
+	}
+
+	ShadowsBullet: {
+		ShadowsBullet: {
+			DisplayName: 魔影弹
+			Tooltip:
+				'''
+				它蕴含了一切事物
+				“特效库限时免费.jpg”
+				'''
+		}
+
+		ShadowsBulletPROJ.DisplayName: Shadows Bullet P R O J
+	}
+
+	DiffuseNovaArc: {
+		DiffuseNovaArc: {
+			DisplayName: 散漫星弧
+			Tooltip:
+				'''
+				充能并快速发射新星能量矢
+				一级充能可以直接发射毁灭性的新星冲击波
+				二级充能将提升能量矢发射速率
+				'''
+		}
+	}
+
+	ChineseChess: {
+		Pao: {
+			Pao: {
+				DisplayName: 砲
+				Tooltip:
+					'''
+					击中敌人后仅造成很弱的伤害
+					随后将自己传送到敌人后方一段距离
+					结束时释放猛烈的爆炸
+					“他需要一个炮架”
+					'''
+			}
+
+			PaoPROJ.DisplayName: Pao P R O J
+		}
+
+		Che: {
+			Che: {
+				DisplayName: Che
+				Tooltip: ""
+			}
+
+			ChePROJ.DisplayName: Che P R O J
+		}
+
+		Ma: {
+			Ma: {
+				DisplayName: Ma
+				Tooltip: ""
+			}
+
+			MaPROJ.DisplayName: Ma P R O J
+		}
+
+		Shi: {
+			Shi: {
+				DisplayName: Shi
+				Tooltip: ""
+			}
+
+			ShiPROJ.DisplayName: Shi P R O J
+		}
+
+		Xiang: {
+			Xiang: {
+				DisplayName: Xiang
+				Tooltip: ""
+			}
+
+			XiangPROJ.DisplayName: Xiang P R O J
+		}
+
+		Zu: {
+			Zu: {
+				DisplayName: Zu
+				Tooltip: ""
+			}
+
+			ZuPROJ.DisplayName: Zu P R O J
+		}
 	}
 }
 
@@ -434,17 +734,9 @@ Projectiles: {
 	WulfrimArrow_proje.DisplayName: Wulfrim Arrow_proje
 	天蓝旋风.DisplayName: 天蓝旋风
 	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
-	AstralBulletPROJ.DisplayName: Astral Bullet P R O J
-	PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
-	ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
-	UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
-	AuricBuletPROJ.DisplayName: Auric Bulet P R O J
-	MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
-	UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
-	UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
-	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
-	Ranged.DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
 	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
+	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 }
 
 Projectile: {
@@ -458,8 +750,8 @@ Projectile: {
 	BPrePlantera: {
 		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
 		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
-		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
 		CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
+		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
 		StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
 	}
 
@@ -489,12 +781,12 @@ Projectile: {
 		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
 		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
 		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
-		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
-		UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
-		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
-		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
-		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 		PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
+		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
+		UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
+		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+		DivineGeodeArrowEXP.DisplayName: Divine Geode Arrow E X P
+		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 	}
 
 	EAfterDog: {
@@ -502,24 +794,32 @@ Projectile: {
 		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
 		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
 		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+		AuricBuletBALL.DisplayName: Auric Bulet B A L L
 		AuricBuletPROJ.DisplayName: Auric Bulet P R O J
 		MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
-		AuricBuletBALL.DisplayName: Auric Bulet B A L L
 	}
 }
 
 Configs: {
 	CREsConfigs: {
-		DisplayName: C R Es Configs
+		DisplayName: CREs中心
 
 		EnableSpecialEffects: {
-			Label: Enable Special Effects
-			Tooltip: ""
+			Label: 特效总控
+			Tooltip:
+				'''
+				可以一键开启或关闭所有特效
+				部分特效不可关闭
+				'''
 		}
 
 		EnableAmmoChecking: {
-			Label: Enable Ammo Checking
-			Tooltip: ""
+			Label: 弹药检查
+			Tooltip:
+				'''
+				开启后会在左下角显示当前使用的弹药
+				(目前没做)
+				'''
 		}
 	}
 }
@@ -527,59 +827,123 @@ Configs: {
 Ammunition: {
 	BPrePlantera: {
 		CryonicBullet: {
-			DisplayName: Cryonic Bullet
-			Tooltip: ""
+			DisplayName: 寒元弹
+			Tooltip:
+				'''
+				赋予敌人冰冷的标记并增加伤害
+				弹射出冰刺
+				“冰冰凉凉”
+				'''
 		}
 
 		StarblightSootBullet: {
-			DisplayName: Starblight Soot Bullet
-			Tooltip: ""
+			DisplayName: 调星弹
+			Tooltip:
+				'''
+				击中敌人后，给予敌人即将灭亡的标记
+				等待敌人死亡，随后释放强大的幻星立场
+				幻星立场那任意一个敌人受到伤害，都会将伤害转移给其他敌人
+				“要懂得分享”
+				'''
 		}
 	}
 
 	CPreMoodLord: {
 		AstralBullet: {
-			DisplayName: Astral Bullet
-			Tooltip: ""
+			DisplayName: 炫星弹
+			Tooltip:
+				'''
+				击中敌人时以敌人为中心不断的释放彗星砸向这个倒霉蛋
+				彗星继承手持武器的面板
+				“陨者尽己”
+				'''
 		}
 
 		PerennialBullet: {
-			DisplayName: Perennial Bullet
-			Tooltip: ""
+			DisplayName: 永恒弹
+			Tooltip:
+				'''
+				不断的命中能使玩家提升防御力上限为20点
+				使敌人中毒
+				“至死猛毒”
+				'''
 		}
 
 		ScoriaBullet: {
-			DisplayName: Scoria Bullet
-			Tooltip: ""
+			DisplayName: 熔渣弹
+			Tooltip:
+				'''
+				产生爆炸和火柱
+				命中后给予玩家可堆叠的加速度与伤害提升
+				“身体更热了，跳的就更快了，挺合理的不是吗”
+				'''
 		}
 
 		DivineGeodeBullet: {
-			DisplayName: Divine Geode Bullet
-			Tooltip: ""
+			DisplayName: 圣晶石子弹
+			Tooltip:
+				'''
+				暂时没有决定好
+				有什么攻击特效
+				'''
 		}
 	}
 
 	DPreDog: {
 		UelibloomBullet: {
-			DisplayName: Uelibloom Bullet
-			Tooltip: ""
+			DisplayName: 龙蒿弹
+			Tooltip:
+				'''
+				爆发出强大并且具有追踪性的生命之光
+				“他简直是生命体”
+				'''
 		}
 
 		PolterplasmBullet: {
-			DisplayName: Polterplasm Bullet
-			Tooltip: ""
+			DisplayName: 花灵弹
+			Tooltip:
+				'''
+				命中后释放多个弧线飞行并强力追踪的花灵
+				花灵再次命中敌人后给予玩家末路狂花效果
+				存在期间，玩家可以进行强力冲刺
+				“你说当天你夜闯秋名山看见的就是这家伙？”
+				'''
 		}
 	}
 
 	EAfterDog: {
 		AuricBulet: {
-			DisplayName: Auric Bulet
-			Tooltip: ""
+			DisplayName: 金源弹
+			Tooltip:
+				'''
+				击中敌人时爆发出多个不断公转的金源珠
+				“百鬼夜行”
+				'''
 		}
 
 		MiracleMatterBullet: {
-			DisplayName: Miracle Matter Bullet
-			Tooltip: ""
+			DisplayName: 星流弹
+			Tooltip:
+				'''
+				虚拟与现实的碰撞，无害
+				扭曲与折射的光芒，无妨
+				蓦然回首，只瞥见祂一人
+				追寻原初光芒，暗无天日
+				说人话：
+				第1次碰撞不造成伤害
+				随后左右扭曲飞行一段距离后强力追踪
+				'''
+		}
+	}
+}
+
+Gel: {
+	EAfterDog: {
+		CosmosGel: {
+			CosmosGel: {
+				DisplayName: Cosmos Gel
+				Tooltip: ""
+			}
 		}
 	}
 }

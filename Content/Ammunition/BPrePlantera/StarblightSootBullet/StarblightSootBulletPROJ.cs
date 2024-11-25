@@ -58,20 +58,36 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
             // 飞行粒子特效
             if (Main.rand.NextBool(5))
             {
+                // 星辉瘟疫的同款小圆圈
                 Vector2 position = Projectile.Center + Main.rand.NextVector2Circular(5f, 5f);
                 GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(position, Vector2.Zero, Color.DarkTurquoise, new Vector2(1f, 1f), 0f, 0.1f, 0f, 20));
             }
         }
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitNPC(target, hit, damageDone);
 
             // 击中敌人释放更多粒子特效
-            for (int i = 0; i < 10; i++) // 更快更密集的粒子
+            for (int i = 0; i < 10; i++) // 增加粒子数量
             {
+                // 粒子的起始位置：围绕目标中心随机生成
                 Vector2 position = target.Center + Main.rand.NextVector2Circular(target.width / 2, target.height / 2);
-                GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(position, Vector2.Zero, Color.Coral, new Vector2(1.5f, 1.5f), 0f, 0.2f, 0f, 30));
+
+                // 计算随机偏移方向
+                float randomAngleOffset = Main.rand.NextFloat(-0.5f, 0.5f); // 随机角度偏移（-0.5到0.5弧度）
+                Vector2 randomVelocity = Projectile.velocity.RotatedBy(randomAngleOffset).SafeNormalize(Vector2.Zero)
+                                         * Main.rand.NextFloat(2f, 4f); // 随机速度大小（2到4）
+
+                // 添加粒子效果
+                GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(
+                    position,
+                    randomVelocity, // 粒子移动方向和速度
+                    Color.Blue,
+                    new Vector2(1.5f, 1.5f),
+                    0f,
+                    0.2f,
+                    0f,
+                    30));
             }
 
             // 给 GlobalNPC 添加标记
@@ -80,6 +96,7 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
                 modNPC.MarkedByBullet = true;
             }
         }
+
 
         public override void OnSpawn(IEntitySource source)
         {

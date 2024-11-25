@@ -35,7 +35,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
             Projectile.MaxUpdates = 6;
             Projectile.alpha = 255;

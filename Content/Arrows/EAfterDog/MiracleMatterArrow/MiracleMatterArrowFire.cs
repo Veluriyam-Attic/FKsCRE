@@ -44,14 +44,15 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             Player player = Main.player[Projectile.owner];
             Projectile.localAI[0] += 1f / (Projectile.extraUpdates + 1);
 
-            if (Projectile.localAI[0] < 120f) // 前 2 秒飞行
+            if (Projectile.localAI[0] < 60) // 前 1 秒飞行
             {
                 if (Projectile.localAI[0] % 3 == 0) // 每 x 帧
                 {
                     //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.PiOver2);
-                    Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(7));
+                    //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(4));
+                    Projectile.velocity *= 0.973f;
                 }
-                Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 2f;
+                //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
             }
             else // 使用新的追踪逻辑
             {

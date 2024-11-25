@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.SuperCriticalBullet
 {
@@ -23,8 +26,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.SuperCriticalBullet
             Item.maxStack = 1;
             Item.consumable = false; // 弹药是消耗品
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<SuperCriticalBulletPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet; // 这是子弹类型的弹药

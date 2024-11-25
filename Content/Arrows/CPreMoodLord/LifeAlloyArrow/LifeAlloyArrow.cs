@@ -25,7 +25,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<LifeAlloyArrowPROJ>();
-            Item.shootSpeed = 0.1f;
+            Item.shootSpeed = 1f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 

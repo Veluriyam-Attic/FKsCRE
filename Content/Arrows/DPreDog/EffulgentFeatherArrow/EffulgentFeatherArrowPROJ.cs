@@ -23,6 +23,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
 {
     public class EffulgentFeatherArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/DPreDog/EffulgentFeatherArrow/EffulgentFeatherArrow";
         public new string LocalizationCategory => "Projectile.DPreDog";
         private float rotationSpeed = 0.05f; // 设置旋转速度
         private float rotationAngle = 0f;    // 初始化旋转角度
@@ -94,7 +95,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.height = 24; // 弹幕高度
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
-            Projectile.penetrate = 1; // 穿透力为1，击中一个敌人就消失
+            Projectile.penetrate = 15; // 穿透力为x
             Projectile.timeLeft = 600; // 弹幕存在时间为600帧
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧

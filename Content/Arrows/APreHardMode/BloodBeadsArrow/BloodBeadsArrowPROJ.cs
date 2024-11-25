@@ -23,6 +23,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
 {
     public class BloodBeadsArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/APreHardMode/BloodBeadsArrow/BloodBeadsArrow";
+
         public new string LocalizationCategory => "Projectile.APreHardMode";
         //public bool splitShot = false;
 

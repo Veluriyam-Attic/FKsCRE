@@ -23,6 +23,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 {
     public class AerialiteArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/APreHardMode/AerialiteArrow/AerialiteArrow";
+
         public new string LocalizationCategory => "Projectile.APreHardMode";
         public override void SetStaticDefaults()
         {

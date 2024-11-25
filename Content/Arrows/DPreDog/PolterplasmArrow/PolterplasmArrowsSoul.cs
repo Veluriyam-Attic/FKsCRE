@@ -154,7 +154,26 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
                 }
             }
 
-           
+            //// 添加生成 PolterplasmArrowFlower 的逻辑
+            //int extraProjectileCount = 5; // 生成的数量
+            //float speedMultiplier = 1.1f; // 初始速度倍率
+            //for (int i = 0; i < extraProjectileCount; i++)
+            //{
+            //    // 随机生成圆周上的位置
+            //    Vector2 spawnPos = Projectile.Center + Main.rand.NextVector2Circular(50, 50); // 50 为生成的半径
+            //                                                                                  // 指向主弹幕中心的方向
+            //    Vector2 direction = (Projectile.Center - spawnPos).SafeNormalize(Vector2.Zero);
+            //    // 生成新弹幕
+            //    Projectile.NewProjectile(
+            //        Projectile.GetSource_FromThis(),
+            //        spawnPos,
+            //        direction * Projectile.velocity.Length() * speedMultiplier, // 速度为当前弹幕速度的 1.1 倍
+            //        ModContent.ProjectileType<PolterplasmArrowFlower>(), // 替换为实际弹幕类型
+            //        (int)(Projectile.damage * 5.0f), // 伤害倍率为 5 倍
+            //        Projectile.knockBack, // 使用当前弹幕的击退值
+            //        Main.myPlayer
+            //    );
+            //}
         }
     }
 }

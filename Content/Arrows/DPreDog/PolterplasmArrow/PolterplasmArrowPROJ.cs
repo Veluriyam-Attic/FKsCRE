@@ -24,6 +24,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
 {
     public class PolterplasmArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/DPreDog/PolterplasmArrow/PolterplasmArrow";
         public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {
@@ -120,7 +121,21 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
             // 0.5% 的概率为敌人施加 1 秒钟的 PolterplasmArrowEDeBuff
             if (Main.rand.NextFloat() < 0.005f)
             {
-                target.AddBuff(ModContent.BuffType<PolterplasmArrowEDeBuff>(), 60); // 60 帧相当于 1 秒钟
+                // 在主弹幕当前位置生成 PolterplasmArrowINV
+                Vector2 spawnPosition0 = Projectile.Center; // 使用主弹幕的当前位置
+                Vector2 velocity = Projectile.velocity; // 初始速度与主弹幕一致
+
+                // 生成 PolterplasmArrowINV
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(), // 弹幕来源
+                    spawnPosition0, // 生成位置为主弹幕当前位置
+                    velocity, // 初始速度与主弹幕一致
+                    ModContent.ProjectileType<PolterplasmArrowINV>(), // 生成的弹幕类型
+                    1, // 伤害设置为1
+                    0f, // 击退为0
+                    Main.myPlayer // 所属玩家
+                );
+
                 target.AddBuff(ModContent.BuffType<PolterplasmArrowEDeBuff2>(), 300); // 300 帧相当于 5 秒钟
 
                 // 在原地往周围 360 度随机选择三个角度释放 PolterplasmArrowsSoul 弹幕 (一倍伤害)
@@ -142,7 +157,6 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
                 }
             }
         }
-
         public override void OnKill(int timeLeft)
         {
             // 检查是否启用了特效

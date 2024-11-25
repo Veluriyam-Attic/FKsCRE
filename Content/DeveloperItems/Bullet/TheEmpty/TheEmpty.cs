@@ -9,6 +9,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
 {
@@ -24,8 +27,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.TheEmpty
             Item.maxStack = 1;
             Item.consumable = false;
             Item.knockBack = 3f;
-            Item.value = Item.sellPrice(copper: 12);
-            Item.rare = ItemRarityID.Pink;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<TheEmptyPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet;

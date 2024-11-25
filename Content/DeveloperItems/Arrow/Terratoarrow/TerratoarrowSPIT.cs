@@ -95,7 +95,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
                     Projectile.Center,                // 起始位置为当前弹幕的中心
                     randomDirection * 0f,             // 初始速度为 0
                     ModContent.ProjectileType<TerratoarrowSlash>(), // 弹幕类型
-                    (int)(Projectile.damage * 0.33f), // 伤害倍率为 0.33
+                    (int)(Projectile.damage * 0.5f), // 伤害倍率为 0.33
                     Projectile.knockBack,             // 使用原弹幕的击退值
                     Projectile.owner                  // 弹幕归属
                 );

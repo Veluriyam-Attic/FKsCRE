@@ -73,13 +73,9 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
             Player player = Main.player[Projectile.owner];
             Projectile.localAI[0] += 1f / (Projectile.extraUpdates + 1);
 
-            // 随机飞行逻辑
-            if (Projectile.ai[1] != 1 && !collidedWithNPC)
+            // 默认直线飞行
+            if (!collidedWithNPC)
             {
-                bool turnLeft = Main.rand.NextBool();
-                float turnIncrement = MathHelper.ToRadians(1.5f); // 每帧转向增量
-                float currentTurn = turnLeft ? -turnIncrement : turnIncrement; // 随机方向
-                Projectile.velocity = Projectile.velocity.RotatedBy(currentTurn);
                 Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 7.5f;
             }
 
@@ -94,36 +90,73 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
                     {
                         collidedWithNPC = true; // 标记碰撞
                         collisionTimer = (int)Main.GameUpdateCount; // 记录当前帧数
+                        ReleaseSquareParticles(); // 释放粒子效果
                         break;
                     }
                 }
             }
 
-            // 开启追踪模式
-            if (collidedWithNPC && (int)Main.GameUpdateCount - collisionTimer >= 60)
+            // 左右偏转逻辑（碰撞后时间参数动态调整）
+            int maxOffsetTime = Main.getGoodWorld ? 20 : 60; // 动态调整时间参数
+
+            if (collidedWithNPC && (int)Main.GameUpdateCount - collisionTimer <= maxOffsetTime)
             {
-                Projectile.ai[1] = 1; // 开启追踪模式
+                bool turnLeft = Main.rand.NextBool();
+                float turnIncrement = MathHelper.ToRadians(1.5f); // 每帧转向增量
+                float currentTurn = turnLeft ? -turnIncrement : turnIncrement; // 随机方向
+                Projectile.velocity = Projectile.velocity.RotatedBy(currentTurn);
+                Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 7.5f;
             }
 
-            // 追踪模式逻辑
-            if (Projectile.ai[1] == 1 || Projectile.ai[0] > 300) // 手动开启或飞行时间超过150帧
+            // 追踪模式逻辑（碰撞后超过动态调整时间参数）
+            if (collidedWithNPC && (int)Main.GameUpdateCount - collisionTimer > maxOffsetTime)
             {
-                NPC target = Projectile.Center.ClosestNPCAt(3800); // 查找范围内最近的敌人
+                NPC target = Projectile.Center.ClosestNPCAt(8848); // 查找范围内最近的敌人
                 if (target != null)
                 {
                     Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 12f, 0.08f); // 平滑追踪
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 14f, 0.11f); // 平滑追踪
                 }
             }
 
 
-            // 造成了一次伤害之后就直接关闭伤害检测并快速降低速度，并让自己停下来
+            // 碰撞后伤害逻辑
             if (Projectile.penetrate < 200)
             {
-                if (Projectile.timeLeft > 60) { Projectile.timeLeft = 60; } //The projectile start shrinking and slowing down. it can still hit for a bit during this, to allow a bit of multi-target if the enemies are really close to eachother.
+                if (Projectile.timeLeft > 60) { Projectile.timeLeft = 60; }
                 Projectile.velocity *= 0.88f;
             }
+        }
 
+        // 释放正方形粒子特效
+        private void ReleaseSquareParticles()
+        {
+            // 随机生成正方形核心点
+            Vector2 randomCore = Projectile.Center + new Vector2(
+                Main.rand.Next(-100, 101), // 左右随机偏移范围
+                Main.rand.Next(-100, 101) // 上下随机偏移范围
+            );
+
+            for (int i = 0; i < 4; i++)
+            {
+                // 计算正方形的四个顶点角度，每个顶点相隔90度
+                float angle = MathHelper.PiOver4 + i * MathHelper.PiOver2;
+                float nextAngle = MathHelper.PiOver4 + (i + 1) * MathHelper.PiOver2;
+
+                // 调整正方形的边长为核心点周围的正方形
+                Vector2 start = angle.ToRotationVector2() * (16f / 2f); // 缩小边长一半
+                Vector2 end = nextAngle.ToRotationVector2() * (16f / 2f);
+
+                for (int j = 0; j < 40; j++)
+                {
+                    // 在两个顶点之间插值生成粒子
+                    Dust squareDust = Dust.NewDustPerfect(randomCore, 267);
+                    squareDust.scale = 2.5f;
+                    squareDust.velocity = Vector2.Lerp(start, end, j / 40f) * 0.8f; // 初始速度降低60%
+                    squareDust.color = CalamityUtils.MulticolorLerp(j / 40f, CalamityUtils.ExoPalette); // 使用前后半圆颜色逻辑
+                    squareDust.noGravity = true;
+                }
+            }
         }
 
 

@@ -15,8 +15,10 @@ using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 {
-    internal class AuricArrowPROJ : ModProjectile, ILocalizedModType
+    public class AuricArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/EAfterDog/AuricArrow/AuricArrow";
+
         public new string LocalizationCategory => "Projectile.EAfterDog";
         public override void SetStaticDefaults()
         {
@@ -108,7 +110,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             for (int i = 0; i < numBalls; i++)
             {
                 Vector2 velocity = new Vector2(2f, 0f).RotatedBy(angleStep * i);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
             }
 
             // 检查是否启用了特效

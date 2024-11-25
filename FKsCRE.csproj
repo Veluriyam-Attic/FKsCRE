@@ -8,10 +8,10 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Content\Ammunition\AAA示范弹幕（方便复制用）.txt" />
 	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\CryonicBulletFragment.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\寒元弹.txt" />
 	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBullet.png" />
-	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBulletEBuff.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\寒元子弹.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\寒元弹弹幕.png" />
@@ -52,14 +52,12 @@
 	  <None Remove="Content\Ammunition\龙蒿子弹.png" />
 	  <None Remove="Content\Ammunition\龙蒿子弹弹幕.png" />
 	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrow.png" />
-	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowPROJ.png" />
 	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowWIND.png" />
 	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\BloodBeadsArrow.png" />
-	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\BloodBeadsArrowPROJ.png" />
 	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\血珠箭.txt" />
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\PurifiedGelArrow.png" />
-	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\PurifiedGelArrowPROJ.png" />
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\纯净凝胶箭.txt" />
+	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPBuff.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPC.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPCDrop.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
@@ -72,12 +70,10 @@
 	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\PlasmaDriveCorePrototypeArrowPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\等离子驱动核心箭.txt" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrow.png" />
-	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrowPROJ.png" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\调星箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrow.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowMOON.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowPBuff.png" />
-	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowPROJ.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowSTAR.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowSUN.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\炫星箭.txt" />
@@ -85,16 +81,13 @@
 	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\CoreofCalamityArrowPROJ.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\CoreofCalamityArrow\灾劫核心箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\LifeAlloyArrow\LifeAlloyArrow.png" />
-	  <None Remove="Content\Arrows\CPreMoodLord\LifeAlloyArrow\LifeAlloyArrowPROJ.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\LifeAlloyArrow\生命合金箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\PerennialArrow\永恒箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\ScoriaArrow\熔渣箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrow.png" />
-	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\神圣晶石箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrow.png" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrowAura.png" />
-	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\闪耀金羽箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrow.png" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrowPROJ.png" />
@@ -124,11 +117,12 @@
 	  <None Remove="Content\DeveloperItems\Arrow\ShuangHuaArrow\ShuangHuaArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TheDrill\TheDrill.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBullet.png" />
-	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletDestruction.png" />
-	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletPoisonIvy.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShot.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShotPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\ChineseChess\Pao\Xiangqi_cd1.svg.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\ShadowsBullet\ShadowsBullet.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\ShadowsBullet\ShadowsBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\SuperCriticalBullet\SuperCriticalBullet.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\SuperCriticalBullet\SuperCriticalBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\TheEmpty\TheEmpty.png" />
@@ -136,9 +130,23 @@
 	  <None Remove="Content\DeveloperItems\Bullet\UltraLowTemp\UltraLowTempSPIT.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDan.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDanPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\DPYROItem.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastHoldOut.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\TheGoldenFire\TheGoldenFireHoldOut.png" />
 	  <None Remove="Content\DeveloperItems\炎爆.png" />
+	  <None Remove="Content\Gel\GelBag.png" />
+	  <None Remove="Content\Gel\冰川精华凝胶.png" />
+	  <None Remove="Content\Gel\圣金源凝胶长图.png" />
+	  <None Remove="Content\Gel\天蓝凝胶.png" />
+	  <None Remove="Content\Gel\奇迹物质凝胶.png" />
+	  <None Remove="Content\Gel\宇宙凝胶.png" />
+	  <None Remove="Content\Gel\寒元凝胶.png" />
+	  <None Remove="Content\Gel\星幻凝胶.png" />
+	  <None Remove="Content\Gel\海棱晶凝胶.png" />
+	  <None Remove="Content\Gel\熔渣凝胶.png" />
+	  <None Remove="Content\Gel\钨钢凝胶.png" />
+	  <None Remove="Content\Gel\龙蒿凝胶.png" />
 	  <None Remove="Content\Weapon\45646.png" />
 	  <None Remove="Content\Weapon\UNGun.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGel.png" />

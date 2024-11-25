@@ -23,7 +23,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             NPC.width = 32;
             NPC.height = 32;
             NPC.lifeMax = 150;
-            NPC.damage = 0; // No collision damage
+            NPC.damage = 1500; // No collision damage
             NPC.defense = 5;
             NPC.friendly = true; // Belongs to the player's side
             NPC.aiStyle = -1; // Custom AI
@@ -41,7 +41,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             {
                 Vector2 direction = target.Center - NPC.Center;
                 direction.Normalize();
-                NPC.velocity = Vector2.Lerp(NPC.velocity, direction * 30f, 0.005f); // 能够逐渐加速
+                NPC.velocity = Vector2.Lerp(NPC.velocity, direction * 30f, 0.08f); // 能够逐渐加速
             }
         }
 

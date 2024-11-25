@@ -1,5 +1,5 @@
 displayName = YuBell's Calamity Ammunition Expansion
 author = Henceforth
-version = 0.2.0.16
+version = 0.2.0.18
 modReferences = CalamityMod
 sortAfter = CalamityMod

@@ -16,17 +16,18 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
     {
         public override void PostUpdate()
         {
-            // 如果至尊灾厄在这个世界上还没有被击败，同时这四个Boss（Thanatos、Artemis、Apollo、Ares）全部被击败
-            if (!DownedBossSystem.downedCalamitas && DownedBossSystem.downedThanatos && DownedBossSystem.downedArtemisAndApollo && DownedBossSystem.downedAres)
+            // 如果至尊灾厄在这个世界上还没有被击败，同时机器人组合ExoMechs全部被击败
+            // if (!DownedBossSystem.downedCalamitas && DownedBossSystem.downedExoMechs)
+            if (!DownedBossSystem.downedCalamitas)
             {
                 // 获取玩家当前持有的武器和箭矢
                 Item heldItem = Player.HeldItem;
-                Item ammoItem = Player.inventory.FirstOrDefault(item => item.ammo == AmmoID.Arrow && item.stack > 0);
 
-                // 检查玩家持有的武器是 HeavenlyGale，且箭矢是 MiracleMatterArrow
-                if (heldItem != null && heldItem.type == ModContent.ItemType<HeavenlyGale>() && ammoItem != null && ammoItem.type == ModContent.ItemType<MiracleMatterArrow>())
+                // 检查玩家是否持有 HeavenlyGale 武器，并且背包中有 MiracleMatterArrow 弹药
+                if (heldItem != null && heldItem.type == ModContent.ItemType<HeavenlyGale>() &&
+                    Player.inventory.Any(item => item.type == ModContent.ItemType<MiracleMatterArrow>() && item.stack > 0))
                 {
-                    // 降低 ExoCrystalArrow 的伤害 75%
+                    // 降低远程伤害为 25%
                     Player.GetDamage(DamageClass.Ranged) *= 0.25f;
                 }
             }

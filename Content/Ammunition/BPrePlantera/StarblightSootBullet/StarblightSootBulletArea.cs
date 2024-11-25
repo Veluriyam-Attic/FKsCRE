@@ -12,7 +12,7 @@ using CalamityMod.Dusts;
 
 namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
 {
-    internal class StarblightSootBulletArea : ModProjectile
+    public class StarblightSootBulletArea : ModProjectile
     {
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
@@ -22,29 +22,41 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
             Projectile.height = 1000;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 180; // 存在 3 秒
+            Projectile.timeLeft = 600; // 存在 x 秒
             Projectile.tileCollide = false; // 不与方块碰撞
         }
-
         public override void AI()
         {
-            // 粒子特效
-            float rotationOffset = Main.rand.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4); // 随机旋转
-            Vector2 direction = Vector2.UnitX.RotatedBy(rotationOffset).SafeNormalize(Vector2.Zero);
-            int randomDust = Utils.SelectRandom(Main.rand, new int[]
+            // 提高粒子生成频率
+            for (int i = 0; i < 50; i++) // 一帧生成 50 个粒子
             {
-                ModContent.DustType<AstralOrange>(),
-                ModContent.DustType<AstralBlue>()
-            });
-            Dust dust = Dust.NewDustPerfect(Projectile.Center + direction * Main.rand.NextFloat(100f, 500f), randomDust, direction * Main.rand.NextFloat(3f, 6f));
-            dust.noGravity = true;
-            dust.scale = 1.2f + Main.rand.NextFloat(0.3f);
+                // 在圆周上生成粒子
+                Vector2 position = Projectile.Center + Main.rand.NextVector2CircularEdge(500f, 500f); // 半径调整为 500f
+                int randomDust = Utils.SelectRandom(Main.rand, new int[]
+                {
+            ModContent.DustType<AstralOrange>(),
+            ModContent.DustType<AstralBlue>()
+                });
+                Dust dust = Dust.NewDustPerfect(position, randomDust, Vector2.Zero); // 无初始速度
+                dust.noGravity = true; // 粒子不受重力影响
+                dust.scale = 2.0f + Main.rand.NextFloat(0.3f); // 调整粒子大小
+                dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi); // 随机旋转
+            }
+
+            // 添加光效
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.8f);
         }
+
+
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 给接触的敌人施加 StarblightSootBulletEBuff
-            target.AddBuff(ModContent.BuffType<StarblightSootBulletEBuff>(), 300);
+            // 如果目标被击中且不为 Boss
+            if (!target.boss && target.TryGetGlobalNPC<StarblightSootBulletGlobalNPC>(out var modNPC))
+            {
+                modNPC.MarkedByArea = true; // 标记该敌人为被立场笼罩
+            }
         }
+
     }
 }

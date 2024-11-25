@@ -25,6 +25,8 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
 {
     public class LifeAlloyArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/CPreMoodLord/LifeAlloyArrow/LifeAlloyArrow";
+
         public new string LocalizationCategory => "Projectile.CPreMoodLord";
         private Color currentColor = Color.Black; // 初始化为黑色
         private float bendAngle = 0f;
@@ -61,6 +63,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
             Projectile.extraUpdates = 3;
+            Projectile.velocity *= 0.4f;
         }
 
         private Color currentColorLeft = Color.Black;
@@ -70,7 +73,6 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
         {
             // 调整弹幕的旋转，使其在飞行时保持水平
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
-
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)

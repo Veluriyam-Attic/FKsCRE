@@ -1,0 +1,49 @@
+﻿using CalamityMod.Items.Materials;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Pao;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria;
+using CalamityMod;
+
+namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Ma
+{
+    internal class Ma : ModItem, ILocalizedModType
+    {
+        public new string LocalizationCategory => "DeveloperItems.ChineseChess.Ma";
+        public override void SetDefaults()
+        {
+            Item.damage = 13;
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 14;
+            Item.height = 32;
+            Item.maxStack = 9999;
+            Item.consumable = true; // 弹药是消耗品
+            Item.knockBack = 3.5f;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
+            Item.shoot = ModContent.ProjectileType<PaoPROJ>();
+            Item.shootSpeed = 6f;
+            Item.ammo = AmmoID.Bullet; // 这是子弹类型的弹药
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe1 = CreateRecipe(333);
+            recipe1.AddIngredient(ItemID.Seahorse, 1);
+            recipe1.AddIngredient(ItemID.WaterBucket, 1);
+            recipe1.AddIngredient<ScoriaBar>(1);
+            recipe1.AddTile(TileID.Anvils);
+            recipe1.Register();
+        }
+
+    }
+}

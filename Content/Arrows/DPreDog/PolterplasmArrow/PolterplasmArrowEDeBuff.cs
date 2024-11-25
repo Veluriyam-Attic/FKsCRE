@@ -17,24 +17,49 @@ namespace CalamityThrowingSpear.Weapons.NewWeapons.BPrePlantera.TheLastLance
         {
             Main.debuff[Type] = true; // 减益
         }
+        // 保存敌人原始防御力
+        private Dictionary<int, int> originalDefense = new Dictionary<int, int>();
+
+
         public override void Update(NPC npc, ref int buffIndex)
         {
-            // 只影响敌人，不影响友方或其他
-            if (!npc.friendly && npc.lifeMax > 5) // 检查 NPC 是否是敌人且生命值正常
+            // 如果敌人是有效目标
+            if (!npc.friendly && npc.lifeMax > 5)
             {
-                // 使敌人完全无法移动
-                npc.velocity.X = 0f;
-                npc.velocity.Y = 0f;
+                // 检查并记录原始防御力
+                if (!originalDefense.ContainsKey(npc.whoAmI))
+                {
+                    originalDefense[npc.whoAmI] = npc.defense; // 保存敌人原防御力
+                }
 
-                // 你还可以进一步禁用其他行为，例如攻击或特定动作
-                npc.aiStyle = -1; // 取消 AI 行为 (可选，根据需要)
+                // 应用效果：防止移动、提高防御力
+                npc.velocity = Vector2.Zero; // 禁止移动
+                npc.aiStyle = -1; // 禁用 AI
+                npc.defense = 10000; // 提高防御力
 
-                // 将敌人的防御力设置为 10,000 点，近乎无敌
-                npc.defense = 10000;
+                // 限制 Buff 时间为 1 秒
+                npc.buffTime[buffIndex] = Math.Min(npc.buffTime[buffIndex], 60); // 1 秒 = 60 帧
+            }
+
+            // 检查 Buff 是否结束
+            if (npc.buffTime[buffIndex] <= 0)
+            {
+                if (originalDefense.ContainsKey(npc.whoAmI))
+                {
+                    // 恢复敌人原始防御力和行为
+                    npc.defense = originalDefense[npc.whoAmI]; // 恢复防御力
+                    originalDefense.Remove(npc.whoAmI); // 移除记录
+                }
+
+                npc.aiStyle = npc.ModNPC?.AIType ?? npc.aiStyle; // 恢复 AI 行为
             }
         }
 
-
+        public override void Unload()
+        {
+            // 确保卸载时清除防御力记录，避免内存泄漏
+            originalDefense.Clear();
+        }
 
 
     }

@@ -87,14 +87,14 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
                 // 随机生成一个角度（0 到 360 度）
                 float angle = MathHelper.ToRadians(Main.rand.Next(0, 360));
 
-                // 计算初始速度，方向为当前速度旋转随机角度后，速度为原速度的 0.7 倍
-                Vector2 velocity = Projectile.velocity.RotatedBy(angle) * 0.7f;
+                // 设置固定初始速度（长度为 20f）
+                Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 1.4f;
 
                 // 创建 UelibloomBulletLEAF 弹幕
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),  // 弹幕来源
                     Projectile.Center,               // 生成位置
-                    velocity,                        // 初始速度
+                    velocity,                        // 固定初始速度
                     ModContent.ProjectileType<UelibloomBulletLEAF>(), // UelibloomBulletLEAF 弹幕类型
                     (int)(Projectile.damage * 1.0f), // 伤害倍率为 1.0
                     Projectile.knockBack,            // 使用当前弹幕的击退力
@@ -102,6 +102,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
                 );
             }
         }
+
 
         public override void OnKill(int timeLeft)
         {
@@ -116,10 +117,10 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
 
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center, // 粒子生成位置
-                        DustID.Plantera_Green, // 157号粒子
+                        DustID.GreenTorch,
                         direction, // 速度
                         100, // 透明度
-                        Color.ForestGreen, // 深绿色
+                        Color.LimeGreen, // 绿色
                         Main.rand.NextFloat(1.2f, 1.8f) // 粒子大小
                     );
                     dust.noGravity = true; // 粒子不受重力影响

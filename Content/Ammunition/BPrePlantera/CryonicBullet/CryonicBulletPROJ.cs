@@ -128,23 +128,36 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
             // 随机生成 3 到 10 个碎片弹幕
             int fragmentCount = Main.rand.Next(3, 11);
 
+            // 计算每个碎片之间的角度步长
+            float angleStep = 360f / fragmentCount;
+
             for (int i = 0; i < fragmentCount; i++)
             {
-                // 随机方向
-                float angle = MathHelper.ToRadians(Main.rand.Next(0, 360)); // 0 到 360 度随机角度
-                Vector2 velocity = Projectile.velocity.RotatedBy(angle) * 0.25f; // 初始速度为自身速度的 x 倍
+                // 均匀分布的角度
+                float angle = MathHelper.ToRadians(i * angleStep);
+                float velocityMultiplier = Main.rand.NextFloat(0.5f, 1.5f); // 随机初速度倍率
 
-                // 创建碎片弹幕
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(), // 弹幕来源
-                    Projectile.Center,               // 生成位置
-                    velocity,                        // 初始速度
-                    ModContent.ProjectileType<CryonicBulletFragment>(), // 碎片弹幕类型
-                    (int)(Projectile.damage * 1.5f), // 伤害为 1.5 倍
-                    Projectile.knockBack,           // 使用当前弹幕的击退力
-                    Projectile.owner                // 拥有者
+                Vector2 velocity = Projectile.velocity.RotatedBy(angle) * velocityMultiplier; // 初始速度
+
+                // 随机减速度因子
+                float decelerationFactor = Main.rand.NextFloat(0.98f, 0.999f);
+
+                // 创建碎片弹幕并传递减速度参数
+                int fragmentProjectile = Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    Projectile.Center,
+                    velocity,
+                    ModContent.ProjectileType<CryonicBulletFragment>(),
+                    (int)(Projectile.damage * 1.5f),
+                    Projectile.knockBack,
+                    Projectile.owner,
+                    ai0: decelerationFactor // 将减速度因子传递给碎片弹幕
                 );
+
+                // 保存减速度到弹幕
+                Main.projectile[fragmentProjectile].ai[0] = decelerationFactor;
             }
+
         }
 
     }

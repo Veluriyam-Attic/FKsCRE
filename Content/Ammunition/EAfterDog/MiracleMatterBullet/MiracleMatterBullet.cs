@@ -26,7 +26,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
             Item.value = Item.sellPrice(copper: 12);
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<MiracleMatterBulletPROJ>();
-            Item.shootSpeed = 15f;
+            Item.shootSpeed = 22f;
             Item.ammo = AmmoID.Bullet;
         }
 

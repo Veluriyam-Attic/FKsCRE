@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 20;
+            Item.damage = 60;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;
@@ -30,7 +30,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
             Item.value = Item.sellPrice(copper: 12);
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<DivineGeodeBulletPROJ>();
-            Item.shootSpeed = 16f;
+            Item.shootSpeed = 9f;
             Item.ammo = AmmoID.Bullet;
         }
 

@@ -10,6 +10,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Ammo;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
 {
@@ -25,8 +28,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             Item.maxStack = 9999;
             Item.consumable = true;
             Item.knockBack = 3f;
-            Item.value = Item.sellPrice(copper: 12);
-            Item.rare = ItemRarityID.Pink;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<UltraLowTempPROJ>();
             Item.shootSpeed = 19f;
             Item.ammo = AmmoID.Bullet;

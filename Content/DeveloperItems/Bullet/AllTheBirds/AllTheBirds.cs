@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
 {
@@ -22,8 +25,9 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
             Item.maxStack = 9999;
             Item.consumable = true; // 弹药是消耗品
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().donorItem = true;
             Item.shoot = ModContent.ProjectileType<AllTheBirdsPROJ>();
             Item.shootSpeed = 1f;
             Item.ammo = AmmoID.Bullet; // 这是子弹类型的弹药

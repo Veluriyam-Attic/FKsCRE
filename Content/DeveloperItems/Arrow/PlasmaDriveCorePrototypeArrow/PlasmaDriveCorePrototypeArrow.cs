@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -22,8 +25,10 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
             Item.maxStack = 1;
             Item.consumable = false;
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<PlasmaDriveCorePrototypeArrowPROJ>();
             Item.shootSpeed = PlasmaDriveCorePrototypeArrowPROJ.InitialSpeed;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药

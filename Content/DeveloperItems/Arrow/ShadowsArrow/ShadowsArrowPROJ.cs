@@ -153,19 +153,19 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
                 {
                     // 原版弹幕
                     int selectedVanilla = VanillaProjectiles[Main.rand.Next(VanillaProjectiles.Length)];
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedVanilla, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedVanilla, (Projectile.damage) * 2, Projectile.knockBack, Projectile.owner);
                 }
                 else if (randomType == 1)
                 {
                     // Calamity 弹幕
                     int selectedCalamity = CalamityProjectiles[Main.rand.Next(CalamityProjectiles.Length)];
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedCalamity, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedCalamity, (Projectile.damage) * 2, Projectile.knockBack, Projectile.owner);
                 }
                 else
                 {
                     // 自定义模组弹幕
                     string selectedProjectile = CustomModProjectiles[Main.rand.Next(CustomModProjectiles.Length)];
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, Mod.Find<ModProjectile>(selectedProjectile).Type, Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, Mod.Find<ModProjectile>(selectedProjectile).Type, (Projectile.damage) * 2, Projectile.knockBack, Projectile.owner);
                 }
 
                 // 黑色粒子效果

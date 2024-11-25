@@ -8,6 +8,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Tools;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
 {
@@ -23,8 +26,10 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
             Item.maxStack = 1;
             Item.consumable = false; // 弹药是消耗品
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<TheDrillPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药

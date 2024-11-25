@@ -9,6 +9,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.DraedonMisc;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
 {
@@ -19,13 +22,15 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
         {
             Item.width = 12;
             Item.height = 18;
-            Item.damage = 15;
+            Item.damage = 5;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 1;
             Item.consumable = false;
             Item.knockBack = 3f;
-            Item.value = Item.sellPrice(copper: 12);
-            Item.rare = ItemRarityID.Pink;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<YuanZiDanPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet;

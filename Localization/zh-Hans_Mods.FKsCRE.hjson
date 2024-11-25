@@ -70,13 +70,9 @@ Buffs: {
 	}
 
 	DivineGeodeBulletPBuff: {
-		// DisplayName: Divine Geode Bullet P Buff
-		// Description: Mods.FKsCRE.Buffs.DivineGeodeBulletPBuff.Description
 	}
 
 	StarblightSootBulletEBuff: {
-		// DisplayName: Starblight Soot Bullet E Buff
-		// Description: Mods.FKsCRE.Buffs.StarblightSootBulletEBuff.Description
 	}
 
 	DestructionBulletDestruction: {
@@ -92,6 +88,16 @@ Buffs: {
 	PolterplasmBulletFlowerPBuff: {
 		// DisplayName: Polterplasm Bullet Flower P Buff
 		// Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
+	}
+
+	DivineGeodeArrowPBuff: {
+		// DisplayName: Divine Geode Arrow P Buff
+		// Description: Mods.FKsCRE.Buffs.DivineGeodeArrowPBuff.Description
+	}
+
+	CosmosGelEDebuff: {
+		// DisplayName: Cosmos Gel E Debuff
+		// Description: Mods.FKsCRE.Buffs.CosmosGelEDebuff.Description
 	}
 }
 
@@ -169,6 +175,18 @@ Items: {
 	TestDASH: {
 		// DisplayName: Test D A S H
 		// Tooltip: ""
+	}
+
+	GelBag: {
+		DisplayName: 凝胶袋
+		Tooltip:
+			'''
+			容量很大
+			用于存放凝胶
+			'''
+	}
+
+	DPSItem: {
 	}
 }
 
@@ -271,8 +289,9 @@ Arrows: {
 			DisplayName: 神圣晶石箭
 			Tooltip:
 				'''
-				已完成特效部分
-				暂未完成具体实现
+				以神圣之力炸毁敌人
+				赋予玩家【净化邪神】增益：大幅提升飞行时间
+				“翅膀的上升之火被重新燃起”
 				'''
 		}
 
@@ -319,12 +338,13 @@ Arrows: {
 		}
 
 		MiracleMatterArrow: {
-			DisplayName: 奇迹物质箭
+			DisplayName: 星流箭
 			Tooltip:
 				'''
-				命中后释放逐渐旋转的光球能量弹
-				具有极强的追踪能力
+				命中后释放强力追踪的光球能量弹
 				“星河贯穿，光芒跃动！”
+				那名掌握至尊死灵术的魔女似乎不喜欢这个和一把来自天堂的神器
+				所以你不应该在战斗中同时使用这两个？
 				'''
 		}
 	}
@@ -351,7 +371,8 @@ DeveloperItems: {
 			Tooltip:
 				'''
 				命中时引发小型等离子爆炸
-				“这看着感觉不小”
+				“我很好奇这东西是怎么装在箭矢上并射出去的”
+				“我更好奇的是这居然还能保持自己的形状而不被摧毁”
 				'''
 		}
 
@@ -409,6 +430,7 @@ DeveloperItems: {
 				无限穿透，但在鼠标位置生成
 				但往玩家处回收，但没有击中敌人时给玩家回血
 				但击中的敌人越多越是会扣除玩家更多的血量
+				玩家可能会因为其而死亡
 				“生存还是毁灭，这是一个问题”
 				'''
 		}
@@ -438,6 +460,7 @@ DeveloperItems: {
 				爆裂出碎片
 				每攻击50次就会提高一个碎片数量等级
 				停止攻击每1秒就会下降一个碎片等级
+				碎片数量上限为10，达到上限之后不会再提升
 				“如风暴般撕裂你的敌人！”
 				'''
 		}
@@ -453,7 +476,7 @@ DeveloperItems: {
 				'''
 				让敌人随地大小变，可改变碰撞箱
 				对于Boss也有效
-				“让我们一起测试！”
+				“容易让游戏崩溃”
 				'''
 		}
 
@@ -467,7 +490,7 @@ DeveloperItems: {
 				'''
 				击中后在外围释放分裂弹幕，造成冰河时代
 				命中水时将水冻结成冰块
-				“岩王帝君，这玩意儿比箭好用多了！”
+				“凝冰渡河真君”
 				'''
 		}
 
@@ -502,6 +525,19 @@ DeveloperItems: {
 		// PyroblastPlanet.DisplayName: Pyroblast Planet
 		// PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
 		// CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
+		
+		DPYROItem: {
+			// DisplayName: D P Y R O Item
+			// Tooltip: ""
+		}
+
+		// CorinthPrimeAirburst.DisplayName: Corinth Prime Airburst
+		// PyroblastAirburstGrenade.DisplayName: Pyroblast Airburst Grenade
+		// PyroblastExoFire.DisplayName: Pyroblast Exo Fire
+		// PyroblastGhostFire.DisplayName: Pyroblast Ghost Fire
+		// PyroblastPlanet.DisplayName: Pyroblast Planet
+		// PyroblastPROJ.DisplayName: Pyroblast P R O J
+		// PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
 	}
 
 	ExplodingRabbit: {
@@ -509,9 +545,8 @@ DeveloperItems: {
 			DisplayName: 自爆兔
 			Tooltip:
 				'''
-				我明白我的使命，听从你的呼唤
-				我甘愿奉献一切，义无反顾的前进
-				我愿用我的残躯照亮这个世界
+				击中敌人时产生爆炸并弹飞
+				在一个“好世界”中获得超强追踪能力和巨额爆炸伤害
 				'''
 		}
 	}
@@ -521,7 +556,7 @@ DeveloperItems: {
 			DisplayName: 原子弹
 			Tooltip:
 				'''
-				撞击后弹至周围敌人并提升自己50%的伤害
+				撞击后弹至周围敌人并将自己的伤害乘以1.25
 				凝聚了微观原子学以及量子力学的力量
 				“不，不是你想的那种原子弹”
 				'''
@@ -532,11 +567,12 @@ DeveloperItems: {
 
 	DestructionBullet: {
 		DestructionBullet: {
-			DisplayName: 灭世灵液弹
+			DisplayName: 灭世弹
 			Tooltip:
 				'''
 				释放积攒已久的仇恨与爆炸
-				对敌人释放破晓，带电，灵液，翼龙怒火
+				对敌人施加：
+				破晓，带电，灵液，翼龙怒火
 				诅咒狱火，迈达斯，酸性毒液
 				元素紊乱，死亡标记，常春藤毒素，灭世
 				灭世能够降低敌人30%的接触伤害
@@ -561,8 +597,8 @@ DeveloperItems: {
 		}
 
 		// TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
-		// TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
 		// TerratoarrowSlash.DisplayName: Terratoarrow Slash
+		// TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
 	}
 
 	SuperCriticalBullet: {
@@ -575,7 +611,128 @@ DeveloperItems: {
 				'''
 		}
 
+		// DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
 		// SuperCriticalBulletPROJ.DisplayName: Super Critical Bullet P R O J
+	}
+
+	TheGoldenFire: {
+		TheGoldenFire: {
+			DisplayName: 虞金引焰
+			Tooltip:
+				'''
+				喷射出追踪火焰
+				他拥有惊人的成长能力
+				'''
+		}
+
+		// TheGoldenFirePROJ.DisplayName: The Golden Fire P R O J
+	}
+
+	ShadowsBullet: {
+		ShadowsBullet: {
+			DisplayName: 魔影弹
+			Tooltip:
+				'''
+				它蕴含了一切事物
+				“特效库限时免费.jpg”
+				'''
+		}
+
+		// ShadowsBulletPROJ.DisplayName: Shadows Bullet P R O J
+	}
+
+	DiffuseNovaArc: {
+		DiffuseNovaArc: {
+			DisplayName: 散漫星弧
+			Tooltip:
+				'''
+				充能并快速发射新星能量矢
+				一级充能可以直接发射毁灭性的新星冲击波
+				二级充能将提升能量矢发射速率
+				'''
+		}
+	}
+
+	ChineseChess: {
+		Pao: {
+			Pao: {
+				DisplayName: 砲
+				Tooltip:
+					'''
+					击中敌人后仅造成很弱的伤害
+					随后将自己传送到后方释放极为猛烈的爆炸
+					“他需要一个炮架”
+					'''
+			}
+
+			// PaoPROJ.DisplayName: Pao P R O J
+		}
+
+		Che: {
+			Che: {
+				DisplayName: 车
+				Tooltip: 
+				'''
+				横冲直撞，无限穿透
+				“最早的数值怪”
+				'''
+			}
+
+			// ChePROJ.DisplayName: Che P R O J
+		}
+
+		Ma: {
+			Ma: {
+				DisplayName: 马
+				Tooltip: 
+				'''
+				隔一段时间往左或往右拐弯一次
+				“灵活多变，哪里都行”
+				'''
+			}
+
+			// MaPROJ.DisplayName: Ma P R O J
+		}
+
+		Shi: {
+			Shi: {
+				DisplayName: 士
+				Tooltip: 
+				'''
+				围绕玩家快速旋转，无限穿透
+				“忠实的护卫，至死不渝”
+				'''
+			}
+
+			// ShiPROJ.DisplayName: Shi P R O J
+		}
+
+		Xiang: {
+			Xiang: {
+				DisplayName: 象
+				Tooltip: 
+				'''
+				往4个斜方位不断前进
+				直到碰到屏幕边缘为止
+				“不能过河，很河里”
+				'''
+			}
+
+			// XiangPROJ.DisplayName: Xiang P R O J
+		}
+
+		Zu: {
+			Zu: {
+				DisplayName: 卒
+				Tooltip: 
+				'''
+				快速减速并往周围释放飞刀
+				“没有用？”
+				'''
+			}
+
+			// ZuPROJ.DisplayName: Zu P R O J
+		}
 	}
 }
 
@@ -597,17 +754,9 @@ Projectiles: {
 	WulfrimArrow_proje.DisplayName: Wulfrim Arrow_proje
 	天蓝旋风.DisplayName: 天蓝旋风
 	天蓝矢_Proje.DisplayName: 天蓝矢_ Proje
-	// AstralBulletPROJ.DisplayName: Astral Bullet P R O J
-	// PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
-	// ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
-	// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
-	// AuricBuletPROJ.DisplayName: Auric Bulet P R O J
-	// MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
-	// UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
-	// UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
-	// Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
-	// Ranged.DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+	// PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
 	// StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
+	// Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 }
 
 Projectile: {
@@ -621,8 +770,8 @@ Projectile: {
 	BPrePlantera: {
 		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
 		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
-		// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
 		// CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
+		// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
 		// StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
 	}
 
@@ -652,12 +801,12 @@ Projectile: {
 		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
 		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
 		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
-		// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
-		// UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
-		// DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
-		// PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
-		// ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 		// PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
+		// PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
+		// UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
+		// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+		// DivineGeodeArrowEXP.DisplayName: Divine Geode Arrow E X P
+		// ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 	}
 
 	EAfterDog: {
@@ -665,9 +814,9 @@ Projectile: {
 		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
 		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
 		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+		// AuricBuletBALL.DisplayName: Auric Bulet B A L L
 		// AuricBuletPROJ.DisplayName: Auric Bulet P R O J
 		// MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
-		// AuricBuletBALL.DisplayName: Auric Bulet B A L L
 	}
 }
 
@@ -703,12 +852,19 @@ Ammunition: {
 				'''
 				赋予敌人冰冷的标记并增加伤害
 				弹射出冰刺
+				“冰冰凉凉”
 				'''
 		}
 
 		StarblightSootBullet: {
-			// DisplayName: Starblight Soot Bullet
-			// Tooltip: ""
+			DisplayName: 调星弹
+			Tooltip:
+				'''
+				击中敌人后，给予敌人即将灭亡的标记
+				等待敌人死亡，随后释放强大的幻星立场
+				幻星立场那任意一个敌人受到伤害，都会将伤害转移给其他敌人
+				“要懂得分享”
+				'''
 		}
 	}
 
@@ -729,6 +885,7 @@ Ammunition: {
 				'''
 				不断的命中能使玩家提升防御力上限为20点
 				使敌人中毒
+				“至死猛毒”
 				'''
 		}
 
@@ -738,6 +895,7 @@ Ammunition: {
 				'''
 				产生爆炸和火柱
 				命中后给予玩家可堆叠的加速度与伤害提升
+				“身体更热了，跳的就更快了，挺合理的不是吗”
 				'''
 		}
 
@@ -745,8 +903,8 @@ Ammunition: {
 			DisplayName: 圣晶石子弹
 			Tooltip:
 				'''
-				降落陨星,产生爆炸
-				并给予额外飞行时长
+				暂时没有决定好
+				有什么攻击特效
 				'''
 		}
 	}
@@ -787,9 +945,25 @@ Ammunition: {
 			DisplayName: 星流弹
 			Tooltip:
 				'''
-				它似乎有点自己的想法
-				为何不顺着它的意思来？
+				虚拟与现实的碰撞，无害
+				扭曲与折射的光芒，无妨
+				蓦然回首，只瞥见祂一人
+				追寻原初光芒，暗无天日
+				说人话：
+				第1次碰撞不造成伤害
+				随后左右扭曲飞行一段距离后强力追踪
 				'''
+		}
+	}
+}
+
+Gel: {
+	EAfterDog: {
+		CosmosGel: {
+			CosmosGel: {
+				// DisplayName: Cosmos Gel
+				// Tooltip: ""
+			}
 		}
 	}
 }

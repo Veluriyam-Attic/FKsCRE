@@ -9,6 +9,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
+using CalamityMod;
 
 namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
 {
@@ -24,8 +27,11 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             Item.maxStack = 9999;
             Item.consumable = true; // 弹药是消耗品
             Item.knockBack = 3.5f;
-            Item.value = 10;
-            Item.rare = ItemRarityID.Blue;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
+
             Item.shoot = ModContent.ProjectileType<ExplodingRabbitPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
@@ -45,7 +51,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             recipe2.AddIngredient(ItemID.Bunny, 1);
             recipe2.AddIngredient(ItemID.Dynamite, 999);
             recipe2.AddCondition(Condition.ForTheWorthyWorld);
-            recipe.AddTile(TileID.Anvils);
+            recipe2.AddTile(TileID.Anvils);
             recipe2.Register();
         }
 

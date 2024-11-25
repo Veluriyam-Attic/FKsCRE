@@ -22,6 +22,8 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 {
     public class AstralArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/CPreMoodLord/AstralArrow/AstralArrow";
+
         public new string LocalizationCategory => "Projectile.CPreMoodLord";
         public override void SetStaticDefaults()
         {

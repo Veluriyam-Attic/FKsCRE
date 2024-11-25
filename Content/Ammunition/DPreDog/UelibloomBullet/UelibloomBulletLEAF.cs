@@ -47,7 +47,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
             Player player = Main.player[Projectile.owner];
             Projectile.localAI[0] += 1f / (Projectile.extraUpdates + 1);
 
-            if (Projectile.localAI[0] < 100f) // 前 100 帧速度逐渐降低
+            if (Projectile.localAI[0] < 65f) // 前 x 帧速度逐渐降低
             {
                 Projectile.velocity *= 0.985f; // 每帧速度减少
             }

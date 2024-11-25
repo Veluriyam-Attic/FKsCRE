@@ -67,20 +67,27 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
 
 
             // 检查剩余时间
-            if (Projectile.timeLeft == 2)
+            if (Projectile.timeLeft == 1)
             {
                 // 基础方向为弹幕当前的朝向
                 Vector2 baseDirection = Projectile.velocity.SafeNormalize(Vector2.UnitX);
 
-                // 计算三个弹幕的方向：中心、左偏1度、右偏1度
-                Vector2[] directions = new Vector2[3]
-                {
-            baseDirection.RotatedBy(MathHelper.ToRadians(-1)), // 左偏1度
-            baseDirection,                                   // 中心
-            baseDirection.RotatedBy(MathHelper.ToRadians(1))  // 右偏1度
-                };
+                // 动态调整发射数量
+                int arrowCount = Main.getGoodWorld ? 9 : 3; // getGoodWorld 启用时 x 发，否则 3 发
 
-                // 释放三个弹幕
+                // 动态计算每两发弹幕的夹角
+                float angleStep = MathHelper.ToRadians(1); // 每两发之间的偏移角度（1度）
+
+                // 计算多发弹幕的方向
+                Vector2[] directions = new Vector2[arrowCount];
+                for (int i = 0; i < arrowCount; i++)
+                {
+                    // 偏移范围从 -(arrowCount / 2) 到 (arrowCount / 2)
+                    float offsetAngle = angleStep * (i - (arrowCount - 1) / 2);
+                    directions[i] = baseDirection.RotatedBy(offsetAngle);
+                }
+
+                // 释放多个弹幕
                 foreach (Vector2 direction in directions)
                 {
                     Projectile.NewProjectile(
@@ -88,13 +95,13 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
                         Projectile.Center,               // 起始位置
                         direction * Projectile.velocity.Length(), // 方向保持与原投射物速度一致
                         ModContent.ProjectileType<TerratoarrowSPIT>(),
-                        (int)((Projectile.damage) * 0.33),               // 伤害倍率为x
+                        (int)((Projectile.damage) * 0.75),               // 伤害倍率为 x
                         Projectile.knockBack,           // 保持相同的击退效果
                         Projectile.owner                // 投射物归属
                     );
                 }
 
-                // 遍历三个方向并生成粒子
+                // 遍历方向并生成粒子
                 foreach (Vector2 direction in directions)
                 {
                     PointParticle spark1 = new PointParticle(
@@ -108,6 +115,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
                     GeneralParticleHandler.SpawnParticle(spark1);
                 }
 
+
                 // 手动删除弹幕
                 Projectile.Kill();
             }
@@ -116,10 +124,10 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             // 检查弹幕的剩余时间
-            if (Projectile.timeLeft >= 10)
+            // if (Projectile.timeLeft >= 10)
             {
                 // 增加 2.5 倍伤害
-                modifiers.FinalDamage *= 2.5f;
+                modifiers.FinalDamage *= 3.5f;
             }
         }
 
@@ -132,6 +140,14 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
+            // 消亡时释放X色爆炸特效
+            Particle blastRing = new CustomPulse(
+                Projectile.Center, Vector2.Zero, Color.LimeGreen,
+                "CalamityMod/Particles/FlameExplosion",
+                Vector2.One * 0.22f, Main.rand.NextFloat(-10f, 10f),
+                0.07f, 0.33f, 30
+            );
+            GeneralParticleHandler.SpawnParticle(blastRing);
         }
 
 

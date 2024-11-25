@@ -23,10 +23,10 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.PlasmaDriveCorePrototypeArrow
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = -1;
-            Projectile.timeLeft = 120;
+            Projectile.penetrate = Main.getGoodWorld ? -1 : 4;
+            Projectile.timeLeft = Main.getGoodWorld ? 1200 : 120;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = Main.getGoodWorld ? 5 : 15;
         }
 
         public override void AI()

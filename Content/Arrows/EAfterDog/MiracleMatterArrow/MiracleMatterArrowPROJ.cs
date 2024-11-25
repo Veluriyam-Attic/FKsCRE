@@ -200,17 +200,53 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 
         public override void OnKill(int timeLeft)
         {
-            // 计算随机初始角度
-            float initialAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi); // 在 0 到 2π 之间随机选择一个角度
-            float angleIncrement = MathHelper.ToRadians(120f); // 每个角度之间的夹角为 120 度
+            //// 计算随机初始角度
+            //float initialAngle = Main.rand.NextFloat(0f, MathHelper.TwoPi); // 在 0 到 2π 之间随机选择一个角度
+            //float angleIncrement = MathHelper.ToRadians(120f); // 每个角度之间的夹角为 120 度
+
+            //// 计算并发射三个弹幕
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    float currentAngle = initialAngle + i * angleIncrement; // 计算当前的角度
+            //    Vector2 newVelocity = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(currentAngle) * 10f; // 旋转基础速度并保持大小
+            //    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<MiracleMatterArrowFire>(), (int)(Projectile.damage * 1.0f), Projectile.knockBack, Projectile.owner);
+            //}
+
 
             // 计算并发射三个弹幕
-            for (int i = 0; i < 3; i++)
             {
-                float currentAngle = initialAngle + i * angleIncrement; // 计算当前的角度
-                Vector2 newVelocity = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(currentAngle) * 10f; // 旋转基础速度并保持大小
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<MiracleMatterArrowFire>(), (int)(Projectile.damage * 1.0f), Projectile.knockBack, Projectile.owner);
+                // 计算初始方向角度
+                float forwardAngle = Projectile.velocity.ToRotation(); // 当前速度的方向角
+                float backwardAngle = forwardAngle + MathHelper.Pi; // 相反方向的角度
+
+                // 定义前后角度范围（±15度）
+                float angleRange = MathHelper.ToRadians(15f);
+
+                // 存储所有可能的角度
+                List<float> possibleAngles = new List<float>
+{
+    forwardAngle - angleRange, // 正前方左15度
+    forwardAngle + angleRange, // 正前方右15度
+    backwardAngle - angleRange, // 正后方左15度
+    backwardAngle + angleRange  // 正后方右15度
+};
+
+                // 随机选择三个角度
+                List<float> selectedAngles = possibleAngles.OrderBy(_ => Main.rand.Next()).Take(3).ToList();
+
+                // 发射三个弹幕
+                foreach (float angle in selectedAngles)
+                {
+                    // 计算新速度（当前速度的1/4）
+                    Vector2 newVelocity = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(angle) * (Projectile.velocity.Length() / 4f);
+
+                    // 发射弹幕
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<MiracleMatterArrowFire>(), (int)(Projectile.damage * 1.3f), Projectile.knockBack, Projectile.owner);
+                }
             }
+            
+
+
 
             Vector2 armPosition = Projectile.Center;
             Vector2 tipPosition = armPosition + Projectile.velocity * Projectile.width * 0.45f;

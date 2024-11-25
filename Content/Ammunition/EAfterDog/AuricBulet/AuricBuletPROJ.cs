@@ -136,7 +136,8 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             if (existingBalls >= 150)
                 return; // 如果已经存在150个，不再生成
 
-            int spawnCount = Main.rand.Next(1, 3); // 随机生成1到2个AuricBuletBALL
+
+            int spawnCount = Main.getGoodWorld ? Main.rand.Next(3, 9) : Main.rand.Next(1, 3); // 生成1~2个，如果是getGoodWorld 那么生成3~8个
             for (int i = 0; i < spawnCount; i++)
             {
                 // 生成一个随机的半径（1到6个方块）

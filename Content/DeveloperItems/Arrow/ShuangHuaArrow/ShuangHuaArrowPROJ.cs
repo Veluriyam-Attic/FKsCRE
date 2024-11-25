@@ -48,7 +48,8 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
-            Projectile.extraUpdates = 3;
+            Projectile.extraUpdates = 2;
+            Projectile.velocity *= 0.6f;
             //Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
         }
 
@@ -64,7 +65,6 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
 
             // 禁用原始的碰撞逻辑
             Projectile.tileCollide = false;
-          
         }
 
         public override void AI()
@@ -86,17 +86,25 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             // 检查是否即将销毁
             if (Projectile.timeLeft <= 10)
             {
-                // 射出5个方向的 ShuangHuaArrowSPLIT
+
+                // 动态调整发射数量
+                int arrowCount = Main.getGoodWorld ? 9 : 5; // 根据条件调整发射数量
                 Vector2 baseDirection = Vector2.UnitY; // 绝对正下方方向
-                for (int i = -2; i <= 2; i++) // 5 个方向
+
+                // 动态调整每两个弹幕之间的夹角
+                float angleStep = MathHelper.ToRadians(3); // 每两发之间的固定角度（原先是3度）
+
+                // 动态生成弹幕
+                for (int i = -(arrowCount / 2); i <= (arrowCount / 2); i++) // 从负到正，确保发射对称
                 {
-                    float offsetAngle = MathHelper.ToRadians(i * 3); // 每个方向的偏移角度（i*x，x就是每两个之间的夹角）
+                    float offsetAngle = i * angleStep; // 根据索引计算偏移角度
                     Vector2 direction = baseDirection.RotatedBy(offsetAngle); // 相对绝对正下方生成新的方向
                     direction *= 8f; // 设定飞行速度
 
                     // 生成新的弹幕
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<ShuangHuaArrowSPLIT>(), (int)(Projectile.damage * 0.35f), Projectile.knockBack, Projectile.owner);
                 }
+
 
 
                 // 销毁自身

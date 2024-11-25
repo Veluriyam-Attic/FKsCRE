@@ -149,7 +149,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             // 如果启用了 getGoodWorld
             if (Main.getGoodWorld)
             {
-                extraProjectileCount *= 4; // 数量翻x倍
+                extraProjectileCount *= 6; // 数量翻x倍
             }
 
             // 生成额外弹幕

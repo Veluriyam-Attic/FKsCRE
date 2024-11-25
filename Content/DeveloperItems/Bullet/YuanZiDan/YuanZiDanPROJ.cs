@@ -11,6 +11,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Audio;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
 {
@@ -81,7 +82,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = 2;
             Projectile.timeLeft = 450;
             Projectile.MaxUpdates = 6;
             Projectile.alpha = 255;
@@ -139,7 +140,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
                 Projectile.velocity = newDirection * Projectile.velocity.Length();
 
                 // 播放音效
-                Terraria.Audio.SoundEngine.PlaySound(SoundID.Item115, Projectile.position);
+                SoundEngine.PlaySound(SoundID.Item115, Projectile.position);
 
                 // 生成收缩的白色圆圈特效
                 Particle pulse = new DirectionalPulseRing(
@@ -156,8 +157,8 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
 
                 // 提升x%的伤害
                 Projectile.damage = Main.getGoodWorld
-                    ? (int)(Projectile.damage * 3.0f) // getGoodWorld 启用时，伤害乘以 X
-                    : (int)(Projectile.damage * 1.2f); // 否则，伤害乘以 1.2
+                    ? (int)(Projectile.damage * 1.75f) // getGoodWorld 启用时，伤害乘以 X
+                    : (int)(Projectile.damage * 1.15f); // 否则，伤害乘以 x
             }
         }
 

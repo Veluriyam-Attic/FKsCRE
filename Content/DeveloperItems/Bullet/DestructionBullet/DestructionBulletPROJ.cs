@@ -141,7 +141,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
             Particle bloodsplosion2 = new CustomPulse(
                 Projectile.Center, Vector2.Zero, Color.LightYellow,
                 "CalamityMod/Particles/DustyCircleHardEdge",
-                Vector2.One * 0.3f, Main.rand.NextFloat(-15f, 15f),
+                Vector2.One * 0.7f, Main.rand.NextFloat(-15f, 15f),
                 0.03f, 0.155f, 40
             ); 
             GeneralParticleHandler.SpawnParticle(bloodsplosion2);
