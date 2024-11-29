@@ -36,7 +36,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
         public new string LocalizationCategory => "DeveloperItems.AllTheBirds";
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 6;
+            Main.projFrames[Projectile.type] = 5;
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -103,7 +103,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
                 Projectile.frame++;
                 Projectile.frameCounter = 0;
             }
-            if (Projectile.frame > 5) // 六帧动图时，最大帧数为 5
+            if (Projectile.frame > 4) // 5帧动图时，最大帧数为 4
             {
                 Projectile.frame = 0;
             }

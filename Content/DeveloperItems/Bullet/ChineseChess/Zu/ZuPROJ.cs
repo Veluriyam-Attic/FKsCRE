@@ -42,7 +42,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Zu
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 1;
             Projectile.timeLeft = 90;
             Projectile.MaxUpdates = 4;
             Projectile.alpha = 255;
@@ -53,7 +53,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Zu
         public override void AI()
         {
             // 减速飞行：每帧将速度乘以 0.975
-            Projectile.velocity *= 0.975f;
+            Projectile.velocity *= 0.92f;
 
             // 子弹在短时间后变得可见
             if (Projectile.timeLeft == 89)
@@ -64,7 +64,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Zu
 
             // 添加螺旋状粒子特效（黑色烟雾）
             Projectile.localAI[0] += 1f;
-            if (Projectile.localAI[0] > 15f)
+            if (Projectile.localAI[0] > 3f)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -95,22 +95,31 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Zu
             float shootAngle = baseAngle + directionOffset;
 
             // 发射子弹
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 4; i++)
             {
                 float spread = MathHelper.ToRadians(10); // 左右各 10 度的范围
                 float randomOffset = Main.rand.NextFloat(-spread, spread);
                 Vector2 velocity = new Vector2(10f, 0f).RotatedBy(shootAngle + randomOffset);
 
-                Projectile.NewProjectile(
+                // 创建飞刀弹幕
+                int knifeProjectile = Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
                     target.Center,
                     velocity,
                     ProjectileID.ThrowingKnife, // 投刀 ID
-                    Projectile.damage / 2, // 子弹伤害减半
+                    Projectile.damage / 3, // 子弹伤害减x
                     Projectile.knockBack,
                     Projectile.owner
                 );
+
+                // 修改飞刀的属性
+                Projectile proj = Main.projectile[knifeProjectile];
+                proj.penetrate = -1; 
+                proj.timeLeft = 250; // 持续时间改为 250 帧
+                proj.localNPCHitCooldown = -1;
+                proj.usesLocalNPCImmunity = true;
             }
+
 
             // 播放音效
             SoundEngine.PlaySound(SoundID.Item8, Projectile.Center);

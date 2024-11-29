@@ -31,7 +31,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             Projectile.tileCollide = false;
             Projectile.penetrate = 200;
             Projectile.extraUpdates = 7;
-            Projectile.timeLeft = 60000;
+            Projectile.timeLeft = 600;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 50;
             Projectile.DamageType = DamageClass.Ranged;
@@ -50,7 +50,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                 {
                     //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.PiOver2);
                     //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(4));
-                    Projectile.velocity *= 0.973f;
+                    Projectile.velocity *= 0.93f;
                 }
                 //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
             }

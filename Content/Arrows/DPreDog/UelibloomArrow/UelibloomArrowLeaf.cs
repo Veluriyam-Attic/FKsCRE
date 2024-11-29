@@ -37,6 +37,11 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.aiStyle = 0; // 自定义AI
         }
 
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            // 只造成一点伤害
+            modifiers.FinalDamage = new Terraria.ModLoader.StatModifier(0, 0, 1, 1);
+        }
         public override void AI()
         {
             // 增加计时器，用于开始追踪的延迟判断
@@ -104,6 +109,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 
             return closestNPC;
         }
+
 
         // Drawing effects remain unchanged
         public override bool PreDraw(ref Color lightColor)

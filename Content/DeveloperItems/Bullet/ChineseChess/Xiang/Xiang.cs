@@ -19,7 +19,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Xiang
         public new string LocalizationCategory => "DeveloperItems.ChineseChess.Xiang";
         public override void SetDefaults()
         {
-            Item.damage = 13;
+            Item.damage = 18;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
@@ -38,8 +38,13 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Xiang
         public override void AddRecipes()
         {
             Recipe recipe1 = CreateRecipe(333);
-            //recipe1.AddIngredient(ItemID.ExplodingBullet, 333);
-            recipe1.AddIngredient<InfectedArmorPlating>(1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueX, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueI, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueA, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueN, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueG, 1);
+            recipe1.AddIngredient(ItemID.MoonlordBullet, 333);
+            recipe1.AddIngredient<GalacticaSingularity>(1);
             recipe1.AddTile(TileID.Anvils);
             recipe1.Register();
         }

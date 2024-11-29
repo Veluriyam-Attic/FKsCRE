@@ -102,6 +102,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
             Projectile.extraUpdates = 3;
+            Projectile.tileCollide = false;
         }
 
         public override void AI()
@@ -130,6 +131,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
                     {
                         // 将 Aura 位置设置为与箭头匹配
                         auraProjectile.Center = Projectile.Center;
+                        auraProjectile.damage = (int)((Projectile.damage) * 0.15);
                         auraProjectile.velocity = Vector2.Zero; // 确保 Aura 不移动
                     }
                     else

@@ -944,6 +944,60 @@ Gel: {
 				DisplayName: Cosmos Gel
 				Tooltip: ""
 			}
+
+			DisplayName: Cosmos Gel
+			Tooltip: ""
+		}
+
+		AuricGel: {
+			AuricGel: {
+				DisplayName: Auric Gel
+				Tooltip: ""
+			}
+
+			DisplayName: Auric Gel
+			Tooltip: ""
+		}
+
+		MiracleMatterGel: {
+			DisplayName: Miracle Matter Gel
+			Tooltip: ""
+		}
+	}
+
+	CPreMoodLord: {
+		HurricaneGel: {
+			Tooltip: ""
+			DisplayName: Hurricane Gel
+		}
+
+		AstralGel: {
+			DisplayName: Astral Gel
+			Tooltip: ""
+		}
+
+		PerennialGel: {
+			DisplayName: Perennial Gel
+			Tooltip: ""
+		}
+
+		ScoriaGel: {
+			DisplayName: Scoria Gel
+			Tooltip: ""
+		}
+	}
+
+	BPrePlantera: {
+		CryonicGel: {
+			DisplayName: Cryonic Gel
+			Tooltip: ""
+		}
+	}
+
+	DPreDog: {
+		UelibloomGel: {
+			DisplayName: Uelibloom Gel
+			Tooltip: ""
 		}
 	}
 }

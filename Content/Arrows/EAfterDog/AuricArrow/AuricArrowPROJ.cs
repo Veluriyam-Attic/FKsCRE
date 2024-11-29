@@ -102,7 +102,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
         public override void OnKill(int timeLeft)
         {
             // 生成爆炸弹幕
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
 
             // 往四周生成6个AuricArrowBALL
             int numBalls = 6;
@@ -110,7 +110,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             for (int i = 0; i < numBalls; i++)
             {
                 Vector2 velocity = new Vector2(2f, 0f).RotatedBy(angleStep * i);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack, Projectile.owner);
             }
 
             // 检查是否启用了特效

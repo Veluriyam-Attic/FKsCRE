@@ -25,7 +25,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<AuricArrowPROJ>();
-            Item.shootSpeed = 12f;
+            Item.shootSpeed = 9f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 

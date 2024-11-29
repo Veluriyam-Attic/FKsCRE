@@ -671,11 +671,11 @@ DeveloperItems: {
 		Che: {
 			Che: {
 				DisplayName: 车
-				Tooltip: 
-				'''
-				横冲直撞，无限穿透
-				“最早的数值怪”
-				'''
+				Tooltip:
+					'''
+					横冲直撞，无限穿透
+					“最早的数值怪”
+					'''
 			}
 
 			// ChePROJ.DisplayName: Che P R O J
@@ -684,11 +684,11 @@ DeveloperItems: {
 		Ma: {
 			Ma: {
 				DisplayName: 马
-				Tooltip: 
-				'''
-				隔一段时间往左或往右拐弯一次
-				“灵活多变，哪里都行”
-				'''
+				Tooltip:
+					'''
+					隔一段时间往左或往右拐弯一次
+					“灵活多变，哪里都行”
+					'''
 			}
 
 			// MaPROJ.DisplayName: Ma P R O J
@@ -697,11 +697,11 @@ DeveloperItems: {
 		Shi: {
 			Shi: {
 				DisplayName: 士
-				Tooltip: 
-				'''
-				围绕玩家快速旋转，无限穿透
-				“忠实的护卫，至死不渝”
-				'''
+				Tooltip:
+					'''
+					围绕玩家快速旋转，无限穿透
+					“忠实的护卫，至死不渝”
+					'''
 			}
 
 			// ShiPROJ.DisplayName: Shi P R O J
@@ -710,12 +710,12 @@ DeveloperItems: {
 		Xiang: {
 			Xiang: {
 				DisplayName: 象
-				Tooltip: 
-				'''
-				往4个斜方位不断前进
-				直到碰到屏幕边缘为止
-				“不能过河，很河里”
-				'''
+				Tooltip:
+					'''
+					往4个斜方位不断前进
+					直到碰到屏幕边缘为止
+					“不能过河，很河里”
+					'''
 			}
 
 			// XiangPROJ.DisplayName: Xiang P R O J
@@ -724,11 +724,11 @@ DeveloperItems: {
 		Zu: {
 			Zu: {
 				DisplayName: 卒
-				Tooltip: 
-				'''
-				快速减速并往周围释放飞刀
-				“没有用？”
-				'''
+				Tooltip:
+					'''
+					快速减速并往周围释放飞刀
+					“没有用？”
+					'''
 			}
 
 			// ZuPROJ.DisplayName: Zu P R O J
@@ -862,7 +862,7 @@ Ammunition: {
 				'''
 				击中敌人后，给予敌人即将灭亡的标记
 				等待敌人死亡，随后释放强大的幻星立场
-				幻星立场那任意一个敌人受到伤害，都会将伤害转移给其他敌人
+				幻星立场里的任意一个敌人受到伤害都会将伤害转移给其他敌人
 				“要懂得分享”
 				'''
 		}
@@ -964,6 +964,96 @@ Gel: {
 				// DisplayName: Cosmos Gel
 				// Tooltip: ""
 			}
+
+			DisplayName: 宇宙凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+
+		AuricGel: {
+			AuricGel: {
+				// DisplayName: Auric Gel
+				// Tooltip: ""
+			}
+
+			DisplayName: 圣金源凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+
+		MiracleMatterGel: {
+			DisplayName: 星流凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+	}
+
+	CPreMoodLord: {
+		HurricaneGel: {
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+			DisplayName: 海棱镜凝胶
+		}
+
+		AstralGel: {
+			DisplayName: 炫星凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+
+		PerennialGel: {
+			DisplayName: 永恒凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+
+		ScoriaGel: {
+			DisplayName: 熔渣凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+	}
+
+	BPrePlantera: {
+		CryonicGel: {
+			DisplayName: 寒元凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
+		}
+	}
+
+	DPreDog: {
+		UelibloomGel: {
+			DisplayName: 龙蒿凝胶
+			Tooltip:
+				'''
+				效果为空
+				目前里面啥也没做
+				'''
 		}
 	}
 }

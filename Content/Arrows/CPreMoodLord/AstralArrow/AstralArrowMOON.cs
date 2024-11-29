@@ -75,7 +75,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             // 初始化旋转角度
             if (start)
             {
-                Projectile.ai[2] = Projectile.ai[1];
+                Projectile.ai[2] = Projectile.ai[1] + 180f; // 调整角度，翻转180，（太阳对立面）
                 start = false;
             }
 
@@ -85,7 +85,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
             double dist = 160; // 设置距离为 10 格方块 (160 像素)
             Projectile.position.X = player.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
             Projectile.position.Y = player.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
-            Projectile.ai[2] -= 1.1f; // 控制旋转速度，反方向旋转
+            Projectile.ai[2] += 1.1f; // 控制旋转速度，也是正方向旋转
 
             // 动画帧更新
             Projectile.frameCounter++;

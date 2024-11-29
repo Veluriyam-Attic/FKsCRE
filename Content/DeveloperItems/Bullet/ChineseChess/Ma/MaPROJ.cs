@@ -92,7 +92,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Ma
             // 飞行过程中添加粒子效果
             for (int i = -1; i <= 1; i += 2) // 往两边排开
             {
-                Vector2 offset = Projectile.velocity.RotatedBy(MathHelper.ToRadians(90) * i) * 10f; // 左右偏移 10 像素
+                Vector2 offset = Projectile.velocity.RotatedBy(MathHelper.ToRadians(90) * i) * 1f; // 左右偏移 10 像素
                 Dust trail = Dust.NewDustPerfect(Projectile.Center + offset, DustID.Terra, Vector2.Zero, 100, default, Main.rand.NextFloat(1.0f, 1.5f));
                 trail.noGravity = true;
             }
@@ -100,7 +100,13 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Ma
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
+            Player player = Main.player[Projectile.owner]; // 获取弹幕所属的玩家
 
+            // 检查玩家是否骑乘坐骑
+            if (player.mount.Active) // 判断玩家是否处于骑乘状态
+            {
+                Projectile.damage = (int)(Projectile.originalDamage * 1.5f); // 增加 50% 伤害
+            }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

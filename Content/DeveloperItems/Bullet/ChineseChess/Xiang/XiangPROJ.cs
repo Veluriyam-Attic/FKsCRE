@@ -42,7 +42,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Xiang
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 5;
+            Projectile.penetrate = -1;
             Projectile.timeLeft = 450;
             Projectile.MaxUpdates = 4;
             Projectile.alpha = 255;
@@ -53,7 +53,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Xiang
         public override void AI()
         {
             // 子弹旋转逻辑
-            Projectile.rotation = Projectile.velocity.ToRotation();
+            //Projectile.rotation = Projectile.velocity.ToRotation();
             // 子弹在短时间后变得可见
             if (Projectile.timeLeft == 445)
                 Projectile.alpha = 0;

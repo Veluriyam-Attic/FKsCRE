@@ -106,8 +106,8 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
                 {
                     // 生成太阳和月亮
                     float radius = 10 * 16f; // 半径为 10 格方块 (160 像素)
-                    Vector2 sunPosition = player.Center + new Vector2(radius, 0).RotatedBy(MathHelper.PiOver2); // 逆时针 90 度位置
-                    Vector2 moonPosition = player.Center + new Vector2(-radius, 0).RotatedBy(MathHelper.PiOver2); // 顺时针 90 度位置
+                    Vector2 sunPosition = player.Center + new Vector2(-radius, 0); // 左侧
+                    Vector2 moonPosition = player.Center + new Vector2(radius, 0); // 右侧
 
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), sunPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowSUN>(), 0, 0f, Projectile.owner);
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), moonPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowMOON>(), 0, 0f, Projectile.owner);
@@ -116,16 +116,17 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
                 {
                     // 只生成太阳
                     float radius = 10 * 16f;
-                    Vector2 sunPosition = player.Center + new Vector2(radius, 0).RotatedBy(MathHelper.PiOver2);
+                    Vector2 sunPosition = player.Center + new Vector2(-radius, 0); // 左侧
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), sunPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowSUN>(), 0, 0f, Projectile.owner);
                 }
                 else if (!moonExists)
                 {
                     // 只生成月亮
                     float radius = 10 * 16f;
-                    Vector2 moonPosition = player.Center + new Vector2(-radius, 0).RotatedBy(MathHelper.PiOver2);
+                    Vector2 moonPosition = player.Center + new Vector2(radius, 0); // 右侧
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), moonPosition, Vector2.Zero, ModContent.ProjectileType<AstralArrowMOON>(), 0, 0f, Projectile.owner);
                 }
+
 
                 // 确保该逻辑只执行一次
                 Projectile.localAI[0] = 1f;

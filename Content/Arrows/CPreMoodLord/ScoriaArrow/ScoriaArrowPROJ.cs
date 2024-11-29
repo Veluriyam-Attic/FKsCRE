@@ -10,6 +10,7 @@ using CalamityMod.Projectiles.Typeless;
 using FKsCRE.CREConfigs;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -52,7 +53,10 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
             Projectile.ignoreWater = false;
             Projectile.penetrate = 2; // 2穿
         }
-
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.velocity *= 0.6f;
+        }
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平
@@ -117,8 +121,8 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
         // 定义垂直飞行和粒子效果的触发
         private void TriggerDownwardMovement()
         {
-            // 40%的概率触发爆炸效果
-            //if (Main.rand.NextFloat() < 0.4f)
+            // x%的概率触发爆炸效果
+            if (Main.rand.NextFloat() < 0.2f)
             {
                 // 生成爆炸弹幕
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
@@ -180,7 +184,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
             {
                 // 生成一发朝向主弹幕反方向的弹幕
                 Vector2 reverseDirection = -Projectile.velocity.SafeNormalize(Vector2.UnitX) * 5f; // 获取反向速度并设置为5
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, reverseDirection, ModContent.ProjectileType<ScoriaArrowFireball>(), (int)(Projectile.damage * 0.33f), Projectile.knockBack, Projectile.owner);
+                //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, reverseDirection, ModContent.ProjectileType<ScoriaArrowFireball>(), (int)(Projectile.damage * 0.33f), Projectile.knockBack, Projectile.owner);
             }
 
         }
@@ -196,7 +200,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
             }
             for (int i = 0; i < 3; i++)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Main.rand.NextVector2Circular(5f, 5f), ModContent.ProjectileType<ScoriaArrowFireball>(), (int)(Projectile.damage * 0.33f), Projectile.knockBack, Projectile.owner);
+                //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Main.rand.NextVector2Circular(5f, 5f), ModContent.ProjectileType<ScoriaArrowFireball>(), (int)(Projectile.damage * 0.33f), Projectile.knockBack, Projectile.owner);
             }
 
         }

@@ -33,7 +33,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.timeLeft *= 5;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 25;
+            Projectile.localNPCHitCooldown = 35;
         }
 
         public override void AI()

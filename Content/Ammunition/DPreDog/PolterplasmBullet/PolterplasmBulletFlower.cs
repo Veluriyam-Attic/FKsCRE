@@ -80,17 +80,17 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
             // 刚出现时不追踪，超过60帧后开始追踪敌人
             if (Projectile.ai[0] > 60)
             {
-                NPC target = Projectile.Center.ClosestNPCAt(1800); // 查找范围内最近的敌人
+                NPC target = Projectile.Center.ClosestNPCAt(8800); // 查找范围内最近的敌人
                 if (target != null)
                 {
                     Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 12f, 0.08f); // 追踪速度为12f，调整跟随效果
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 18f, 0.08f); // 追踪速度为12f，调整跟随效果
                 }
             }
             else
             {
-                // 每一帧右拐 7 度
-                Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(1));
+                // 每一帧右拐 x 度
+                Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(3));
                 Projectile.ai[1]++;
             }
 
@@ -106,7 +106,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
         }
         public ref float Time => ref Projectile.ai[1];
 
-        public override bool? CanDamage() => Time >= 80f; // 初始的时候不会造成伤害，直到x为止
+        public override bool? CanDamage() => Time >= 60f; // 初始的时候不会造成伤害，直到x为止
 
         public override void OnSpawn(IEntitySource source)
         {

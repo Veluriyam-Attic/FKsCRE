@@ -11,6 +11,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
+using FKsCRE.Content.Arrows.WulfrimArrow;
+using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.ShadowsBullet
 {
@@ -23,22 +25,79 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ShadowsBullet
         private int frameCounter = 0; // 用于记录帧数
         private static readonly int[] VanillaProjectiles = new int[]
         {
-            1, 4, 5, 41, 82, 91, 103, 117, 120, 172, 225, 282, 357, 469, 474, 485, 495, 631, 639, 932, 1006
+            14, 36, 89, 104, 207, 242, 279, 283, 284, 285, 286, 287, 638, 981
         };
         private static readonly int[] CalamityProjectiles = new int[]
         {
-            ModContent.ProjectileType<BarinadeArrow>(),
-            ModContent.ProjectileType<Shell>()
+            ModContent.ProjectileType<MarksmanShot>(),
+            ModContent.ProjectileType<FungiOrb>(),
+            ModContent.ProjectileType<BloodClotFriendly>(),
+            ModContent.ProjectileType<Aquashard>(),
+            ModContent.ProjectileType<BouncingShotgunPellet>(),
+            ModContent.ProjectileType<ArcherfishShot>(),
+
+            ModContent.ProjectileType<P90Round>(),
+            ModContent.ProjectileType<NitroShot>(),
+            ModContent.ProjectileType<SlagRound>(),
+            ModContent.ProjectileType<ClamorRifleProj>(),
+            ModContent.ProjectileType<NeedlerProj>(),
+            ModContent.ProjectileType<HydrasBlood>(),
+            ModContent.ProjectileType<AquaBlast>(),
+            ModContent.ProjectileType<ArcherfishShot>(),
+            ModContent.ProjectileType<SicknessRound>(),
+            ModContent.ProjectileType<PlagueTaintedProjectile>(),
+            ModContent.ProjectileType<RealmRavagerBullet>(),
+            ModContent.ProjectileType<Shroom>(),
+            ModContent.ProjectileType<AstralRound>(),
+
+            ModContent.ProjectileType<PlanarRipperBolt>(),
+            ModContent.ProjectileType<ChargedBlast>(),
+            ModContent.ProjectileType<AuralisBullet>(),
+            ModContent.ProjectileType<SpykerProj>(),
+            ModContent.ProjectileType<AngelicBeam>(),
+            ModContent.ProjectileType<ClaretCannonProj>(),
+            ModContent.ProjectileType<ArcherfishShot>(),
+            ModContent.ProjectileType<CorinthPrimeAirburstGrenade>(),
+            ModContent.ProjectileType<HighExplosivePeanutShell>(),
+            ModContent.ProjectileType<ShockblastRound>(),
+            ModContent.ProjectileType<EmesisGore>(),
+            ModContent.ProjectileType<AMRShot>(),
+            ModContent.ProjectileType<KarasawaShot>(),
+            ModContent.ProjectileType<FishronRPG>(),
+            ModContent.ProjectileType<ImpactRound>(),
+            ModContent.ProjectileType<UniversalGenesisStarcaller>(),
+            ModContent.ProjectileType<UniversalGenesisStar>(),
+            ModContent.ProjectileType<AuricBullet>(),
+            ModContent.ProjectileType<ImpactRound>(),
+            ModContent.ProjectileType<CardHeart>(),
+            ModContent.ProjectileType<CardSpade>(),
+            ModContent.ProjectileType<CardDiamond>(),
+            ModContent.ProjectileType<CardClub>(),
+            ModContent.ProjectileType<PiercingBullet>(),
+            ModContent.ProjectileType<PrismMine>(),
+            ModContent.ProjectileType<PrismEnergyBullet>(),
+            ModContent.ProjectileType<PrismaticEnergyBlast>(),
+            ModContent.ProjectileType<PrismEnergyBullet>(),
+
+
+
+            ModContent.ProjectileType<FlashRoundProj>(),
+            ModContent.ProjectileType<MarksmanShot>(),
+            ModContent.ProjectileType<HallowPointRoundProj>(),
+            ModContent.ProjectileType<DryadsTearMain>(),
+            ModContent.ProjectileType<HailstormBulletProj>(),
+            ModContent.ProjectileType<BubonicRoundProj>(),
+            ModContent.ProjectileType<HyperiusBulletProj>(),
+            ModContent.ProjectileType<HolyFireBulletProj>(),
+            ModContent.ProjectileType<BloodfireBulletProj>(),
+            ModContent.ProjectileType<GodSlayerSlugProj>()
         };
         private static readonly string[] CustomModProjectiles = new string[]
         {
-            "AerialiteArrowPROJ","BloodBeadsArrowPROJ","PurifiedGelArrowPROJ",
-            "StarblightSootArrowPROJ",
-            "AstralArrowPROJ","LifeAlloyArrowPROJ","PerennialArrowPROJ","ScoriaArrowPROJ",
-            "DivineGeodeArrowPROJ","EffulgentFeatherArrowPROJ","PolterplasmArrowPROJ","UelibloomArrowPROJ",
-            "AuricArrowPROJ", "MiracleMatterArrowPROJ",
-
-            "MaoMaoChongPROJ","PlasmaDriveCorePrototypeArrowPROJ","TimeLeaperPROJ"
+            "CryonicBulletPROJ", "StarblightSootBulletPROJ",
+            "AstralBulletPROJ", "PerennialBulletPROJ", "ScoriaBulletPROJ",
+            "DivineGeodeBulletPROJ","PolterplasmBulletPROJ","UelibloomBulletPROJ",
+            "AuricBuletPROJ", "MiracleMatterBulletPROJ"
         };
 
         public override void SetDefaults()
@@ -108,7 +167,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ShadowsBullet
                 }
 
                 // 黑色粒子效果
-                for (int j = 0; j < 15; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     Vector2 particleVelocity = newVelocity.RotatedBy(MathHelper.ToRadians(15 * (j % 2 == 0 ? 1 : -1))) * Main.rand.NextFloat(1f, 2.6f);
                     Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Smoke, particleVelocity, 0, Color.Black, Main.rand.NextFloat(0.9f, 1.6f));

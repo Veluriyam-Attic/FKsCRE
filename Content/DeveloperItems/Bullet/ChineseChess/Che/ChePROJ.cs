@@ -45,7 +45,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Che
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 300;
             Projectile.MaxUpdates = 4;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
@@ -58,7 +58,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Che
             Projectile.rotation = Projectile.velocity.ToRotation();
 
             // 子弹在短时间后变得可见
-            if (Projectile.timeLeft == 599)
+            if (Projectile.timeLeft == 299)
                 Projectile.alpha = 0;
 
 

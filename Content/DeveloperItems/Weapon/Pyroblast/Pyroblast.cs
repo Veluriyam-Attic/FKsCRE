@@ -15,6 +15,7 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.NPCs.Astral;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 {
@@ -72,8 +73,10 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             recipe.AddIngredient<ClockGatlignum>(1);
             recipe.AddIngredient<Arietes41>(1);
             recipe.AddIngredient<Shroomer>(1);
+            recipe.AddIngredient<ConferenceCall>(1);
+            recipe.AddIngredient<Lazhar>(1);
             recipe.AddIngredient(ItemID.LunarBar, 10);
-            recipe.AddCondition(Condition.DownedMoonLord);
+            //recipe.AddCondition(Condition.DownedMoonLord);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }

@@ -140,8 +140,8 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             int spawnCount = Main.getGoodWorld ? Main.rand.Next(3, 9) : Main.rand.Next(1, 3); // 生成1~2个，如果是getGoodWorld 那么生成3~8个
             for (int i = 0; i < spawnCount; i++)
             {
-                // 生成一个随机的半径（1到6个方块）
-                float radius = Main.rand.Next(1, 7) * 16f;
+                // 生成一个随机的半径（3到6个方块）
+                float radius = Main.rand.Next(3, 7) * 16f;
 
                 // 随机生成角度用于偏移位置
                 float angle = Main.rand.NextFloat(MathHelper.TwoPi);

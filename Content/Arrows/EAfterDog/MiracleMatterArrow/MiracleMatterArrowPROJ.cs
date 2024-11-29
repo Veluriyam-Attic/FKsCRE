@@ -21,6 +21,7 @@ using FKsCRE.CREConfigs;
 using Terraria.Audio;
 using CalamityMod.Graphics.Primitives;
 using Terraria.Graphics.Shaders;
+using CalamityMod.Projectiles.Rogue;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 {
@@ -238,10 +239,22 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                 foreach (float angle in selectedAngles)
                 {
                     // 计算新速度（当前速度的1/4）
-                    Vector2 newVelocity = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(angle) * (Projectile.velocity.Length() / 4f);
+                    //Vector2 newVelocity = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(angle) * (Projectile.velocity.Length() / 4f);
 
-                    // 发射弹幕
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<MiracleMatterArrowFire>(), (int)(Projectile.damage * 1.3f), Projectile.knockBack, Projectile.owner);
+                    // 设置固定初始速度（长度为 xf）
+                    Vector2 newVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 1.4f;
+
+                    if (Main.zenithWorld)
+                    {
+                        // 直接发射超新星爆炸
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<SupernovaStealthBoom>(), (int)(Projectile.damage * 20f), Projectile.knockBack, Projectile.owner);
+                    }
+                    else
+                    {
+                        // 发射天堂之火
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, ModContent.ProjectileType<MiracleMatterArrowFire>(), (int)(Projectile.damage * 1.3f), Projectile.knockBack, Projectile.owner);
+                    }
+
                 }
             }
             

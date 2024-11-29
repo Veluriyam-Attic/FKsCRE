@@ -19,7 +19,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Che
         public new string LocalizationCategory => "DeveloperItems.ChineseChess.Che";
         public override void SetDefaults()
         {
-            Item.damage = 13;
+            Item.damage = 26;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
@@ -38,9 +38,14 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Che
         public override void AddRecipes()
         {
             Recipe recipe1 = CreateRecipe(333);
-            recipe1.AddIngredient(ItemID.MinecartTrack, 3996); // 矿车轨道
-            recipe1.AddIngredient(ItemID.Minecart, 1); // 矿车
-            recipe1.AddIngredient<ScoriaBar>(1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueC, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueH, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueE, 1);
+            recipe1.AddIngredient(ItemID.MoonlordBullet, 333);
+            recipe1.AddIngredient<RuinousSoul>(1);
+            recipe1.AddIngredient<ArmoredShell>(1);
+            recipe1.AddIngredient<TwistingNether>(1);
+            recipe1.AddIngredient<DarkPlasma>(1);
             recipe1.AddTile(TileID.Anvils); 
             recipe1.Register();
         }

@@ -19,7 +19,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Zu
         public new string LocalizationCategory => "DeveloperItems.ChineseChess.Zu";
         public override void SetDefaults()
         {
-            Item.damage = 13;
+            Item.damage = 6;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
@@ -38,8 +38,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Zu
         public override void AddRecipes()
         {
             Recipe recipe1 = CreateRecipe(333);
+            recipe1.AddIngredient(ItemID.AlphabetStatueZ, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueU, 1);
             recipe1.AddIngredient(ItemID.ThrowingKnife, 333);
-            recipe1.AddIngredient<ScoriaBar>(1);
+            recipe1.AddIngredient<CosmiliteBar>(1);
             recipe1.AddTile(TileID.Anvils);
             recipe1.Register();
         }

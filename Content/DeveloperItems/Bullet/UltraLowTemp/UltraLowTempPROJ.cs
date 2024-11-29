@@ -129,7 +129,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             float radius = 25 * 16; // 半径25格
 
             // 初始数量为2
-            int extraProjectileCount = 2;
+            int extraProjectileCount = 4;
 
             // 检测玩家所在环境
             Player owner = Main.player[Projectile.owner];
@@ -149,7 +149,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             // 如果启用了 getGoodWorld
             if (Main.getGoodWorld)
             {
-                extraProjectileCount *= 6; // 数量翻x倍
+                extraProjectileCount *= 3; // 数量翻x倍
             }
 
             // 生成额外弹幕

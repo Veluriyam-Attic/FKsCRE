@@ -38,8 +38,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Pao
         public override void AddRecipes()
         {
             Recipe recipe1 = CreateRecipe(333);
-            recipe1.AddIngredient(ItemID.Cannon, 1);
-            recipe1.AddIngredient(ItemID.Cannonball, 333);
+            recipe1.AddIngredient(ItemID.AlphabetStatueP, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueA, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueO, 1);
+            recipe1.AddIngredient(ItemID.ExplodingBullet, 333);
             recipe1.AddIngredient<ScoriaBar>(1);
             recipe1.AddTile(TileID.Anvils);
             recipe1.Register();

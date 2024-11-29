@@ -49,7 +49,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Pao
             Projectile.ignoreWater = true;
             Projectile.penetrate = 2;
             Projectile.timeLeft = 450;
-            Projectile.MaxUpdates = 4;
+            Projectile.MaxUpdates = 3;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
@@ -117,51 +117,18 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Pao
             }
         }
 
+        private bool firstHitEffect = true; // 标记是否是第一次调用特效逻辑
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
+            if (firstHitEffect)
             {
+                firstHitEffect = false; // 标记为已调用
 
-                // 获取弹幕的正前方方向
-                Vector2 forwardDirection2 = Projectile.velocity.SafeNormalize(Vector2.Zero);
-                // 设置粒子数量
-                int particleCount2 = 15;
-                // 设置角度范围（正后方左右各 25 度，转换为弧度）
-                float angleRange = MathHelper.ToRadians(25);
-                // 生成粒子
-                for (int i = 0; i < particleCount2; i++)
-                {
-                    // 随机化角度偏移（在 [-25, 25] 度范围内）
-                    float randomAngle = Main.rand.NextFloat(-angleRange, angleRange);
+                // 传送到以自己当前面向方向为正方向的前方 x 像素
+                Vector2 forwardDirection = Projectile.velocity.SafeNormalize(Vector2.Zero);
+                Projectile.position = Projectile.Center + forwardDirection * 300f;
 
-                    // 计算粒子的方向（从正后方开始）
-                    Vector2 particleDirection = forwardDirection2.RotatedBy(MathHelper.Pi + randomAngle); // Pi 表示 180 度，正后方
-
-                    // 随机化粒子速度
-                    Vector2 trailVelocity = particleDirection * Main.rand.NextFloat(2f, 5f);
-
-                    // 创建粒子
-                    Particle trail = new SparkParticle(
-                        Projectile.Center,     // 起始位置为命中点
-                        trailVelocity,         // 粒子速度
-                        false,                 // 不要重力
-                        60,                    // 粒子生命周期
-                        1.0f,                  // 缩放大小
-                        Color.OrangeRed        // 颜色设置为橙红色
-                    );
-
-                    // 生成粒子
-                    GeneralParticleHandler.SpawnParticle(trail);
-                }
-            }
-
-
-            // 传送到以自己当前面向方向为正方向的前方 x 像素
-            Vector2 forwardDirection = Projectile.velocity.SafeNormalize(Vector2.Zero); // 获取当前速度方向的单位向量
-            Projectile.position = Projectile.Center + forwardDirection * 300f;
-
-
-            {
                 // 在传送路径上生成烟雾特效
                 Vector2 start = Projectile.Center;
                 Vector2 end = target.Center;
@@ -174,7 +141,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Pao
                     Particle smoke = new HeavySmokeParticle(
                         position,
                         dustVelocity * Main.rand.NextFloat(1f, 2.6f),
-                        Color.LightYellow,
+                        Color.Yellow,
                         18,
                         Main.rand.NextFloat(0.9f, 1.6f),
                         0.35f,
@@ -183,12 +150,34 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Pao
                     );
                     GeneralParticleHandler.SpawnParticle(smoke);
                 }
-
-
-
             }
 
+            // 其他击中逻辑（如生成粒子或触发特效）
+            {
+                // 获取弹幕的正前方方向
+                Vector2 forwardDirection2 = Projectile.velocity.SafeNormalize(Vector2.Zero);
+                int particleCount2 = 15;
+                float angleRange = MathHelper.ToRadians(25);
+
+                for (int i = 0; i < particleCount2; i++)
+                {
+                    float randomAngle = Main.rand.NextFloat(-angleRange, angleRange);
+                    Vector2 particleDirection = forwardDirection2.RotatedBy(MathHelper.Pi + randomAngle);
+                    Vector2 trailVelocity = particleDirection * Main.rand.NextFloat(2f, 5f);
+
+                    Particle trail = new SparkParticle(
+                        Projectile.Center,
+                        trailVelocity,
+                        false,
+                        60,
+                        1.0f,
+                        Color.OrangeRed
+                    );
+                    GeneralParticleHandler.SpawnParticle(trail);
+                }
+            }
         }
+
 
         public override void OnKill(int timeLeft)
         {

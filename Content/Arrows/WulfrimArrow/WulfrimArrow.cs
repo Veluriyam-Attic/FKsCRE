@@ -175,22 +175,7 @@ namespace FKsCRE.Content.Arrows.WulfrimArrow
 
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
 
-            // 释放亮绿色粒子特效
-            if (Main.rand.NextBool(5))
-            {
-                // 直接在弹幕中心生成粒子，没有左右偏移
-                Vector2 trailPos = Projectile.Center;
-
-                float trailScale = Main.rand.NextFloat(0.8f, 1.2f); // 维持粒子的缩放效果
-                Color trailColor = Color.LimeGreen; // 固定颜色为亮绿色
-
-                // 创建粒子
-                Particle trail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
-                GeneralParticleHandler.SpawnParticle(trail);
-            }
-
-            // 添加光效
-            Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.5f);
+         
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

@@ -23,6 +23,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public static int MaxUpdate = 5; // 定义一个静态变量，表示弹幕每次更新的最大次数
+
         private int Lifetime = 1100; // 定义弹幕的生命周期为x
 
         // 更改颜色：深绿色、黑色、另一种深绿色
@@ -40,23 +41,27 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public override void SetDefaults() // 设置弹幕的默认值
         {
-            Projectile.width = Projectile.height = 24;
+            Projectile.width = Projectile.height = 64;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.timeLeft = Lifetime;
+            Projectile.timeLeft = Main.getGoodWorld ? 8000 : Lifetime;
             Projectile.MaxUpdates = MaxUpdate;
             Projectile.penetrate = 201;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = Main.getGoodWorld ? 1 : 15;
+            Projectile.localNPCHitCooldown = Main.getGoodWorld ? 1 : 25;
             Projectile.arrow = Main.getGoodWorld;
         }
 
         private bool collidedWithNPC = false; // 是否与敌人发生过碰撞
         private int collisionTimer = 0; // 碰撞后的计时器
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.velocity *= 1.5f;
+        }
 
-        // 刚出现的前15帧不追踪敌人
+
         public override void AI()
         {
             Projectile.ai[0]++; // 弹幕AI计数器递增
@@ -119,13 +124,33 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
                 }
             }
 
+            if(Main.getGoodWorld)
+            {
+                if (Projectile.ai[1] > 60)
+                {
+                    NPC target = Projectile.Center.ClosestNPCAt(88888); // 查找范围内最近的敌人
+                    if (target != null)
+                    {
+                        Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+                        Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 20f, 0.1f);
+                    }
+                }
+                else
+                {
+                    Projectile.ai[1]++;
+                }
+            }
 
             // 碰撞后伤害逻辑
             if (Projectile.penetrate < 200)
             {
-                if (Projectile.timeLeft > 60) { Projectile.timeLeft = 60; }
+                if (Projectile.timeLeft > (Main.getGoodWorld ? 180 : 60))
+                {
+                    Projectile.timeLeft = Main.getGoodWorld ? 180 : 60;
+                }
                 Projectile.velocity *= 0.88f;
             }
+
         }
 
         // 释放正方形粒子特效

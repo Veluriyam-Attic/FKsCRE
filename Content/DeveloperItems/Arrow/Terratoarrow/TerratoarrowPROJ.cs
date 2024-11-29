@@ -65,60 +65,62 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.Terratoarrow
             }
             Projectile.ai[0]++;
 
-
-            // 检查剩余时间
             if (Projectile.timeLeft == 1)
             {
                 // 基础方向为弹幕当前的朝向
                 Vector2 baseDirection = Projectile.velocity.SafeNormalize(Vector2.UnitX);
 
                 // 动态调整发射数量
-                int arrowCount = Main.getGoodWorld ? 9 : 3; // getGoodWorld 启用时 x 发，否则 3 发
+                int arrowCount = Main.getGoodWorld ? 9 : 3; // getGoodWorld 启用时 9 发，否则 3 发
 
-                // 动态计算每两发弹幕的夹角
-                float angleStep = MathHelper.ToRadians(1); // 每两发之间的偏移角度（1度）
-
-                // 计算多发弹幕的方向
-                Vector2[] directions = new Vector2[arrowCount];
-                for (int i = 0; i < arrowCount; i++)
-                {
-                    // 偏移范围从 -(arrowCount / 2) 到 (arrowCount / 2)
-                    float offsetAngle = angleStep * (i - (arrowCount - 1) / 2);
-                    directions[i] = baseDirection.RotatedBy(offsetAngle);
-                }
+                // 动态计算夹角范围
+                float maxAngle = MathHelper.ToRadians(5); // 最大偏移角度（5度）
+                float minAngle = -maxAngle; // 最小偏移角度（-5度）
 
                 // 释放多个弹幕
-                foreach (Vector2 direction in directions)
+                for (int i = 0; i < arrowCount; i++)
                 {
+                    // 在角度范围内随机抽取
+                    float randomAngle = Main.rand.NextFloat(minAngle, maxAngle);
+                    Vector2 randomDirection = baseDirection.RotatedBy(randomAngle);
+
+                    // 随机速度，浮动范围为原速度的 0.5 ~ 1.75 倍
+                    float randomSpeedMultiplier = Main.rand.NextFloat(0.5f, 1.75f);
+                    Vector2 randomVelocity = randomDirection * (Projectile.velocity.Length() * randomSpeedMultiplier);
+
+                    // 创建新的弹幕
                     Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
-                        Projectile.Center,               // 起始位置
-                        direction * Projectile.velocity.Length(), // 方向保持与原投射物速度一致
+                        Projectile.Center,         // 起始位置
+                        randomVelocity,            // 随机方向和速度
                         ModContent.ProjectileType<TerratoarrowSPIT>(),
-                        (int)((Projectile.damage) * 0.75),               // 伤害倍率为 x
-                        Projectile.knockBack,           // 保持相同的击退效果
-                        Projectile.owner                // 投射物归属
+                        (int)((Projectile.damage) * 0.75), // 伤害倍率为 0.75 倍
+                        Projectile.knockBack,      // 保持相同的击退效果
+                        Projectile.owner           // 投射物归属
                     );
                 }
 
-                // 遍历方向并生成粒子
-                foreach (Vector2 direction in directions)
+                // 生成粒子效果
+                for (int i = 0; i < arrowCount; i++)
                 {
-                    PointParticle spark1 = new PointParticle(
-                        Projectile.Center - Projectile.velocity + direction, // 起点位置
-                        direction * 0.5f,                                    // 粒子速度
-                        false,                                               // 是否高亮
-                        5,                                                   // 生命周期
-                        1.1f,                                                // 粒子大小
-                        Color.LimeGreen                                      // 粒子颜色
+                    PointParticle spark = new PointParticle(
+                        Projectile.Center,
+                        baseDirection * Main.rand.NextFloat(1f, 2f), // 粒子速度稍微随机化
+                        false,
+                        5,
+                        1.1f,
+                        Color.LimeGreen
                     );
-                    GeneralParticleHandler.SpawnParticle(spark1);
+                    GeneralParticleHandler.SpawnParticle(spark);
                 }
-
 
                 // 手动删除弹幕
                 Projectile.Kill();
             }
+
+
+
+
         }
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

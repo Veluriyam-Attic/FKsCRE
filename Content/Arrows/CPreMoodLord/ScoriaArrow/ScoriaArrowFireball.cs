@@ -105,7 +105,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
         public override void OnKill(int timeLeft)
         {
             // 弹幕消失时生成火焰爆炸效果
-            for (int k = 0; k < 5; k++)
+            for (int k = 0; k < 10; k++)
             {
                 int volcano = Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.InfernoFork, 0f, 0f);
                 Main.dust[volcano].noGravity = true;

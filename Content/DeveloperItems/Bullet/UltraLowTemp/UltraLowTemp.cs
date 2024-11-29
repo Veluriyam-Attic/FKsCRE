@@ -23,7 +23,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
         {
             Item.width = 12;
             Item.height = 18;
-            Item.damage = 50;
+            Item.damage = 40;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

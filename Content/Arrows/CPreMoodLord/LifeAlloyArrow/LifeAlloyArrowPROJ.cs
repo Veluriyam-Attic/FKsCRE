@@ -63,12 +63,14 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
             Projectile.extraUpdates = 3;
-            Projectile.velocity *= 0.4f;
         }
 
         private Color currentColorLeft = Color.Black;
         private Color currentColorRight = Color.Black;
-
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.velocity *= 0.4f;
+        }
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平

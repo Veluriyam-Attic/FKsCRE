@@ -19,7 +19,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Ma
         public new string LocalizationCategory => "DeveloperItems.ChineseChess.Ma";
         public override void SetDefaults()
         {
-            Item.damage = 13;
+            Item.damage = 18;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
@@ -30,7 +30,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Ma
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
             Item.Calamity().devItem = true;
-            Item.shoot = ModContent.ProjectileType<PaoPROJ>();
+            Item.shoot = ModContent.ProjectileType<MaPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet; // 这是子弹类型的弹药
         }
@@ -38,9 +38,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Ma
         public override void AddRecipes()
         {
             Recipe recipe1 = CreateRecipe(333);
-            recipe1.AddIngredient(ItemID.Seahorse, 1);
-            recipe1.AddIngredient(ItemID.WaterBucket, 1);
-            recipe1.AddIngredient<ScoriaBar>(1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueM, 1);
+            recipe1.AddIngredient(ItemID.AlphabetStatueA, 1);
+            recipe1.AddIngredient(ItemID.NanoBullet, 333);
+            recipe1.AddIngredient<PerennialBar>(1);
             recipe1.AddTile(TileID.Anvils);
             recipe1.Register();
         }

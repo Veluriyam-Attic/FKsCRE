@@ -97,9 +97,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
             "StarblightSootArrowPROJ",
             "AstralArrowPROJ","LifeAlloyArrowPROJ","PerennialArrowPROJ","ScoriaArrowPROJ",
             "DivineGeodeArrowPROJ","EffulgentFeatherArrowPROJ","PolterplasmArrowPROJ","UelibloomArrowPROJ",
-            "AuricArrowPROJ", "MiracleMatterArrowPROJ",
-
-            "MaoMaoChongPROJ","PlasmaDriveCorePrototypeArrowPROJ","TimeLeaperPROJ"
+            "AuricArrowPROJ", "MiracleMatterArrowPROJ"
         };
 
         public override void SetDefaults()

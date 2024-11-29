@@ -41,8 +41,8 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Shi
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 2;
-            Projectile.timeLeft = 450;
+            Projectile.penetrate = 8;
+            Projectile.timeLeft = 300;
             Projectile.MaxUpdates = 4;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
@@ -56,9 +56,10 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Shi
         public override void AI()
         {
             // 子弹旋转逻辑
-            Projectile.rotation = Projectile.velocity.ToRotation();
+            Projectile.rotation += 0.45f; 
+            
             // 子弹在短时间后变得可见
-            if (Projectile.timeLeft == 445)
+            if (Projectile.timeLeft == 299)
                 Projectile.alpha = 0;
 
             // 确保玩家存在
@@ -81,20 +82,20 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Shi
 
             Projectile.Center = orbitCenter + offset;
 
-            // 生成粒子效果（91号GemDiamond）
-            if (Main.rand.NextBool(2)) // 1/2 概率
-            {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    DustID.GemDiamond,
-                    Vector2.Zero,
-                    100,
-                    default,
-                    Main.rand.NextFloat(0.8f, 1.2f)
-                );
-                dust.noGravity = true;
-                dust.velocity = Vector2.Zero;
-            }
+            //// 生成粒子效果（91号GemDiamond）
+            //if (Main.rand.NextBool(2)) // 1/2 概率
+            //{
+            //    Dust dust = Dust.NewDustPerfect(
+            //        Projectile.Center,
+            //        DustID.GemDiamond,
+            //        Vector2.Zero,
+            //        100,
+            //        default,
+            //        Main.rand.NextFloat(0.8f, 1.2f)
+            //    );
+            //    dust.noGravity = true;
+            //    dust.velocity = Vector2.Zero;
+            //}
         }
 
 

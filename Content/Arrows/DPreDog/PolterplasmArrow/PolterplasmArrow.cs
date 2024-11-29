@@ -25,7 +25,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<PolterplasmArrowPROJ>();
-            Item.shootSpeed = 15f;
+            Item.shootSpeed = 5f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 

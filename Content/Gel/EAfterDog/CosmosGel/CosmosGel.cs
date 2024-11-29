@@ -22,10 +22,10 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
 {
     public class CosmosGel : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Gel.EAfterDog.CosmosGel";
+        public new string LocalizationCategory => "Gel.EAfterDog";
         public override void SetDefaults()
         {
-            Item.damage = 50;
+            //Item.damage = 50;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;
@@ -33,14 +33,15 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
             Item.maxStack = 9999;
         }
 
+
         public override void OnConsumedAsAmmo(Item weapon, Player player)
         {
-            // 附魔效果，标记弹幕使用了 CosmosGel
+            // 获取当前玩家最后生成的弹幕
             foreach (Projectile proj in Main.projectile)
             {
-                if (proj.active && proj.owner == player.whoAmI)
+                if (proj.active && proj.owner == player.whoAmI && proj.timeLeft == proj.MaxUpdates)
                 {
-                    proj.GetGlobalProjectile<CosmosGelGlobalProjectile>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<CosmosGelGP>().IsCosmosGelInfused = true;
                 }
             }
         }

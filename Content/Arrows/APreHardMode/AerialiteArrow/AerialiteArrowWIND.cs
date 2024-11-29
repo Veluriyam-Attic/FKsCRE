@@ -49,7 +49,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
                 Projectile.alpha = 50;
 
                 // 寻找并追踪最近的敌人
-                NPC target = FindClosestNPC(1000f); // 设定1000像素的最大追踪范围
+                NPC target = FindClosestNPC(1800f); // 设定x像素的最大追踪范围
                 if (target != null && target.active)
                 {
                     // 如果速度小于最大速度，逐渐加速

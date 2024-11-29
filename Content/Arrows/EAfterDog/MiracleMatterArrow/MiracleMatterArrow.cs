@@ -28,7 +28,11 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
-
+        public override void OnConsumedAsAmmo(Item weapon, Player player)
+        {
+            // 标记玩家启用了 MiracleMatterArrow 的附魔状态
+            player.GetModPlayer<MiracleMatterArrowPlayer>().IsMiracleMatterArrowActive = true;
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
