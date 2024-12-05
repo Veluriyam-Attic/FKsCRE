@@ -15,6 +15,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
 {
     public class TheGoldenFireHoldOut : BaseGunHoldoutProjectile
     {
+        public override string Texture => "FKsCRE/Content/DeveloperItems/Weapon/TheGoldenFire/TheGoldenFire";
+
         public override int AssociatedItemID => ModContent.ItemType<TheGoldenFire>(); // 绑定武器
 
         public override float MaxOffsetLengthFromArm => 20f; // 设置与手臂的距离

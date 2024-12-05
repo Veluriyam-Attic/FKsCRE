@@ -188,6 +188,16 @@ Items: {
 
 	DPSItem: {
 	}
+
+	NecromancerQuiver: {
+		Tooltip: ""
+		DisplayName: Necromancer Quiver
+	}
+
+	BlindBirdCry: {
+		DisplayName: Blind Bird Cry
+		Tooltip: ""
+	}
 }
 
 Arrows: {
@@ -714,6 +724,27 @@ DeveloperItems: {
 			ZuPROJ.DisplayName: Zu P R O J
 		}
 	}
+
+	BlindBirdCry: {
+		BlindBirdCry: {
+			Tooltip: ""
+			DisplayName: Blind Bird Cry
+		}
+
+		BlindBirdCryCrods.DisplayName: Blind Bird Cry Crods
+		BlindBirdCryHoldOut.DisplayName: Blind Bird Cry Hold Out
+		BlindBirdCryINVPROJ.DisplayName: Blind Bird Cry I N V P R O J
+	}
+
+	BrassBeast: {
+		BrassBeast: {
+			DisplayName: Brass Beast
+			Tooltip: ""
+		}
+
+		BrassBeastHeavySmoke.DisplayName: Brass Beast Heavy Smoke
+		BrassBeastPROJ.DisplayName: Brass Beast P R O J
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -737,6 +768,7 @@ Projectiles: {
 	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
 	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
 	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+	Boss.NecromancerQuiverPROJONLYONE.DisplayName: Necromancer Quiver P R O J O N L Y O N E
 }
 
 Projectile: {

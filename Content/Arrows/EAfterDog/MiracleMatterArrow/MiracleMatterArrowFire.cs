@@ -22,7 +22,6 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
         }
-        public ref float Time => ref Projectile.ai[1];
 
         public override void SetDefaults()
         {
@@ -36,7 +35,8 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             Projectile.localNPCHitCooldown = 50;
             Projectile.DamageType = DamageClass.Ranged;
         }
-        public override bool? CanDamage() => Time >= 80f; // 初始的时候不会造成伤害，直到x为止
+        public ref float Time => ref Projectile.ai[1];
+        public override bool? CanDamage() => Time >= 160f; // 初始的时候不会造成伤害，直到x为止
 
 
         public override void AI()
@@ -50,7 +50,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                 {
                     //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.PiOver2);
                     //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(4));
-                    Projectile.velocity *= 0.93f;
+                    Projectile.velocity *= 0.85f;
                 }
                 //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
             }
@@ -74,6 +74,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             {
                 ableToHit = false;
             }
+
             Time++;
 
         }

@@ -63,6 +63,7 @@
 	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShadowsArrow\闪光金羽弃用贴图.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\Terratoarrow\春芽箭 (1).png" />
+	  <None Remove="Content\DeveloperItems\Arrow\TimeLeaper\TimeLeaper.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirds.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirdsPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\MaoMaoChong\MeowCreature.png" />
@@ -90,7 +91,6 @@
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\EffulgentFeatherArrowAura.png" />
 	  <None Remove="Content\Arrows\DPreDog\EffulgentFeatherArrow\闪耀金羽箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrow.png" />
-	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\PolterplasmArrowsSoul.png" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\灵质箭.txt" />
 	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\龙蒿箭.txt" />
@@ -107,7 +107,6 @@
 	  <None Remove="Content\Arrows\CPreMoodLord\ScoriaArrow\ScoriaArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrow.png" />
 	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrowEBuff.png" />
-	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrowPROJ.png" />
 	  <None Remove="Content\Arrows\DPreDog\UelibloomArrow\UelibloomArrowVine.png" />
 	  <None Remove="Content\Arrows\WulfrimArrow\WulfrimArrowEBuff.png" />
 	  <None Remove="Content\Arrows\WulfrimArrow\WulfrimArrowPROJ.png" />
@@ -130,10 +129,9 @@
 	  <None Remove="Content\DeveloperItems\Bullet\UltraLowTemp\UltraLowTempSPIT.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDan.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDanPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\BlindBirdCry\BlindBirdCry.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\DPYROItem.png" />
-	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastHoldOut.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastPROJ.png" />
-	  <None Remove="Content\DeveloperItems\Weapon\TheGoldenFire\TheGoldenFireHoldOut.png" />
 	  <None Remove="Content\DeveloperItems\炎爆.png" />
 	  <None Remove="Content\Gel\GelBag.png" />
 	  <None Remove="Content\Gel\冰川精华凝胶.png" />

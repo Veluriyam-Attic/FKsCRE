@@ -18,7 +18,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 20;
+            Item.damage = 35;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

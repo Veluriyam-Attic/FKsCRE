@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
 {
-    internal class ScoriaArrowPROJ : ModProjectile, ILocalizedModType
+    public class ScoriaArrowPROJ : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Projectile.CPreMoodLord";
         private bool hasTriggeredUpwardMovement = false; // 添加变量来标记是否触发过向上飞行效果

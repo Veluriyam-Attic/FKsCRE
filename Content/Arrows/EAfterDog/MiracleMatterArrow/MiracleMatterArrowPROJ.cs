@@ -54,17 +54,37 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             // 调整旋转
             Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
 
-            // 计算正前方三格（48个像素）的位置
-            Vector2 forwardPosition = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f;
+            //// 计算正前方三格（48个像素）的位置
+            //Vector2 forwardPosition = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f;
 
-            // 检测该位置是否存在敌人
+            //// 检测该位置是否存在敌人
+            //foreach (NPC npc in Main.npc)
+            //{
+            //    if (npc.active && !npc.friendly && npc.CanBeChasedBy(this) && npc.Hitbox.Contains(forwardPosition.ToPoint()))
+            //    {
+            //        // 如果正前方三格处有敌人，销毁自身
+            //        Projectile.Kill();
+            //        return; // 确保方法中止，避免执行后续代码
+            //    }
+            //}
+
+            // 检测范围，以当前弹幕为圆心，半径为 5 × 16 像素（80 像素）
+            float detectionRadius = 80f;
+
+            // 遍历所有敌人
             foreach (NPC npc in Main.npc)
             {
-                if (npc.active && !npc.friendly && npc.CanBeChasedBy(this) && npc.Hitbox.Contains(forwardPosition.ToPoint()))
+                if (npc.active && !npc.friendly && npc.CanBeChasedBy(this))
                 {
-                    // 如果正前方三格处有敌人，销毁自身
-                    Projectile.Kill();
-                    return; // 确保方法中止，避免执行后续代码
+                    // 计算敌人与弹幕的距离
+                    float distanceToNPC = Vector2.Distance(Projectile.Center, npc.Center);
+
+                    // 如果敌人在检测范围内，销毁弹幕
+                    if (distanceToNPC <= detectionRadius)
+                    {
+                        Projectile.Kill(); // 销毁弹幕
+                        return; // 终止后续逻辑
+                    }
                 }
             }
 
@@ -268,46 +288,78 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 SoundEngine.PlaySound(SoundID.Item158 with { Volume = 1.6f }, Projectile.Center);
-                for (int i = 0; i < 75; i++)
-                {
-                    float offsetAngle = MathHelper.TwoPi * i / 75f;
-                    float unitOffsetX = (float)Math.Pow(Math.Cos(offsetAngle), 3D);
-                    float unitOffsetY = (float)Math.Pow(Math.Sin(offsetAngle), 3D);
+                //for (int i = 0; i < 75; i++)
+                //{
+                //    float offsetAngle = MathHelper.TwoPi * i / 75f;
+                //    float unitOffsetX = (float)Math.Pow(Math.Cos(offsetAngle), 3D);
+                //    float unitOffsetY = (float)Math.Pow(Math.Sin(offsetAngle), 3D);
 
-                    Vector2 puffDustVelocity = new Vector2(unitOffsetX, unitOffsetY) * 5f;
-                    Dust magic = Dust.NewDustPerfect(tipPosition, 267, puffDustVelocity);
-                    magic.scale = 1.8f;
-                    magic.fadeIn = 0.5f;
-                    magic.color = CalamityUtils.MulticolorLerp(i / 75f, CalamityUtils.ExoPalette);
-                    magic.noGravity = true;
+                //    Vector2 puffDustVelocity = new Vector2(unitOffsetX, unitOffsetY) * 5f;
+                //    Dust magic = Dust.NewDustPerfect(tipPosition, 267, puffDustVelocity);
+                //    magic.scale = 1.8f;
+                //    magic.fadeIn = 0.5f;
+                //    magic.color = CalamityUtils.MulticolorLerp(i / 75f, CalamityUtils.ExoPalette);
+                //    magic.noGravity = true;
+                //}
+
+
+
+
+
+                //Vector2 frontCenter = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f; // 正前方三个方块处
+                //Vector2 backCenter = Projectile.Center - Projectile.velocity.SafeNormalize(Vector2.Zero) * 96f;  // 正后方六个方块处（间隔3个方块）
+
+                //int halfCircleParticles = 38; // 每个半圆生成的粒子数量
+                //float particleSpeed = 6f; // 粒子速度增量
+                //float radius = 24f; // 半圆半径增大，形状更夸张
+
+                //for (int i = 0; i < halfCircleParticles; i++)
+                //{
+                //    // 计算角度范围 (-90 度到 90 度)，并根据弹幕朝向旋转
+                //    float angle = MathHelper.Pi * (i / (float)(halfCircleParticles - 1)) - MathHelper.PiOver2;
+                //    Vector2 direction = Projectile.velocity.SafeNormalize(Vector2.Zero); // 弹幕朝向
+
+                //    // 计算正前方半圆的粒子
+                //    Vector2 frontOffset = Vector2.Transform(new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius,
+                //                                            Matrix.CreateRotationZ(direction.ToRotation()));
+                //    Dust frontMagic = Dust.NewDustPerfect(frontCenter + frontOffset, 267, frontOffset.SafeNormalize(Vector2.Zero) * particleSpeed);
+                //    frontMagic.scale = 2.2f; // 增大粒子缩放
+                //    frontMagic.fadeIn = 0.5f;
+                //    frontMagic.color = CalamityUtils.MulticolorLerp(i / (float)halfCircleParticles, CalamityUtils.ExoPalette);
+                //    frontMagic.noGravity = true;
+
+                //    // 计算正后方半圆的粒子（反转角度）
+                //    float reversedAngle = -angle; // 反转角度
+                //    Vector2 backOffset = Vector2.Transform(new Vector2((float)Math.Cos(reversedAngle), (float)Math.Sin(reversedAngle)) * radius,
+                //                                           Matrix.CreateRotationZ(direction.ToRotation()));
+                //    Dust backMagic = Dust.NewDustPerfect(backCenter + backOffset, 267, backOffset.SafeNormalize(Vector2.Zero) * particleSpeed);
+                //    backMagic.scale = 2.2f; // 增大粒子缩放
+                //    backMagic.fadeIn = 0.5f;
+                //    backMagic.color = CalamityUtils.MulticolorLerp(i / (float)halfCircleParticles, CalamityUtils.ExoPalette);
+                //    backMagic.noGravity = true;
+                //}
+
+
+                Vector2 center = Projectile.Center; // 粒子生成的中心点
+                int totalParticles = 76; // 圆形粒子的总数量（可以调整密度）
+                float particleSpeed = 6f; // 粒子速度增量
+                float radius = 24f; // 圆形半径
+
+                for (int i = 0; i < totalParticles; i++)
+                {
+                    // 计算每个粒子的角度（0 到 2 * PI，即 360°）
+                    float angle = MathHelper.TwoPi * (i / (float)totalParticles);
+                    Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius; // 偏移量
+
+                    // 生成粒子
+                    Dust magicDust = Dust.NewDustPerfect(center + offset, 267, offset.SafeNormalize(Vector2.Zero) * particleSpeed);
+                    magicDust.scale = 2.2f; // 增大粒子缩放
+                    magicDust.fadeIn = 0.5f;
+                    magicDust.color = CalamityUtils.MulticolorLerp(i / (float)totalParticles, CalamityUtils.ExoPalette); // 色彩过渡
+                    magicDust.noGravity = true; // 取消重力效果
                 }
 
-                // 新增：正前方和正后方半圆粒子效果
-                Vector2 frontCenter = Projectile.Center + Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f; // 正前方三个方块处
-                Vector2 backCenter = Projectile.Center - Projectile.velocity.SafeNormalize(Vector2.Zero) * 48f;  // 正后方三个方块处
 
-                int halfCircleParticles = 38; // 每个半圆生成的粒子数量
-                for (int i = 0; i < halfCircleParticles; i++)
-                {
-                    // 计算半圆角度范围 (-90 度到 90 度)
-                    float angle = MathHelper.Pi * (i / (float)halfCircleParticles) - MathHelper.PiOver2;
-
-                    // 生成正前方半圆的粒子
-                    Vector2 frontOffset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 16f; // 半径调整
-                    Dust frontMagic = Dust.NewDustPerfect(frontCenter + frontOffset, 267, Vector2.Zero);
-                    frontMagic.scale = 1.8f;
-                    frontMagic.fadeIn = 0.5f;
-                    frontMagic.color = CalamityUtils.MulticolorLerp(i / (float)halfCircleParticles, CalamityUtils.ExoPalette);
-                    frontMagic.noGravity = true;
-
-                    // 生成正后方半圆的粒子
-                    Vector2 backOffset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 16f;
-                    Dust backMagic = Dust.NewDustPerfect(backCenter + backOffset, 267, Vector2.Zero);
-                    backMagic.scale = 1.8f;
-                    backMagic.fadeIn = 0.5f;
-                    backMagic.color = CalamityUtils.MulticolorLerp(i / (float)halfCircleParticles, CalamityUtils.ExoPalette);
-                    backMagic.noGravity = true;
-                }
             }
         }
 

@@ -19,6 +19,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 {
     public class PyroblastHoldOut : BaseGunHoldoutProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/DeveloperItems/Weapon/Pyroblast/Pyroblast";
         public new string LocalizationCategory => "DeveloperItems.Pyroblast";
         public override int AssociatedItemID => ModContent.ItemType<Pyroblast>(); // 绑定武器
         public override float MaxOffsetLengthFromArm => 15f; // 设置与手臂的距离

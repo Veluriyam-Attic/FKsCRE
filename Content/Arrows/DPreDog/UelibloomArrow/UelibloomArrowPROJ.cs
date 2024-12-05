@@ -15,8 +15,10 @@ using CalamityMod.Items.Accessories;
 
 namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 {
-    internal class UelibloomArrowPROJ : ModProjectile, ILocalizedModType
+    public class UelibloomArrowPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "FKsCRE/Content/Arrows/DPreDog/UelibloomArrow/UelibloomArrow";
+
         public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {

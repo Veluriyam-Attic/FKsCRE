@@ -15,6 +15,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
     {
         public bool hasAstralBulletBuff;
         public int cometTimer;
+        private int cachedAstralBulletDamage;
 
         public override bool InstancePerEntity => true;
 
@@ -26,6 +27,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
         {
             if (hasAstralBulletBuff)
             {
+
                 // 获取 AstralBulletEBuff 的剩余时间百分比
                 int buffIndex = npc.FindBuffIndex(ModContent.BuffType<AstralBulletEBuff>());
                 if (buffIndex != -1) // 确保敌人有这个 Buff
@@ -48,6 +50,13 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
                     if (cometTimer >= cometSpawnRate)
                     {
                         cometTimer = 0;
+
+                        // 调用player文件获取最后一次存在的子弹的伤害
+                        Player player = Main.player[npc.target];
+                        var astralBulletPlayer = player.GetModPlayer<AstralBulletPlayer>();
+                        cachedAstralBulletDamage = astralBulletPlayer.LastAstralBulletDamage;
+
+
                         SummonComet(npc, dynamicRadius); // 使用动态半径
                     }
                 }
@@ -100,7 +109,12 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
             float damageMultiplier = player.GetDamage(player.HeldItem.DamageType).Additive; // 获取玩家的增伤系数（包括装备和Buff等增益）
             float multiplier = Main.getGoodWorld ? 7.5f : 2.5f; // 根据条件动态调整倍率
             int newDamage = (int)(baseDamage * damageMultiplier * multiplier); // 应用增伤和倍率系数
-            Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPosition, new Vector2(speedX, speedY), ModContent.ProjectileType<AstralBulletSTAR>(), newDamage, 0, player.whoAmI);
+
+            //Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPosition, new Vector2(speedX, speedY), ModContent.ProjectileType<AstralBulletSTAR>(), newDamage, 0, player.whoAmI);
+
+            // 使用缓存的 AstralBullet 伤害值，而不是直接调用手持武器的伤害（上面的则是调用手持武器的伤害）
+            int newDamage2 = cachedAstralBulletDamage;
+            Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPosition, new Vector2(speedX, speedY), ModContent.ProjectileType<AstralBulletSTAR>(), newDamage2, 0, player.whoAmI);
         }
 
 

@@ -25,7 +25,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<EffulgentFeatherArrowPROJ>();
-            Item.shootSpeed = 1f;
+            Item.shootSpeed = 10f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 

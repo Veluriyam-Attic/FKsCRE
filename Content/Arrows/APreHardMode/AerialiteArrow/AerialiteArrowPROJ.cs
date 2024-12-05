@@ -46,7 +46,10 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
             Projectile.arrow = true;
             Projectile.extraUpdates = 1;
         }
-
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.velocity *= 0.7f;
+        }
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平

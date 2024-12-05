@@ -122,12 +122,7 @@ namespace FKsCRE.Content.Arrows.WulfrimArrow
     #region 钨钢箭弹幕
     public class WulfrimArrow_proje : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // 设置拖尾长度和模式
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7;
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
-        }
+
 
         Vector2 Mouse_initial = default;
         public override void ReceiveExtraAI(BinaryReader reader)
@@ -204,14 +199,6 @@ namespace FKsCRE.Content.Arrows.WulfrimArrow
             //packet.Send();
             base.OnHitNPC(target, hit, damageDone);
         }
-
-        public override bool PreDraw(ref Color lightColor)
-        {
-            // 画残影效果
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
-            return false;
-        }
-
 
     }
     #endregion

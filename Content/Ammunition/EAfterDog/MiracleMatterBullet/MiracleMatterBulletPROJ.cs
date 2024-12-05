@@ -205,14 +205,12 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
             return base.OnTileCollide(oldVelocity);
         }
 
-        public override void OnSpawn(IEntitySource source)
-        {
 
-        }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-
+            modifiers.FinalDamage *= 2f; // 双倍伤害
         }
+
 
         public override void OnKill(int timeLeft)
         {

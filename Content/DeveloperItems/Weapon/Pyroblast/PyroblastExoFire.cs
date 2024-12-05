@@ -44,8 +44,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             sparkColor = Color.OrangeRed;
 
             Time++;
-            // 添加橙红色光效
-            Lighting.AddLight(Projectile.Center, Color.OrangeRed.ToVector3() * 0.2f);
+            // 添加白色光效
+            Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.2f);
 
             Player Owner = Main.player[Projectile.owner];
             float targetDist = Vector2.Distance(Owner.Center, Projectile.Center); // 用于屏幕外判定

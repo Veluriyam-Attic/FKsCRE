@@ -104,7 +104,10 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.extraUpdates = 3;
             Projectile.tileCollide = false;
         }
-
+        public override void OnSpawn(IEntitySource source)
+        {
+            //Projectile.velocity *= 0.4f;
+        }
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平

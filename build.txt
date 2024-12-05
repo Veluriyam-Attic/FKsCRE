@@ -1,5 +1,6 @@
 displayName = YuBell's Calamity Community Expansion
 author = Henceforth
-version = 0.2.0.18
+version = 0.2.0.19
 modReferences = CalamityMod
 sortAfter = CalamityMod
+	
