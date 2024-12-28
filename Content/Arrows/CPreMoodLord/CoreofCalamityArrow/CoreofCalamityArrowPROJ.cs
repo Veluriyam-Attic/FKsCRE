@@ -30,14 +30,9 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.CoreofCalamityArrow
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            // 检查是否启用了特效
-            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
-            {
-                // 画残影效果
-                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
-                return false;
-            }
-            return true;
+            // 画残影效果
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
         }
         public override void SetDefaults()
         {
@@ -47,7 +42,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.CoreofCalamityArrow
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
             Projectile.penetrate = 1; // 穿透力为1，击中一个敌人就消失
-            Projectile.timeLeft = 600; // 弹幕存在时间为600帧
+            Projectile.timeLeft = 300; // 弹幕存在时间为x帧
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
             Projectile.ignoreWater = true; // 弹幕不受水影响

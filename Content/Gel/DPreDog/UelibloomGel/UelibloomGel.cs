@@ -32,7 +32,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<UelibloomGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<UelibloomGelGP>().IsUelibloomGelInfused = true;
                 }
             }
         }

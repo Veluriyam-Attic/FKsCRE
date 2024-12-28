@@ -32,12 +32,12 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
 
         public override void OnConsumedAsAmmo(Item weapon, Player player)
         {
-            // 附魔效果，标记弹幕使用了 CosmosGel
+            // 附魔效果，标记弹幕使用了 AuricGel
             foreach (Projectile proj in Main.projectile)
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<AuricGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<AuricGelGP>().IsAuricGelInfused = true;
                 }
             }
         }

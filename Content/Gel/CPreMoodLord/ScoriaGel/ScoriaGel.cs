@@ -31,7 +31,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<ScoriaGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<ScoriaGelGP>().IsScoriaGelInfused = true;
                 }
             }
         }

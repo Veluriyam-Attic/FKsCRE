@@ -48,10 +48,10 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             Projectile.velocity *= 1.06f;
 
             // 如果触碰到屏幕边缘，则删除该弹幕
-            //if (!ProjectileWithinScreen())
-            //{
-            //    Projectile.Kill();
-            //}
+            if (!ProjectileWithinScreen())
+            {
+                Projectile.Kill();
+            }
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)

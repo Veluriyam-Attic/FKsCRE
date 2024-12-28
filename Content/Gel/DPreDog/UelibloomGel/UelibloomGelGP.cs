@@ -8,78 +8,53 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using FKsCRE.Content.Arrows.DPreDog.UelibloomArrow;
 
 namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
 {
     public class UelibloomGelGP : GlobalProjectile
     {
-        // 每个弹幕是否拥有独立的实例属性
         public override bool InstancePerEntity => true;
 
-        // 表示该弹幕是否附魔了 CosmosGel 的标志
-        public bool IsCosmosGelInfused = false;
+        public bool IsUelibloomGelInfused = false;
 
-        /// <summary>
-        /// 在弹幕生成时调用。
-        /// 如果弹幕是通过消耗 CosmosGel 弹药生成的，则将其附魔。
-        /// </summary>
-        /// <param name="projectile">生成的弹幕实例</param>
-        /// <param name="source">生成来源信息</param>
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            // 检查弹幕是否由含有弹药的武器生成，且弹药类型为 CosmosGel
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<UelibloomGel>())
             {
-                // 标记弹幕为已附魔
-                IsCosmosGelInfused = true;
-
-                // 确保在多人游戏中状态同步
+                IsUelibloomGelInfused = true;
                 projectile.netUpdate = true;
             }
             base.OnSpawn(projectile, source);
         }
 
-        /// <summary>
-        /// 当弹幕击中 NPC 时调用。
-        /// 如果弹幕被附魔，则为目标施加特殊 Buff 和粒子效果。
-        /// </summary>
-        /// <param name="projectile">当前弹幕</param>
-        /// <param name="target">被击中的 NPC</param>
-        /// <param name="hit">击中信息</param>
-        /// <param name="damageDone">造成的伤害</param>
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 检查弹幕是否附魔，目标是否为非友方 NPC 且仍存活
-            if (IsCosmosGelInfused && target.active && !target.friendly)
+            if (IsUelibloomGelInfused && target.active && !target.friendly)
             {
-                // 为目标添加 x，持续 300 帧（约 5 秒）
-                //target.AddBuff(ModContent.BuffType<XXX>(), 300);
+                // 调整伤害为原来的 75%
+                projectile.damage = (int)(projectile.damage * 0.75f);
+
+                // 在敌人四面八方随机生成 UelibloomArrowLight 弹幕
+                for (int i = 0; i < 2; i++)
+                {
+                    // 随机选择一个方向
+                    float randomAngle = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    Vector2 spawnPosition = target.Center + new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * 30 * 16f;
+                    Vector2 directionToTarget = Vector2.Normalize(target.Center - spawnPosition); // 改为指向命中敌人的位置
+
+                    // 创建 UelibloomArrowLight 弹幕
+                    Projectile.NewProjectile(
+                        projectile.GetSource_FromThis(),
+                        spawnPosition,
+                        directionToTarget * 10f, // 设置飞行速度
+                        ModContent.ProjectileType<UelibloomArrowLight>(),
+                        (int)(projectile.damage * 0.25f), // 伤害为原弹幕的 25%
+                        projectile.knockBack,
+                        projectile.owner
+                    );
+                }
             }
-        }
-
-        /// <summary>
-        /// 修改弹幕的伤害判定时调用（暂未使用）。
-        /// </summary>
-        public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            base.ModifyHitNPC(projectile, target, ref modifiers);
-        }
-
-        /// <summary>
-        /// 修改弹幕的命中区域（Hitbox）时调用（暂未使用）。
-        /// </summary>
-        public override void ModifyDamageHitbox(Projectile projectile, ref Rectangle hitbox)
-        {
-            base.ModifyDamageHitbox(projectile, ref hitbox);
-        }
-
-        /// <summary>
-        /// 当弹幕被销毁时调用（例如，撞击墙壁或达到了最大寿命）。
-        /// </summary>
-        public override void OnKill(Projectile projectile, int timeLeft)
-        {
-            base.OnKill(projectile, timeLeft);
         }
     }
 }
-

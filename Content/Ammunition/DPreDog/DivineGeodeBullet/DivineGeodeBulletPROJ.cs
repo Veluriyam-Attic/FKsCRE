@@ -16,7 +16,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
 {
     public class DivineGeodeBulletPROJ : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.SuperCriticalBullet";
+        public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
@@ -26,7 +26,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
         {
             // 获取 SpriteBatch 和投射物纹理
             SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Bullet/YuanZiDan/YuanZiDanPROJ").Value;
+            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/DivineGeodeBullet/DivineGeodeBulletPROJ").Value;
 
             // 遍历投射物的旧位置数组，绘制光学拖尾效果
             for (int i = 0; i < Projectile.oldPos.Length; i++)
@@ -78,7 +78,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 1;
             Projectile.timeLeft = 420;
             Projectile.MaxUpdates = 6;
             Projectile.alpha = 255;
@@ -124,7 +124,15 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-          
+            // 5% 概率恢复敌人 200 点生命值（仅在专家模式下）
+            if (Main.expertMode && Main.rand.NextFloat() < 0.05f)
+            {
+                target.life += 200;
+                target.HealEffect(200); // 显示治疗效果
+            }
+
+            // 施加 DivineGeodeBulletEDebuff，持续 36000 帧（几乎永久）
+            target.AddBuff(ModContent.BuffType<DivineGeodeBulletEDebuff>(), 36000);
         }
 
         public override void OnKill(int timeLeft)

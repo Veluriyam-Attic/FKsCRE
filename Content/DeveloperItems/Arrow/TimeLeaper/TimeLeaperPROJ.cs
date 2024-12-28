@@ -55,6 +55,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TimeLeaper
             // 每次击中敌人时增加计数器
             hitCounter++;
         }
+
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平

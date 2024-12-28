@@ -11,6 +11,8 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 
 namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
 {
@@ -34,6 +36,36 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
             Item.shootSpeed = 7f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
+
+
+        //public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        //{
+        //    // 获取玩家主背包右下角的格子
+        //    int lastIndex = player.inventory.Length - 1;
+        //    Item ammoSlot = player.inventory[lastIndex];
+
+        //    // 如果格子为空或不是箭矢弹药，则什么都不射出
+        //    if (ammoSlot == null || ammoSlot.ammo != AmmoID.Arrow)
+        //    {
+        //        return false; // 不发射任何弹幕
+        //    }
+
+        //    // 设定箭矢的属性
+        //    Vector2 newVelocity = velocity; // 保持原速度
+
+        //    Projectile.NewProjectile(
+        //        source,
+        //        position,
+        //        newVelocity,
+        //        ammoSlot.shoot, // 使用右下角格子的弹药类型
+        //        150, // 强制面板伤害
+        //        knockback,
+        //        player.whoAmI
+        //    );
+
+        //    return false; // 不使用默认发射逻辑
+        //}
+
 
         public override void AddRecipes()
         {

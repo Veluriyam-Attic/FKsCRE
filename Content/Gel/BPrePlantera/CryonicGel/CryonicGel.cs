@@ -31,7 +31,7 @@ namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<CryonicGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<CryonicGelGP>().IsCryonicGelInfused = true;
                 }
             }
         }

@@ -15,7 +15,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
 {
     public class DivineGeodeBullet : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Ammunition.CPreMoodLord";
+        public new string LocalizationCategory => "Ammunition.DPreDog";
 
 
         public override void SetDefaults()

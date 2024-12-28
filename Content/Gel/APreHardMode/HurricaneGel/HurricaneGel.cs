@@ -12,7 +12,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
 {
     public class HurricaneGel : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Gel.CPreMoodLord";
+        public new string LocalizationCategory => "Gel.APreHardMode";
         public override void SetDefaults()
         {
             Item.damage = 85;
@@ -25,14 +25,16 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
 
         public override void OnConsumedAsAmmo(Item weapon, Player player)
         {
-            // 附魔效果，标记弹幕使用了 CosmosGel
             foreach (Projectile proj in Main.projectile)
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<HurricaneGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<HurricaneGelGP>().IsHurricaneGelInfused = true;
                 }
             }
+
+            // 通知 HurricaneGelPlayer 激活攻速降低效果
+            player.GetModPlayer<HurricaneGelPlayer>().ActivateHurricaneGelEffect();
         }
 
         public override void AddRecipes()

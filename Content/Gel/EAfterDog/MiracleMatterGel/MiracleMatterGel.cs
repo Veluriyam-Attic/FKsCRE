@@ -32,7 +32,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<MiracleMatterGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<MiracleMatterGelGP>().IsMiracleMatterGelInfused = true;
                 }
             }
         }

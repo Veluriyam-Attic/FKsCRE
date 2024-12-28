@@ -38,6 +38,21 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
 
         public override void AI()
         {
+            // 用于切换这种不是完整的垂直的多帧图
+            Projectile.frameCounter++;
+            if (Projectile.frameCounter > 3)
+            {
+                Projectile.localAI[0]++;
+                Projectile.frameCounter = 0;
+            }
+            if (Projectile.localAI[0] >= framesY)
+            {
+                Projectile.localAI[0] = 0;
+                Projectile.localAI[1]++;
+            }
+            if (Projectile.localAI[1] >= framesX)
+                Projectile.localAI[1] = 0;
+
             // 查找与自己配对的箭矢
             bool foundArrow = false;
             foreach (Projectile proj in Main.projectile)

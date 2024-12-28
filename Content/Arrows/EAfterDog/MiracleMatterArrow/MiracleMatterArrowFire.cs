@@ -30,7 +30,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             Projectile.tileCollide = false;
             Projectile.penetrate = 200;
             Projectile.extraUpdates = 7;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 1500;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 50;
             Projectile.DamageType = DamageClass.Ranged;
@@ -46,11 +46,14 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 
             if (Projectile.localAI[0] < 60) // 前 1 秒飞行
             {
-                if (Projectile.localAI[0] % 3 == 0) // 每 x 帧
+                // 每四帧将速度乘以 0.xx
+                if ((int)Projectile.localAI[0] % 4 == 0)
                 {
-                    //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.PiOver2);
-                    //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(4));
-                    Projectile.velocity *= 0.85f;
+                    Projectile.velocity *= 0.98f;
+                }
+                if (Projectile.localAI[0] % 1 == 0) // 每帧应用旋转效果
+                {
+                    Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(2));
                 }
                 //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
             }

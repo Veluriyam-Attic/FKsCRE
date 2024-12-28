@@ -31,7 +31,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.PerennialGel
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<PerennialGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<PerennialGelGP>().IsPerennialGelInfused = true;
                 }
             }
         }

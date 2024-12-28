@@ -95,7 +95,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.height = 24; // 弹幕高度
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
-            Projectile.penetrate = 15; // 穿透力为x
+            Projectile.penetrate = -1; // 穿透力为x
             Projectile.timeLeft = 600; // 弹幕存在时间为600帧
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧

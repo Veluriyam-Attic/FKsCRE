@@ -45,7 +45,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Che
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 120;
             Projectile.MaxUpdates = 4;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;

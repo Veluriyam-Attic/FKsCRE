@@ -26,12 +26,12 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
 
         public override void OnConsumedAsAmmo(Item weapon, Player player)
         {
-            // 附魔效果，标记弹幕使用了 CosmosGel
+            // 附魔效果，标记弹幕使用了 AstralGel
             foreach (Projectile proj in Main.projectile)
             {
                 if (proj.active && proj.owner == player.whoAmI)
                 {
-                    proj.GetGlobalProjectile<AstralGelGP>().IsCosmosGelInfused = true;
+                    proj.GetGlobalProjectile<AstralGelGP>().IsAstralGelInfused = true;
                 }
             }
         }

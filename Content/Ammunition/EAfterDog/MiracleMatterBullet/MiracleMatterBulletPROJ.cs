@@ -24,7 +24,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public static int MaxUpdate = 5; // 定义一个静态变量，表示弹幕每次更新的最大次数
 
-        private int Lifetime = 1100; // 定义弹幕的生命周期为x
+        private int Lifetime = 1600; // 定义弹幕的生命周期为x
 
         // 更改颜色：深绿色、黑色、另一种深绿色
         private static Color ShaderColorOne = Color.Cyan; // 着色器颜色1，设置为深绿色
