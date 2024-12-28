@@ -1,4 +1,4 @@
-displayName = YuBell's Calamity Community Expansion
+displayName = YuBell's Calamity Ranger Expansion[Beta]
 author = Henceforth
 version = 0.2.0.19
 modReferences = CalamityMod
