@@ -1,12 +1,16 @@
 Buffs: {
 	AstralArrowPBuff: {
-		DisplayName: Astral Arrow P Buff
-		Description: Mods.FKsCRE.Buffs.AstralArrowPBuff.Description
+		DisplayName: 明星之佑
+		Description: “一颗明星从天堂……等等，这是太阳和月亮？”
 	}
 
 	PerennialArrowEBuff: {
-		DisplayName: Perennial Arrow E Buff
-		Description: Mods.FKsCRE.Buffs.PerennialArrowEBuff.Description
+		DisplayName: 拥抱永恒……
+		Description: 
+			'''
+			给予你3点生命回复
+			“鬼知道呢？总不能是突变体给的吧？”
+			'''
 	}
 
 	UelibloomArrowEBuff: {
@@ -216,7 +220,7 @@ Items: {
 Arrows: {
 	APreHardMode: {
 		AerialiteArrow: {
-			DisplayName: 天蓝箭
+			DisplayName: 飓之矢
 			Tooltip:
 				'''
 				命中时召唤旋风
@@ -226,7 +230,7 @@ Arrows: {
 		}
 
 		BloodBeadsArrow: {
-			DisplayName: 血珠箭
+			DisplayName: 血珠箭（待移除）
 			Tooltip:
 				'''
 				命中敌人可造成随机的debuff，时长也随机
@@ -235,7 +239,7 @@ Arrows: {
 		}
 
 		PurifiedGelArrow: {
-			DisplayName: 纯净凝胶箭
+			DisplayName: 纯净凝胶箭（待移除）
 			Tooltip:
 				'''
 				已完成特效部分
@@ -246,7 +250,7 @@ Arrows: {
 
 	BPrePlantera: {
 		StarblightSootArrow: {
-			DisplayName: 调星箭
+			DisplayName: 星沫箭
 			Tooltip:
 				'''
 				造成幻星感染
@@ -259,10 +263,10 @@ Arrows: {
 
 	CPreMoodLord: {
 		AstralArrow: {
-			DisplayName: 炫星箭
+			DisplayName: 明星箭
 			Tooltip:
 				'''
-				击中敌人时给予玩家持续的明星之佑
+				击中敌人时给予玩家持续的「明星之佑」效果
 				存在期间召唤太阳与月亮围绕玩家旋转
 				穿过太阳将造成聚变爆炸，穿过月亮将获得强追踪效果
 				双星强化仅对炫星箭有效
@@ -271,7 +275,7 @@ Arrows: {
 		}
 
 		CoreofCalamityArrow: {
-			DisplayName: 灾劫核心箭
+			DisplayName: 灾劫核心箭（待移除）
 			Tooltip:
 				'''
 				？？？
@@ -285,7 +289,7 @@ Arrows: {
 				'''
 				击中后随机释放三份力量中的一个
 				每一份力量均被削弱
-				“三合一”
+				“一即全，全即一”
 				'''
 		}
 
@@ -307,7 +311,7 @@ Arrows: {
 				速度非常慢
 				击中时产生爆炸并快速下落
 				最后释放追踪熔岩
-				“1100度的火成岩”
+				“1100℃的火成岩”
 				'''
 		}
 	}
@@ -318,7 +322,8 @@ Arrows: {
 			Tooltip:
 				'''
 				以神圣之力把敌人炸成碎片
-				赋予玩家【净化邪神】增益：大幅提升飞行时间
+				赋予玩家「净化邪神」增益
+				这将大幅提升你的飞行时间
 				“翅膀的上升之火被重新燃起”
 				'''
 		}
@@ -327,9 +332,9 @@ Arrows: {
 			DisplayName: 闪耀金羽箭
 			Tooltip:
 				'''
-				以静电之力携带特斯拉电场快速前进
+				携带着特斯拉电场快速前进
 				无限穿透
-				“该换羽毛了”
+				“神吞感受到了一丝凉意……”
 				'''
 		}
 
@@ -339,7 +344,7 @@ Arrows: {
 				'''
 				小概率鬼叫并对敌人造成严重伤害
 				大概率什么也不会发生，哈哈
-				“他们在迷宫里尘封的太久了”
+				“地牢变成了精神病院！哈哈！太棒了！”
 				'''
 		}
 
@@ -362,19 +367,20 @@ Arrows: {
 				造成小规模爆炸并散射逐渐加速的能量光球
 				小概率在玩家处产生一个拥有生命力的火球
 				火球会尝试碰撞敌人并造成自爆伤害
-				随后留下一个给予大幅伤害提升的临时掉落物
+				随后留下一个给予大幅伤害提升的宝物
 				“来自远古的电磁碰撞”
 				'''
 		}
 
 		MiracleMatterArrow: {
-			DisplayName: 星流箭
+			DisplayName: 幻光斑景
 			Tooltip:
 				'''
 				命中后释放强力追踪的光球能量弹
 				星流箭本体距离敌人较近时可被提前引爆
 				那名掌握至尊死灵术的魔女似乎不喜欢这个和一把来自天堂的神器
 				所以你不应该在战斗中同时使用这两个？
+				试试更差的武器吧！
 				“星河贯穿，光芒跃动！”
 				'''
 		}
@@ -411,7 +417,6 @@ Ammunition: {
 			Tooltip:
 				'''
 				击中敌人时以敌人为中心不断的释放彗星砸向这个倒霉蛋
-				彗星继承上一发炫星弹的面板
 				彗星射击频率和圆圈大小会越来越小和快
 				“这玩意儿可不能许愿啊”
 				'''
