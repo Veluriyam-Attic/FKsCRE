@@ -20,7 +20,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.PerennialGel
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegen += 3;
+            player.lifeRegen += 6;
         }
     }
 

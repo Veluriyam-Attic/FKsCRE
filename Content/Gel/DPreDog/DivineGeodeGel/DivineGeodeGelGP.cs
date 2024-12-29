@@ -25,6 +25,7 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
                 IsDivineGeodeGelInfused = true;
                 projectile.penetrate = -1; // 设置弹幕无限穿透
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.25f); // 减少 75% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -33,9 +34,6 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
         {
             if (IsDivineGeodeGelInfused && target.active && !target.friendly)
             {
-                // 调整伤害为原来的 25%
-                projectile.damage = (int)(projectile.damage * 0.25f);
-
                 // 施加 HolyFlames Buff，持续 1200 帧（20 秒）
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 1200);
 
@@ -45,7 +43,7 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
                     projectile.Center,
                     Vector2.Zero, // 无速度
                     ModContent.ProjectileType<BlissfulBombardierDustProjectile>(),
-                    (int)(projectile.damage * 0.05f), // 伤害为原始的 5%
+                    (int)(projectile.damage / 0.25 * 0.05f), // 伤害为原始的 5%
                     0f,
                     projectile.owner
                 );

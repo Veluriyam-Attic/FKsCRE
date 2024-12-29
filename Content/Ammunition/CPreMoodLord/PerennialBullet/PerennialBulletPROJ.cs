@@ -24,8 +24,13 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -55,19 +60,24 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
             if (Projectile.timeLeft == 296)
                 Projectile.alpha = 0;
 
-            // 添加飞行期间的粒子特效
-            if (Main.rand.NextBool(3)) // 随机1/3概率生成
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    Main.rand.NextBool() ? 107 : 74, // 随机选择两种粒子类型
-                    -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f) // 轻微随机速度
-                );
-                dust.noGravity = true; // 粒子无重力
-                dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // 随机大小
-                if (dust.type == 107)
-                    dust.scale = Main.rand.NextFloat(0.35f, 0.55f); // 特殊类型的粒子缩小
+                // 添加飞行期间的粒子特效
+                if (Main.rand.NextBool(3)) // 随机1/3概率生成
+                {
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        Main.rand.NextBool() ? 107 : 74, // 随机选择两种粒子类型
+                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f) // 轻微随机速度
+                    );
+                    dust.noGravity = true; // 粒子无重力
+                    dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // 随机大小
+                    if (dust.type == 107)
+                        dust.scale = Main.rand.NextFloat(0.35f, 0.55f); // 特殊类型的粒子缩小
+                }
             }
+          
         }
 
         public override void OnSpawn(IEntitySource source)
@@ -86,23 +96,28 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
             var player = Main.player[Projectile.owner].GetModPlayer<PerennialBulletPlayer>();
             player.IncreaseStackCount(); // 每次击中敌人时增加堆叠
 
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 在正45度和负45度之间随机选择一个角度
+                float randomAngle = Main.rand.NextFloat(-45f, 45f); // 随机角度
+                float angleOffset = MathHelper.ToRadians(randomAngle); // 转为弧度
+                Vector2 direction = Projectile.velocity.RotatedBy(angleOffset).SafeNormalize(Vector2.UnitY); // 根据随机角度旋转方向
+                Vector2 velocity = direction * Main.rand.NextFloat(2f, 4f); // 设置粒子速度（随机）
 
-            // 在正45度和负45度之间随机选择一个角度
-            float randomAngle = Main.rand.NextFloat(-45f, 45f); // 随机角度
-            float angleOffset = MathHelper.ToRadians(randomAngle); // 转为弧度
-            Vector2 direction = Projectile.velocity.RotatedBy(angleOffset).SafeNormalize(Vector2.UnitY); // 根据随机角度旋转方向
-            Vector2 velocity = direction * Main.rand.NextFloat(2f, 4f); // 设置粒子速度（随机）
+                // 创建粒子特效
+                Particle trail = new SparkParticle(
+                    Projectile.Center,               // 粒子生成位置
+                    velocity,                        // 粒子速度
+                    false,                           // 不受重力
+                    60,                              // 粒子生命周期
+                    Main.rand.NextFloat(0.8f, 1.2f), // 粒子缩放
+                    Color.Green                      // 粒子颜色
+                );
+                GeneralParticleHandler.SpawnParticle(trail); // 生成粒子
 
-            // 创建粒子特效
-            Particle trail = new SparkParticle(
-                Projectile.Center,               // 粒子生成位置
-                velocity,                        // 粒子速度
-                false,                           // 不受重力
-                60,                              // 粒子生命周期
-                Main.rand.NextFloat(0.8f, 1.2f), // 粒子缩放
-                Color.Green                      // 粒子颜色
-            );
-            GeneralParticleHandler.SpawnParticle(trail); // 生成粒子
+            }
+
 
 
         }

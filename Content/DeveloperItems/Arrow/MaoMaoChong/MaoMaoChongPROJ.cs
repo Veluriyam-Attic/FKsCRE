@@ -47,12 +47,17 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.MaoMaoChong
 
         public override void PostDraw(Color lightColor)
         {
-            // 使用与 MeowCreature 相同的拖尾渲染逻辑
-            PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(WidthFunction, ColorFunction, (_) => Projectile.Size * 0.5f), 30);
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 使用与 MeowCreature 相同的拖尾渲染逻辑
+                PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(WidthFunction, ColorFunction, (_) => Projectile.Size * 0.5f), 30);
 
-            // 绘制弹幕本体的发光效果
-            Texture2D glow = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-            Main.EntitySpriteDraw(glow, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, glow.Size() * 0.5f, Projectile.scale, SpriteEffects.None);
+                // 绘制弹幕本体的发光效果
+                Texture2D glow = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+                Main.EntitySpriteDraw(glow, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, glow.Size() * 0.5f, Projectile.scale, SpriteEffects.None);
+            }
+
         }
 
         // 可以去参考一下原版的502号弹幕逻辑（在弹幕文件里面）

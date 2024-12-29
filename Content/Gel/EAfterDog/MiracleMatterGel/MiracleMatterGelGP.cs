@@ -24,7 +24,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<MiracleMatterGel>())
             {
                 IsMiracleMatterGelInfused = true;
-                //projectile.damage = (int)(projectile.damage * 0.05f); // 减少 95% 伤害
+                projectile.damage = (int)(projectile.damage * 0.05f); // 减少 95% 伤害
                 projectile.netUpdate = true;
             }
             base.OnSpawn(projectile, source);
@@ -39,33 +39,37 @@ namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
 
                 if (!lightningExists)
                 {
-                    // 召唤一条闪电
+                    // 设置闪电生成位置
                     Vector2 lightningSpawnPosition = projectile.Center - Vector2.UnitY * Main.rand.NextFloat(960f, 1020f);
-                    Vector2 lightningShootVelocity = (projectile.Center - lightningSpawnPosition).SafeNormalize(Vector2.UnitY) * 14f;
 
+                    // 设置闪电飞行方向为目标被命中的位置
+                    Vector2 lightningTargetPosition = target.Center;
+                    Vector2 lightningShootVelocity = (lightningTargetPosition - lightningSpawnPosition).SafeNormalize(Vector2.Zero) * 14f;
+
+                    // 创建闪电弹幕
                     int lightning = Projectile.NewProjectile(
                         projectile.GetSource_FromThis(),
                         lightningSpawnPosition,
                         lightningShootVelocity,
                         ModContent.ProjectileType<MiracleMatterGelLighting>(),
-                        projectile.damage * 15, // 1500% 伤害
+                        (int)(projectile.damage / 0.05 * 2.0), // 200% 伤害
                         0f,
                         projectile.owner
                     );
 
                     if (Main.projectile.IndexInRange(lightning))
                     {
-                        Main.projectile[lightning].ai[0] = lightningShootVelocity.ToRotation();
-                        Main.projectile[lightning].ai[1] = Main.rand.Next(100);
+                        Main.projectile[lightning].ai[0] = lightningShootVelocity.ToRotation(); // 设置闪电方向
+                        Main.projectile[lightning].ai[1] = Main.rand.Next(100); // 随机参数（可选）
                     }
 
                     // 播放音效
                     SoundEngine.PlaySound(SoundID.Item92, projectile.position);
                 }
-
-                // 调整伤害为原来的 5%（后调整）
-                projectile.damage = (int)(projectile.damage * 0.05f);
             }
         }
+
+
+
     }
 }

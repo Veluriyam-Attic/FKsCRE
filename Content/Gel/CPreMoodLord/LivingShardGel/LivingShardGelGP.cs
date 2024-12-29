@@ -30,8 +30,8 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel
         {
             if (IsLivingShardGelInfused && target.active && !target.friendly)
             {
-                // 5% 概率释放 LivingShardGelHealPROJ
-                if (Main.rand.NextFloat() <= 0.05f)
+                // 0.5% 概率释放 LivingShardGelHealPROJ
+                if (Main.rand.NextFloat() <= 0.005f)
                 {
                     Vector2 randomDirection = Main.rand.NextVector2CircularEdge(1f, 1f).SafeNormalize(Vector2.Zero) * 10f;
                     Projectile.NewProjectile(

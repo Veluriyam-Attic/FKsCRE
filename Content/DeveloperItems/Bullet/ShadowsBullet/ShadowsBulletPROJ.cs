@@ -11,7 +11,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
-using FKsCRE.Content.Arrows.WulfrimArrow;
 using CalamityMod.Items.Fishing.BrimstoneCragCatches;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.ShadowsBullet

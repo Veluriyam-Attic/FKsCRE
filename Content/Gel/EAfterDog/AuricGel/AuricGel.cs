@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
         public new string LocalizationCategory => "Gel.EAfterDog";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            //Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;

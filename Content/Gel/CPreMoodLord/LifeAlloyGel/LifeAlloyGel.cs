@@ -10,6 +10,7 @@ using Terraria;
 using FKsCRE.Content.Gel.CPreMoodLord.PerennialGel;
 using FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel;
 using FKsCRE.Content.Gel.BPrePlantera.CryonicGel;
+using CalamityMod.Items.Materials;
 
 namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
 {
@@ -18,7 +19,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
         public new string LocalizationCategory => "Gel.CPreMoodLord";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            //Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;
@@ -44,7 +45,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
-            //recipe.AddIngredient<Hurrican>(1);
+            recipe.AddIngredient<LifeAlloy>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

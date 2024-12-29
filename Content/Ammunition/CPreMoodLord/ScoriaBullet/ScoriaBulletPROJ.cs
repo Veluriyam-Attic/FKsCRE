@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Projectiles.Typeless;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
 {
@@ -25,11 +26,14 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
 
         public override bool PreDraw(ref Color lightColor)
         {
-            // 绘制橙色粒子尾迹
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.Orange);
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.Orange);
+                return false;
+            }
             return true;
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -58,19 +62,24 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
             if (Projectile.timeLeft == 296)
                 Projectile.alpha = 0;
 
-            // 添加飞行期间的橙色粒子特效
-            if (Main.rand.NextBool(3)) // 随机1/3概率生成
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    Main.rand.NextBool() ? 130 : 60, // 随机选择两种粒子类型
-                    -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f) // 轻微随机速度
-                );
-                dust.noGravity = true; // 粒子无重力
-                dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // 随机大小
-                if (dust.type == 130)
-                    dust.scale = Main.rand.NextFloat(0.35f, 0.55f); // 特殊类型的粒子缩小
+                // 添加飞行期间的橙色粒子特效
+                if (Main.rand.NextBool(3)) // 随机1/3概率生成
+                {
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        Main.rand.NextBool() ? 130 : 60, // 随机选择两种粒子类型
+                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f) // 轻微随机速度
+                    );
+                    dust.noGravity = true; // 粒子无重力
+                    dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // 随机大小
+                    if (dust.type == 130)
+                        dust.scale = Main.rand.NextFloat(0.35f, 0.55f); // 特殊类型的粒子缩小
+                }
             }
+          
 
         }
 
@@ -106,15 +115,20 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
             target.AddBuff(BuffID.OnFire3, 240);
             target.AddBuff(BuffID.Daybreak, 240);
 
-            // 抛射橙色粒子特效
-            int particleCount = Main.rand.Next(10, 16); // 随机生成 10 到 15 个粒子
-            for (int i = 0; i < particleCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Color particleColor = Main.rand.NextBool() ? Color.OrangeRed : Color.Orange; // 随机颜色
-                Vector2 velocity = new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-5f, -1f)); // 向上抛射
-                PointParticle spark = new PointParticle(Projectile.Center, velocity, false, 10, 0.8f, particleColor);
-                GeneralParticleHandler.SpawnParticle(spark);
+                // 抛射橙色粒子特效
+                int particleCount = Main.rand.Next(10, 16); // 随机生成 10 到 15 个粒子
+                for (int i = 0; i < particleCount; i++)
+                {
+                    Color particleColor = Main.rand.NextBool() ? Color.OrangeRed : Color.Orange; // 随机颜色
+                    Vector2 velocity = new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-5f, -1f)); // 向上抛射
+                    PointParticle spark = new PointParticle(Projectile.Center, velocity, false, 10, 0.8f, particleColor);
+                    GeneralParticleHandler.SpawnParticle(spark);
+                }
             }
+
 
             // 在原地释放爆炸弹幕
             Projectile.NewProjectile(

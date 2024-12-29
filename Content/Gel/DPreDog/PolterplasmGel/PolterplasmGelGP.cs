@@ -23,6 +23,7 @@ namespace FKsCRE.Content.Gel.DPreDog.PolterplasmGel
             {
                 IsPolterplasmGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.8f); // 减少 20% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -31,7 +32,7 @@ namespace FKsCRE.Content.Gel.DPreDog.PolterplasmGel
             if (IsPolterplasmGelInfused && target.active && !target.friendly)
             {
                 // 调整伤害为原来的 80%
-                projectile.damage = (int)(projectile.damage * 0.8f);
+                //projectile.damage = (int)(projectile.damage * 0.8f);
             }
         }
         public override void AI(Projectile projectile)

@@ -28,6 +28,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
 {
@@ -203,12 +204,16 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
                     // 触发追踪能力激活的效果
                     if (Projectile.ai[1] == 120)
                     {
-                        for (int i = 0; i < 3; i++)
+                        // 检查是否启用了特效
+                        if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
                         {
-                            float angle = MathHelper.ToRadians(120 * i);
-                            Vector2 particleVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 3f;
-                            Particle spark = new PointParticle(Projectile.Center, particleVelocity, false, 7, 1.5f, Color.LightYellow);
-                            GeneralParticleHandler.SpawnParticle(spark);
+                            for (int i = 0; i < 3; i++)
+                            {
+                                float angle = MathHelper.ToRadians(120 * i);
+                                Vector2 particleVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 3f;
+                                Particle spark = new PointParticle(Projectile.Center, particleVelocity, false, 7, 1.5f, Color.LightYellow);
+                                GeneralParticleHandler.SpawnParticle(spark);
+                            }
                         }
                     }
                 }
@@ -217,14 +222,18 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.AllTheBirds
                     Projectile.ai[1]++;
                 }
             }
-
-            // 在飞行期间生成浅黄色的粒子特效
-            if (Main.rand.NextBool(1)) // 随机生成粒子
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 dustPosition = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
-                Dust dust = Dust.NewDustDirect(dustPosition, 0, 0, DustID.Torch, 0f, 0f, 100, Color.LightYellow, 1.5f);
-                dust.noGravity = true;
+                // 在飞行期间生成浅黄色的粒子特效
+                if (Main.rand.NextBool(1)) // 随机生成粒子
+                {
+                    Vector2 dustPosition = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
+                    Dust dust = Dust.NewDustDirect(dustPosition, 0, 0, DustID.Torch, 0f, 0f, 100, Color.LightYellow, 1.5f);
+                    dust.noGravity = true;
+                }
             }
+
         }
 
         public override void OnKill(int timeLeft)

@@ -128,9 +128,11 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel
             {
                 if (player.active)
                 {
-                    int healAmount = (int)(player.statLifeMax2 * 0.025f);
-                    player.statLife += healAmount;
-                    player.HealEffect(healAmount);
+                    //int healAmount = (int)(player.statLifeMax2 * 0.025f);
+                    // 每次固定回五滴血，而并非根据伤害
+                    // 因为要考虑到他有一个绝对上位：血炎凝胶
+                    player.statLife += 5;
+                    player.HealEffect(5);
                 }
             }
         }

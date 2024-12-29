@@ -53,7 +53,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
             //Projectile.usesLocalNPCImmunity = true;
             //Projectile.localNPCHitCooldown = Projectile.MaxUpdates * 13;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 15;
             Projectile.timeLeft = Projectile.MaxUpdates * Lifetime;
         }
 

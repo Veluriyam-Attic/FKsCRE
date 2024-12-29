@@ -14,6 +14,7 @@ using CalamityMod.Graphics.Primitives;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
 using CalamityMod.Particles;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 {
@@ -269,11 +270,16 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public override bool PreDraw(ref Color lightColor)
         {
-            GameShaders.Misc["CalamityMod:TrailStreak"].SetShaderTexture(ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Trails/FabstaffStreak"));
-            Vector2 overallOffset = Projectile.Size * 0.5f;
-            overallOffset += Projectile.velocity * 1.4f;
-            int numPoints = 46;
-            PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(PrimitiveWidthFunction, PrimitiveColorFunction, (_) => overallOffset, shader: GameShaders.Misc["CalamityMod:TrailStreak"]), numPoints);
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                GameShaders.Misc["CalamityMod:TrailStreak"].SetShaderTexture(ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Trails/FabstaffStreak"));
+                Vector2 overallOffset = Projectile.Size * 0.5f;
+                overallOffset += Projectile.velocity * 1.4f;
+                int numPoints = 46;
+                PrimitiveRenderer.RenderTrail(Projectile.oldPos, new(PrimitiveWidthFunction, PrimitiveColorFunction, (_) => overallOffset, shader: GameShaders.Misc["CalamityMod:TrailStreak"]), numPoints);
+                return false;
+            }
             return false;
         }
 

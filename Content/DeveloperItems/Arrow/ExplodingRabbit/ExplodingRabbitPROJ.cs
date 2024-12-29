@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Typeless;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
 {
@@ -26,8 +27,13 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -45,12 +51,12 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             Projectile.localNPCHitCooldown = 15;
             Projectile.penetrate = 3;
 
-            // 根据模式动态调整
-            if (Main.getGoodWorld)
-            {
-                Projectile.localNPCHitCooldown = 1;
-                Projectile.penetrate = -1; // 无限穿透
-            }
+            //// 根据模式动态调整
+            //if (Main.getGoodWorld)
+            //{
+            //    Projectile.localNPCHitCooldown = 1;
+            //    Projectile.penetrate = -1; // 无限穿透
+            //}
 
             Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
             Projectile.arrow = true;
@@ -69,42 +75,42 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             if (Projectile.timeLeft == 898)
                 Projectile.alpha = 0;
 
-            // 如果 getGoodWorld 启用，每 5 帧生成一个爆炸弹幕
-            if (Main.getGoodWorld)
-            {
-                goodWorldTimer++;
-                if (goodWorldTimer >= 5)
-                {
-                    goodWorldTimer = 0; // 重置计时器
+            //// 如果 getGoodWorld 启用，每 5 帧生成一个爆炸弹幕
+            //if (Main.getGoodWorld)
+            //{
+            //    goodWorldTimer++;
+            //    if (goodWorldTimer >= 5)
+            //    {
+            //        goodWorldTimer = 0; // 重置计时器
 
-                    // 创建爆炸弹幕
-                    int projID = Projectile.NewProjectile(
-                        Projectile.GetSource_FromThis(),
-                        Projectile.Center,
-                        Vector2.Zero,
-                        ModContent.ProjectileType<FuckYou>(), // 替换为实际爆炸弹幕的类型
-                        (int)(Projectile.damage * 2.0f),
-                        Projectile.knockBack,
-                        Projectile.owner
-                    );
-                    Main.projectile[projID].scale = 2.0f; // 调整爆炸弹幕的大小
-                }
+            //        // 创建爆炸弹幕
+            //        int projID = Projectile.NewProjectile(
+            //            Projectile.GetSource_FromThis(),
+            //            Projectile.Center,
+            //            Vector2.Zero,
+            //            ModContent.ProjectileType<FuckYou>(), // 替换为实际爆炸弹幕的类型
+            //            (int)(Projectile.damage * 2.0f),
+            //            Projectile.knockBack,
+            //            Projectile.owner
+            //        );
+            //        Main.projectile[projID].scale = 2.0f; // 调整爆炸弹幕的大小
+            //    }
 
-                // 前15帧不追踪，之后开始追踪敌人
-                if (Projectile.ai[1] > 15)
-                {
-                    NPC target = Projectile.Center.ClosestNPCAt(8800); // 查找范围内最近的敌人
-                    if (target != null)
-                    {
-                        Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                        Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 18f, 0.08f); // 追踪速度为18f
-                    }
-                }
-                else
-                {
-                    Projectile.ai[1]++;
-                }
-            }
+            //    // 前15帧不追踪，之后开始追踪敌人
+            //    if (Projectile.ai[1] > 15)
+            //    {
+            //        NPC target = Projectile.Center.ClosestNPCAt(8800); // 查找范围内最近的敌人
+            //        if (target != null)
+            //        {
+            //            Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+            //            Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 18f, 0.08f); // 追踪速度为18f
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Projectile.ai[1]++;
+            //    }
+            //}
         }
         public override void OnKill(int timeLeft)
         {
@@ -132,9 +138,16 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             );
             Main.projectile[projID].scale = 2.0f;
 
-            // 调用烟雾和正方形粒子效果
-            CreateSmokeEffect();
-            CreateSquareParticleEffect();
+
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 调用烟雾和正方形粒子效果
+                CreateSmokeEffect();
+                CreateSquareParticleEffect();
+            }
+
+
 
             // 增加反弹逻辑
             if (bounceCount >= 6)

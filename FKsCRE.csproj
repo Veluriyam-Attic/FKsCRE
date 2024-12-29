@@ -9,6 +9,12 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Content\Ammunition\AAA示范弹幕（方便复制用）.txt" />
+	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\AerialiteBullet.png" />
+	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\AerialiteBulletEBuff.png" />
+	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\AerialiteBulletPROJ.png" />
+	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\天蓝弹.txt" />
+	  <None Remove="Content\Ammunition\APreHardMode\WulfrimBullet\WulfrimBullet.png" />
+	  <None Remove="Content\Ammunition\APreHardMode\WulfrimBullet\WulfrimBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\CryonicBulletFragment.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\寒元弹.txt" />
 	  <None Remove="Content\Ammunition\BPrePlantera\StarblightSootBullet\StarblightSootBullet.png" />
@@ -21,6 +27,7 @@
 	  <None Remove="Content\Ammunition\CPreMoodLord\PerennialBullet\永恒弹.txt" />
 	  <None Remove="Content\Ammunition\CPreMoodLord\ScoriaBullet\ScoriaBulletFlameburst.png" />
 	  <None Remove="Content\Ammunition\CPreMoodLord\ScoriaBullet\熔渣弹.txt" />
+	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\11.png" />
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBullet.png" />
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBulletEDebuff.png" />
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBulletPROJ.png" />
@@ -64,13 +71,20 @@
 	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\血珠箭.txt" />
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\PurifiedGelArrow.png" />
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\纯净凝胶箭.txt" />
+	  <None Remove="Content\Arrows\APreHardMode\WulfrimArrow\WulfrimArrow.png" />
+	  <None Remove="Content\Arrows\APreHardMode\WulfrimArrow\WulfrimArrowEDebuff.png" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPBuff.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPC.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPCDrop.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\GlitchArrow\GlitchArrow.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\GlitchArrow\木头.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\打算删除.txt" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShadowsArrow\闪光金羽弃用贴图.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\ShuangHuaArrow\打算删除.txt" />
 	  <None Remove="Content\DeveloperItems\Arrow\Terratoarrow\春芽箭 (1).png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TimeLeaper\TimeLeaper.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\TimeLeaper\打算删除.txt" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirds.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\AllTheBirds\AllTheBirdsPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\MaoMaoChong\MeowCreature.png" />
@@ -201,7 +215,6 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Content\Ammunition\APreHardMode\" />
 	  <Folder Include="Content\Arrows\CPreMoodLord\AstralArrow\废案\" />
 	  <Folder Include="Content\Arrows\EAfterDog\AuricArrow\废弃\" />
 	  <Folder Include="Content\DeveloperItems\Gel\新文件夹\" />

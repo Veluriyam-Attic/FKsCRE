@@ -11,6 +11,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityMod.Particles;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
 {
@@ -25,28 +26,33 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/PolterplasmBullet/PolterplasmBullet").Value;
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
-                Color color = Color.Lerp(Color.Blue, Color.WhiteSmoke, colorInterpolation) * 0.4f;
-                color.A = 0;
-                Vector2 drawPosition = Projectile.oldPos[i] + lightTexture.Size() * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + new Vector2(-28f, -28f);
-                Color outerColor = color;
-                Color innerColor = color * 0.5f;
-                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
-                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
-                if (Projectile.timeLeft <= 60) // 弹幕即将消失时缩小
+                Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/PolterplasmBullet/PolterplasmBullet").Value;
+                for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {
-                    intensity *= Projectile.timeLeft / 60f;
+                    float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+                    Color color = Color.Lerp(Color.Blue, Color.WhiteSmoke, colorInterpolation) * 0.4f;
+                    color.A = 0;
+                    Vector2 drawPosition = Projectile.oldPos[i] + lightTexture.Size() * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + new Vector2(-28f, -28f);
+                    Color outerColor = color;
+                    Color innerColor = color * 0.5f;
+                    float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
+                    intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
+                    if (Projectile.timeLeft <= 60) // 弹幕即将消失时缩小
+                    {
+                        intensity *= Projectile.timeLeft / 60f;
+                    }
+                    Vector2 outerScale = new Vector2(1f) * intensity;
+                    Vector2 innerScale = new Vector2(1f) * intensity * 0.7f;
+                    outerColor *= intensity;
+                    innerColor *= intensity;
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
                 }
-                Vector2 outerScale = new Vector2(1f) * intensity;
-                Vector2 innerScale = new Vector2(1f) * intensity * 0.7f;
-                outerColor *= intensity;
-                innerColor *= intensity;
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
-            }
+                return false;
+            }        
             return false;
         }
 
@@ -124,18 +130,24 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
 
         public override void OnKill(int timeLeft)
         {
-            // 在弹幕死亡位置释放轻型烟雾
-            for (int i = 0; i < 3; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 生成360度随机方向的速度
-                Vector2 dustVelocity = Main.rand.NextVector2Circular(4f, 4f);
-                // 设置颜色为x色
-                Color smokeColor = Color.AliceBlue;
+                // 在弹幕死亡位置释放轻型烟雾
+                for (int i = 0; i < 3; i++)
+                {
+                    // 生成360度随机方向的速度
+                    Vector2 dustVelocity = Main.rand.NextVector2Circular(4f, 4f);
+                    // 设置颜色为x色
+                    Color smokeColor = Color.AliceBlue;
 
-                // 创建并生成粒子
-                Particle smoke = new HeavySmokeParticle(Projectile.Center, dustVelocity * Main.rand.NextFloat(1f, 2.6f), smokeColor, 18, Main.rand.NextFloat(0.9f, 1.6f), 0.35f, Main.rand.NextFloat(-1, 1), true);
-                GeneralParticleHandler.SpawnParticle(smoke);
+                    // 创建并生成粒子
+                    Particle smoke = new HeavySmokeParticle(Projectile.Center, dustVelocity * Main.rand.NextFloat(1f, 2.6f), smokeColor, 18, Main.rand.NextFloat(0.9f, 1.6f), 0.35f, Main.rand.NextFloat(-1, 1), true);
+                    GeneralParticleHandler.SpawnParticle(smoke);
+                }
             }
+
+
         }
     }
 }

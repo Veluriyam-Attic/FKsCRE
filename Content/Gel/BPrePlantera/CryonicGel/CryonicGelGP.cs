@@ -17,58 +17,65 @@ namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
         public override bool InstancePerEntity => true;
 
         public bool IsCryonicGelInfused = false;
+        public bool IsSlowedByCryonicGel = false; // 标记弹幕是否已经被减速
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<CryonicGel>())
             {
-                IsCryonicGelInfused = true;
+                IsCryonicGelInfused = true; // 标记为附魔状态
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.8f); // 减少 20% 伤害
             }
             base.OnSpawn(projectile, source);
-        }
-
+        }  
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (IsCryonicGelInfused && target.active && !target.friendly)
             {
-                // 调整伤害为原来的 80%
-                projectile.damage = (int)(projectile.damage * 0.8f);
-                // 施加 CryonicGelEDebuff，持续 300 帧（5 秒）
-                target.AddBuff(ModContent.BuffType<CryonicGelEDebuff>(), 300);
-            }
-        }
-
-        public override void ModifyDamageHitbox(Projectile projectile, ref Rectangle hitbox)
-        {
-            if (IsCryonicGelInfused)
-            {
-                foreach (Projectile enemyProjectile in Main.projectile)
-                {
-                    if (enemyProjectile.active && enemyProjectile.hostile && projectile.Hitbox.Intersects(enemyProjectile.Hitbox))
-                    {
-                        enemyProjectile.velocity *= 0.6f; // 减速 40%
-
-                        // 如果需要 5 秒效果，则可以使用 AI 或额外逻辑追踪时间
-                        enemyProjectile.localAI[0] = 300; // 标记剩余帧数
-                    }
-                }
+                target.AddBuff(ModContent.BuffType<CryonicGelEDebuff>(), 300); // 施加 5 秒的 debuff
             }
         }
 
         public override void AI(Projectile projectile)
         {
-            foreach (Projectile enemyProjectile in Main.projectile)
+            // 遍历所有的敌方弹幕
+            for (int i = 0; i < Main.maxProjectiles; i++)
             {
-                if (enemyProjectile.active && enemyProjectile.hostile && enemyProjectile.localAI[0] > 0)
+                Projectile enemyProjectile = Main.projectile[i];
+
+                // 检查条件：敌方弹幕（非友方）且尚未被减速（通过 ai[1] 标记）且仍活跃
+                if (enemyProjectile.active && !enemyProjectile.friendly && enemyProjectile.ai[1] != 1)
                 {
-                    enemyProjectile.localAI[0]--;
-                    if (enemyProjectile.localAI[0] <= 0)
+                    // 再次遍历所有我方弹幕
+                    for (int j = 0; j < Main.maxProjectiles; j++)
                     {
-                        enemyProjectile.velocity /= 0.6f; // 恢复速度
+                        Projectile friendlyProjectile = Main.projectile[j];
+
+                        // 确保是被 IsCryonicGelInfused 加持的我方弹幕，且仍活跃
+                        if (friendlyProjectile.active && friendlyProjectile.friendly && friendlyProjectile.GetGlobalProjectile<CryonicGelGP>().IsCryonicGelInfused)
+                        {
+                            // 检测碰撞
+                            if (Collision.CheckAABBvAABBCollision(
+                                    new Vector2(friendlyProjectile.Hitbox.X, friendlyProjectile.Hitbox.Y),
+                                    new Vector2(friendlyProjectile.Hitbox.Width, friendlyProjectile.Hitbox.Height),
+                                    new Vector2(enemyProjectile.Hitbox.X, enemyProjectile.Hitbox.Y),
+                                    new Vector2(enemyProjectile.Hitbox.Width, enemyProjectile.Hitbox.Height)))
+                            {
+                                // 处理敌方弹幕减速
+                                enemyProjectile.velocity *= 0.6f; // 减速为原来的 60%
+                                enemyProjectile.ai[1] = 1; // 标记为已减速，避免重复触发
+                                enemyProjectile.netUpdate = true; // 同步网络数据
+                            }
+                        }
                     }
                 }
             }
         }
+
+
+
+
+
     }
 }

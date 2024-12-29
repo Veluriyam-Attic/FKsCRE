@@ -6,7 +6,7 @@ Buffs: {
 
 	PerennialArrowEBuff: {
 		DisplayName: 拥抱永恒……
-		Description: 
+		Description:
 			'''
 			给予你3点生命回复
 			“鬼知道呢？总不能是突变体给的吧？”
@@ -123,6 +123,16 @@ Buffs: {
 		// Description: Mods.FKsCRE.Buffs.EffulgentFeatherBulletPBuff.Description
 		// DisplayName: Effulgent Feather Bullet P Buff
 	}
+
+	AerialiteBulletEBuff: {
+		// Description: Mods.FKsCRE.Buffs.AerialiteBulletEBuff.Description
+		// DisplayName: Aerialite Bullet E Buff
+	}
+
+	WulfrimArrowEDebuff: {
+		// Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
+		// DisplayName: Wulfrim Arrow E Debuff
+	}
 }
 
 Items: {
@@ -230,11 +240,11 @@ Arrows: {
 		}
 
 		BloodBeadsArrow: {
-			DisplayName: 血珠箭（待移除）
+			DisplayName: 血珠箭
 			Tooltip:
 				'''
 				命中敌人可造成随机的debuff，时长也随机
-				“我不小心打碎了一个绿色的玻璃螺旋管，这很贵吗？”
+				“我也就不小心打碎了一个绿色的玻璃螺旋管，你们怎么都跑走了，这很贵吗？”
 				'''
 		}
 
@@ -244,6 +254,15 @@ Arrows: {
 				'''
 				已完成特效部分
 				暂未完成具体实现
+				'''
+		}
+
+		WulfrimArrow: {
+			DisplayName: 钨钢矢
+			Tooltip:
+				'''
+				击中敌人后释放电火花
+				“难道你指望他拥有很大的能力？”
 				'''
 		}
 	}
@@ -388,13 +407,36 @@ Arrows: {
 }
 
 Ammunition: {
+	APreHardMode: {
+		AerialiteBullet: {
+			DisplayName: 天蓝弹
+			Tooltip:
+				'''
+				被打出去的时候给玩家一个轻轻的后坐力
+				如果玩家速度接近矿车的最高行驶速度则不会被施加后坐力
+				命中敌人后尝试牵引周围的小怪
+				“看我暴风吸入”
+				'''
+		}
+
+		WulfrimBullet: {
+			DisplayName: 钨钢弹
+			Tooltip:
+				'''
+				距离敌人越近，越是能爆发出更大的能量
+				距离超过一定值则会降低这次命中的伤害
+				“重量型选手与全能型战士的强强联手”
+				'''
+		}
+	}
+
 	BPrePlantera: {
 		CryonicBullet: {
 			DisplayName: 寒元弹
 			Tooltip:
 				'''
 				赋予敌人冰冷的标记并增加伤害
-				弹射出冰刺
+				弹射出逐渐在空中停下来的冰刺
 				“冰冰凉凉，夏日清凉”
 				'''
 		}
@@ -465,23 +507,23 @@ Ammunition: {
 		}
 
 		EffulgentFeatherBullet: {
-			DisplayName: 闪耀金羽弹
 			Tooltip:
 				'''
 				击中后让玩家获得2秒的法拉第笼效果
 				可以产生高压电场伤害周围的敌人
 				“你猜为什么你自己没事？”
 				'''
+			DisplayName: 闪耀金羽弹
 		}
 
 		DivineGeodeBullet: {
-			DisplayName: 圣晶石子弹
 			Tooltip:
 				'''
 				永久降低敌人的10点防御
 				在专家模式下有5%的概率回复敌人200血
 				“有内鬼，终止交易”
 				'''
+			DisplayName: 圣晶石子弹
 		}
 	}
 
@@ -517,10 +559,10 @@ Gel: {
 			DisplayName: 双色凝胶
 			Tooltip:
 				'''
-				提高5%喷火器伤害
+				提高10%喷火器伤害
 				在邪恶地形造成血肉沸腾和大脑溃烂
 				在神圣地形造成神圣之火和困惑
-				“给你的敌人两种颜色瞧瞧”
+				“给你的敌人两种颜色（物理）瞧瞧”
 				'''
 		}
 
@@ -531,6 +573,15 @@ Gel: {
 				降低10%全局攻速
 				击中敌人时爆出水晶碎片
 				“什么？你说这是他们的肾结石？”
+				'''
+		}
+
+		WulfrimGel: {
+			DisplayName: 钨钢凝胶
+			Tooltip:
+				'''
+				每一秒额外造成5点奖励伤害
+				“你什么时候奖励自己”
 				'''
 		}
 	}
@@ -566,7 +617,8 @@ Gel: {
 				'''
 				减少15%喷火器伤害
 				造成幻星感染减益
-				一段时间后令弹幕停滞在空中两秒造成较低伤害
+				飞行一段固定距离后令弹幕停滞在空中两秒
+				时停期间造成较低伤害
 				“The！World！”
 				'''
 		}
@@ -610,10 +662,10 @@ Gel: {
 			Tooltip:
 				'''
 				减少5%喷火器伤害
-				命中敌人时有2%概率生成生命碎片
-				生命碎片可以追踪玩家并给玩家回血
-				追踪期间无限穿透敌人并造成极高的伤害
-				“我缺的生命果这一块谁给我补啊”
+				命中敌人时有0.5%概率生成生命碎片
+				生命碎片可以追踪玩家并给玩家回5血
+				追踪期间无限穿透敌人并造成较高的伤害
+				“我缺的生命果这一块谁给我补啊？+5，+5，+5”
 				'''
 		}
 	}
@@ -633,8 +685,8 @@ Gel: {
 			DisplayName: 血石核心凝胶
 			Tooltip:
 				'''
-				减少50%喷火器伤害
-				每次命中敌人都会回复巨额血量
+				减少85%喷火器伤害
+				每次命中敌人都会回复许多血量
 				“深度治疗-专精三”
 				'''
 		}
@@ -657,7 +709,7 @@ Gel: {
 				'''
 				减少10%喷火器伤害
 				击中后爆发出电火花弹幕
-				“羽毛是这样的，摩擦就能生电，那些发电厂的运作原理都是如此”
+				“告诉你一个冷知识，那些发电厂的运作原理都是靠摩擦产生的静电”
 				'''
 		}
 
@@ -699,8 +751,8 @@ Gel: {
 				'''
 				减少75%喷火器伤害
 				每隔两秒从屏幕边缘打出共计10道闪电
-				每条闪电25%伤害
-				“没多高，也就百万伏特而已”
+				每条闪电75%伤害
+				“什么，出金了？让我看看看看看看看看”
 				'''
 		}
 
@@ -710,9 +762,9 @@ Gel: {
 				'''
 				减少95%喷火器伤害
 				弹幕造成5s的超位崩解
-				命中敌人时从天降下一道闪电造成1500%的伤害
+				命中敌人时从天降下一道闪电造成200%的伤害
 				闪电只能存在一道
-				“没多高，也就千万伏特而已”
+				“没多高，也就250兆瓦而已，相当于一艘福特级航空母舰”
 				'''
 		}
 	}
@@ -739,8 +791,7 @@ DeveloperItems: {
 			Tooltip:
 				'''
 				命中时引发小型等离子爆炸
-				“我很好奇这东西是怎么装在箭矢上并射出去的”
-				“我更好奇的是这居然还能保持自己的形状而不被摧毁”
+				“你再说一遍你是把什么东西打了出来？”
 				'''
 		}
 
@@ -783,7 +834,7 @@ DeveloperItems: {
 				可破坏方块
 				Boss存活或玩家持有创意震撼时无效
 				无论何时何地，只要摁下鼠标右键就可以直接清除所有场上的钻头
-				“我的钻头可是突破天际的”
+				“是否厌倦了建造场地？该产品正适合您！”
 				'''
 		}
 
@@ -875,13 +926,6 @@ DeveloperItems: {
 				随着倾泻的时间增长，也会获得额外的攻击手段
 				如子弹追踪，额外激光，大范围爆炸等等
 				受到伤害时清空等级并给予惩罚
-				右键直接射出四发火箭弹
-				赤焰火箭弹造成小范围持续轰炸
-				烈焰火箭弹持续灼烧敌人，并造成最大生命值的伤害
-				离子火箭弹能够瘫痪敌人
-				聚变火箭弹造成超大范围的单次爆炸
-				手持该武器时点击武器技能按键能够释放终结技：主观缓时
-				主观缓时能让超大范围内的敌人以及敌方弹幕大幅减速
 				“烈焰于掌心涌动，随时间燃烧愈烈”
 				'''
 		}
@@ -912,7 +956,7 @@ DeveloperItems: {
 			Tooltip:
 				'''
 				击中敌人时产生爆炸并弹飞
-				在一个“好世界”中获得超强追踪能力和巨额爆炸伤害
+				“想吃麻辣兔头吗？辣到爆炸（物理）的那种”
 				'''
 		}
 	}
@@ -1133,6 +1177,19 @@ DeveloperItems: {
 
 		// PyrogeistPROJ.DisplayName: Pyrogeist P R O J
 	}
+
+	GlitchArrow: {
+		GlitchArrow: {
+			DisplayName: 故障箭
+			Tooltip:
+				'''
+				它好像出了亿点点小问题
+				你能把它修好吗？
+				'''
+		}
+
+		// GlitchArrowPROJ.DisplayName: Glitch Arrow P R O J
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -1181,6 +1238,8 @@ Projectile: {
 		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
 		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
 		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
+		// WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
+		// AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
 	}
 
 	BPrePlantera: {
@@ -1201,6 +1260,7 @@ Projectile: {
 		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
 		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		// WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
 		// ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
 		// PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
 		// AstralBulletSTAR.DisplayName: Astral Bullet S T A R

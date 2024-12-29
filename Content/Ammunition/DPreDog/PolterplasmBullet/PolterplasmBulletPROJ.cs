@@ -11,6 +11,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 using Terraria.Audio;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
 {
@@ -24,8 +25,13 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -57,15 +63,20 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
             if (Projectile.timeLeft == 296)
                 Projectile.alpha = 0;
 
-            // 每15帧生成浅粉色椭圆形专有粒子特效
-            if (Projectile.ai[0] % 30 == 0)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                for (int i = 0; i < 1; i++)
+                // 每15帧生成浅粉色椭圆形专有粒子特效
+                if (Projectile.ai[0] % 30 == 0)
                 {
-                    Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.Pink, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
-                    GeneralParticleHandler.SpawnParticle(pulse);
+                    for (int i = 0; i < 1; i++)
+                    {
+                        Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.Pink, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
+                        GeneralParticleHandler.SpawnParticle(pulse);
+                    }
                 }
             }
+
             Projectile.ai[0]++;
         }
 
@@ -79,20 +90,26 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            int dustCount = Main.rand.Next(5, 8); // 随机生成 5~7 个粒子
-            for (int i = 0; i < dustCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 velocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(10)) * Main.rand.NextFloat(0.5f, 1.5f); // 随机方向
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    DustID.PinkTorch, // 使用粉色主题的 Dust
-                    velocity,
-                    0,
-                    Color.Pink,
-                    Main.rand.NextFloat(1f, 1.5f) // 随机缩放
-                );
-                dust.noGravity = true; // 无重力效果
+                int dustCount = Main.rand.Next(5, 8); // 随机生成 5~7 个粒子
+                for (int i = 0; i < dustCount; i++)
+                {
+                    Vector2 velocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(10)) * Main.rand.NextFloat(0.5f, 1.5f); // 随机方向
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        DustID.PinkTorch, // 使用粉色主题的 Dust
+                        velocity,
+                        0,
+                        Color.Pink,
+                        Main.rand.NextFloat(1f, 1.5f) // 随机缩放
+                    );
+                    dust.noGravity = true; // 无重力效果
+                }
             }
+
+
 
             // 如果击中时是暴击，触发特殊效果
             if (hit.Crit)

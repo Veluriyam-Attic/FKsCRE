@@ -20,6 +20,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using CalamityMod.NPCs;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
 {
@@ -33,8 +34,13 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {

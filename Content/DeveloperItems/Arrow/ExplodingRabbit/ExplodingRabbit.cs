@@ -20,7 +20,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
         public new string LocalizationCategory => "DeveloperItems.ExplodingRabbit";
         public override void SetDefaults()
         {
-            Item.damage = 350;
+            Item.damage = 50;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

@@ -22,7 +22,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
         {
             Item.width = 12;
             Item.height = 18;
-            Item.damage = 5;
+            Item.damage = 1;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 1;
             Item.consumable = false;

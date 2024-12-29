@@ -25,6 +25,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
             {
                 IsAuricGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.25f); // 减少 75% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -33,9 +34,6 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
         {
             if (IsAuricGelInfused && target.active && !target.friendly)
             {
-                // 仅造成 25% 的伤害
-                projectile.damage = (int)(projectile.damage * 0.25f);
-
                 // 检查是否已有 AuricGelLighting 存在
                 if (!Main.projectile.Any(p => p.active && p.type == ModContent.ProjectileType<AuricGelLighting>()))
                 {
@@ -68,7 +66,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
                             spawnPosition,
                             velocity,
                             ModContent.ProjectileType<AuricGelLighting>(),
-                            (int)(damageDone * 0.25f), // 25% 的伤害
+                            (int)(damageDone / 0.25 * 0.75f), // 75% 的伤害
                             0f,
                             projectile.owner,
                             velocity.ToRotation() // 将目标位置方向传递为初始旋转角度

@@ -16,7 +16,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
         public new string LocalizationCategory => "Gel.CPreMoodLord";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            //Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;

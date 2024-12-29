@@ -28,6 +28,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
             {
                 IsCosmosGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.70f); // 减少 30% 伤害
 
                 // 在玩家位置附近生成 1~2 个 CosmosGelEater 弹幕
                 int extraProjectiles = Main.rand.Next(1, 3);
@@ -42,7 +43,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
                         Main.player[projectile.owner].Center + spawnOffset,
                         velocity,
                         ModContent.ProjectileType<CosmosGelEater>(),
-                        (int)(projectile.damage * 0.25f), // 伤害为原弹幕的 25%
+                        (int)(projectile.damage / 0.7 * 0.25f), // 伤害为原弹幕的 25%
                         projectile.knockBack,
                         projectile.owner
                     );
@@ -59,8 +60,8 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
                 target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300); // 5 秒
                 target.AddBuff(ModContent.BuffType<CosmosGelEDebuff>(), 90); // 1.5 秒
 
-                // 调整伤害为原来的 70%
-                projectile.damage = (int)(projectile.damage * 0.7f);
+                // 调整伤害为原来的 70%（穿透衰减）
+                //projectile.damage = (int)(projectile.damage * 0.7f);
             }
         }
     }

@@ -11,6 +11,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 using Terraria.Audio;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
 {
@@ -24,8 +25,13 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -55,21 +61,26 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             if (Projectile.timeLeft == 595)
                 Projectile.alpha = 0;
 
-
-            // 只有在 timeLeft <= 590 时生成金色粒子
-            if (Projectile.timeLeft <= 595)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                float positionVariation = 5f; // 位置偏移范围，可根据需求调整
-                LineParticle spark = new LineParticle(
-                    Projectile.Center + Main.rand.NextVector2Circular(positionVariation, positionVariation),
-                    -Projectile.velocity * Main.rand.NextFloat(0.3f, 1.1f),
-                    false,
-                    4,
-                    1.45f,
-                    Main.rand.NextBool() ? (Projectile.timeLeft < 570 ? Color.Goldenrod : Color.OrangeRed) : (Projectile.timeLeft > 590 ? Color.Red : Color.DarkGoldenrod)
-                );
-                GeneralParticleHandler.SpawnParticle(spark);
+                // 只有在 timeLeft <= 590 时生成金色粒子
+                if (Projectile.timeLeft <= 595)
+                {
+                    float positionVariation = 5f; // 位置偏移范围，可根据需求调整
+                    LineParticle spark = new LineParticle(
+                        Projectile.Center + Main.rand.NextVector2Circular(positionVariation, positionVariation),
+                        -Projectile.velocity * Main.rand.NextFloat(0.3f, 1.1f),
+                        false,
+                        4,
+                        1.45f,
+                        Main.rand.NextBool() ? (Projectile.timeLeft < 570 ? Color.Goldenrod : Color.OrangeRed) : (Projectile.timeLeft > 590 ? Color.Red : Color.DarkGoldenrod)
+                    );
+                    GeneralParticleHandler.SpawnParticle(spark);
+                }
             }
+
+
 
         }
 
@@ -86,33 +97,38 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             // 保留电击效果
             target.AddBuff(BuffID.Electrified, 300);
 
-            // 生成两个金色和蓝色的火花特效
-            for (int i = 0; i < 2; i++) // 翻倍生成数量
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                GenericSparkle sparker = new GenericSparkle(
-                    Projectile.Center,
-                    Vector2.Zero,
-                    Color.Gold,
-                    Color.Cyan,
-                    Main.rand.NextFloat(1.8f, 2.5f), // 大小保持不变
-                    5,
-                    Main.rand.NextFloat(-0.01f, 0.01f), // 旋转速度保持不变
-                    1.68f
-                );
-                GeneralParticleHandler.SpawnParticle(sparker);
+                // 生成两个金色和蓝色的火花特效
+                for (int i = 0; i < 2; i++) // 翻倍生成数量
+                {
+                    GenericSparkle sparker = new GenericSparkle(
+                        Projectile.Center,
+                        Vector2.Zero,
+                        Color.Gold,
+                        Color.Cyan,
+                        Main.rand.NextFloat(1.8f, 2.5f), // 大小保持不变
+                        5,
+                        Main.rand.NextFloat(-0.01f, 0.01f), // 旋转速度保持不变
+                        1.68f
+                    );
+                    GeneralParticleHandler.SpawnParticle(sparker);
+                }
+
+                // 生成火花特效，数量和速度翻倍
+                for (int i = 0; i < 2; i++) // 翻倍数量
+                {
+                    Vector2 bloodSpawnPosition = target.Center + Main.rand.NextVector2Circular(target.width, target.height) * 0.04f;
+                    Vector2 splatterDirection = (Projectile.Center - bloodSpawnPosition).SafeNormalize(Vector2.UnitY);
+                    Vector2 sparkVelocity = splatterDirection.RotatedByRandom(0.6f) * Main.rand.NextFloat(10f, 30f); // 随机速度值
+                    sparkVelocity.Y -= 12f; // 翻倍Y方向的速度影响
+
+                    SparkParticle spark = new SparkParticle(target.Center, sparkVelocity, false, Main.rand.Next(9, 12), Main.rand.NextFloat(0.9f, 1.3f) * 0.85f, Color.Lerp(Color.DarkGoldenrod, Color.Gold, Main.rand.NextFloat(0.7f)));
+                    GeneralParticleHandler.SpawnParticle(spark);
+                }
             }
 
-            // 生成火花特效，数量和速度翻倍
-            for (int i = 0; i < 2; i++) // 翻倍数量
-            {
-                Vector2 bloodSpawnPosition = target.Center + Main.rand.NextVector2Circular(target.width, target.height) * 0.04f;
-                Vector2 splatterDirection = (Projectile.Center - bloodSpawnPosition).SafeNormalize(Vector2.UnitY);
-                Vector2 sparkVelocity = splatterDirection.RotatedByRandom(0.6f) * Main.rand.NextFloat(10f, 30f); // 随机速度值
-                sparkVelocity.Y -= 12f; // 翻倍Y方向的速度影响
-
-                SparkParticle spark = new SparkParticle(target.Center, sparkVelocity, false, Main.rand.Next(9, 12), Main.rand.NextFloat(0.9f, 1.3f) * 0.85f, Color.Lerp(Color.DarkGoldenrod, Color.Gold, Main.rand.NextFloat(0.7f)));
-                GeneralParticleHandler.SpawnParticle(spark);
-            }
         }
 
         public override void OnKill(int timeLeft)

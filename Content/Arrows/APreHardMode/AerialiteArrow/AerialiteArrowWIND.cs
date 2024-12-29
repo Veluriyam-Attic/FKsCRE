@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using CalamityMod;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 {
@@ -68,13 +69,18 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
                 // 生成灰白色的尘埃特效
                 if (Projectile.ai[1] >= 15)
                 {
-                    for (int i = 1; i <= 6; i++)
+                    // 检查是否启用了特效
+                    if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
                     {
-                        Vector2 dustspeed = new Vector2(3f, 3f).RotatedBy(MathHelper.ToRadians(60 * i));
-                        int d = Dust.NewDust(Projectile.Center, Projectile.width / 2, Projectile.height / 2, 31, dustspeed.X, dustspeed.Y, 200, Color.LightGray, 1.3f);
-                        Main.dust[d].noGravity = true;
-                        Main.dust[d].velocity = dustspeed;
+                        for (int i = 1; i <= 6; i++)
+                        {
+                            Vector2 dustspeed = new Vector2(3f, 3f).RotatedBy(MathHelper.ToRadians(60 * i));
+                            int d = Dust.NewDust(Projectile.Center, Projectile.width / 2, Projectile.height / 2, 31, dustspeed.X, dustspeed.Y, 200, Color.LightGray, 1.3f);
+                            Main.dust[d].noGravity = true;
+                            Main.dust[d].velocity = dustspeed;
+                        }
                     }
+
                     Projectile.ai[1] = 0;
                 }
             }
@@ -110,8 +116,13 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
         // 修改为灰白色的残影效果
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], Color.LightGray, 2);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], Color.LightGray, 2);
+                return false;
+            }
+            return true;
         }
 
         public override void OnKill(int timeLeft)

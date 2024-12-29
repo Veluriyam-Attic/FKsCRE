@@ -22,6 +22,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
             {
                 IsGeliticGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 1.1f); // 减少 -10% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -44,9 +45,6 @@ namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
                     target.AddBuff(ModContent.BuffType<HolyFlames>(), 300); // 5 秒
                     target.AddBuff(31, 300);                                // 5 秒
                 }
-
-                // 调整伤害为原来的 105%
-                projectile.damage = (int)(projectile.damage * 1.05f);
             }
         }
     }

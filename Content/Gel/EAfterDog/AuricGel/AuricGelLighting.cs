@@ -49,6 +49,9 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
             Projectile.timeLeft = 60 * Projectile.extraUpdates; //  20代表把它的长度缩短到1/3 (默认60)？
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
 
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 5;
+
             // Readjust the velocity magnitude the moment this projectile is created
             // to make velocity setting outside the scope of this projectile less irritating
             // to consider alongside extraUpdate multipliers.

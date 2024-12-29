@@ -28,8 +28,8 @@ namespace FKsCRE
                 if (projectile.type == ModContent.ProjectileType<EffulgentFeatherArrowAura>() ||
                     projectile.type == ModContent.ProjectileType<EffulgentFeatherArrowPROJ>())
                 {
-                    // 伤害 × 0.6
-                    modifiers.SourceDamage *= 0.6f;
+                    // 伤害 × ？
+                    modifiers.SourceDamage *= 0.775f;
                 }
             }
 

@@ -126,14 +126,18 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
         // 辅助方法用于生成粒子特效
         private void SpawnDustParticles(Vector2 direction, int[] dustColors)
         {
-            int numberOfParticles = 10; // 自定义粒子数量
-            for (int i = 0; i < numberOfParticles; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 dustVelocity = direction * Main.rand.NextFloat(8f, 12f); // 随机化速度，确保粒子快速移动
-                Vector2 dustPosition = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
-                Dust dust = Dust.NewDustPerfect(dustPosition, dustColors[Main.rand.Next(dustColors.Length)]);
-                dust.velocity = dustVelocity;
-                dust.noGravity = true; // 让粒子悬浮效果更明显
+                int numberOfParticles = 10; // 自定义粒子数量
+                for (int i = 0; i < numberOfParticles; i++)
+                {
+                    Vector2 dustVelocity = direction * Main.rand.NextFloat(8f, 12f); // 随机化速度，确保粒子快速移动
+                    Vector2 dustPosition = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
+                    Dust dust = Dust.NewDustPerfect(dustPosition, dustColors[Main.rand.Next(dustColors.Length)]);
+                    dust.velocity = dustVelocity;
+                    dust.noGravity = true; // 让粒子悬浮效果更明显
+                }
             }
         }
 

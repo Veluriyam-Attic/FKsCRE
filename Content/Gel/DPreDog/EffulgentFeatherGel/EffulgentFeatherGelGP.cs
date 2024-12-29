@@ -24,6 +24,7 @@ namespace FKsCRE.Content.Gel.DPreDog.EffulgentFeatherGel
             {
                 IsEffulgentFeatherGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.95f); // 减少 5% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -32,9 +33,6 @@ namespace FKsCRE.Content.Gel.DPreDog.EffulgentFeatherGel
         {
             if (IsEffulgentFeatherGelInfused && target.active && !target.friendly)
             {
-                // 调整伤害为原来的 95%
-                projectile.damage = (int)(projectile.damage * 0.95f);
-
                 // 施加 Electrified（带电）Buff，持续 300 帧
                 target.AddBuff(BuffID.Electrified, 300);
 
@@ -49,7 +47,7 @@ namespace FKsCRE.Content.Gel.DPreDog.EffulgentFeatherGel
                         projectile.Center,
                         velocity,
                         ModContent.ProjectileType<Spark>(),
-                        (int)(projectile.damage * 0.33f), // 伤害为原弹幕的 33%
+                        (int)(projectile.damage / 0.95 * 0.33f), // 伤害为原弹幕的 33%
                         projectile.knockBack,
                         projectile.owner
                     );

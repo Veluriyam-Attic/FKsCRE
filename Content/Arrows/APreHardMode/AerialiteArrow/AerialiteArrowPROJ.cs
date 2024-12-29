@@ -172,11 +172,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
                 // 绘制默认的弹幕，并应用旋转
                 Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
                 return false;
-
             }
-
             return true;
-
         }
 
 

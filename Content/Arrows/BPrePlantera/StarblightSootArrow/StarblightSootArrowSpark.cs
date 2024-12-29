@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FKsCRE.CREConfigs;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -85,13 +86,19 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
 
         public override void AI()
         {
-            // 生成随机的粒子特效
-            int[] dustColors = { DustID.OrangeTorch, DustID.BlueTorch, DustID.WhiteTorch, DustID.CrimsonTorch };
-            int dustIndex = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustColors[Main.rand.Next(dustColors.Length)], 0f, 0f, 100, default, 1f);
-            Dust dust = Main.dust[dustIndex];
-            dust.noGravity = true; // 粒子不受重力影响
-            dust.velocity *= 1.5f; // 增强粒子的速度以模拟快速释放
-            dust.scale += (float)Main.rand.Next(50) * 0.01f;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 生成随机的粒子特效
+                int[] dustColors = { DustID.OrangeTorch, DustID.BlueTorch, DustID.WhiteTorch, DustID.CrimsonTorch };
+                int dustIndex = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustColors[Main.rand.Next(dustColors.Length)], 0f, 0f, 100, default, 1f);
+                Dust dust = Main.dust[dustIndex];
+                dust.noGravity = true; // 粒子不受重力影响
+                dust.velocity *= 1.5f; // 增强粒子的速度以模拟快速释放
+                dust.scale += (float)Main.rand.Next(50) * 0.01f;
+            }
+
+
 
             // 弹幕持续前进并逐渐减速
             Projectile.velocity *= 0.98f; // 逐渐减速，调整因子可以控制减速的速度

@@ -1,12 +1,16 @@
 Buffs: {
 	AstralArrowPBuff: {
-		DisplayName: Astral Arrow P Buff
-		Description: Mods.FKsCRE.Buffs.AstralArrowPBuff.Description
+		DisplayName: 明星之佑
+		Description: “一颗明星从天堂……等等，这是太阳和月亮？”
 	}
 
 	PerennialArrowEBuff: {
-		DisplayName: Perennial Arrow E Buff
-		Description: Mods.FKsCRE.Buffs.PerennialArrowEBuff.Description
+		DisplayName: 拥抱永恒……
+		Description:
+			'''
+			给予你3点生命回复
+			“鬼知道呢？总不能是突变体给的吧？”
+			'''
 	}
 
 	UelibloomArrowEBuff: {
@@ -119,6 +123,16 @@ Buffs: {
 		Description: Mods.FKsCRE.Buffs.EffulgentFeatherBulletPBuff.Description
 		DisplayName: Effulgent Feather Bullet P Buff
 	}
+
+	AerialiteBulletEBuff: {
+		Description: Mods.FKsCRE.Buffs.AerialiteBulletEBuff.Description
+		DisplayName: Aerialite Bullet E Buff
+	}
+
+	WulfrimArrowEDebuff: {
+		Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
+		DisplayName: Wulfrim Arrow E Debuff
+	}
 }
 
 Items: {
@@ -216,7 +230,7 @@ Items: {
 Arrows: {
 	APreHardMode: {
 		AerialiteArrow: {
-			DisplayName: 天蓝箭
+			DisplayName: 飓之矢
 			Tooltip:
 				'''
 				命中时召唤旋风
@@ -229,47 +243,58 @@ Arrows: {
 			DisplayName: 血珠箭
 			Tooltip:
 				'''
-				命中造成随机的debuff
-				“随机注入混合血清”
+				命中敌人可造成随机的debuff，时长也随机
+				“我也就不小心打碎了一个绿色的玻璃螺旋管，你们怎么都跑走了，这很贵吗？”
 				'''
 		}
 
 		PurifiedGelArrow: {
-			DisplayName: 纯净凝胶箭
+			DisplayName: 纯净凝胶箭（待移除）
 			Tooltip:
 				'''
 				已完成特效部分
 				暂未完成具体实现
 				'''
 		}
+
+		WulfrimArrow: {
+			DisplayName: 钨钢矢
+			Tooltip:
+				'''
+				击中敌人后释放电火花
+				“难道你指望他拥有很大的能力？”
+				'''
+		}
 	}
 
 	BPrePlantera: {
 		StarblightSootArrow: {
-			DisplayName: 调星箭
+			DisplayName: 星沫箭
 			Tooltip:
 				'''
+				造成幻星感染
 				击中后迸发出星空粒子
-				不可穿透
-				“微不足道的力量”
+				星空粒子不可穿透
+				“建议佩戴N95口罩”
 				'''
 		}
 	}
 
 	CPreMoodLord: {
 		AstralArrow: {
-			DisplayName: 炫星箭
+			DisplayName: 明星箭
 			Tooltip:
 				'''
-				击中敌人时给予玩家持续的明星之佑
+				击中敌人时给予玩家持续的「明星之佑」效果
 				存在期间召唤太阳与月亮围绕玩家旋转
-				穿过太阳将造成剧烈爆炸，穿过月亮将获得强追踪效果
-				“核聚变”
+				穿过太阳将造成聚变爆炸，穿过月亮将获得强追踪效果
+				双星强化仅对炫星箭有效
+				“核！聚！变！”
 				'''
 		}
 
 		CoreofCalamityArrow: {
-			DisplayName: 灾劫核心箭
+			DisplayName: 灾劫核心箭（待移除）
 			Tooltip:
 				'''
 				？？？
@@ -282,7 +307,8 @@ Arrows: {
 			Tooltip:
 				'''
 				击中后随机释放三份力量中的一个
-				“三合一”
+				每一份力量均被削弱
+				“一即全，全即一”
 				'''
 		}
 
@@ -290,9 +316,10 @@ Arrows: {
 			DisplayName: 永恒箭
 			Tooltip:
 				'''
-				标记敌人，持续造成并受到更多的伤害
-				同时治疗自己
-				“万物复苏”
+				标记敌人，长出一朵丛林之花
+				丛林之花持续造成伤害并粘附在敌人身上
+				一段时间后治疗玩家
+				“吸收养分，但不是真菌”
 				'''
 		}
 
@@ -300,9 +327,10 @@ Arrows: {
 			DisplayName: 熔渣箭
 			Tooltip:
 				'''
+				速度非常慢
 				击中时产生爆炸并快速下落
 				最后释放追踪熔岩
-				“1100度的火成岩”
+				“1100℃的火成岩”
 				'''
 		}
 	}
@@ -312,8 +340,9 @@ Arrows: {
 			DisplayName: 神圣晶石箭
 			Tooltip:
 				'''
-				以神圣之力炸毁敌人
-				赋予玩家【净化邪神】增益：大幅提升飞行时间
+				以神圣之力把敌人炸成碎片
+				赋予玩家「净化邪神」增益
+				这将大幅提升你的飞行时间
 				“翅膀的上升之火被重新燃起”
 				'''
 		}
@@ -322,8 +351,9 @@ Arrows: {
 			DisplayName: 闪耀金羽箭
 			Tooltip:
 				'''
-				以静电之力携带特斯拉电场快速前进
-				“该换羽毛了”
+				携带着特斯拉电场快速前进
+				无限穿透
+				“神吞感受到了一丝凉意……”
 				'''
 		}
 
@@ -331,9 +361,9 @@ Arrows: {
 			DisplayName: 灵质箭
 			Tooltip:
 				'''
-				小概率鬼叫并造成严重伤害
-				大概率什么也不会发生
-				“他们在迷宫里尘封的太久了”
+				小概率鬼叫并对敌人造成严重伤害
+				大概率什么也不会发生，哈哈
+				“地牢变成了精神病院！哈哈！太棒了！”
 				'''
 		}
 
@@ -343,7 +373,7 @@ Arrows: {
 				'''
 				击中敌人时产生追踪叶片和生命之光
 				叶片命中时造成藤蔓
-				“石化树皮的力量”
+				“石化树皮确实可以长出藤蔓”
 				'''
 		}
 	}
@@ -356,34 +386,58 @@ Arrows: {
 				造成小规模爆炸并散射逐渐加速的能量光球
 				小概率在玩家处产生一个拥有生命力的火球
 				火球会尝试碰撞敌人并造成自爆伤害
-				随后留下一个给予大幅伤害提升的临时掉落物
+				随后留下一个给予大幅伤害提升的宝物
 				“来自远古的电磁碰撞”
 				'''
 		}
 
 		MiracleMatterArrow: {
-			DisplayName: 星流箭
+			DisplayName: 幻光斑景
 			Tooltip:
 				'''
 				命中后释放强力追踪的光球能量弹
-				距离敌人较近时可被提前引爆
-				“星河贯穿，光芒跃动！”
+				星流箭本体距离敌人较近时可被提前引爆
 				那名掌握至尊死灵术的魔女似乎不喜欢这个和一把来自天堂的神器
 				所以你不应该在战斗中同时使用这两个？
+				试试更差的武器吧！
+				“星河贯穿，光芒跃动！”
 				'''
 		}
 	}
 }
 
 Ammunition: {
+	APreHardMode: {
+		AerialiteBullet: {
+			DisplayName: 天蓝弹
+			Tooltip:
+				'''
+				被打出去的时候给玩家一个轻轻的后坐力
+				如果玩家速度大于65mph，则不会被施加后坐力
+				命中敌人后尝试牵引周围的小怪
+				“看我暴风吸入”
+				'''
+		}
+
+		WulfrimBullet: {
+			DisplayName: 钨钢弹
+			Tooltip:
+				'''
+				距离敌人越近，越是能爆发出更大的能量
+				距离超过一定值则会降低这次命中的伤害
+				“重量型选手与全能型战士的强强联手”
+				'''
+		}
+	}
+
 	BPrePlantera: {
 		CryonicBullet: {
 			DisplayName: 寒元弹
 			Tooltip:
 				'''
 				赋予敌人冰冷的标记并增加伤害
-				弹射出冰刺
-				“冰冰凉凉”
+				弹射出逐渐在空中停下来的冰刺
+				“冰冰凉凉，夏日清凉”
 				'''
 		}
 
@@ -394,7 +448,7 @@ Ammunition: {
 				击中敌人后，给予敌人即将灭亡的标记
 				等待敌人死亡，随后释放强大的幻星立场
 				幻星立场里的任意一个敌人受到伤害都会将伤害转移给其他敌人
-				“要懂得分享”
+				“好东西，就是要懂得分享”
 				'''
 		}
 	}
@@ -405,8 +459,8 @@ Ammunition: {
 			Tooltip:
 				'''
 				击中敌人时以敌人为中心不断的释放彗星砸向这个倒霉蛋
-				彗星继承手持武器的面板
-				“陨者尽己”
+				彗星射击频率和圆圈大小会越来越小和快
+				“这玩意儿可不能许愿啊”
 				'''
 		}
 
@@ -414,9 +468,9 @@ Ammunition: {
 			DisplayName: 永恒弹
 			Tooltip:
 				'''
-				不断的命中能使玩家提升防御力上限为20点
-				使敌人中毒
-				“致死猛毒”
+				不断的命中能使玩家提升防御力，上限为20点
+				对敌人造成严重的致命毒素
+				“这不是隔壁那个草方块游戏，这里的毒素是致命的”
 				'''
 		}
 
@@ -424,13 +478,10 @@ Ammunition: {
 			DisplayName: 熔渣弹
 			Tooltip:
 				'''
-				产生爆炸和火柱
+				产生爆炸，命中一定次数后产生火柱
 				命中后给予玩家可堆叠的加速度与伤害提升
-				“身体更热了，跳的就更快了，挺合理的不是吗”
+				“比赛前得热热身，这就是一个很好的热身方式”
 				'''
-		}
-
-		DivineGeodeBullet: {
 		}
 	}
 
@@ -440,7 +491,7 @@ Ammunition: {
 			Tooltip:
 				'''
 				爆发出强大并且具有追踪性的生命之光
-				“他简直是生命”
+				“它是生命，也是毁灭”
 				'''
 		}
 
@@ -449,8 +500,8 @@ Ammunition: {
 			Tooltip:
 				'''
 				命中后释放多个弧线飞行并强力追踪的花灵
-				花灵再次命中敌人后给予玩家末路狂花效果
-				存在期间，玩家可以进行强力冲刺
+				花灵再次命中敌人后给予玩家【末路狂花】效果
+				存在期间，玩家可以进行强而有力的冲刺
 				“你说当天你夜闯秋名山看见的就是这家伙？”
 				'''
 		}
@@ -459,7 +510,8 @@ Ammunition: {
 			Tooltip:
 				'''
 				击中后让玩家获得2秒的法拉第笼效果
-				可以产生电场伤害周围的敌人
+				可以产生高压电场伤害周围的敌人
+				“你猜为什么你自己没事？”
 				'''
 			DisplayName: 闪耀金羽弹
 		}
@@ -480,7 +532,7 @@ Ammunition: {
 			DisplayName: 金源弹
 			Tooltip:
 				'''
-				击中敌人时爆发出多个不断公转的金源珠
+				击中敌人时爆发出多个不断在原地公转的金源珠
 				“百鬼夜行”
 				'''
 		}
@@ -507,10 +559,10 @@ Gel: {
 			DisplayName: 双色凝胶
 			Tooltip:
 				'''
-				提高5%伤害
+				提高10%喷火器伤害
 				在邪恶地形造成血肉沸腾和大脑溃烂
 				在神圣地形造成神圣之火和困惑
-				“确实是有两种颜色”
+				“给你的敌人两种颜色（物理）瞧瞧”
 				'''
 		}
 
@@ -518,9 +570,18 @@ Gel: {
 			DisplayName: 棱晶凝胶
 			Tooltip:
 				'''
-				降低10%全局攻速，但具有较高的面板伤害
+				降低10%全局攻速
 				击中敌人时爆出水晶碎片
-				“什么？你说这是肾结石？”
+				“什么？你说这是他们的肾结石？”
+				'''
+		}
+
+		WulfrimGel: {
+			DisplayName: 钨钢凝胶
+			Tooltip:
+				'''
+				每一秒额外造成5点奖励伤害
+				“你什么时候奖励自己”
 				'''
 		}
 	}
@@ -530,10 +591,10 @@ Gel: {
 			DisplayName: 寒元凝胶
 			Tooltip:
 				'''
-				减少30%伤害
+				减少30%喷火器伤害
 				喷到敌人的弹幕后让弹幕飞行速度降低40%持续5s
-				击中敌人后让敌人防御力-5持续三秒
-				“这是多少战士梦寐以求的辅助”
+				击中敌人后让敌人防御力减5持续三秒
+				“这是多少人梦寐以求的辅助”
 				'''
 		}
 
@@ -541,7 +602,7 @@ Gel: {
 			DisplayName: 调星凝胶
 			Tooltip:
 				'''
-				降低10%伤害
+				减少10%喷火器伤害
 				命中敌人后奖励自己
 				命中的越多奖励的越厉害
 				“打中有奖励，打不中也不会有惩罚”
@@ -554,9 +615,11 @@ Gel: {
 			DisplayName: 炫星凝胶
 			Tooltip:
 				'''
+				减少15%喷火器伤害
 				造成幻星感染减益
-				一段时间后令弹幕停滞在空中两秒造成较低伤害
-				“The World”
+				飞行一段固定距离后令弹幕停滞在空中两秒
+				时停期间造成较低伤害
+				“The！World！”
 				'''
 		}
 
@@ -564,9 +627,9 @@ Gel: {
 			DisplayName: 永恒凝胶
 			Tooltip:
 				'''
-				降低25%伤害
+				降低25%喷火器伤害
 				基于玩家生命回复加3的效果
-				“万物丛生”
+				“聊胜于无，不是吗？”
 				'''
 		}
 
@@ -574,7 +637,7 @@ Gel: {
 			DisplayName: 熔渣凝胶
 			Tooltip:
 				'''
-				降低5%的伤害
+				降低5%喷火器伤害
 				命中敌人后产生标记
 				被标记的敌人死亡时会炸出弹跳火球
 				“所以你是把火球放到了敌人的体内吗？”
@@ -585,12 +648,12 @@ Gel: {
 			DisplayName: 生命合金凝胶
 			Tooltip:
 				'''
-				减少喷火器20%伤害
+				减少20%喷火器伤害
 				拥有三种材料的效果：
 				永恒：给予3生命回复
 				熔渣：敌人死亡时炸出火球
 				寒元：击中弹幕时让敌人弹幕减速
-				“3合1，很合理啊”
+				“3合1，很合理啊，很合理”
 				'''
 		}
 
@@ -598,10 +661,11 @@ Gel: {
 			DisplayName: 生命碎片凝胶
 			Tooltip:
 				'''
-				减少5%伤害
+				减少5%喷火器伤害
 				命中敌人时有2%概率生成生命碎片
 				生命碎片可以追踪玩家并给玩家回血
-				“我缺的生命果这一块谁给我补啊”
+				追踪期间无限穿透敌人并造成极高的伤害
+				“我缺的生命果这一块谁给我补啊？+5，+5，+5”
 				'''
 		}
 	}
@@ -611,9 +675,9 @@ Gel: {
 			DisplayName: 龙蒿凝胶
 			Tooltip:
 				'''
-				减少喷火器25%伤害
-				命中敌人时释放生命之光
-				“生态环保绿”
+				减少25%喷火器伤害
+				命中敌人时释放四面八方来的生命之光
+				“生~态~环~保~绿↗↘”
 				'''
 		}
 
@@ -621,9 +685,9 @@ Gel: {
 			DisplayName: 血石核心凝胶
 			Tooltip:
 				'''
-				减少喷火器50%伤害
+				减少50%喷火器伤害
 				每次命中敌人都会回复巨额血量
-				“冥士追魂”
+				“深度治疗-专精三”
 				'''
 		}
 
@@ -631,7 +695,7 @@ Gel: {
 			DisplayName: 神圣晶石凝胶
 			Tooltip:
 				'''
-				减少喷火器75%伤害
+				减少75%喷火器伤害
 				造成更长时间的神圣之火
 				令弹幕获得无限穿透能力
 				每次击中敌人还会在原地释放较大的爆炸
@@ -643,9 +707,9 @@ Gel: {
 			DisplayName: 闪耀金羽凝胶
 			Tooltip:
 				'''
-				减少喷火器10%伤害
+				减少10%喷火器伤害
 				击中后爆发出电火花弹幕
-				“没多高，也就十万伏特而已”
+				“告诉你一个冷知识，那些发电厂的运作原理都是靠摩擦产生的静电”
 				'''
 		}
 
@@ -653,9 +717,9 @@ Gel: {
 			DisplayName: 灵质凝胶
 			Tooltip:
 				'''
-				减少喷火器10%伤害
-				弹幕具备弱追踪能力
-				“回天型-载人鱼雷”
+				减少10%喷火器伤害
+				奴役那些地牢灵魂让他们使弹幕具备弱追踪能力
+				“哟西，回天型载人鱼雷，大大滴好”
 				'''
 		}
 
@@ -663,9 +727,9 @@ Gel: {
 			DisplayName: 烛火精华凝胶
 			Tooltip:
 				'''
-				增加喷火器25%伤害
+				增加25%喷火器伤害
 				造成神圣之火
-				“烧死他们”
+				“净化世界是我们的最终目标，而这款产品只是我们的一小步”
 				'''
 		}
 	}
@@ -675,7 +739,7 @@ Gel: {
 			DisplayName: 宇宙凝胶
 			Tooltip:
 				'''
-				减少喷火器30%伤害
+				减少30%喷火器伤害
 				喷射出追踪敌人并回血的宇宙小吞噬者
 				“很明显，它会让你喷射出的火焰对某些生物来说非常美味”
 				'''
@@ -685,10 +749,10 @@ Gel: {
 			DisplayName: 圣金源凝胶
 			Tooltip:
 				'''
-				减少喷火器75%伤害
+				减少75%喷火器伤害
 				每隔两秒从屏幕边缘打出共计10道闪电
 				每条闪电25%伤害
-				“没多高，也就百万伏特而已”
+				“什么，出金了？让我看看看看看看看看”
 				'''
 		}
 
@@ -696,10 +760,11 @@ Gel: {
 			DisplayName: 奇迹凝胶
 			Tooltip:
 				'''
-				减少喷火器95%伤害，造成超位崩解
-				命中敌人时从天降下一道闪电造成1500%的伤害
+				减少95%喷火器伤害
+				弹幕造成5s的超位崩解
+				命中敌人时从天降下一道闪电造成250%的伤害
 				闪电只能存在一道
-				“没多高，也就千万伏特而已”
+				“没多高，也就250兆瓦而已，相当于一艘福特级航空母舰”
 				'''
 		}
 	}
@@ -726,8 +791,7 @@ DeveloperItems: {
 			Tooltip:
 				'''
 				命中时引发小型等离子爆炸
-				“我很好奇这东西是怎么装在箭矢上并射出去的”
-				“我更好奇的是这居然还能保持自己的形状而不被摧毁”
+				“你再说一遍你是把什么东西打了出来？”
 				'''
 		}
 
@@ -770,7 +834,7 @@ DeveloperItems: {
 				可破坏方块
 				Boss存活或玩家持有创意震撼时无效
 				无论何时何地，只要摁下鼠标右键就可以直接清除所有场上的钻头
-				“我的钻头可是突破天际的”
+				“是否厌倦了建造场地？该产品正适合您！”
 				'''
 		}
 
@@ -862,13 +926,6 @@ DeveloperItems: {
 				随着倾泻的时间增长，也会获得额外的攻击手段
 				如子弹追踪，额外激光，大范围爆炸等等
 				受到伤害时清空等级并给予惩罚
-				右键直接射出四发火箭弹
-				赤焰火箭弹造成小范围持续轰炸
-				烈焰火箭弹持续灼烧敌人，并造成最大生命值的伤害
-				离子火箭弹能够瘫痪敌人
-				聚变火箭弹造成超大范围的单次爆炸
-				手持该武器时点击武器技能按键能够释放终结技：主观缓时
-				主观缓时能让超大范围内的敌人以及敌方弹幕大幅减速
 				“烈焰于掌心涌动，随时间燃烧愈烈”
 				'''
 		}
@@ -899,7 +956,7 @@ DeveloperItems: {
 			Tooltip:
 				'''
 				击中敌人时产生爆炸并弹飞
-				在一个“好世界”中获得超强追踪能力和巨额爆炸伤害
+				“想吃麻辣兔头吗？辣到爆炸（物理）的那种”
 				'''
 		}
 	}
@@ -1120,6 +1177,15 @@ DeveloperItems: {
 
 		PyrogeistPROJ.DisplayName: Pyrogeist P R O J
 	}
+
+	GlitchArrow: {
+		GlitchArrow: {
+			DisplayName: Glitch Arrow
+			Tooltip: ""
+		}
+
+		GlitchArrowPROJ.DisplayName: Glitch Arrow P R O J
+	}
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -1168,6 +1234,8 @@ Projectile: {
 		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
 		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
 		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
+		WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
+		AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
 	}
 
 	BPrePlantera: {
@@ -1188,6 +1256,7 @@ Projectile: {
 		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
 		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
 		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
 		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
 		AstralBulletSTAR.DisplayName: Astral Bullet S T A R

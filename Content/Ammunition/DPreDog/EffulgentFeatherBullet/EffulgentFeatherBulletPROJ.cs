@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
 {
@@ -23,51 +24,56 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            // 获取 SpriteBatch 和投射物纹理
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/EffulgentFeatherBullet/EffulgentFeatherBulletPROJ").Value;
-
-            // 遍历投射物的旧位置数组，绘制光学拖尾效果
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 计算颜色插值值，使颜色在旧位置之间平滑过渡
-                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+                // 获取 SpriteBatch 和投射物纹理
+                SpriteBatch spriteBatch = Main.spriteBatch;
+                Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/EffulgentFeatherBullet/EffulgentFeatherBulletPROJ").Value;
 
-                // 使用天蓝色渐变
-                Color color = Color.Lerp(Color.Yellow, Color.LightGoldenrodYellow, colorInterpolation) * 0.4f;
-                color.A = 0;
-
-                // 计算绘制位置，将位置调整到碰撞箱的中心
-                Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-
-                // 计算外部和内部的颜色
-                Color outerColor = color;
-                Color innerColor = color * 0.5f;
-
-                // 计算强度，使拖尾逐渐变弱
-                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
-                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
-                if (Projectile.timeLeft <= 60)
+                // 遍历投射物的旧位置数组，绘制光学拖尾效果
+                for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {
-                    intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
+                    // 计算颜色插值值，使颜色在旧位置之间平滑过渡
+                    float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+
+                    // 使用天蓝色渐变
+                    Color color = Color.Lerp(Color.Yellow, Color.LightGoldenrodYellow, colorInterpolation) * 0.4f;
+                    color.A = 0;
+
+                    // 计算绘制位置，将位置调整到碰撞箱的中心
+                    Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+
+                    // 计算外部和内部的颜色
+                    Color outerColor = color;
+                    Color innerColor = color * 0.5f;
+
+                    // 计算强度，使拖尾逐渐变弱
+                    float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
+                    intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
+                    if (Projectile.timeLeft <= 60)
+                    {
+                        intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
+                    }
+
+                    // 计算外部和内部的缩放比例，使拖尾具有渐变效果
+                    Vector2 outerScale = new Vector2(2f) * intensity;
+                    Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
+                    outerColor *= intensity;
+                    innerColor *= intensity;
+
+                    // 绘制外部的拖尾效果，并应用旋转
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
+
+                    // 绘制内部的拖尾效果，并应用旋转
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
                 }
 
-                // 计算外部和内部的缩放比例，使拖尾具有渐变效果
-                Vector2 outerScale = new Vector2(2f) * intensity;
-                Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
-                outerColor *= intensity;
-                innerColor *= intensity;
-
-                // 绘制外部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
-
-                // 绘制内部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
+                // 绘制默认的弹幕，并应用旋转
+                Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+                return false;
             }
-
-            // 绘制默认的弹幕，并应用旋转
-            Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-            return false;
+            return true;
         }
         public override void SetDefaults()
         {
@@ -97,18 +103,24 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
             if (Projectile.timeLeft == 418)
                 Projectile.alpha = 0;
 
-            // 添加飞行粒子特效
-            if (Main.rand.NextBool(3)) // 1/3 概率生成粒子
-            {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    Main.rand.NextBool() ? DustID.YellowTorch : DustID.YellowStarDust,
-                    -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.1f, 0.3f)
-                );
-                dust.noGravity = true; // 无重力
-                dust.scale = Main.rand.NextFloat(0.7f, 1.1f); // 随机大小
-            }
 
+
+
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 添加飞行粒子特效
+                if (Main.rand.NextBool(3)) // 1/3 概率生成粒子
+                {
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        Main.rand.NextBool() ? DustID.YellowTorch : DustID.YellowStarDust,
+                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.1f, 0.3f)
+                    );
+                    dust.noGravity = true; // 无重力
+                    dust.scale = Main.rand.NextFloat(0.7f, 1.1f); // 随机大小
+                }
+            }
 
         }
 
@@ -127,19 +139,25 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
             Player player = Main.player[Projectile.owner];
             player.AddBuff(ModContent.BuffType<EffulgentFeatherBulletPBuff>(), 240); // 4 秒
 
-            // 2. 在原地喷射粒子
-            for (int i = 0; i < 10; i++) // 随机生成 10 个粒子
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    Main.rand.NextBool() ? DustID.YellowTorch : DustID.YellowStarDust,
-                    Main.rand.NextVector2Circular(2f, 2f),
-                    150,
-                    default,
-                    Main.rand.NextFloat(1.2f, 1.8f)
-                );
-                dust.noGravity = true;
+                // 2. 在原地喷射粒子
+                for (int i = 0; i < 10; i++) // 随机生成 10 个粒子
+                {
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        Main.rand.NextBool() ? DustID.YellowTorch : DustID.YellowStarDust,
+                        Main.rand.NextVector2Circular(2f, 2f),
+                        150,
+                        default,
+                        Main.rand.NextFloat(1.2f, 1.8f)
+                    );
+                    dust.noGravity = true;
+                }
             }
+
+
 
             // 3. 在玩家位置释放 EffulgentFeatherBulletAREA
             Projectile.NewProjectile(

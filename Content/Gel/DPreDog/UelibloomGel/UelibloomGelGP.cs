@@ -23,6 +23,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<UelibloomGel>())
             {
                 IsUelibloomGelInfused = true;
+                projectile.damage = (int)(projectile.damage * 0.75f); // 减少 25% 伤害
                 projectile.netUpdate = true;
             }
             base.OnSpawn(projectile, source);
@@ -32,9 +33,6 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
         {
             if (IsUelibloomGelInfused && target.active && !target.friendly)
             {
-                // 调整伤害为原来的 75%
-                projectile.damage = (int)(projectile.damage * 0.75f);
-
                 // 在敌人四面八方随机生成 UelibloomArrowLight 弹幕
                 for (int i = 0; i < 2; i++)
                 {
@@ -49,7 +47,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
                         spawnPosition,
                         directionToTarget * 10f, // 设置飞行速度
                         ModContent.ProjectileType<UelibloomArrowLight>(),
-                        (int)(projectile.damage * 0.25f), // 伤害为原弹幕的 25%
+                        (int)(projectile.damage / 0.75 * 0.25f), // 伤害为原弹幕的 25%
                         projectile.knockBack,
                         projectile.owner
                     );

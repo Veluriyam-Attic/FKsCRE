@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
 {
@@ -28,51 +29,56 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            // 获取 SpriteBatch 和投射物纹理
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Bullet/YuanZiDan/YuanZiDanPROJ").Value;
-
-            // 遍历投射物的旧位置数组，绘制光学拖尾效果
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 计算颜色插值值，使颜色在旧位置之间平滑过渡
-                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+                // 获取 SpriteBatch 和投射物纹理
+                SpriteBatch spriteBatch = Main.spriteBatch;
+                Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Bullet/YuanZiDan/YuanZiDanPROJ").Value;
 
-                // 使用天蓝色渐变
-                Color color = Color.Lerp(Color.White, Color.Blue, colorInterpolation) * 0.4f;
-                color.A = 0;
-
-                // 计算绘制位置，将位置调整到碰撞箱的中心
-                Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-
-                // 计算外部和内部的颜色
-                Color outerColor = color;
-                Color innerColor = color * 0.5f;
-
-                // 计算强度，使拖尾逐渐变弱
-                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
-                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
-                if (Projectile.timeLeft <= 60)
+                // 遍历投射物的旧位置数组，绘制光学拖尾效果
+                for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {
-                    intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
+                    // 计算颜色插值值，使颜色在旧位置之间平滑过渡
+                    float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+
+                    // 使用天蓝色渐变
+                    Color color = Color.Lerp(Color.White, Color.Blue, colorInterpolation) * 0.4f;
+                    color.A = 0;
+
+                    // 计算绘制位置，将位置调整到碰撞箱的中心
+                    Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+
+                    // 计算外部和内部的颜色
+                    Color outerColor = color;
+                    Color innerColor = color * 0.5f;
+
+                    // 计算强度，使拖尾逐渐变弱
+                    float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
+                    intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
+                    if (Projectile.timeLeft <= 60)
+                    {
+                        intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
+                    }
+
+                    // 计算外部和内部的缩放比例，使拖尾具有渐变效果
+                    Vector2 outerScale = new Vector2(2f) * intensity;
+                    Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
+                    outerColor *= intensity;
+                    innerColor *= intensity;
+
+                    // 绘制外部的拖尾效果，并应用旋转
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
+
+                    // 绘制内部的拖尾效果，并应用旋转
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
                 }
 
-                // 计算外部和内部的缩放比例，使拖尾具有渐变效果
-                Vector2 outerScale = new Vector2(2f) * intensity;
-                Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
-                outerColor *= intensity;
-                innerColor *= intensity;
-
-                // 绘制外部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
-
-                // 绘制内部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
+                // 绘制默认的弹幕，并应用旋转
+                Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+                return false;
             }
-
-            // 绘制默认的弹幕，并应用旋转
-            Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-            return false;
+            return true;
         }
         public override void SetDefaults()
         {
@@ -102,16 +108,21 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
             if (Projectile.timeLeft == 445)
                 Projectile.alpha = 0;
 
-            // Add flying particles
-            if (Main.rand.NextBool(3)) // Randomly 1/3 chance
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    Main.rand.NextBool() ? DustID.Electric : DustID.HallowSpray,
-                    -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
-                );
-                dust.noGravity = true; // Particle with no gravity
-                dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // Random size
+                // Add flying particles
+                if (Main.rand.NextBool(3)) // Randomly 1/3 chance
+                {
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        Main.rand.NextBool() ? DustID.Electric : DustID.HallowSpray,
+                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
+                    );
+                    dust.noGravity = true; // Particle with no gravity
+                    dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // Random size
+                }
+
             }
 
             // Homing logic if target exists
@@ -142,18 +153,24 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
                 // 播放音效
                 SoundEngine.PlaySound(SoundID.Item115, Projectile.position);
 
-                // 生成收缩的白色圆圈特效
-                Particle pulse = new DirectionalPulseRing(
-                    Projectile.Center,
-                    Projectile.velocity * 0.75f,
-                    Color.AliceBlue,
-                    new Vector2(1f, 2.5f),
-                    Projectile.rotation,
-                    0.2f,
-                    0.03f,
-                    20
-                );
-                GeneralParticleHandler.SpawnParticle(pulse);
+                // 检查是否启用了特效
+                if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+                {
+                    // 生成收缩的白色圆圈特效
+                    Particle pulse = new DirectionalPulseRing(
+                        Projectile.Center,
+                        Projectile.velocity * 0.75f,
+                        Color.AliceBlue,
+                        new Vector2(1f, 2.5f),
+                        Projectile.rotation,
+                        0.2f,
+                        0.03f,
+                        20
+                    );
+                    GeneralParticleHandler.SpawnParticle(pulse);
+                }
+
+
 
                 // 提升x%的伤害
                 Projectile.damage = Main.getGoodWorld
@@ -192,9 +209,15 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
             // Play sound effect
             Terraria.Audio.SoundEngine.PlaySound(SoundID.Item115, Projectile.position);
 
-            // Create shrinking white circle effect
-            Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.AliceBlue, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
-            GeneralParticleHandler.SpawnParticle(pulse);
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // Create shrinking white circle effect
+                Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.AliceBlue, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
+                GeneralParticleHandler.SpawnParticle(pulse);
+            }
+
+
 
             // Increase damage by 20%
             //damageMultiplier *= 1.2f;
@@ -203,22 +226,27 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
 
         public override void OnKill(int timeLeft)
         {
-            int particleCount = Main.rand.Next(5, 11); // 随机生成5到10个粒子
-
-            for (int i = 0; i < particleCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 随机选择粒子类型：Electrict 或 HallowSpray
-                int dustType = Main.rand.NextBool() ? DustID.Electric : DustID.HallowSpray;
+                int particleCount = Main.rand.Next(5, 11); // 随机生成5到10个粒子
 
-                // 计算抛射方向，基于投射物当前方向并加上随机角度偏移
-                Vector2 velocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(45))
-                                   * Main.rand.NextFloat(1f, 3f); // 随机速度范围
+                for (int i = 0; i < particleCount; i++)
+                {
+                    // 随机选择粒子类型：Electrict 或 HallowSpray
+                    int dustType = Main.rand.NextBool() ? DustID.Electric : DustID.HallowSpray;
 
-                // 创建粒子
-                Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType, velocity, 0, default, 1.5f);
-                dust.noGravity = true; // 粒子不受重力影响
-                dust.scale = Main.rand.NextFloat(1f, 1.5f); // 粒子大小随机
+                    // 计算抛射方向，基于投射物当前方向并加上随机角度偏移
+                    Vector2 velocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(45))
+                                       * Main.rand.NextFloat(1f, 3f); // 随机速度范围
+
+                    // 创建粒子
+                    Dust dust = Dust.NewDustPerfect(Projectile.Center, dustType, velocity, 0, default, 1.5f);
+                    dust.noGravity = true; // 粒子不受重力影响
+                    dust.scale = Main.rand.NextFloat(1f, 1.5f); // 粒子大小随机
+                }
             }
+
         }
 
     }

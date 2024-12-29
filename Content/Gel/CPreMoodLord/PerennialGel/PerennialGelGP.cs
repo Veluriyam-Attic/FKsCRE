@@ -23,6 +23,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.PerennialGel
             {
                 IsPerennialGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.75f); // 减少 25% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -40,8 +41,8 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.PerennialGel
                     }
                 }
 
-                // 修改伤害为原来的 75%
-                target.SimpleStrikeNPC((int)(damageDone * 0.75f), (int)projectile.knockBack);
+                //// 修改伤害为原来的 75%
+                //target.SimpleStrikeNPC((int)(damageDone * 0.75f), (int)projectile.knockBack);
             }
         }
 

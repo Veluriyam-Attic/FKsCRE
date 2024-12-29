@@ -23,6 +23,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
             {
                 IsScoriaGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.95f); // 减少 5% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -34,7 +35,6 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
                 // 启用 ScoriaGelGN 的标记和计时器
                 target.GetGlobalNPC<ScoriaGelGN>().IsMarkedByScoriaGel = true;
                 target.GetGlobalNPC<ScoriaGelGN>().MarkDuration = 300; // 持续 5 秒
-                projectile.damage = (int)(projectile.damage * 0.95f);
             }
         }
     }

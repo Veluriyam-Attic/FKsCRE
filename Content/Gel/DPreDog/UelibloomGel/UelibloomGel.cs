@@ -17,7 +17,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
         public new string LocalizationCategory => "Gel.DPreDog";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            //Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;

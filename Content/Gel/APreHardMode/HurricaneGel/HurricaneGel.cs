@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Items.Placeables;
 
 namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
 {
@@ -15,7 +16,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
         public new string LocalizationCategory => "Gel.APreHardMode";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            //Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;
@@ -40,7 +41,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
-            //recipe.AddIngredient<Hurrican>(1);
+            recipe.AddIngredient<SeaPrism>(10);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

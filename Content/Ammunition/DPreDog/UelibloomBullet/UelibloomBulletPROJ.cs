@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
 {
@@ -22,8 +23,13 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -106,27 +112,33 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
 
         public override void OnKill(int timeLeft)
         {
-            // 创建叶子形状的粒子特效
-            for (int i = -1; i <= 1; i += 2) // 两条曲线，正方向和反方向
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                for (int j = 0; j < 8; j++) // 每条曲线 x 个粒子
+                // 创建叶子形状的粒子特效
+                for (int i = -1; i <= 1; i += 2) // 两条曲线，正方向和反方向
                 {
-                    float progress = j / 20f; // 进度 0 到 1
-                    float angle = progress * MathHelper.PiOver2 * i; // 曲线弯曲程度
-                    Vector2 direction = Projectile.velocity.RotatedBy(angle).SafeNormalize(Vector2.UnitY) * (2f + progress * 5f); // 曲线方向和速度
+                    for (int j = 0; j < 8; j++) // 每条曲线 x 个粒子
+                    {
+                        float progress = j / 20f; // 进度 0 到 1
+                        float angle = progress * MathHelper.PiOver2 * i; // 曲线弯曲程度
+                        Vector2 direction = Projectile.velocity.RotatedBy(angle).SafeNormalize(Vector2.UnitY) * (2f + progress * 5f); // 曲线方向和速度
 
-                    Dust dust = Dust.NewDustPerfect(
-                        Projectile.Center, // 粒子生成位置
-                        DustID.GreenTorch,
-                        direction, // 速度
-                        100, // 透明度
-                        Color.LimeGreen, // 绿色
-                        Main.rand.NextFloat(1.2f, 1.8f) // 粒子大小
-                    );
-                    dust.noGravity = true; // 粒子不受重力影响
-                    dust.fadeIn = 0.1f; // 快速淡入效果
+                        Dust dust = Dust.NewDustPerfect(
+                            Projectile.Center, // 粒子生成位置
+                            DustID.GreenTorch,
+                            direction, // 速度
+                            100, // 透明度
+                            Color.LimeGreen, // 绿色
+                            Main.rand.NextFloat(1.2f, 1.8f) // 粒子大小
+                        );
+                        dust.noGravity = true; // 粒子不受重力影响
+                        dust.fadeIn = 0.1f; // 快速淡入效果
+                    }
                 }
             }
+
+
         }
     }
 }

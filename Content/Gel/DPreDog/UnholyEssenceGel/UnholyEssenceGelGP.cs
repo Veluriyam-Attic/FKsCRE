@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UnholyEssenceGel
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<UnholyEssenceGel>())
             {
                 IsUnholyEssenceGelInfused = true;
-                //projectile.damage = (int)(projectile.damage * 1.25f); // 增加 25% 伤害
+                projectile.damage = (int)(projectile.damage * 1.25f); // 增加 25% 伤害
                 projectile.netUpdate = true;
             }
             base.OnSpawn(projectile, source);
@@ -32,8 +32,6 @@ namespace FKsCRE.Content.Gel.DPreDog.UnholyEssenceGel
         {
             if (IsUnholyEssenceGelInfused && target.active && !target.friendly)
             {
-                // 调整伤害为原来的 125%
-                projectile.damage = (int)(projectile.damage * 1.25f);
                 // 施加 HolyFlames Buff，持续 300 帧（5 秒）
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
             }

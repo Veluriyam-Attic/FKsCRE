@@ -39,7 +39,7 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 120;
             Projectile.light = 0.5f;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;
@@ -100,6 +100,11 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+
+        }
+
+        public override void OnKill(int timeLeft)
+        {
             // 在原地释放 296 号原版弹幕 InfernoFriendlyBlast
             int explosionProjectile = Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
@@ -119,11 +124,6 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
             proj.localNPCHitCooldown = 60;
             proj.usesLocalNPCImmunity = true;
             proj.DamageType = DamageClass.Ranged; // 设置为远程伤害类型
-        }
-
-        public override void OnKill(int timeLeft)
-        {
-
         }
 
 

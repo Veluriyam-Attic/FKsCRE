@@ -77,10 +77,10 @@ namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             { 
                 // 添加红色的类似 ShadeFire 的粒子效果
-                if (Main.rand.NextBool(5))
+                if (Main.rand.NextBool(7))
                 {
                     Color smokeColor = Color.Lerp(Color.Red, Color.Black, 0.7f);
-                    Particle smoke = new HeavySmokeParticle(Projectile.Center, Projectile.velocity * 0.5f, smokeColor, 20, Projectile.scale * Main.rand.NextFloat(0.6f, 1.2f), 0.8f, MathHelper.ToRadians(3f), required: true);
+                    Particle smoke = new HeavySmokeParticle(Projectile.Center, Projectile.velocity * 0.5f, smokeColor, 20, Projectile.scale * Main.rand.NextFloat(0.6f, 1.2f), 0.3f, MathHelper.ToRadians(3f), required: true);
                     GeneralParticleHandler.SpawnParticle(smoke);
                 }
             }

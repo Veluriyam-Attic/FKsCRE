@@ -27,28 +27,67 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
             {
                 IsAstralGelInfused = true;
                 projectile.netUpdate = true;
+                projectile.damage = (int)(projectile.damage * 0.85f); // 减少 15% 伤害
             }
             base.OnSpawn(projectile, source);
         }
+
+        //public override void AI(Projectile projectile)
+        //{
+        //    if (IsAstralGelInfused)
+        //    {
+        //        staticTimer++;
+
+        //        if (staticTimer == 105) // 1.75 秒后（60 帧/秒）
+        //        {
+        //            projectile.velocity = Vector2.Zero; // 强制静止
+        //            isStatic = true;
+        //        }
+
+        //        if (isStatic && staticTimer >= 225) // 静止 2 秒后（225 = 105 + 120）
+        //        {
+        //            projectile.Kill(); // 强制销毁弹幕
+        //        }
+        //    }
+        //}
 
         public override void AI(Projectile projectile)
         {
             if (IsAstralGelInfused)
             {
-                staticTimer++;
-
-                if (staticTimer == 105) // 1.75 秒后（60 帧/秒）
+                // 记录弹幕的飞行距离
+                if (projectile.localAI[0] == 0)
                 {
-                    projectile.velocity = Vector2.Zero; // 强制静止
-                    isStatic = true;
+                    // 在第一次调用AI时，初始化弹幕的初始位置
+                    projectile.localAI[0] = projectile.Center.X; // 记录初始X坐标
+                    projectile.localAI[1] = projectile.Center.Y; // 记录初始Y坐标
                 }
 
-                if (isStatic && staticTimer >= 225) // 静止 2 秒后（225 = 105 + 120）
+                // 计算弹幕从初始位置到当前的位置的总飞行距离
+                float distanceX = projectile.Center.X - projectile.localAI[0];
+                float distanceY = projectile.Center.Y - projectile.localAI[1];
+                float totalDistance = (float)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                // 如果弹幕飞行距离达到10个tile（x * 16像素）
+                if (totalDistance >= 160f)
                 {
-                    projectile.Kill(); // 强制销毁弹幕
+                    projectile.velocity = Vector2.Zero; // 强制静止
+                    isStatic = true; // 设置静止状态
+                }
+
+                // 计时器逻辑（在静止状态开始计时）
+                if (isStatic)
+                {
+                    staticTimer++;
+
+                    if (staticTimer >= 480) // 静止2秒后
+                    {
+                        projectile.Kill(); // 强制销毁弹幕
+                    }
                 }
             }
         }
+
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -57,11 +96,11 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
                 // 伤害调整
                 if (isStatic)
                 {
-                    damageDone = (int)(damageDone * 0.85f * 0.25f); // 静止状态期间伤害 *85% *25%
+                    damageDone = (int)(damageDone * 1f * 0.25f); // 静止状态期间伤害 *85% *25%
                 }
                 else
                 {
-                    damageDone = (int)(damageDone * 0.85f); // 普通伤害 *85%
+                    damageDone = (int)(damageDone * 1f); // 普通伤害 *85%
                 }
 
                 // 添加 AstralInfectionDebuff，持续 300 帧（5 秒）

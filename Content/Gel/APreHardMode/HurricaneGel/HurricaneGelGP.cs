@@ -32,11 +32,11 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
         {
             if (IsHurricaneGelInfused && target.active && !target.friendly)
             {
-                // 随机生成 2~4 个角度的额外弹幕
-                int extraProjectiles = Main.rand.Next(2, 5);
+                // 随机生成 1~2 个额外弹幕
+                int extraProjectiles = Main.rand.Next(1, 3);
                 for (int i = 0; i < extraProjectiles; i++)
                 {
-                    float randomAngle = MathHelper.ToRadians(Main.rand.Next(2, 5)); // 随机 2~4 度
+                    float randomAngle = MathHelper.ToRadians(Main.rand.Next(1, 3)); // 随机角度
                     Vector2 velocity = projectile.velocity.RotatedBy(randomAngle);
                     Projectile.NewProjectile(
                         projectile.GetSource_FromThis(),

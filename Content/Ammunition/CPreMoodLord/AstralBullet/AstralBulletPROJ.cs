@@ -15,6 +15,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet;
 using CalamityMod.Dusts;
 using CalamityMod.Buffs.DamageOverTime;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
 {
@@ -28,8 +29,13 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -59,18 +65,23 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
             if (Projectile.timeLeft == 296)
                 Projectile.alpha = 0;
 
-            if (Main.rand.NextBool(2))
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                int randomDust = Utils.SelectRandom(Main.rand, new int[]
+                if (Main.rand.NextBool(2))
                 {
+                    int randomDust = Utils.SelectRandom(Main.rand, new int[]
+                    {
                     ModContent.DustType<AstralOrange>(),
                     ModContent.DustType<AstralBlue>()
-                });
-                int astral = Dust.NewDust(Projectile.position, 1, 1, randomDust, 0f, 0f, 0, default, 0.5f);
-                Main.dust[astral].alpha = Projectile.alpha;
-                Main.dust[astral].velocity *= 0f;
-                Main.dust[astral].noGravity = true;
+                    });
+                    int astral = Dust.NewDust(Projectile.position, 1, 1, randomDust, 0f, 0f, 0, default, 0.5f);
+                    Main.dust[astral].alpha = Projectile.alpha;
+                    Main.dust[astral].velocity *= 0f;
+                    Main.dust[astral].noGravity = true;
+                }
             }
+
         }
 
         public override void OnSpawn(IEntitySource source)
@@ -83,26 +94,29 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<AstralBulletEBuff>(), 180);
+            target.AddBuff(ModContent.BuffType<AstralBulletEBuff>(), 150); // 射击星星的效果仅持续1.5秒
             target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 180);
         }
         public override void OnKill(int timeLeft)
         {
-            int particleCount = Main.rand.Next(10, 16); // 生成 x 到 y 个粒子
-            for (int i = 0; i < particleCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                float rotationOffset = Main.rand.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4); // 随机旋转 -45 到 45 度
-                Vector2 direction = Projectile.velocity.RotatedBy(rotationOffset).SafeNormalize(Vector2.Zero);
-                int randomDust = Utils.SelectRandom(Main.rand, new int[]
+                int particleCount = Main.rand.Next(10, 16); // 生成 x 到 y 个粒子
+                for (int i = 0; i < particleCount; i++)
                 {
+                    float rotationOffset = Main.rand.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4); // 随机旋转 -45 到 45 度
+                    Vector2 direction = Projectile.velocity.RotatedBy(rotationOffset).SafeNormalize(Vector2.Zero);
+                    int randomDust = Utils.SelectRandom(Main.rand, new int[]
+                    {
         ModContent.DustType<AstralOrange>(),
         ModContent.DustType<AstralBlue>()
-                });
-                Dust dust = Dust.NewDustPerfect(Projectile.Center, randomDust, direction * Main.rand.NextFloat(3f, 6f), 0, default, 1f);
-                dust.noGravity = true;
-                dust.scale = 1.2f + Main.rand.NextFloat(0.3f); // 粒子大小有一定随机性
+                    });
+                    Dust dust = Dust.NewDustPerfect(Projectile.Center, randomDust, direction * Main.rand.NextFloat(3f, 6f), 0, default, 1f);
+                    dust.noGravity = true;
+                    dust.scale = 1.2f + Main.rand.NextFloat(0.3f); // 粒子大小有一定随机性
+                }
             }
-
         }
     }
 }

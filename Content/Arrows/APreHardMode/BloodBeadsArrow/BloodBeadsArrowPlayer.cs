@@ -94,6 +94,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.BloodBeadsArrow
                 debuffs.Add(calamityMod.Find<ModBuff>("RancorBurn").Type);
             }
 
+
             // 随机选择一个debuff并应用
             int randomDebuff = debuffs[Main.rand.Next(debuffs.Count)];
             target.AddBuff(randomDebuff, duration);

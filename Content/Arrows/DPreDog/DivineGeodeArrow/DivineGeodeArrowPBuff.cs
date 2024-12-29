@@ -21,7 +21,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
         public override void Update(Player player, ref int buffIndex)
         {
             // 增加飞行时间
-            player.wingTimeMax = (int)(player.wingTimeMax * 1.17f); // 增加 17% 的最大飞行时间
+            player.wingTimeMax = (int)(player.wingTimeMax * 1.125f); // 增加 12.5% 的最大飞行时间
             // 每帧生成金黄色粒子特效
             if (Main.rand.NextBool(1)) // x% 概率生成粒子
             {
@@ -33,7 +33,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
                     Main.rand.NextFloat(0.7f, 1.2f), // 粒子大小
                     8 // 粒子生命周期
                 );
-                GeneralParticleHandler.SpawnParticle(impactParticle); // 生成粒子
+                //GeneralParticleHandler.SpawnParticle(impactParticle); // 生成粒子
             }
         }
     }

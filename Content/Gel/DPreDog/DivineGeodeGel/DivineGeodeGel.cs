@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Items.Materials;
 
 namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
 {
@@ -15,7 +16,7 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
         public new string LocalizationCategory => "Gel.DPreDog";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            //Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;
@@ -38,7 +39,7 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
-            //recipe.AddIngredient<Hurrican>(1);
+            recipe.AddIngredient<DivineGeode>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
