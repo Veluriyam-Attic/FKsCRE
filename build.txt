@@ -1,5 +1,5 @@
 displayName = YuBell's Calamity Ranger Expansion[Beta]
-author = Henceforth
+author = 虞悖&T&至尊永冻
 version = 0.2.0.23
 modReferences = CalamityMod
 sortAfter = CalamityMod
