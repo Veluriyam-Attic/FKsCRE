@@ -103,20 +103,24 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
             }
             modNPC.veriumDoomStacks++;
 
-            // 命中敌人时生成淡粉红色线性特效
-            for (int i = 0; i < 2; i++) // 往多个方向生成粒子
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 trailVelocity = Projectile.velocity.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(0.5f, 1.5f);
-                Particle trail = new SparkParticle(
-                    Projectile.Center, // 起始位置为命中点
-                    trailVelocity,     // 粒子速度随机偏移
-                    false,
-                    60,                // 生命周期
-                    1.0f,              // 粒子缩放
-                    Color.LightPink    // 淡粉红色
-                );
-                GeneralParticleHandler.SpawnParticle(trail);
-            }
+                // 命中敌人时生成淡粉红色线性特效
+                for (int i = 0; i < 2; i++) // 往多个方向生成粒子
+                {
+                    Vector2 trailVelocity = Projectile.velocity.RotatedByRandom(MathHelper.PiOver4) * Main.rand.NextFloat(0.5f, 1.5f);
+                    Particle trail = new SparkParticle(
+                        Projectile.Center, // 起始位置为命中点
+                        trailVelocity,     // 粒子速度随机偏移
+                        false,
+                        60,                // 生命周期
+                        1.0f,              // 粒子缩放
+                        Color.LightPink    // 淡粉红色
+                    );
+                    GeneralParticleHandler.SpawnParticle(trail);
+                }
+            }       
 
         }
 
@@ -127,9 +131,13 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
             Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
 
-            GenericSparkle impactParticle = new GenericSparkle(Projectile.Center, Vector2.Zero, Color.Goldenrod, Color.White, Main.rand.NextFloat(0.7f, 1.2f), 12);
-            GeneralParticleHandler.SpawnParticle(impactParticle);
 
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                GenericSparkle impactParticle = new GenericSparkle(Projectile.Center, Vector2.Zero, Color.Goldenrod, Color.White, Main.rand.NextFloat(0.7f, 1.2f), 12);
+                GeneralParticleHandler.SpawnParticle(impactParticle);
+            }
 
             // 随机生成 3 到 10 个碎片弹幕
             int fragmentCount = Main.rand.Next(3, 11);

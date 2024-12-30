@@ -132,15 +132,17 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
         }
 
         public override void OnKill(int timeLeft)
-        {         
-
-            for (int i = 0; i <= 6; i++)
+        {
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust2 = Dust.NewDustPerfect(Projectile.Center, 226, new Vector2(2, 2).RotatedByRandom(100f) * Main.rand.NextFloat(0.1f, 2.9f));
-                dust2.noGravity = false;
-                dust2.scale = Main.rand.NextFloat(0.3f, 0.9f);
+                for (int i = 0; i <= 6; i++)
+                {
+                    Dust dust2 = Dust.NewDustPerfect(Projectile.Center, 226, new Vector2(2, 2).RotatedByRandom(100f) * Main.rand.NextFloat(0.1f, 2.9f));
+                    dust2.noGravity = false;
+                    dust2.scale = Main.rand.NextFloat(0.3f, 0.9f);
+                }
             }
-
             SoundStyle sound = new SoundStyle("CalamityMod/Sounds/Item/AuricBulletHit")
             {
                 Volume = 0.4f // 将音量设置为 x%
@@ -153,7 +155,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
                 return; // 如果已经存在150个，不再生成
 
 
-            int spawnCount = Main.getGoodWorld ? Main.rand.Next(3, 9) : Main.rand.Next(1, 3); // 生成1~2个，如果是getGoodWorld 那么生成3~8个
+            int spawnCount = Main.getGoodWorld ? Main.rand.Next(3, 9) : Main.rand.Next(2, 4); // 生成2~3个，如果是getGoodWorld 那么生成3~8个
             for (int i = 0; i < spawnCount; i++)
             {
                 // 生成一个随机的半径（3到6个方块）
@@ -164,7 +166,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
                 Vector2 spawnPosition = Projectile.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius;
 
                 // 生成AuricBuletBALL
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<AuricBuletBALL>(), (int)(Projectile.damage * 1.25f), Projectile.knockBack, Main.myPlayer);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<AuricBuletBALL>(), (int)(Projectile.damage * 1.35f), Projectile.knockBack, Main.myPlayer);
                 // 生成AuricBuletBALL并通过ai参数传递公转半径
                 //int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<AuricBuletBALL>(), (int)(Projectile.damage * 1.25f), Projectile.knockBack, Main.myPlayer, radius);
 

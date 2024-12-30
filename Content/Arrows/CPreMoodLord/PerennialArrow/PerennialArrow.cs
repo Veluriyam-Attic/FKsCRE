@@ -25,7 +25,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
             Item.shoot = ModContent.ProjectileType<PerennialArrowPROJ>();
-            Item.shootSpeed = 20f;
+            Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 

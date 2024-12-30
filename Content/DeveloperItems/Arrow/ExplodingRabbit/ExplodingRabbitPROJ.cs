@@ -49,7 +49,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
             Projectile.usesLocalNPCImmunity = true;
             // 默认状态
             Projectile.localNPCHitCooldown = 15;
-            Projectile.penetrate = 3;
+            Projectile.penetrate = 2;
 
             //// 根据模式动态调整
             //if (Main.getGoodWorld)
@@ -114,15 +114,15 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
         }
         public override void OnKill(int timeLeft)
         {
-            // 创建爆炸弹幕
-            int projID = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 2.0f), Projectile.knockBack, Projectile.owner);
-            // 修改爆炸弹幕的大小为原来的两倍
-            Main.projectile[projID].scale = 2.0f;
-            // Smoke effect
-            CreateSmokeEffect();
+            //// 创建爆炸弹幕
+            //int projID = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 2.0f), Projectile.knockBack, Projectile.owner);
+            //// 修改爆炸弹幕的大小为原来的两倍
+            //Main.projectile[projID].scale = 2.0f;
+            //// Smoke effect
+            //CreateSmokeEffect();
 
-            // Square particle effect
-            CreateSquareParticleEffect();
+            //// Square particle effect
+            //CreateSquareParticleEffect();
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -132,11 +132,11 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
                 Projectile.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<FuckYou>(),
-                (int)(Projectile.damage * 2.0f),
+                (int)(Projectile.damage * 3.5f),
                 Projectile.knockBack,
                 Projectile.owner
             );
-            Main.projectile[projID].scale = 2.0f;
+            Main.projectile[projID].scale = 3.5f;
 
 
             // 检查是否启用了特效
@@ -150,7 +150,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
 
 
             // 增加反弹逻辑
-            if (bounceCount >= 6)
+            if (bounceCount >= 2)
             {
                 Projectile.Kill(); // 超过反弹次数则销毁
                 return;
@@ -171,9 +171,8 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            // Bounce logic
-            if (bounceCount >= 6)
-                return true; // Kill projectile after 6 bounces
+            if (bounceCount >= 2)
+                return true;
 
             bounceCount++;
             Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);

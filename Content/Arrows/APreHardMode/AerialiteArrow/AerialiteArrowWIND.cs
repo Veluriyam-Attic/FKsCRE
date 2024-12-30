@@ -129,14 +129,18 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
         {
             SoundEngine.PlaySound(SoundID.Item60 with { Volume = SoundID.Item60.Volume * 0.6f }, Projectile.Center);
 
-            // 在弹幕死亡时生成大量尘埃
-            for (int i = 0; i <= 360; i += 3)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 dustspeed = new Vector2(3f, 3f).RotatedBy(MathHelper.ToRadians(i));
-                int d = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, 31, dustspeed.X, dustspeed.Y, 200, Color.AliceBlue, 1.4f);
-                Main.dust[d].noGravity = true;
-                Main.dust[d].position = Projectile.Center;
-                Main.dust[d].velocity = dustspeed;
+                // 在弹幕死亡时生成大量尘埃
+                for (int i = 0; i <= 360; i += 3)
+                {
+                    Vector2 dustspeed = new Vector2(3f, 3f).RotatedBy(MathHelper.ToRadians(i));
+                    int d = Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, 31, dustspeed.X, dustspeed.Y, 200, Color.AliceBlue, 1.4f);
+                    Main.dust[d].noGravity = true;
+                    Main.dust[d].position = Projectile.Center;
+                    Main.dust[d].velocity = dustspeed;
+                }
             }
         }
     }

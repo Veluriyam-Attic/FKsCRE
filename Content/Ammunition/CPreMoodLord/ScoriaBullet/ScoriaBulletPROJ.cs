@@ -136,7 +136,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
                 Projectile.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<FuckYou>(), // 爆炸弹幕
-                (int)(Projectile.damage * 0.5f),      // 伤害倍率
+                (int)(Projectile.damage * 0.75f),      // 伤害倍率
                 Projectile.knockBack,
                 Projectile.owner
             );
@@ -155,7 +155,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
                     Projectile.Center,
                     Vector2.Zero,
                     ModContent.ProjectileType<ScoriaBulletFlameburst>(), // 释放的弹幕
-                    (int)(Projectile.damage * 5.0f),                   // 伤害倍率
+                    (int)(Projectile.damage * 15.0f),                   // 伤害倍率
                     Projectile.knockBack,
                     Projectile.owner
                 );

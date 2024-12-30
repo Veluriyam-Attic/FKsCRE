@@ -584,6 +584,11 @@ Gel: {
 				“你什么时候奖励自己”
 				'''
 		}
+
+		AerialiteGel: {
+			DisplayName: Aerialite Gel
+			Tooltip: ""
+		}
 	}
 
 	BPrePlantera: {

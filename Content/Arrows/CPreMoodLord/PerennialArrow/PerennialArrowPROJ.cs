@@ -32,7 +32,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
             Projectile.arrow = true;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
             Projectile.timeLeft = 600;
             Projectile.ignoreWater = true;

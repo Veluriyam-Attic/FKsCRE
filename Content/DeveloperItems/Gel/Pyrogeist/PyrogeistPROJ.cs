@@ -105,6 +105,18 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
 
         public override void OnKill(int timeLeft)
         {
+            // 检查场上是否已经存在 2 个或更多 InfernoFriendlyBlast 弹幕
+            int existingBlasts = 0;
+            foreach (Projectile proj1 in Main.projectile)
+            {
+                if (proj1.active && proj1.type == ProjectileID.InfernoFriendlyBlast)
+                {
+                    existingBlasts++;
+                    if (existingBlasts >= 2)
+                        return; // 如果已经存在 2 个或更多，则不释放新的弹幕
+                }
+            }
+
             // 在原地释放 296 号原版弹幕 InfernoFriendlyBlast
             int explosionProjectile = Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
@@ -125,8 +137,5 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
             proj.usesLocalNPCImmunity = true;
             proj.DamageType = DamageClass.Ranged; // 设置为远程伤害类型
         }
-
-
-
     }
 }

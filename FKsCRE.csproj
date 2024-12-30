@@ -73,6 +73,8 @@
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\纯净凝胶箭.txt" />
 	  <None Remove="Content\Arrows\APreHardMode\WulfrimArrow\WulfrimArrow.png" />
 	  <None Remove="Content\Arrows\APreHardMode\WulfrimArrow\WulfrimArrowEDebuff.png" />
+	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\1.png" />
+	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrow.png" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPBuff.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPC.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPCDrop.png" />
@@ -91,7 +93,6 @@
 	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\PlasmaDriveCorePrototypeArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\PlasmaDriveCorePrototypeArrowPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\等离子驱动核心箭.txt" />
-	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrow.png" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\调星箭.txt" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrow.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowMOON.png" />

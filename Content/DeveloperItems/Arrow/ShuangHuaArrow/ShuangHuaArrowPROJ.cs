@@ -53,7 +53,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             //Projectile.aiStyle = ProjAIStyleID.Arrow; // 让弹幕受到重力影响
         }
 
-
+        private bool isAscending = false; // 标记弹幕是否处于向上飞行阶段
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // 变成大冰锥并向上飞行
@@ -65,8 +65,15 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
 
             // 禁用原始的碰撞逻辑
             Projectile.tileCollide = false;
-        }
 
+            // 设置为向上飞行阶段
+            isAscending = true;
+        }
+        public override bool? CanDamage()
+        {
+            // 如果弹幕处于向上飞行阶段，则不造成伤害
+            return !isAscending;
+        }
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平
@@ -75,12 +82,17 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             // Lighting - 添加天蓝色光源，光照强度为 0.49
             Lighting.AddLight(Projectile.Center, Color.LightSkyBlue.ToVector3() * 0.49f);
 
-            SparkParticle Visual = new SparkParticle(Projectile.Center, Projectile.velocity * 0.1f, false, 2, 1.2f, Color.SkyBlue);
-            GeneralParticleHandler.SpawnParticle(Visual);
-            if (Projectile.localAI[0] % 3 == 0)
+
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                LineParticle subTrail = new LineParticle(Projectile.Center, Projectile.velocity * 0.01f, false, 4, 1.1f, Color.SkyBlue);
-                GeneralParticleHandler.SpawnParticle(subTrail);
+                SparkParticle Visual = new SparkParticle(Projectile.Center, Projectile.velocity * 0.1f, false, 2, 1.2f, Color.SkyBlue);
+                GeneralParticleHandler.SpawnParticle(Visual);
+                if (Projectile.localAI[0] % 3 == 0)
+                {
+                    LineParticle subTrail = new LineParticle(Projectile.Center, Projectile.velocity * 0.01f, false, 4, 1.1f, Color.SkyBlue);
+                    GeneralParticleHandler.SpawnParticle(subTrail);
+                }
             }
 
             // 检查是否即将销毁
@@ -102,11 +114,8 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
                     direction *= 8f; // 设定飞行速度
 
                     // 生成新的弹幕
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<ShuangHuaArrowSPLIT>(), (int)(Projectile.damage * 0.35f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<ShuangHuaArrowSPLIT>(), (int)(Projectile.damage * 0.85f), Projectile.knockBack, Projectile.owner);
                 }
-
-
-
                 // 销毁自身
                 Projectile.Kill();
             }
@@ -116,14 +125,19 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
         {
             SoundEngine.PlaySound(SoundID.Item30, Projectile.position);
 
-            int Dusts = 10;
-            float radians = MathHelper.TwoPi / Dusts;
-            Vector2 spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));
-            for (int i = 0; i < Dusts; i++)
+
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 dustVelocity = spinningPoint.RotatedBy(radians * i).RotatedBy(0.5f) * 6.5f;
-                Particle smoke = new HeavySmokeParticle(Projectile.Center, dustVelocity * Main.rand.NextFloat(1f, 2.6f), Color.WhiteSmoke, 18, Main.rand.NextFloat(0.9f, 1.6f), 0.35f, Main.rand.NextFloat(-1, 1), true);
-                GeneralParticleHandler.SpawnParticle(smoke);
+                int Dusts = 10;
+                float radians = MathHelper.TwoPi / Dusts;
+                Vector2 spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));
+                for (int i = 0; i < Dusts; i++)
+                {
+                    Vector2 dustVelocity = spinningPoint.RotatedBy(radians * i).RotatedBy(0.5f) * 6.5f;
+                    Particle smoke = new HeavySmokeParticle(Projectile.Center, dustVelocity * Main.rand.NextFloat(1f, 2.6f), Color.WhiteSmoke, 18, Main.rand.NextFloat(0.9f, 1.6f), 0.35f, Main.rand.NextFloat(-1, 1), true);
+                    GeneralParticleHandler.SpawnParticle(smoke);
+                }
             }
         }
 

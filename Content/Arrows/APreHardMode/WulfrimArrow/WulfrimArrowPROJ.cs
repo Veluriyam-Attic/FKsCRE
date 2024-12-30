@@ -70,50 +70,48 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
             //Dust wulfrumDust = Dust.NewDustPerfect(Projectile.Center - offset, 267, Vector2.Zero);
             //wulfrumDust.noGravity = true;
 
-
-
-            // 释放亮绿色粒子特效
-            if (Main.rand.NextBool(5))
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                //  直接在弹幕中心生成粒子，没有左右偏移
-                Vector2 trailPos = Projectile.Center;
+                // 释放亮绿色粒子特效
+                if (Main.rand.NextBool(5))
+                {
+                    //  直接在弹幕中心生成粒子，没有左右偏移
+                    Vector2 trailPos = Projectile.Center;
 
-                float trailScale = Main.rand.NextFloat(0.8f, 1.2f); // 维持粒子的缩放效果
-                Color trailColor = Color.LimeGreen; // 固定颜色为亮绿色
+                    float trailScale = Main.rand.NextFloat(0.8f, 1.2f); // 维持粒子的缩放效果
+                    Color trailColor = Color.LimeGreen; // 固定颜色为亮绿色
 
-                //  创建粒子
-                Particle trail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
-                GeneralParticleHandler.SpawnParticle(trail);
+                    //  创建粒子
+                    Particle trail = new SparkParticle(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, trailColor);
+                    GeneralParticleHandler.SpawnParticle(trail);
+                }
             }
 
+                //// 产生DNA形状的粒子特效
+                //float frequency = 30f;  // 30帧一个回合
+                //float amplitude = 20f;  // 振动幅度
 
+                //// 左侧和右侧的偏移计算
+                //Vector2 leftOffset = new Vector2(-amplitude * (float)Math.Sin(Projectile.ai[0] * MathHelper.TwoPi / frequency), 0);
+                //Vector2 rightOffset = new Vector2(amplitude * (float)Math.Sin(Projectile.ai[0] * MathHelper.TwoPi / frequency), 0);
 
+                //if (Projectile.ai[0] % 2 == 0)  // 每两帧产生一次粒子
+                //{
+                //    // Electric 粒子特效 (白蓝色)
+                //    Dust.NewDustPerfect(Projectile.Center + leftOffset, 226, Vector2.Zero, 0, Color.LightBlue, 1.2f).noGravity = true;
 
-            //// 产生DNA形状的粒子特效
-            //float frequency = 30f;  // 30帧一个回合
-            //float amplitude = 20f;  // 振动幅度
+                //    // WulfrumBolt 粒子特效 (保持原色)
+                //    Dust.NewDustPerfect(Projectile.Center + rightOffset, 267, Vector2.Zero, 0, default(Color), 1.2f).noGravity = true;
+                //}
 
-            //// 左侧和右侧的偏移计算
-            //Vector2 leftOffset = new Vector2(-amplitude * (float)Math.Sin(Projectile.ai[0] * MathHelper.TwoPi / frequency), 0);
-            //Vector2 rightOffset = new Vector2(amplitude * (float)Math.Sin(Projectile.ai[0] * MathHelper.TwoPi / frequency), 0);
-
-            //if (Projectile.ai[0] % 2 == 0)  // 每两帧产生一次粒子
-            //{
-            //    // Electric 粒子特效 (白蓝色)
-            //    Dust.NewDustPerfect(Projectile.Center + leftOffset, 226, Vector2.Zero, 0, Color.LightBlue, 1.2f).noGravity = true;
-
-            //    // WulfrumBolt 粒子特效 (保持原色)
-            //    Dust.NewDustPerfect(Projectile.Center + rightOffset, 267, Vector2.Zero, 0, default(Color), 1.2f).noGravity = true;
-            //}
-
-            //// 更新ai，两倍的绘制速度
-            //Projectile.ai[0] += 1f;
-        }
+                //// 更新ai，两倍的绘制速度
+                //Projectile.ai[0] += 1f;
+            }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 施加 WulfrimArrowEDebuff，持续 2 秒（120 帧）
-            target.AddBuff(ModContent.BuffType<WulfrimArrowEDebuff>(), 120);
+            target.AddBuff(ModContent.BuffType<WulfrimArrowEDebuff>(), 75);
         }
         public override void OnKill(int timeLeft)
         {

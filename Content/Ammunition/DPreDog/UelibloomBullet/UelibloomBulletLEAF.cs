@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
 {
@@ -63,7 +64,12 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
             {
                 if (!Projectile.localAI[1].Equals(1f)) // 切换到追踪状态时释放特效
                 {
-                    ReleaseLeafEffect();
+
+                    // 检查是否启用了特效
+                    if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+                    {
+                        ReleaseLeafEffect();
+                    }
                     Projectile.localAI[1] = 1f; // 标记追踪逻辑已启动
                 }
 
@@ -125,29 +131,35 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/SmallGreyscaleCircle").Value;
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
+
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
-                Color color = Color.Lerp(Color.Green, Color.DarkGreen, colorInterpolation) * 0.4f; // 改为绿色和深绿色的渐变
-                color.A = 0;
-                Vector2 drawPosition = Projectile.oldPos[i] + lightTexture.Size() * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + new Vector2(-28f, -28f);
-                Color outerColor = color;
-                Color innerColor = color * 0.5f;
-                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
-                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
-                if (Projectile.timeLeft <= 60) // 弹幕即将消失时缩小
+                Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/SmallGreyscaleCircle").Value;
+                for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {
-                    intensity *= Projectile.timeLeft / 60f;
+                    float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+                    Color color = Color.Lerp(Color.Green, Color.DarkGreen, colorInterpolation) * 0.4f; // 改为绿色和深绿色的渐变
+                    color.A = 0;
+                    Vector2 drawPosition = Projectile.oldPos[i] + lightTexture.Size() * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + new Vector2(-28f, -28f);
+                    Color outerColor = color;
+                    Color innerColor = color * 0.5f;
+                    float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
+                    intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
+                    if (Projectile.timeLeft <= 60) // 弹幕即将消失时缩小
+                    {
+                        intensity *= Projectile.timeLeft / 60f;
+                    }
+                    Vector2 outerScale = new Vector2(1f) * intensity;
+                    Vector2 innerScale = new Vector2(1f) * intensity * 0.7f;
+                    outerColor *= intensity;
+                    innerColor *= intensity;
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, 0f, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
+                    Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, 0f, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
                 }
-                Vector2 outerScale = new Vector2(1f) * intensity;
-                Vector2 innerScale = new Vector2(1f) * intensity * 0.7f;
-                outerColor *= intensity;
-                innerColor *= intensity;
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, 0f, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, 0f, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
+                return false;
             }
-            return false;
+            return true;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

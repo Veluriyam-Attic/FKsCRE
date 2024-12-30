@@ -16,7 +16,7 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
         public new string LocalizationCategory => "DeveloperItems.Pyrogeist";
         public override void SetDefaults()
         {
-            Item.damage = 85;
+            // Item.damage = 85;
             Item.width = 12;
             Item.height = 18;
             Item.consumable = true;

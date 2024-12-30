@@ -87,7 +87,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 420;
-            Projectile.MaxUpdates = 6;
+            Projectile.MaxUpdates = 1;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 2;
@@ -109,7 +109,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 // 添加飞行粒子特效
-                if (Main.rand.NextBool(3)) // 1/3 概率生成粒子
+                if (Main.rand.NextBool(2)) // 1/3 概率生成粒子
                 {
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
@@ -143,8 +143,8 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
                 target.HealEffect(200); // 显示治疗效果
             }
 
-            // 施加 DivineGeodeBulletEDebuff，持续 36000 帧（几乎永久）
-            target.AddBuff(ModContent.BuffType<DivineGeodeBulletEDebuff>(), 36000);
+            // 施加 DivineGeodeBulletEDebuff，持续 600 帧
+            target.AddBuff(ModContent.BuffType<DivineGeodeBulletEDebuff>(), 600);
         }
 
         public override void OnKill(int timeLeft)

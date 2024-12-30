@@ -37,6 +37,20 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
                 // 施加 HolyFlames Buff，持续 1200 帧（20 秒）
                 target.AddBuff(ModContent.BuffType<HolyFlames>(), 1200);
 
+                // 检查场上 BlissfulBombardierDustProjectile 数量
+                int existingDustCount = 0;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<BlissfulBombardierDustProjectile>())
+                    {
+                        existingDustCount++;
+                        if (existingDustCount >= 5)
+                        {
+                            return; // 如果数量达到或超过 5，则不生成新的弹幕
+                        }
+                    }
+                }
+
                 // 在原地生成 BlissfulBombardierDustProjectile
                 Projectile.NewProjectile(
                     projectile.GetSource_FromThis(),
@@ -49,5 +63,7 @@ namespace FKsCRE.Content.Gel.DPreDog.DivineGeodeGel
                 );
             }
         }
+
+
     }
 }

@@ -23,7 +23,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             NPC.width = 32;
             NPC.height = 32;
             NPC.lifeMax = 150;
-            NPC.damage = 1500; // No collision damage
+            NPC.damage = 200; // No collision damage
             NPC.defense = 5;
             NPC.friendly = true; // Belongs to the player's side
             NPC.aiStyle = -1; // Custom AI
@@ -87,15 +87,13 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 
         public override void OnKill()
         {
-            // Fire three projectiles in different directions
-            float rotation = MathHelper.TwoPi / 3; // 120 degrees apart
+            float rotation = MathHelper.TwoPi / 3;
             for (int i = 0; i < 3; i++)
             {
                 Vector2 direction = Vector2.UnitY.RotatedBy(rotation * i);
                 Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 10f, ModContent.ProjectileType<AuricArrowPROJ>(), (int)StoredDamage, 0, Main.myPlayer);
             }
 
-            // Drop an item upon death (Item needs to be defined)
             Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<AuricArrowNPCDrop>());
         }
     }

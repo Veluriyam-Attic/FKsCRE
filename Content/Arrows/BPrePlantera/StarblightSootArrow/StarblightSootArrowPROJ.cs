@@ -71,7 +71,7 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
                 {
                     float randomAngle = Main.rand.NextFloat(MathHelper.TwoPi);
                     Vector2 sparkVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * 10f; // 自定义速度
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, sparkVelocity, ModContent.ProjectileType<StarblightSootArrowSpark>(), (int)(damageDone * 1.25f), hit.Knockback, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, sparkVelocity, ModContent.ProjectileType<StarblightSootArrowSpark>(), (int)(damageDone * 0.5f), hit.Knockback, Projectile.owner);
                 }
             }
                 

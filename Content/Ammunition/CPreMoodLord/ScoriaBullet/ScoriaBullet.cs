@@ -19,7 +19,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 12;
+            Item.damage = 14;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

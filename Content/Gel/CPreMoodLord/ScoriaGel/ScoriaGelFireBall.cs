@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
 {
@@ -30,12 +31,12 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 3;
             Projectile.timeLeft = 300;
             Projectile.light = 0.5f;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = false;
-            Projectile.extraUpdates = 1;
+            Projectile.tileCollide = true;
+            Projectile.extraUpdates = 0;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
             Projectile.aiStyle = ProjAIStyleID.Bounce;
@@ -63,16 +64,20 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel
 
         public override void OnKill(int timeLeft)
         {
-            // 消失时生成一圈粒子特效
-            int particleCount = 20;
-            float angleIncrement = MathHelper.TwoPi / particleCount;
-
-            for (int i = 0; i < particleCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Vector2 velocity = new Vector2(3f, 0f).RotatedBy(angleIncrement * i);
-                Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.CrimsonTorch, velocity, 0, Color.OrangeRed);
-                dust.scale = 1.2f;
-                dust.noGravity = true;
+                // 消失时生成一圈粒子特效
+                int particleCount = 20;
+                float angleIncrement = MathHelper.TwoPi / particleCount;
+
+                for (int i = 0; i < particleCount; i++)
+                {
+                    Vector2 velocity = new Vector2(3f, 0f).RotatedBy(angleIncrement * i);
+                    Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.CrimsonTorch, velocity, 0, Color.OrangeRed);
+                    dust.scale = 1.2f;
+                    dust.noGravity = true;
+                }
             }
         }
 

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow;
+using FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow;
 
 namespace FKsCRE
 {
@@ -28,8 +29,18 @@ namespace FKsCRE
                 if (projectile.type == ModContent.ProjectileType<EffulgentFeatherArrowAura>() ||
                     projectile.type == ModContent.ProjectileType<EffulgentFeatherArrowPROJ>())
                 {
-                    // 伤害 × ？
                     modifiers.SourceDamage *= 0.775f;
+                }
+            }
+
+            // 检查是否为 神明吞噬者 （仅身体）
+            if ((npc.type == ModContent.NPCType<DevourerofGodsBody>()))
+            {
+                // 检查弹幕类型是否为 神圣晶石箭 以及它的爆炸
+                if (projectile.type == ModContent.ProjectileType<DivineGeodeArrowPROJ>() ||
+                projectile.type == ModContent.ProjectileType<DivineGeodeArrowEXP>())
+                {
+                    modifiers.SourceDamage *= 5f;
                 }
             }
 

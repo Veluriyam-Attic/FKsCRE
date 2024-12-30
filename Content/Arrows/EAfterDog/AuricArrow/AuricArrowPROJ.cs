@@ -33,7 +33,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 1;  // 穿透次数为2
+            Projectile.penetrate = 2;  // 穿透次数为2
             Projectile.tileCollide = true;
             Projectile.timeLeft = 600;  // 存活时间
             Projectile.light = 0.5f;
@@ -80,8 +80,8 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitNPC(target, hit, damageDone);
-            // 5% 概率生成 AuricArrowNPC
-            if (Main.rand.NextFloat() < 0.05f) // 5%
+            // 0.5% 概率生成 AuricArrowNPC
+            if (Main.rand.NextFloat() < 0.005f) // 0.5%
             {
                 int npcIndex = NPC.NewNPC(Projectile.GetSource_FromThis(), Main.player[Projectile.owner].position.ToTileCoordinates().X * 16, Main.player[Projectile.owner].position.ToTileCoordinates().Y * 16, ModContent.NPCType<AuricArrowNPC>());
                 if (npcIndex >= 0 && Main.npc[npcIndex] != null)
@@ -93,16 +93,8 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
                     }
                 }
             }
-        }
-
-
-
-
-
-        public override void OnKill(int timeLeft)
-        {
             // 生成爆炸弹幕
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 0.25f), Projectile.knockBack, Projectile.owner);
 
             // 往四周生成6个AuricArrowBALL
             int numBalls = 6;
@@ -110,19 +102,30 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             for (int i = 0; i < numBalls; i++)
             {
                 Vector2 velocity = new Vector2(2f, 0f).RotatedBy(angleStep * i);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.4f), Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
             }
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 10%概率生成PlasmaGrenadeSmallExplosion，但不造成伤害
-                if (Main.rand.NextFloat() < 0.1f)  // 10%概率
+                // 使用计数器控制生成逻辑
+                plasmaGrenadeCounter++; // 增加计数器
+                if (plasmaGrenadeCounter >= 15) // 每x次生成一次
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PlasmaGrenadeSmallExplosion>(), 0, 0, Projectile.owner);
+                    plasmaGrenadeCounter = 0; // 重置计数器
                 }
             }
+        }
 
+
+
+
+        private int plasmaGrenadeCounter = 0; // 用于计数的变量
+
+        public override void OnKill(int timeLeft)
+        {
+         
         }
 
 

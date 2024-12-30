@@ -7,6 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using FKsCRE.Content.Gel.EAfterDog.CosmosGel;
 
 namespace FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel
 {
@@ -30,8 +31,20 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel
         {
             if (IsLivingShardGelInfused && target.active && !target.friendly)
             {
-                // 0.5% 概率释放 LivingShardGelHealPROJ
-                if (Main.rand.NextFloat() <= 0.005f)
+                // 检查场上是否已有超过 1 个 某种 弹幕
+                int sparkCount = 0;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<LivingShardGelHealPROJ>())
+                    {
+                        sparkCount++;
+                        if (sparkCount >= 1)
+                            return; // 如果已存在 1 个 某种 弹幕，则不释放新的
+                    }
+                }
+
+                // 2% 概率释放 LivingShardGelHealPROJ
+                if (Main.rand.NextFloat() <= 0.02f)
                 {
                     Vector2 randomDirection = Main.rand.NextVector2CircularEdge(1f, 1f).SafeNormalize(Vector2.Zero) * 10f;
                     Projectile.NewProjectile(

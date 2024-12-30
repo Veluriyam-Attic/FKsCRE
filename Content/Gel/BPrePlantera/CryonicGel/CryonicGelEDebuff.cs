@@ -13,7 +13,6 @@ namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
         public new string LocalizationCategory => "Buffs";
         public override void SetStaticDefaults()
         {
-
             Main.debuff[Type] = true; // 标记为减益效果
         }
 
@@ -21,10 +20,5 @@ namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
         {
             npc.defense -= 5; // 减少 5 防御力
         }
-
-
-
-
     }
-
 }

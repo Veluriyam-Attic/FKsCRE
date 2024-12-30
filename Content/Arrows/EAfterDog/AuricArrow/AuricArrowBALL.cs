@@ -24,28 +24,21 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             Projectile.height = 10;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 2;  // 穿透次数
+            Projectile.penetrate = 4;  // 穿透次数
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.timeLeft = 240;  // 存活时间
             Projectile.alpha = 80;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
-            Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
+            Projectile.localNPCHitCooldown = 5; // 无敌帧冷却时间为5帧
         }
 
         public override void AI()
         {
-            // 刚出现的0.15秒内不会造成伤害
-            //if (Projectile.ai[0] < NoDamageTime)
-            //{
-            //    Projectile.damage = 0;
-            //    Projectile.ai[0]++;
-            //}
-
             // 在飞行过程中逐渐变透明和加速
             Projectile.alpha += 5;
-            Projectile.velocity *= 1.06f;
+            Projectile.velocity *= 1.01f;
 
             // 如果触碰到屏幕边缘，则删除该弹幕
             if (!ProjectileWithinScreen())
@@ -65,11 +58,14 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
                 Main.dust[idx].scale = scale;
             }
 
+            // 每帧向右偏转 2 度（弧度）
+            Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(2));
+
             Time++;
         }
         public ref float Time => ref Projectile.ai[1];
 
-        public override bool? CanDamage() => Time >= 10f; // 初始的时候不会造成伤害，直到x为止
+        public override bool? CanDamage() => Time >= 20f; // 初始的时候不会造成伤害，直到x为止
 
         private bool ProjectileWithinScreen()
         {

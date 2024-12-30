@@ -67,15 +67,18 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
         {
             Projectile.ai[0]++; // 弹幕AI计数器递增
 
-            if (Projectile.timeLeft <= 5)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustPerfect(Projectile.Center + Main.rand.NextVector2Circular(9, 9) - Projectile.velocity * 5, DustID.GemDiamond, Projectile.velocity * 30 * Main.rand.NextFloat(0.1f, 0.95f));
-                dust.noGravity = true;
-                dust.scale = Main.rand.NextFloat(0.9f, 1.45f);
-                dust.alpha = 235;
-                dust.color = Color.White;
+                if (Projectile.timeLeft <= 5)
+                {
+                    Dust dust = Dust.NewDustPerfect(Projectile.Center + Main.rand.NextVector2Circular(9, 9) - Projectile.velocity * 5, DustID.GemDiamond, Projectile.velocity * 30 * Main.rand.NextFloat(0.1f, 0.95f));
+                    dust.noGravity = true;
+                    dust.scale = Main.rand.NextFloat(0.9f, 1.45f);
+                    dust.alpha = 235;
+                    dust.color = Color.White;
+                }
             }
-
             Player player = Main.player[Projectile.owner];
             Projectile.localAI[0] += 1f / (Projectile.extraUpdates + 1);
 
@@ -96,7 +99,11 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
                     {
                         collidedWithNPC = true; // 标记碰撞
                         collisionTimer = (int)Main.GameUpdateCount; // 记录当前帧数
-                        ReleaseSquareParticles(); // 释放粒子效果
+                        // 检查是否启用了特效
+                        if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+                        {
+                            ReleaseSquareParticles(); // 释放粒子效果
+                        }
                         break;
                     }
                 }
@@ -215,29 +222,33 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public override void OnKill(int timeLeft)
         {
-            // 在原地生成一个随机方向的旋转粒子特效
-            for (int i = 0; i < 2; i++) // 生成 8 个粒子
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 随机偏移量
-                Vector2 sparkOffset = Main.rand.NextVector2Circular(10f, 10f); // 随机半径为10像素的圆形偏移
+                // 在原地生成一个随机方向的旋转粒子特效
+                for (int i = 0; i < 2; i++) // 生成 8 个粒子
+                {
+                    // 随机偏移量
+                    Vector2 sparkOffset = Main.rand.NextVector2Circular(10f, 10f); // 随机半径为10像素的圆形偏移
 
-                // 随机初始颜色和结束颜色
-                Color startColor = Color.LightBlue * 0.5f; // 初始颜色（亮度减半）
-                Color endColor = Color.White * 0.5f;      // 结束颜色（亮度减半）
+                    // 随机初始颜色和结束颜色
+                    Color startColor = Color.LightBlue * 0.5f; // 初始颜色（亮度减半）
+                    Color endColor = Color.White * 0.5f;      // 结束颜色（亮度减半）
 
-                // 创建旋转粒子特效
-                GenericSparkle sparker = new GenericSparkle(
-                    Projectile.Center + sparkOffset,       // 粒子起始位置
-                    Vector2.Zero,                          // 粒子初速度
-                    startColor,                            // 起始颜色
-                    endColor,                              // 结束颜色
-                    Main.rand.NextFloat(2.5f, 2.9f),       // 粒子大小
-                    14,                                    // 生命周期
-                    Main.rand.NextFloat(-0.01f, 0.01f),    // 随机旋转速度
-                    2.5f                                   // 粒子亮度
-                );
+                    // 创建旋转粒子特效
+                    GenericSparkle sparker = new GenericSparkle(
+                        Projectile.Center + sparkOffset,       // 粒子起始位置
+                        Vector2.Zero,                          // 粒子初速度
+                        startColor,                            // 起始颜色
+                        endColor,                              // 结束颜色
+                        Main.rand.NextFloat(2.5f, 2.9f),       // 粒子大小
+                        14,                                    // 生命周期
+                        Main.rand.NextFloat(-0.01f, 0.01f),    // 随机旋转速度
+                        2.5f                                   // 粒子亮度
+                    );
 
-                GeneralParticleHandler.SpawnParticle(sparker); // 生成粒子
+                    GeneralParticleHandler.SpawnParticle(sparker); // 生成粒子
+                }
             }
         }
 

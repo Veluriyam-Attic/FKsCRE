@@ -42,7 +42,7 @@ namespace FKsCRE.Content.Gel.DPreDog.PolterplasmGel
                 // 前 30 帧不追踪，之后开始追踪敌人
                 if (projectile.ai[1] > 30)
                 {
-                    NPC target = projectile.Center.ClosestNPCAt(320); // 查找 x 范围内最近的敌人，范围很小，因此是弱追踪
+                    NPC target = projectile.Center.ClosestNPCAt(150); // 查找 x 范围内最近的敌人，范围很小，因此是弱追踪
                     if (target != null)
                     {
                         Vector2 direction = (target.Center - projectile.Center).SafeNormalize(Vector2.Zero);

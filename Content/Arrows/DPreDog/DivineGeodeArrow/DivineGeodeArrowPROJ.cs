@@ -75,11 +75,11 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
                 // 刚生成时释放几个卡其色的小圆圈往外扩散
                 if (Projectile.ai[0] == 0f)
                 {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.Khaki, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
-                        GeneralParticleHandler.SpawnParticle(pulse);
-                    }
+                    //for (int i = 0; i < 3; i++)
+                    //{
+                    //    Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.Khaki, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
+                    //    GeneralParticleHandler.SpawnParticle(pulse);
+                    //}
 
                     for (int i = 0; i <= 5; i++)
                     {

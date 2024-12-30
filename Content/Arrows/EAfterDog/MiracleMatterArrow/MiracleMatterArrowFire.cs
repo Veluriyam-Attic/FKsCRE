@@ -29,8 +29,8 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = 200;
-            Projectile.extraUpdates = 7;
-            Projectile.timeLeft = 1500;
+            Projectile.extraUpdates = 4;
+            Projectile.timeLeft = 750;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 50;
             Projectile.DamageType = DamageClass.Ranged;
@@ -46,15 +46,14 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 
             if (Projectile.localAI[0] < 60) // 前 1 秒飞行
             {
+                Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(1));
+
                 // 每四帧将速度乘以 0.xx
-                if ((int)Projectile.localAI[0] % 4 == 0)
+                if (Projectile.localAI[0] % 2 == 0)
                 {
                     Projectile.velocity *= 0.98f;
                 }
-                if (Projectile.localAI[0] % 1 == 0) // 每帧应用旋转效果
-                {
-                    Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(2));
-                }
+
                 //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
             }
             else // 使用新的追踪逻辑
@@ -82,59 +81,6 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
 
         }
 
-
-        //public void FindTarget(Player player)
-        //{
-        //    float maxDistance = 3000f;
-        //    bool foundTarget = false;
-        //    if (player.HasMinionAttackTargetNPC) // 优先追踪玩家的目标敌人
-        //    {
-        //        NPC npc = Main.npc[player.MinionAttackTargetNPC];
-        //        if (npc.CanBeChasedBy(Projectile, false))
-        //        {
-        //            float targetDist = Vector2.Distance(npc.Center, Projectile.Center);
-        //            if (targetDist < maxDistance)
-        //            {
-        //                maxDistance = targetDist;
-        //                foundTarget = true;
-        //                target = npc;
-        //            }
-        //        }
-        //    }
-        //    if (!foundTarget)
-        //    {
-        //        for (int npcIndex = 0; npcIndex < Main.maxNPCs; npcIndex++)
-        //        {
-        //            NPC npc = Main.npc[npcIndex];
-        //            if (npc.CanBeChasedBy(Projectile, false))
-        //            {
-        //                float targetDist = Vector2.Distance(npc.Center, Projectile.Center);
-        //                if (targetDist < maxDistance)
-        //                {
-        //                    maxDistance = targetDist;
-        //                    foundTarget = true;
-        //                    target = npc;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    if (!foundTarget) // 如果没有找到目标，减速
-        //    {
-        //        Projectile.velocity *= 0.98f;
-        //    }
-        //    else KillTheThing(target); // 找到目标后进行追踪
-        //}
-
-
-
-
-
-
-
-        public void KillTheThing(NPC npc)
-        {
-            //Projectile.velocity = Projectile.SuperhomeTowardsTarget(npc, 50f / (Projectile.extraUpdates + 1), 60f / (Projectile.extraUpdates + 1), 1f / (Projectile.extraUpdates + 1));
-        }
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/SmallGreyscaleCircle").Value;

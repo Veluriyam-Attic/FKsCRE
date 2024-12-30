@@ -183,9 +183,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
                         ai2: Main.rand.Next(0, 5) // 随机生成 0 到 4 的数值，决定颜色
                     );
                 }
-
-            }
-           
+            }           
         }
 
 
@@ -228,7 +226,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
 
             // 发射弹幕，让新生成的弹幕速度是本体速度的x倍
             Vector2 adjustedVelocity = directionToTarget * 50f;
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, adjustedVelocity, selectedProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, adjustedVelocity, selectedProjectileType, (int)((Projectile.damage) * 0.75), Projectile.knockBack, Projectile.owner);
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
@@ -242,7 +240,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
                 }
 
                 // 在弹幕发射位置释放轻型烟雾
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 25; i++)
                 {
                     Vector2 dustVelocity = Main.rand.NextVector2Circular(2f, 2f); // 随机速度
                     Particle smoke = new HeavySmokeParticle(spawnPosition, dustVelocity * Main.rand.NextFloat(1f, 2.6f), smokeColor, 18, Main.rand.NextFloat(0.9f, 1.6f), 0.35f, Main.rand.NextFloat(-1, 1), true);

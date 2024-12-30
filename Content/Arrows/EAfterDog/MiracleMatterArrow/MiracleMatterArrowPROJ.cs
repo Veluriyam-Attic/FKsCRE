@@ -36,8 +36,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
         public override void SetDefaults()
         {
             // 设置弹幕的基础属性
-            Projectile.width = 11; // 弹幕宽度
-            Projectile.height = 24; // 弹幕高度
+            Projectile.width = Projectile.height = 160; // 弹幕宽高
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
             Projectile.penetrate = 1; // 穿透力为1，击中一个敌人就消失
@@ -82,7 +81,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                     // 如果敌人在检测范围内，销毁弹幕
                     if (distanceToNPC <= detectionRadius)
                     {
-                        Projectile.Kill(); // 销毁弹幕
+                        //Projectile.Kill(); // 销毁弹幕（不再有这个效果，而是通过直接扩大碰撞箱的逻辑来实现）
                         return; // 终止后续逻辑
                     }
                 }
@@ -115,15 +114,15 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                 Utils.PlotTileLine(tipPosition - verticalOffset, tipPosition + verticalOffset, 10f, DelegateMethods.CastLightOpen);
                 Lighting.AddLight(tipPosition, energyColor.ToVector3());
 
-                // 添加从暗红色到亮白色的粒子效果
-                if (Main.rand.NextBool(5))
-                {
-                    // 颜色渐变：从深红色逐渐变成亮白色
-                    float brightness = (float)Main.rand.NextDouble(); // 随机亮度值
-                    Color smokeColor = Color.Lerp(Color.GhostWhite, Color.White, brightness); // 插值计算
-                    Particle smoke = new HeavySmokeParticle(Projectile.Center, Projectile.velocity * 0.5f, smokeColor, 20, Projectile.scale * Main.rand.NextFloat(0.6f, 1.2f), 0.8f, MathHelper.ToRadians(3f), required: true);
-                    GeneralParticleHandler.SpawnParticle(smoke);
-                }
+                //// 添加从暗红色到亮白色的粒子效果
+                //if (Main.rand.NextBool(5))
+                //{
+                //    // 颜色渐变：从深红色逐渐变成亮白色
+                //    float brightness = (float)Main.rand.NextDouble(); // 随机亮度值
+                //    Color smokeColor = Color.Lerp(Color.GhostWhite, Color.White, brightness); // 插值计算
+                //    Particle smoke = new HeavySmokeParticle(Projectile.Center, Projectile.velocity * 0.5f, smokeColor, 20, Projectile.scale * Main.rand.NextFloat(0.6f, 1.2f), 0.8f, MathHelper.ToRadians(3f), required: true);
+                //    GeneralParticleHandler.SpawnParticle(smoke);
+                //}
 
                 // 充能完成时的特效
                 if (Projectile.timeLeft == 550) // 示例触发条件

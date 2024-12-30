@@ -41,7 +41,7 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 2;
             Projectile.timeLeft = 300;
             Projectile.MaxUpdates = 6;
             Projectile.alpha = 255;
@@ -61,40 +61,51 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
             if (Projectile.timeLeft == 296)
                 Projectile.alpha = 0;
 
-            // 飞行粒子特效
-            if (Main.rand.NextBool(5))
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 星辉瘟疫的同款小圆圈
-                Vector2 position = Projectile.Center + Main.rand.NextVector2Circular(5f, 5f);
-                GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(position, Vector2.Zero, Color.DarkTurquoise, new Vector2(1f, 1f), 0f, 0.1f, 0f, 20));
+                // 飞行粒子特效
+                if (Main.rand.NextBool(5))
+                {
+                    // 星辉瘟疫的同款小圆圈
+                    Vector2 position = Projectile.Center + Main.rand.NextVector2Circular(5f, 5f);
+                    GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(position, Vector2.Zero, Color.DarkTurquoise, new Vector2(1f, 1f), 0f, 0.1f, 0f, 20));
+                }
             }
+
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitNPC(target, hit, damageDone);
 
-            // 击中敌人释放更多粒子特效
-            for (int i = 0; i < 10; i++) // 增加粒子数量
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 粒子的起始位置：围绕目标中心随机生成
-                Vector2 position = target.Center + Main.rand.NextVector2Circular(target.width / 2, target.height / 2);
+                // 击中敌人释放更多粒子特效
+                for (int i = 0; i < 10; i++) // 增加粒子数量
+                {
+                    // 粒子的起始位置：围绕目标中心随机生成
+                    Vector2 position = target.Center + Main.rand.NextVector2Circular(target.width / 2, target.height / 2);
 
-                // 计算随机偏移方向
-                float randomAngleOffset = Main.rand.NextFloat(-0.5f, 0.5f); // 随机角度偏移（-0.5到0.5弧度）
-                Vector2 randomVelocity = Projectile.velocity.RotatedBy(randomAngleOffset).SafeNormalize(Vector2.Zero)
-                                         * Main.rand.NextFloat(2f, 4f); // 随机速度大小（2到4）
+                    // 计算随机偏移方向
+                    float randomAngleOffset = Main.rand.NextFloat(-0.5f, 0.5f); // 随机角度偏移（-0.5到0.5弧度）
+                    Vector2 randomVelocity = Projectile.velocity.RotatedBy(randomAngleOffset).SafeNormalize(Vector2.Zero)
+                                             * Main.rand.NextFloat(2f, 4f); // 随机速度大小（2到4）
 
-                // 添加粒子效果
-                GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(
-                    position,
-                    randomVelocity, // 粒子移动方向和速度
-                    Color.Blue,
-                    new Vector2(1.5f, 1.5f),
-                    0f,
-                    0.2f,
-                    0f,
-                    30));
+                    // 添加粒子效果
+                    GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(
+                        position,
+                        randomVelocity, // 粒子移动方向和速度
+                        Color.Blue,
+                        new Vector2(1.5f, 1.5f),
+                        0f,
+                        0.2f,
+                        0f,
+                        30));
+                }
+
             }
+
 
             // 给 GlobalNPC 添加标记
             if (!target.boss && target.TryGetGlobalNPC<StarblightSootBulletGlobalNPC>(out var modNPC))

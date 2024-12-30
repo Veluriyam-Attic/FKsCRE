@@ -45,7 +45,6 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
                     {
                         // 降低远程伤害为 25%
                         Player.GetDamage(DamageClass.Ranged) *= 0.25f;
-                        Main.NewText("成功降低了伤害", 255, 255, 0);
                     }
                 }
             }

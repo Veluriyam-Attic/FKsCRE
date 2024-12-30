@@ -65,7 +65,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             // 追踪逻辑：15帧后开始寻找目标
             if (!hasLockedOn)
             {
-                NPC closestNPC = FindClosestNPC(2000f);
+                NPC closestNPC = FindClosestNPC(4000f);
                 if (closestNPC != null && Projectile.ai[0] > 15f)
                 {
                     hasLockedOn = true;
@@ -127,7 +127,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //target.AddBuff(ModContent.BuffType<CrushDepth>(), 300); // 深渊水压
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowVine>(), (int)(Projectile.damage * 1.5f), Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowVine>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Projectile.owner);
 
         }
 

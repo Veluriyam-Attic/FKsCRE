@@ -118,8 +118,8 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 0.5% 的概率为敌人施加 1 秒钟的 PolterplasmArrowEDeBuff
-            if (Main.rand.NextFloat() < 0.005f)
+            // 1% 的概率为敌人施加 1 秒钟的 PolterplasmArrowEDeBuff
+            if (Main.rand.NextFloat() < 0.01f)
             {
                 // 在主弹幕当前位置生成 PolterplasmArrowINV
                 Vector2 spawnPosition0 = Projectile.Center; // 使用主弹幕的当前位置

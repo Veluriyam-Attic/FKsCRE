@@ -15,7 +15,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
         public new string LocalizationCategory => "Arrows.EAfterDog";
         public override void SetDefaults()
         {
-            Item.damage = 40;
+            Item.damage = 43;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

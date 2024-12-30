@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Ranged;
+using FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel;
 
 namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
 {
@@ -32,6 +33,18 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
         {
             if (IsHurricaneGelInfused && target.active && !target.friendly)
             {
+                // 检查场上是否已有超过 8 个 某种 弹幕
+                int sparkCount = 0;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<Aquashard>())
+                    {
+                        sparkCount++;
+                        if (sparkCount >= 1)
+                            return; // 如果已存在 8 个 某种 弹幕，则不释放新的
+                    }
+                }
+
                 // 随机生成 1~2 个额外弹幕
                 int extraProjectiles = Main.rand.Next(1, 3);
                 for (int i = 0; i < extraProjectiles; i++)

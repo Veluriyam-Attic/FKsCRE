@@ -14,6 +14,7 @@ using CalamityMod.Particles;
 using Terraria.ModLoader.IO;
 using Terraria.Audio;
 using CalamityMod.Buffs.StatDebuffs;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
 {
@@ -31,14 +32,20 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            // 判断 timeLeft 是否小于或等于 x
-            if (Projectile.timeLeft <= 200)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
-                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
-                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, baseColor with { A = 0 }, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+                // 判断 timeLeft 是否小于或等于 x
+                if (Projectile.timeLeft <= 200)
+                {
+                    Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
+                    CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
+                    Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, baseColor with { A = 0 }, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+                }
+                return false; // 禁止默认绘制行为
             }
-            return false; // 禁止默认绘制行为
+            return true;
+
         }
 
         public override void SetDefaults()
@@ -76,12 +83,17 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
 
             if (Projectile.timeLeft % 3 == 0)
             {
-                int particleCount = Main.rand.Next(1, 3); // 生成1到2个粒子
-                for (int i = 0; i < particleCount; i++)
+                // 检查是否启用了特效
+                if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
                 {
-                    Particle iceParticle = new LineParticle(Projectile.Center - Projectile.velocity * 3, -Projectile.velocity * 0.05f, false, 5, 2f, Color.Cyan * 0.65f);
-                    GeneralParticleHandler.SpawnParticle(iceParticle);
+                    int particleCount = Main.rand.Next(1, 3); // 生成1到2个粒子
+                    for (int i = 0; i < particleCount; i++)
+                    {
+                        Particle iceParticle = new LineParticle(Projectile.Center - Projectile.velocity * 3, -Projectile.velocity * 0.05f, false, 5, 2f, Color.Cyan * 0.65f);
+                        GeneralParticleHandler.SpawnParticle(iceParticle);
+                    }
                 }
+
             }
 
 

@@ -11,6 +11,27 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
         private int damageTier = 0;
         private int lastHitTimer = 300; // 5 秒计时器
 
+        private Item lastWeapon; // 记录上一把武器
+
+        // 只要玩家切换的武器，无论切换了什么都会直接清空
+        public override void UpdateEquips()
+        {
+            // 检查玩家手中的武器是否发生变化
+            if (Player.HeldItem != lastWeapon)
+            {
+                lastWeapon = Player.HeldItem; // 更新记录的武器
+                ClearDamageTiers(); // 清空等级
+            }
+        }
+
+        private void ClearDamageTiers()
+        {
+            // 清空所有等级
+            hitCount = 0;
+            damageTier = 0;
+            lastHitTimer = 0; // 取消计时
+        }
+
         public override void ResetEffects()
         {
             if (lastHitTimer > 0)
@@ -19,7 +40,7 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
             }
             else if (damageTier > 0)
             {
-                DecreaseDamageTier();
+                DecreaseDamageTier(); // 如果连续5秒没有击中敌人，直接清空所有等级
             }
         }
 
@@ -35,13 +56,22 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
             }
         }
 
+        public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+        {
+            // 根据当前层级动态增加远程伤害
+            if (item.DamageType == DamageClass.Ranged && damageTier > 0)
+            {
+                damage += damageTier * 0.1f; // 每层级增加 10% 远程伤害
+            }
+        }
+
         private void IncreaseDamageTier()
         {
             if (damageTier < 6)
             {
                 damageTier++;
-                Player.GetDamage(DamageClass.Ranged) += 0.1f;
-                CreateParticleArrow(true); // 往上箭头
+                // 显示向上箭头粒子
+                // CreateParticleArrow(true); 
             }
         }
 
@@ -49,9 +79,11 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
         {
             if (damageTier > 0)
             {
-                Player.GetDamage(DamageClass.Ranged) -= 0.1f;
-                CreateParticleArrow(false); // 往下箭头
-                damageTier--;
+                // 显示向下箭头粒子
+                // CreateParticleArrow(false);
+
+                // 直接清空所有等级
+                damageTier = 0;
             }
         }
 
@@ -73,11 +105,12 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
                 Vector2 spawnPos = playerCenter + offset.RotatedBy(angle);
                 Vector2 velocity = new Vector2(0, upward ? -1f : 1f); // 上升或下降速度
 
-                //Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Electric, velocity, 100, particleColor, 1.2f);
-                //dust.noGravity = true;
-                //dust.fadeIn = 0.1f;
-                //dust.scale = Main.rand.NextFloat(0.8f, 1.2f);
+                Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Electric, velocity, 100, particleColor, 1.2f);
+                dust.noGravity = true;
+                dust.fadeIn = 0.1f;
+                dust.scale = Main.rand.NextFloat(0.8f, 1.2f);
             }
         }
     }
+
 }

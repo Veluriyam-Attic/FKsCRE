@@ -19,7 +19,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 30;
+            Item.damage = 42;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

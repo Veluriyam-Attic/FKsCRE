@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 60;
+            Item.damage = 28;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
 {
@@ -100,18 +101,21 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
             // 添加光效
             Lighting.AddLight(Projectile.Center, Color.Lerp(Color.Yellow, Color.LightGoldenrodYellow, 0.6f).ToVector3() * 0.6f);
 
-            // 添加黄色主题的飞行粒子
-            if (Main.rand.NextBool(3)) // 随机 1/3 概率
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    DustID.GoldFlame, // 使用金色粒子
-                    -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
-                );
-                dust.noGravity = true; // 无重力
-                dust.scale = Main.rand.NextFloat(0.6f, 1.0f); // 随机大小
+                // 添加黄色主题的飞行粒子
+                if (Main.rand.NextBool(3)) // 随机 1/3 概率
+                {
+                    Dust dust = Dust.NewDustPerfect(
+                        Projectile.Center,
+                        DustID.GoldFlame, // 使用金色粒子
+                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
+                    );
+                    dust.noGravity = true; // 无重力
+                    dust.scale = Main.rand.NextFloat(0.6f, 1.0f); // 随机大小
+                }
             }
-
         }
 
         public override void OnSpawn(IEntitySource source)
@@ -137,25 +141,29 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet
 
         public override void OnKill(int timeLeft)
         {
-            // 消亡时释放爆炸特效
-            Particle bloodsplosion2 = new CustomPulse(
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 消亡时释放爆炸特效
+                Particle bloodsplosion2 = new CustomPulse(
                 Projectile.Center, Vector2.Zero, Color.LightYellow,
                 "CalamityMod/Particles/DustyCircleHardEdge",
                 Vector2.One * 0.7f, Main.rand.NextFloat(-15f, 15f),
                 0.03f, 0.155f, 40
-            ); 
-            GeneralParticleHandler.SpawnParticle(bloodsplosion2);
+            );
+                GeneralParticleHandler.SpawnParticle(bloodsplosion2);
 
-            // 消亡时释放额外弹幕
-            if (Main.myPlayer == Projectile.owner)
-            {
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    Projectile.Center, Vector2.Zero,
-                    ModContent.ProjectileType<DestructionBulletEXP>(),
-                    (int)(Projectile.damage * 0.5f), Projectile.knockBack,
-                    Projectile.owner
-                );
+                // 消亡时释放额外弹幕
+                if (Main.myPlayer == Projectile.owner)
+                {
+                    Projectile.NewProjectile(
+                        Projectile.GetSource_FromThis(),
+                        Projectile.Center, Vector2.Zero,
+                        ModContent.ProjectileType<DestructionBulletEXP>(),
+                        (int)(Projectile.damage * 0.5f), Projectile.knockBack,
+                        Projectile.owner
+                    );
+                }
             }
             SoundEngine.PlaySound(SoundID.Item92, Projectile.Center);
         }

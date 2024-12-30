@@ -19,8 +19,9 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 
         public override void Update(Player player, ref int buffIndex)
         {
-            // 提升50%的全职业伤害
-            player.GetDamage(DamageClass.Generic) *= 1.5f;
+            // 提升？%的全职业伤害
+            //player.GetDamage(DamageClass.Generic) *= 1.15f;
+            player.GetDamage(DamageClass.Generic) += 0.1f;
         }
     }
 }

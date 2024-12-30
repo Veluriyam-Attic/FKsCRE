@@ -57,7 +57,8 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.MaoMaoChong
                 Texture2D glow = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
                 Main.EntitySpriteDraw(glow, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, glow.Size() * 0.5f, Projectile.scale, SpriteEffects.None);
             }
-
+            Texture2D glow2 = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Main.EntitySpriteDraw(glow2, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, glow2.Size() * 0.5f, Projectile.scale, SpriteEffects.None);
         }
 
         // 可以去参考一下原版的502号弹幕逻辑（在弹幕文件里面）

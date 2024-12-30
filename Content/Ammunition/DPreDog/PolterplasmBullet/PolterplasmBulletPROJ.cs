@@ -135,7 +135,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
                     Projectile.Center,
                     initialVelocity, // 使用初始速度
                     ModContent.ProjectileType<PolterplasmBulletFlower>(),
-                    Projectile.damage, // 伤害倍率为 1.0
+                    (int)((Projectile.damage)*0.75), // 伤害倍率
                     Projectile.knockBack,
                     Projectile.owner
                 );

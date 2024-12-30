@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
 {
@@ -62,19 +63,23 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
                 }
             }
 
-            // 生成紫色和浅紫色的粒子特效
-            if (Main.rand.NextBool(2)) // 控制粒子的生成频率，可以调整数字改变概率
-            {
-                Color particleColor = Main.rand.NextBool() ? Color.Purple : Color.Violet; // 随机选择紫色或浅紫色
-                Dust dust = Dust.NewDustPerfect(Projectile.position, DustID.FireworkFountain_Pink); // 使用与紫色和浅紫色类似的粒子ID
-                dust.color = particleColor;
-                dust.noGravity = true; // 不受重力影响
-                dust.scale = 1.2f; // 控制粒子的大小，可以根据需要调整
-                dust.velocity *= 0.5f; // 控制粒子的速度
-            }
 
-            // 前30帧以正弦波运动，之后开始追踪敌人
-            if (Projectile.ai[1] > 30)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 生成紫色和浅紫色的粒子特效
+                if (Main.rand.NextBool(6)) // 控制粒子的生成频率，可以调整数字改变概率
+                {
+                    Color particleColor = Main.rand.NextBool() ? Color.Purple : Color.Violet; // 随机选择紫色或浅紫色
+                    Dust dust = Dust.NewDustPerfect(Projectile.position, DustID.FireworkFountain_Pink); // 使用与紫色和浅紫色类似的粒子ID
+                    dust.color = particleColor;
+                    dust.noGravity = true; // 不受重力影响
+                    dust.scale = 0.9f; // 控制粒子的大小，可以根据需要调整
+                    dust.velocity *= 0.5f; // 控制粒子的速度
+                }
+            }
+            // 前x帧以正弦波运动，之后开始追踪敌人
+            if (Projectile.ai[1] > 100)
             {
                 // 追踪逻辑
                 NPC target = Projectile.Center.ClosestNPCAt(1800); // 查找范围内最近的敌人
@@ -112,7 +117,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
             }
             return false;
         }
-        public override bool? CanDamage() => Time >= 12f; // 初始的时候不会造成伤害，直到12为止
+        public override bool? CanDamage() => Time >= 2f; // 初始的时候不会造成伤害，直到 x 为止
 
         public override void PostDraw(Color lightColor)
         {

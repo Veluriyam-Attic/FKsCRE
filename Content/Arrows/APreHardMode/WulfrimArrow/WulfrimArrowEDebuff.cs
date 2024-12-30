@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
             {
                 if (proj.active && proj.type == ModContent.ProjectileType<WulfrimArrowPROJ>())
                 {
-                    LastKnownDamage = (int)(proj.damage * 0.5f); // 更新伤害值为最后一个 WulfrimArrowPROJ 的 50%
+                    LastKnownDamage = (int)(proj.damage * 0.25f); // 更新伤害值为最后一个 WulfrimArrowPROJ 的 25%
                 }
             }
 

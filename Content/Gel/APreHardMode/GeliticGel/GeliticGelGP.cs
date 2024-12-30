@@ -7,6 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Buffs.DamageOverTime;
+using Terraria.ID;
 
 namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
 {
@@ -22,7 +23,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
             {
                 IsGeliticGelInfused = true;
                 projectile.netUpdate = true;
-                projectile.damage = (int)(projectile.damage * 1.1f); // 减少 -10% 伤害
+                //projectile.damage = (int)(projectile.damage * 1.1f); // 减少 -10% 伤害
             }
             base.OnSpawn(projectile, source);
         }
@@ -45,6 +46,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
                     target.AddBuff(ModContent.BuffType<HolyFlames>(), 300); // 5 秒
                     target.AddBuff(31, 300);                                // 5 秒
                 }
+                target.AddBuff(BuffID.Slimed, 300); // 原版的史莱姆效果
             }
         }
     }

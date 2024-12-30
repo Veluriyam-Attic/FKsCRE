@@ -20,7 +20,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 60;
+            Item.damage = 25;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;
@@ -35,7 +35,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
-            recipe.AddIngredient<DivineGeode>(1);
+            recipe.AddIngredient<EffulgentFeather>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

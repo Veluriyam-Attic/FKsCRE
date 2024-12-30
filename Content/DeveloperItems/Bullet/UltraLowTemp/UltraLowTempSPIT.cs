@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
 {
@@ -22,8 +23,13 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {
@@ -53,30 +59,35 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             if (Projectile.timeLeft == 296)
                 Projectile.alpha = 0;
 
-            if (Projectile.timeLeft % 3 == 0)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                int particleCount = Main.rand.Next(1, 3); // 生成1到2个Dust粒子
-                for (int i = 0; i < particleCount; i++)
+                if (Projectile.timeLeft % 3 == 0)
                 {
-                    Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowflakeIce, -Projectile.velocity.X * 0.5f, -Projectile.velocity.Y * 0.5f, 150, default, 1.2f);
-                    dust.noGravity = true; // 让粒子无重力效果
-                    dust.scale *= 0.9f;    // 调整粒子大小
+                    int particleCount = Main.rand.Next(1, 3); // 生成1到2个Dust粒子
+                    for (int i = 0; i < particleCount; i++)
+                    {
+                        Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowflakeIce, -Projectile.velocity.X * 0.5f, -Projectile.velocity.Y * 0.5f, 150, default, 1.2f);
+                        dust.noGravity = true; // 让粒子无重力效果
+                        dust.scale *= 0.9f;    // 调整粒子大小
+                    }
                 }
             }
-
-
         }
 
         public override void OnSpawn(IEntitySource source)
         {
-            int particleCount = Main.rand.Next(15, 25); // 随机生成15到25个粒子
-            for (int i = 0; i < particleCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowflakeIce, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 150, default, 1.5f);
-                dust.noGravity = true; // 让粒子无重力效果
-                dust.scale *= 1.1f;    // 调整粒子大小
+                int particleCount = Main.rand.Next(15, 25); // 随机生成15到25个粒子
+                for (int i = 0; i < particleCount; i++)
+                {
+                    Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowflakeIce, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 150, default, 1.5f);
+                    dust.noGravity = true; // 让粒子无重力效果
+                    dust.scale *= 1.1f;    // 调整粒子大小
+                }
             }
-
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -88,14 +99,17 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
         }
         public override void OnKill(int timeLeft)
         {
-            int particleCount = Main.rand.Next(15, 25); // 随机生成15到25个粒子
-            for (int i = 0; i < particleCount; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowflakeIce, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 150, default, 1.5f);
-                dust.noGravity = true; // 让粒子无重力效果
-                dust.scale *= 0.7f;    // 调整粒子大小
+                int particleCount = Main.rand.Next(15, 25); // 随机生成15到25个粒子
+                for (int i = 0; i < particleCount; i++)
+                {
+                    Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.SnowflakeIce, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 150, default, 1.5f);
+                    dust.noGravity = true; // 让粒子无重力效果
+                    dust.scale *= 0.7f;    // 调整粒子大小
+                }
             }
-
         }
     }
 }

@@ -10,6 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using FKsCRE.Content.Gel.EAfterDog.AuricGel;
+using FKsCRE.Content.Gel.EAfterDog.CosmosGel;
 
 namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
 {
@@ -27,8 +28,21 @@ namespace FKsCRE.Content.DeveloperItems.Gel.Pyrogeist
                 IsPyrogeistInfused = true;
                 projectile.netUpdate = true;
 
-                // 20% 概率生成 PyrogeistPROJ
-                if (Main.rand.NextFloat() < 0.2f)
+
+                // 检查场上是否已有超过 1 个 某种 弹幕
+                int sparkCount = 0;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<PyrogeistPROJ>())
+                    {
+                        sparkCount++;
+                        if (sparkCount >= 1)
+                            return; // 如果已存在 1 个 某种 弹幕，则不释放新的
+                    }
+                }
+
+                // 2% 概率生成 PyrogeistPROJ
+                if (Main.rand.NextFloat() < 0.02f)
                 {
                     Player player = Main.player[projectile.owner];
                     Vector2 spawnPosition = player.Center;

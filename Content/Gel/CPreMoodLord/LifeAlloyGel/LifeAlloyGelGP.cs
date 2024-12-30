@@ -35,8 +35,8 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
         {
             if (IsLifeAlloyGelInfused && target.active && !target.friendly)
             {
-                // 随机生成 0 到 4 个 HyperiusSplit 弹幕
-                int splitCount = Main.rand.Next(0, 5);
+                // 随机生成 2 到 8 个 HyperiusSplit 弹幕
+                int splitCount = Main.rand.Next(2, 9);
                 for (int b = 0; b < splitCount; b++)
                 {
                     Projectile.NewProjectile(
@@ -44,7 +44,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
                         projectile.Center,
                         projectile.velocity.RotatedByRandom(0.5f) * 0.2f,
                         ModContent.ProjectileType<HyperiusSplit>(),
-                        (int)(projectile.damage / 0.75 * 0.11f), // 0.11 倍伤害
+                        (int)(projectile.damage / 0.75 * 0.21f), // 0.21 倍伤害
                         0f,
                         projectile.owner,
                         ai0: 0f,
@@ -109,42 +109,42 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
         //    }
         //}
 
-        // 寒元
-        public override void AI(Projectile projectile)
-        {
-            // 遍历所有的敌方弹幕
-            for (int i = 0; i < Main.maxProjectiles; i++)
-            {
-                Projectile enemyProjectile = Main.projectile[i];
+        // 寒元（新逻辑会导致卡顿）
+        //public override void AI(Projectile projectile)
+        //{
+        //    // 遍历所有的敌方弹幕
+        //    for (int i = 0; i < Main.maxProjectiles; i++)
+        //    {
+        //        Projectile enemyProjectile = Main.projectile[i];
 
-                // 检查条件：敌方弹幕（非友方）且尚未被减速（通过 ai[1] 标记）且仍活跃
-                if (enemyProjectile.active && !enemyProjectile.friendly && enemyProjectile.ai[1] != 1)
-                {
-                    // 再次遍历所有我方弹幕
-                    for (int j = 0; j < Main.maxProjectiles; j++)
-                    {
-                        Projectile friendlyProjectile = Main.projectile[j];
+        //        // 检查条件：敌方弹幕（非友方）且尚未被减速（通过 ai[1] 标记）且仍活跃
+        //        if (enemyProjectile.active && !enemyProjectile.friendly && enemyProjectile.ai[1] != 1)
+        //        {
+        //            // 再次遍历所有我方弹幕
+        //            for (int j = 0; j < Main.maxProjectiles; j++)
+        //            {
+        //                Projectile friendlyProjectile = Main.projectile[j];
 
-                        // 确保是被 IsLifeAlloyGelInfused 加持的我方弹幕，且仍活跃
-                        if (friendlyProjectile.active && friendlyProjectile.friendly && friendlyProjectile.GetGlobalProjectile<LifeAlloyGelGP>().IsLifeAlloyGelInfused)
-                        {
-                            // 检测碰撞
-                            if (Collision.CheckAABBvAABBCollision(
-                                    new Vector2(friendlyProjectile.Hitbox.X, friendlyProjectile.Hitbox.Y),
-                                    new Vector2(friendlyProjectile.Hitbox.Width, friendlyProjectile.Hitbox.Height),
-                                    new Vector2(enemyProjectile.Hitbox.X, enemyProjectile.Hitbox.Y),
-                                    new Vector2(enemyProjectile.Hitbox.Width, enemyProjectile.Hitbox.Height)))
-                            {
-                                // 处理敌方弹幕减速
-                                enemyProjectile.velocity *= 0.6f; // 减速为原来的 60%
-                                enemyProjectile.ai[1] = 1; // 标记为已减速，避免重复触发
-                                enemyProjectile.netUpdate = true; // 同步网络数据
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //                // 确保是被 IsLifeAlloyGelInfused 加持的我方弹幕，且仍活跃
+        //                if (friendlyProjectile.active && friendlyProjectile.friendly && friendlyProjectile.GetGlobalProjectile<LifeAlloyGelGP>().IsLifeAlloyGelInfused)
+        //                {
+        //                    // 检测碰撞
+        //                    if (Collision.CheckAABBvAABBCollision(
+        //                            new Vector2(friendlyProjectile.Hitbox.X, friendlyProjectile.Hitbox.Y),
+        //                            new Vector2(friendlyProjectile.Hitbox.Width, friendlyProjectile.Hitbox.Height),
+        //                            new Vector2(enemyProjectile.Hitbox.X, enemyProjectile.Hitbox.Y),
+        //                            new Vector2(enemyProjectile.Hitbox.Width, enemyProjectile.Hitbox.Height)))
+        //                    {
+        //                        // 处理敌方弹幕减速
+        //                        enemyProjectile.velocity *= 0.6f; // 减速为原来的 60%
+        //                        enemyProjectile.ai[1] = 1; // 标记为已减速，避免重复触发
+        //                        enemyProjectile.netUpdate = true; // 同步网络数据
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
     }
 }

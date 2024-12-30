@@ -28,7 +28,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
             Projectile.timeLeft = 100;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 2;
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

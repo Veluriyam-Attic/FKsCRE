@@ -69,23 +69,28 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             // 弹幕保持直线运动并逐渐加速
             Projectile.velocity *= 1.01f;
 
-            if (Projectile.numUpdates % 3 == 0)
-            {
-                // 将火花的颜色改为冰元素的颜色
-                Color outerSparkColor = new Color(173, 216, 230); // 淡蓝色的冰元素颜色
-                float scaleBoost = MathHelper.Clamp(Projectile.ai[0] * 0.005f, 0f, 2f);
-                float outerSparkScale = 1.2f + scaleBoost;
-                SparkParticle spark = new SparkParticle(Projectile.Center, Projectile.velocity, false, 7, outerSparkScale, outerSparkColor);
-                GeneralParticleHandler.SpawnParticle(spark);
-            }
 
-            // 在飞行路径上留下冰元素粒子特效
-            if (Main.rand.NextBool(4)) // 控制粒子生成频率（1/4 概率）
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Dust iceDust = Dust.NewDustPerfect(Projectile.Center, DustID.SnowflakeIce, Projectile.velocity * 0.5f, 150, Color.LightBlue, 1.2f);
-                iceDust.noGravity = true; // 使粒子无重力
-                iceDust.velocity *= 0.3f; // 调整粒子速度
-                iceDust.fadeIn = 1.5f; // 使粒子有一个渐入效果
+                if (Projectile.numUpdates % 3 == 0)
+                {
+                    // 将火花的颜色改为冰元素的颜色
+                    Color outerSparkColor = new Color(173, 216, 230); // 淡蓝色的冰元素颜色
+                    float scaleBoost = MathHelper.Clamp(Projectile.ai[0] * 0.005f, 0f, 2f);
+                    float outerSparkScale = 1.2f + scaleBoost;
+                    SparkParticle spark = new SparkParticle(Projectile.Center, Projectile.velocity, false, 7, outerSparkScale, outerSparkColor);
+                    GeneralParticleHandler.SpawnParticle(spark);
+                }
+
+                // 在飞行路径上留下冰元素粒子特效
+                if (Main.rand.NextBool(4)) // 控制粒子生成频率（1/4 概率）
+                {
+                    Dust iceDust = Dust.NewDustPerfect(Projectile.Center, DustID.SnowflakeIce, Projectile.velocity * 0.5f, 150, Color.LightBlue, 1.2f);
+                    iceDust.noGravity = true; // 使粒子无重力
+                    iceDust.velocity *= 0.3f; // 调整粒子速度
+                    iceDust.fadeIn = 1.5f; // 使粒子有一个渐入效果
+                }
             }
         }
 
