@@ -18,17 +18,65 @@ namespace FKsCRE.Content.Gel.APreHardMode.AerialiteGel
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            // 检查弹幕是否由含有弹药的武器生成，且弹药类型为 AerialiteGel
+            // 检查弹幕是否由 AerialiteGel 弹药生成
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<AerialiteGel>())
             {
-                // 标记弹幕为已附魔
+                // 标记为已附魔
                 IsAerialiteGelInfused = true;
 
-                // 确保在多人游戏中状态同步
+                // 检查场上是否已存在 AerialiteGelCloud 弹幕
+                bool cloudExists = false;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<AerialiteGelCloud>())
+                    {
+                        cloudExists = true;
+                        break;
+                    }
+                }
+
+                // 如果不存在 AerialiteGelCloud，则生成一个新的
+                if (!cloudExists)
+                {
+                    Projectile.NewProjectile(
+                        projectile.GetSource_FromThis(),
+                        projectile.Center,
+                        Vector2.Zero, // 无速度
+                        ModContent.ProjectileType<AerialiteGelCloud>(),
+                        (int)(projectile.damage * 2.5f),
+                        projectile.knockBack,
+                        projectile.owner
+                    );
+                }
+
+                // 对玩家施加反作用力（增加速度上限逻辑和计时器逻辑）
+                Player player = Main.player[projectile.owner];
+
+                // 定义速度上限
+                float speedLimit = 65f * 0.022352f * 9;
+
+                // 检查玩家当前速度是否超过上限
+                if (player.velocity.Length() > speedLimit)
+                {
+                    return; // 如果超过上限，则不施加后坐力
+                }
+
+                if (!player.GetModPlayer<AerialiteGelPlayer>().RecoilCooldownActive)
+                {
+                    Vector2 recoilForce = -projectile.velocity * 1.5f;
+                    player.velocity += recoilForce;
+
+                    // 激活冷却计时器
+                    player.GetModPlayer<AerialiteGelPlayer>().StartRecoilCooldown();
+                }
+
+                // 同步网络状态
                 projectile.netUpdate = true;
             }
+
             base.OnSpawn(projectile, source);
         }
+
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {

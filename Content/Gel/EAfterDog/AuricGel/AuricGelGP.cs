@@ -10,6 +10,8 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Sounds;
+using Terraria.Audio;
 
 namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
 {
@@ -81,6 +83,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
                         proj.usesLocalNPCImmunity = true;
                         proj.DamageType = DamageClass.Ranged; // 改为射手伤害类型
                     }
+                    SoundEngine.PlaySound(CommonCalamitySounds.LightningSound, projectile.Center);
                 }
             }
         }

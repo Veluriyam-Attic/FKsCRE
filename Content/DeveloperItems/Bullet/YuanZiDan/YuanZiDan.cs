@@ -12,6 +12,7 @@ using CalamityMod.Items.DraedonMisc;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
 {
@@ -36,14 +37,24 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan
             Item.ammo = AmmoID.Bullet;
         }
 
+        //public override void AddRecipes()
+        //{
+        //    Recipe recipe = CreateRecipe(1);
+        //    recipe.AddIngredient(ItemID.NanoBullet, 3996);
+        //    recipe.AddIngredient<AuricQuantumCoolingCell>(1);
+        //    recipe.AddTile(TileID.Anvils);
+        //    recipe.Register();
+        //}
+
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient(ItemID.NanoBullet, 3996);
-            recipe.AddIngredient<AuricQuantumCoolingCell>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient<RecitationoftheBeast>(1);
+            recipe.AddCondition(Condition.NearShimmer);
+            //recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
+
 
     }
 }

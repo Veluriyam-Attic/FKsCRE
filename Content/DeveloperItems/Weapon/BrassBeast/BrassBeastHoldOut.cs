@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -27,6 +26,9 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
 
         private int frameCounter = 0; // 帧计数器
 
+        //public override Vector2 GunTipPosition => Projectile.Center + Vector2.UnitX.RotatedBy(Projectile.rotation) * (Projectile.width * 0.5f + 10f);
+        public override Vector2 GunTipPosition => Projectile.Center + Vector2.UnitX.RotatedBy(Projectile.rotation) * (Projectile.width * 0.5f + 0f);
+
         public override void HoldoutAI()
         {
             Player player = Main.player[Projectile.owner];
@@ -35,7 +37,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             if (frameCounter % 15 == 0) // 每15帧发射一次子弹
             {
                 ShootProjectile(player);
-                SpawnParticles(player);
+                CreateShell();
+                CreateParticles();
                 OffsetLengthFromArm -= 15f; // 模拟后坐力
             }
 
@@ -51,7 +54,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             Vector2 direction = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX);
             Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
-                Projectile.Center,
+                GunTipPosition,
                 direction * 20f, // 子弹速度
                 ModContent.ProjectileType<BrassBeastPROJ>(),
                 Projectile.damage,
@@ -61,55 +64,47 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             SoundEngine.PlaySound(SoundID.Item40, Projectile.Center); // 发射音效
         }
 
-        private void SpawnParticles(Player player)
+        private void CreateShell()
         {
-            // 生成重型烟雾
-            for (int i = 0; i < 5; i++)
+            Vector2 shellPosition = GunTipPosition;
+            Vector2 shellDirection = -Vector2.UnitX.RotatedBy(Projectile.rotation) + new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f));
+            Point anchorPos = new Point((int)shellPosition.X / 16, (int)shellPosition.Y / 16);
+
+            Color burnColor = Main.rand.NextBool(4) ? Color.PaleGreen : Main.rand.NextBool(4) ? Color.PaleTurquoise : Color.OrangeRed;
+            Particle shell = new TitaniumRailgunShell(shellPosition, anchorPos, Projectile.rotation + MathHelper.PiOver2, burnColor);
+            GeneralParticleHandler.SpawnParticle(shell);
+        }
+
+        private void CreateParticles()
+        {
+            // 枪口粒子特效
+            for (int i = 0; i < 15; i++)
             {
-                Vector2 smokePosition = Projectile.Center + new Vector2(0, Main.rand.NextFloat(-5, 5));
-                Particle heavySmoke = new HeavySmokeParticle(
-                    smokePosition,
-                    Main.rand.NextVector2Circular(2f, 2f),
-                    Color.Goldenrod,
-                    Main.rand.Next(40, 60),
-                    Main.rand.NextFloat(1.2f, 1.8f),
-                    0.8f,
-                    Main.rand.NextFloat(-1f, 1f),
-                    true
-                );
-                GeneralParticleHandler.SpawnParticle(heavySmoke);
+                Vector2 randomDirection = new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)).SafeNormalize(Vector2.UnitX);
+                float speed = Main.rand.NextFloat(2f, 4f);
+                int dustType = Main.rand.Next(new int[] { DustID.Smoke, DustID.RainbowTorch, DustID.GemDiamond });
+
+                // 上后方粒子
+                Dust.NewDustPerfect(GunTipPosition, dustType, -randomDirection * speed, 0, default, 1.2f).noGravity = true;
+
+                // 下后方粒子
+                Dust.NewDustPerfect(GunTipPosition, dustType, randomDirection * speed, 0, default, 1.2f).noGravity = true;
             }
 
-            // 生成尖刺型粒子
-            for (int i = 0; i < 3; i++)
+            // 尖字型粒子特效
+            for (int i = 0; i < 5; i++)
             {
-                Vector2 offset = new Vector2(Main.rand.NextFloat(-20f, 20f), 0);
+                float angle = MathHelper.ToRadians(120) * i;
+                Vector2 particleDirection = Vector2.UnitX.RotatedBy(Projectile.rotation + angle);
                 PointParticle spark = new PointParticle(
-                    Projectile.Center - Projectile.velocity + offset,
-                    new Vector2(0, -5f).RotatedByRandom(MathHelper.ToRadians(20)),
+                    GunTipPosition,
+                    particleDirection * 5f, // 固定方向与速度
                     false,
                     20,
                     1.3f,
                     Color.Orange
                 );
                 GeneralParticleHandler.SpawnParticle(spark);
-            }
-
-            // 生成轻型烟雾
-            for (int i = 0; i < 10; i++)
-            {
-                Vector2 smokePos = Projectile.Center + new Vector2(Main.rand.NextFloat(-10f, 10f), Main.rand.NextFloat(-5f, 5f));
-                Particle lightSmoke = new HeavySmokeParticle(
-                    smokePos,
-                    Vector2.Zero,
-                    Color.Yellow * 0.5f,
-                    20,
-                    Main.rand.NextFloat(0.8f, 1.5f),
-                    0.3f,
-                    Main.rand.NextFloat(-1f, 1f),
-                    true
-                );
-                GeneralParticleHandler.SpawnParticle(lightSmoke);
             }
         }
     }

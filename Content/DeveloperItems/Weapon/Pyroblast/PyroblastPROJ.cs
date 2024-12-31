@@ -14,6 +14,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using FKsCRE.CREConfigs;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 {
@@ -29,55 +30,65 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
+        //public override bool PreDraw(ref Color lightColor)
+        //{
+        //    // 获取 SpriteBatch 和投射物纹理
+        //    SpriteBatch spriteBatch = Main.spriteBatch;
+        //    Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Weapon/Pyroblast/PyroblastPROJ").Value;
+
+        //    // 遍历投射物的旧位置数组，绘制光学拖尾效果
+        //    for (int i = 0; i < Projectile.oldPos.Length; i++)
+        //    {
+        //        // 计算颜色插值值，使颜色在旧位置之间平滑过渡
+        //        float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+
+        //        // 使用天蓝色渐变
+        //        Color color = Color.Lerp(Color.OrangeRed, Color.Orange, colorInterpolation) * 0.4f;
+        //        color.A = 0;
+
+        //        // 计算绘制位置，将位置调整到碰撞箱的中心
+        //        Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+
+        //        // 计算外部和内部的颜色
+        //        Color outerColor = color;
+        //        Color innerColor = color * 0.5f;
+
+        //        // 计算强度，使拖尾逐渐变弱
+        //        float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
+        //        intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
+        //        if (Projectile.timeLeft <= 60)
+        //        {
+        //            intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
+        //        }
+
+        //        // 计算外部和内部的缩放比例，使拖尾具有渐变效果
+        //        Vector2 outerScale = new Vector2(2f) * intensity;
+        //        Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
+        //        outerColor *= intensity;
+        //        innerColor *= intensity;
+
+        //        // 绘制外部的拖尾效果，并应用旋转
+        //        Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
+
+        //        // 绘制内部的拖尾效果，并应用旋转
+        //        Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
+        //    }
+
+        //    // 绘制默认的弹幕，并应用旋转
+        //    Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
+        //    return false;
+        //}
         public override bool PreDraw(ref Color lightColor)
         {
-            // 获取 SpriteBatch 和投射物纹理
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Weapon/Pyroblast/PyroblastPROJ").Value;
-
-            // 遍历投射物的旧位置数组，绘制光学拖尾效果
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 计算颜色插值值，使颜色在旧位置之间平滑过渡
-                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
-
-                // 使用天蓝色渐变
-                Color color = Color.Lerp(Color.OrangeRed, Color.Orange, colorInterpolation) * 0.4f;
-                color.A = 0;
-
-                // 计算绘制位置，将位置调整到碰撞箱的中心
-                Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-
-                // 计算外部和内部的颜色
-                Color outerColor = color;
-                Color innerColor = color * 0.5f;
-
-                // 计算强度，使拖尾逐渐变弱
-                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
-                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
-                if (Projectile.timeLeft <= 60)
-                {
-                    intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
-                }
-
-                // 计算外部和内部的缩放比例，使拖尾具有渐变效果
-                Vector2 outerScale = new Vector2(2f) * intensity;
-                Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
-                outerColor *= intensity;
-                innerColor *= intensity;
-
-                // 绘制外部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
-
-                // 绘制内部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
+                // 画残影效果
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+                return false;
             }
-
-            // 绘制默认的弹幕，并应用旋转
-            Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-            return false;
+            return true;
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -88,16 +99,12 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
-            Projectile.MaxUpdates = 3;
+            Projectile.MaxUpdates = 4;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
         }
-        public static int HomingMode = 0; // 0: 直线飞行, 1: 弱追踪, 2: 强追踪
-        public static bool EnableEnhancedExplosion = false; // 是否开启增强爆炸
-        public static bool EnableFireDebuff = false; // 控制火系 debuff 的开关
-
-
+        public static bool EnableHoming = false; // 控制是否启用追踪逻辑
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
@@ -130,12 +137,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             }
             else
             {
-                // 根据追踪模式改变行为
-                if (HomingMode == 1)
-                {
-                    WeakHoming();
-                }
-                else if (HomingMode == 2)
+                // 根据是否启用追踪逻辑决定飞行行为
+                if (EnableHoming)
                 {
                     StrongHoming();
                 }
@@ -159,13 +162,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // 只有当 EnableFireDebuff 为 true 时才施加火系 debuff
-            if (EnableFireDebuff)
-            {
-                target.AddBuff(BuffID.OnFire3, 240); // 添加“烈焰”效果，持续 4 秒
-                target.AddBuff(BuffID.Daybreak, 240); // 添加“日曜”效果，持续 4 秒
-            }
-
+            target.AddBuff(BuffID.OnFire3, 240); // 添加“烈焰”效果，持续 4 秒
+            target.AddBuff(BuffID.Daybreak, 240); // 添加“日曜”效果，持续 4 秒        
 
             // 抛射橙色粒子特效
             int particleCount = Main.rand.Next(10, 16); // 随机生成 10 到 15 个粒子
@@ -177,51 +175,23 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
                 GeneralParticleHandler.SpawnParticle(spark);
             }
 
-            if (EnableEnhancedExplosion)
-            {
-                // 创建白色特效
-                Particle explosion = new DetailedExplosion(
-                    Projectile.Center,            // 粒子生成位置
-                    Vector2.Zero,                 // 无初始速度
-                    Color.White * 0.9f,           // 白色粒子，带透明度
-                    Vector2.One,                  // 粒子缩放
-                    Main.rand.NextFloat(-5, 5),   // 随机旋转角度
-                    0f,                           // 初始加速度
-                    0.28f,                        // 粒子尺寸倍率
-                    10                            // 持续时间
-                );
-                // 生成粒子
-                GeneralParticleHandler.SpawnParticle(explosion);
-                SoundEngine.PlaySound(SoundID.Item62, Projectile.position);
-            }
-            else
-            {
-                // 普通爆炸
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    Projectile.Center,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<FuckYou>(), // 替换为普通爆炸的弹幕类型
-                    (int)(Projectile.damage * 0.5f),
-                    Projectile.knockBack,
-                    Projectile.owner
-                );
-            }
+            // 普通爆炸
+            Projectile.NewProjectile(
+                Projectile.GetSource_FromThis(),
+                Projectile.Center,
+                Vector2.Zero,
+                ModContent.ProjectileType<FuckYou>(), // 替换为普通爆炸的弹幕类型
+                (int)(Projectile.damage * 0.5f),
+                Projectile.knockBack,
+                Projectile.owner
+            );
+          
         }
 
-        private void WeakHoming()
-        {
-            NPC target = Projectile.Center.ClosestNPCAt(100); // 寻找最近的敌人
-            if (target != null)
-            {
-                Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 10f, 0.08f);
-            }
-        }
 
         private void StrongHoming()
         {
-            NPC target = Projectile.Center.ClosestNPCAt(800); // 寻找最近的敌人
+            NPC target = Projectile.Center.ClosestNPCAt(1000); // 寻找最近的敌人
             if (target != null)
             {
                 Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);

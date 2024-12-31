@@ -51,7 +51,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
             Projectile.MaxUpdates = MaxUpdate;
             Projectile.penetrate = 201;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = Main.getGoodWorld ? 1 : 25;
+            Projectile.localNPCHitCooldown = Main.getGoodWorld ? 1 : -1;
             Projectile.arrow = Main.getGoodWorld;
         }
 
@@ -216,7 +216,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            modifiers.FinalDamage *= 2f; // 双倍伤害
+            modifiers.FinalDamage *= 0.085f;
         }
 
 

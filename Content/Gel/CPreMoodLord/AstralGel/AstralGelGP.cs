@@ -69,7 +69,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
                 float totalDistance = (float)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
 
                 // 如果弹幕飞行距离达到10个tile（x * 16像素）
-                if (totalDistance >= 160f)
+                if (totalDistance >= 18 * 16f)
                 {
                     projectile.velocity = Vector2.Zero; // 强制静止
                     isStatic = true; // 设置静止状态

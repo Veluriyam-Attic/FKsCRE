@@ -144,7 +144,9 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
             }
 
             // 施加 DivineGeodeBulletEDebuff，持续 600 帧
-            target.AddBuff(ModContent.BuffType<DivineGeodeBulletEDebuff>(), 600);
+            //target.AddBuff(ModContent.BuffType<DivineGeodeBulletEDebuff>(), 600);
+
+            target.Calamity().miscDefenseLoss = 10;
         }
 
         public override void OnKill(int timeLeft)

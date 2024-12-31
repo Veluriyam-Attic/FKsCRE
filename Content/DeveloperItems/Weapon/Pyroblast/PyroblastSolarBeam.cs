@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -11,20 +12,40 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
         public new string LocalizationCategory => "DeveloperItems.Pyroblast";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
+        public static bool IsEnhanced = false; // 是否被强化
+
         public override void SetDefaults()
         {
             Projectile.width = 4;
             Projectile.height = 4;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Magic;
-            Projectile.penetrate = 1;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.penetrate = IsEnhanced ? 15 : 1; // 判断是否强化
             Projectile.extraUpdates = 100;
             Projectile.timeLeft = 300;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 14;
         }
 
         public override void AI()
         {
             Projectile.localAI[0] += 1f;
+
+            // 释放金色粒子特效
+            if (IsEnhanced && Projectile.localAI[0] % 3 == 0)
+            {
+                Vector2 particleDirection = Projectile.velocity.SafeNormalize(Vector2.Zero);
+                PointParticle spark = new PointParticle(
+                    Projectile.Center,
+                    particleDirection * 5f, // 固定方向与速度
+                    false,
+                    20,
+                    1.3f,
+                    Color.Gold // 颜色改为金色
+                );
+                GeneralParticleHandler.SpawnParticle(spark);
+            }
+
             if (Projectile.localAI[0] > 4f)
             {
                 for (int i = 0; i < 4; i++)
@@ -50,7 +71,5 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
                     Main.projectile[proj].DamageType = DamageClass.Magic;
             }
         }
-
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.Daybreak, 180);
     }
 }

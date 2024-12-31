@@ -130,8 +130,8 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.AerialiteBullet
             // 玩家速度的单位是像素/帧，而 1 mph 对应的速度约为 0.022352 像素/帧
             // 因此，65 mph 转换为像素/ 帧的速度上限为 65 * 0.022352 ≈ 1.45388 像素 / 帧
 
-            // 定义速度上限（65 mph 转为像素/帧）
-            float speedLimit = 65f * 0.022352f * 9; // ≈ 1.45388 像素/帧
+            // 定义速度上
+            float speedLimit = 65f * 0.022352f * 9;
 
             // 检查玩家当前速度是否超过上限
             if (player.velocity.Length() > speedLimit)
@@ -158,17 +158,18 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.AerialiteBullet
             target.AddBuff(ModContent.BuffType<AerialiteBulletEBuff>(), 180);
 
             // 吸引逻辑
-            float attractionRange = 600f; // 吸引范围，与 Cyclone 保持一致
+            float attractionRange = 600f; // 吸引范围
             Vector2 projectileCenter = Projectile.Center; // 弹幕中心位置
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
-                // 筛选符合条件的敌人
-                if (npc.CanBeChasedBy(Projectile, false)
+                // 筛选符合条件的敌人（排除被击中的敌人）
+                if (npc.active
+                    && npc != target // 忽略被击中的敌人
+                    && npc.CanBeChasedBy(Projectile, false)
                     && Collision.CanHit(projectileCenter, 1, 1, npc.Center, 1, 1)
-                    && !npc.friendly
-                    && npc != target) // 不包括刚刚命中的目标
+                    && !npc.friendly)
                 {
                     // 计算与弹幕的距离
                     float distance = Vector2.Distance(projectileCenter, npc.Center);

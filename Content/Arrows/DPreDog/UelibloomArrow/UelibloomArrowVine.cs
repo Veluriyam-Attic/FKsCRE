@@ -26,8 +26,8 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = false;
-            Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
-            Projectile.localNPCHitCooldown = 50; // 无敌帧冷却时间
+            Projectile.usesIDStaticNPCImmunity = true; // 弹幕使用本地无敌帧
+            Projectile.idStaticNPCHitCooldown = 65; // 无敌帧冷却时间
             Projectile.alpha = 255;
         }
 

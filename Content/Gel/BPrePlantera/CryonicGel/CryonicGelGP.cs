@@ -9,6 +9,8 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod;
 
 namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
 {
@@ -33,9 +35,11 @@ namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
         {
             if (IsCryonicGelInfused && target.active && !target.friendly)
             {
-                target.AddBuff(ModContent.BuffType<CryonicGelEDebuff>(), 300); // 施加 5 秒的 debuff
+                // 用的是反器材大狙弹幕（AMRShot）那里的代码
+                target.Calamity().miscDefenseLoss = 15;
             }
         }
+
 
         //public override void AI(Projectile projectile)
         //{

@@ -16,6 +16,7 @@ using CalamityMod.NPCs.Astral;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Particles;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 {
@@ -26,7 +27,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 
         public override void SetDefaults()
         {
-            Item.damage = 250;
+            Item.damage = 350;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = Item.useAnimation = OriginalUseTime;
             Item.shoot = ModContent.ProjectileType<PyroblastHoldOut>();
@@ -45,24 +46,124 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             Item.Calamity().devItem = true;
             Item.useStyle = ItemUseStyleID.Shoot;
         }
-
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
-
+      
         public override bool CanConsumeAmmo(Item ammo, Player player) => player.ownedProjectileCounts[Item.shoot] != 0;
 
         public override void HoldItem(Player player) => player.Calamity().mouseRotationListener = true;
 
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+        public override Vector2? HoldoutOffset() => new Vector2(-25, 0);
+
+        public override bool CanUseItem(Player player)
+        {
+            // 平衡准则：
+            // 右键追踪略高于死神濯身20%
+            // 左见群体约等于纯原怒野110%的水平
+            if (player.altFunctionUse == 2) // 右键逻辑
+            {
+                Item.noUseGraphic = false; // 显示武器
+                Item.noMelee = false; // 启用近战
+                Item.damage = 700; // 设置右键伤害
+                Item.useTime = Item.useAnimation = 60; // 使用时间
+                Item.shoot = ModContent.ProjectileType<AuricArrowBALL>(); // 右键发射的弹幕
+                Item.shootSpeed = 10f; // 设置弹幕速度
+                Item.UseSound = SoundID.Item61; // 播放右键音效
+            }
+            else // 左键逻辑
+            {
+                Item.noUseGraphic = true;
+                Item.noMelee = true;
+                Item.damage = 350;
+                Item.useTime = Item.useAnimation = OriginalUseTime;
+                Item.shoot = ModContent.ProjectileType<PyroblastHoldOut>();
+                Item.shootSpeed = 15f;
+                Item.UseSound = null; // 左键不播放音效
+            }
+            return true;
+        }
+
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectileDirect(
-                source,
-                player.MountedCenter,
-                Vector2.Zero,
-                ModContent.ProjectileType<PyroblastHoldOut>(),
-                Item.damage,
-                Item.knockBack,
-                player.whoAmI
-            ).velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+            if (player.altFunctionUse == 2) // 右键逻辑
+            {
+                // 释放8个弹幕，围绕玩家均匀分布
+                for (int i = 0; i < 8; i++)
+                {
+                    float angle = MathHelper.TwoPi / 8 * i; // 计算每个弹幕的角度
+                    Vector2 spawnVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 7f; // 计算速度
+                    Projectile projectile = Projectile.NewProjectileDirect(
+                        source,
+                        player.Center,
+                        spawnVelocity,
+                        ModContent.ProjectileType<AuricArrowBALL>(),
+                        damage,
+                        knockback,
+                        player.whoAmI
+                    );
+                    projectile.scale = 1.7f; // 设置弹幕的缩放比例
+                }
+
+                // 释放粒子特效
+                for (int i = 0; i < 50; i++)
+                {
+                    // 随机生成的环形粒子
+                    float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                    float distance = Main.rand.NextFloat(20f, 80f);
+                    Vector2 dustPosition = player.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * distance;
+                    Dust dust = Dust.NewDustPerfect(dustPosition, DustID.GoldCoin, Vector2.Zero, 150, Color.LightYellow, 3.5f);
+                    dust.velocity = Vector2.UnitY.RotatedBy(angle) * Main.rand.NextFloat(2f, 4f);
+                    dust.noGravity = true;
+                }
+
+                // 释放规则粒子链
+                for (int i = 0; i < 8; i++)
+                {
+                    float angle = MathHelper.TwoPi / 8 * i;
+                    for (int j = 1; j <= 5; j++) // 每条链包含多个粒子
+                    {
+                        Vector2 chainPosition = player.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * j * 15f;
+                        Dust chainDust = Dust.NewDustPerfect(chainPosition, DustID.DesertTorch, Vector2.Zero, 100, Color.Orange, 2.5f + j * 0.1f);
+                        chainDust.velocity = Vector2.Zero; // 静止粒子
+                        chainDust.noGravity = true;
+                    }
+                }
+
+                // 释放鼠标方向粒子
+                for (int i = 0; i < 12; i++)
+                {
+                    float randomAngle = Main.rand.NextFloat(-MathHelper.ToRadians(15), MathHelper.ToRadians(15)); // 随机角度范围 -15 至 15 度
+                    Vector2 direction = (Main.MouseWorld - player.Center).SafeNormalize(Vector2.UnitX).RotatedBy(randomAngle);
+                    Vector2 positionOffset = player.Center + direction * Main.rand.NextFloat(10f, 40f); // 随机位置偏移
+                    Particle smoke = new HeavySmokeParticle(
+                        positionOffset,
+                        direction * Main.rand.NextFloat(12f, 42f), // 随机速度
+                        Color.Lerp(Color.Orange, Color.Yellow, Main.rand.NextFloat()), // 随机混合颜色
+                        Main.rand.Next(30, 60), // 粒子存活时间
+                        Main.rand.NextFloat(0.5f, 1.25f), // 粒子大小
+                        1.0f,
+                        MathHelper.ToRadians(Main.rand.NextFloat(-5f, 5f)), // 随机旋转速度
+                        true // 强视觉效果
+                    );
+                    GeneralParticleHandler.SpawnParticle(smoke);
+                }
+            }
+            else // 左键逻辑
+            {
+                Projectile.NewProjectileDirect(
+                    source,
+                    player.MountedCenter,
+                    Vector2.Zero,
+                    ModContent.ProjectileType<PyroblastHoldOut>(),
+                    Item.damage,
+                    Item.knockBack,
+                    player.whoAmI
+                ).velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+            }
             return false;
         }
 
@@ -70,13 +171,11 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
         {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient<PlagueTaintedSMG>(1);
-            recipe.AddIngredient<ClockGatlignum>(1);
-            recipe.AddIngredient<Arietes41>(1);
-            recipe.AddIngredient<Shroomer>(1);
-            recipe.AddIngredient<ConferenceCall>(1);
             recipe.AddIngredient<Lazhar>(1);
+            recipe.AddIngredient<Scorpio>(1);
+            recipe.AddIngredient(ItemID.IllegalGunParts, 2);
             recipe.AddIngredient(ItemID.LunarBar, 10);
-            //recipe.AddCondition(Condition.DownedMoonLord);
+            recipe.AddIngredient<DivineGeode>(10);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }

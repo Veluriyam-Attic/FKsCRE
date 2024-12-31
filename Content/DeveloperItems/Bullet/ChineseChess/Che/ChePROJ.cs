@@ -58,7 +58,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ChineseChess.Che
             Projectile.rotation = Projectile.velocity.ToRotation();
 
             // 子弹在短时间后变得可见
-            if (Projectile.timeLeft == 299)
+            if (Projectile.timeLeft == 119)
                 Projectile.alpha = 0;
 
 

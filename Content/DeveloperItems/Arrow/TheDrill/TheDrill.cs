@@ -39,9 +39,10 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
         {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient(ItemID.DrillContainmentUnit, 1); // 钻头控制装置
-            recipe.AddIngredient(ItemID.WoodenArrow, 3996);
+            //recipe.AddIngredient(ItemID.WoodenArrow, 3996);
             //recipe.AddIngredient<WulfrumDiggingTurtle>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddCondition(Condition.NearShimmer);
+            //recipe.AddTile(TileID.Anvils);
             recipe.Register();
 
             Recipe recipe2 = CreateRecipe(1);
@@ -54,7 +55,6 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TheDrill
             recipe2.AddIngredient(ItemID.TitaniumDrill, 1);
             recipe2.AddIngredient(ItemID.Drax, 1);
             recipe2.AddIngredient(ItemID.ChlorophyteDrill, 1);
-
             // 大钻石
             recipe2.AddIngredient(ItemID.LargeDiamond, 1);
             recipe2.AddTile(TileID.Anvils);

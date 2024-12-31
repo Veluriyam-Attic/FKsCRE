@@ -15,6 +15,7 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Magic;
 
 namespace FKsCRE.Content.DeveloperItems.Arrow.TimeLeaper
 {
@@ -52,12 +53,12 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.TimeLeaper
             return false; // 返回 false 以避免默认发射逻辑
         }
 
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient<TimeBolt>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddCondition(Condition.NearShimmer);
+            //recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
     }

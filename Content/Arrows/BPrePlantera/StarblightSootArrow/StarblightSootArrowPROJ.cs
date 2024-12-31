@@ -57,24 +57,51 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
             Projectile.arrow = true;
             Projectile.extraUpdates = 1;
         }
+        public override void OnSpawn(IEntitySource source)
+        {
+            // 定义随机生成角度的范围
+            float minAngle = -20f; // 左偏最大角度
+            float maxAngle = 20f;  // 右偏最大角度
+
+            // 随机生成三个角度
+            float[] randomAngles = new float[3];
+            for (int i = 0; i < 3; i++)
+            {
+                randomAngles[i] = Main.rand.NextFloat(minAngle, maxAngle); // 生成 [-20, 20] 的随机角度
+            }
+
+            // 遍历随机角度，生成特效弹幕
+            foreach (float angle in randomAngles)
+            {
+                // 计算旋转后的速度向量，飞行速度为主弹幕速度的 0.5x 到 1.5x
+                Vector2 sparkVelocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(angle)) * Main.rand.NextFloat(0.5f, 1.5f);
+
+                // 释放 StarblightSootArrowSpark
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    Projectile.Center,
+                    sparkVelocity,
+                    ModContent.ProjectileType<StarblightSootArrowSpark>(),
+                    (int)(Projectile.damage * 0.03f),
+                    Projectile.knockBack,
+                    Projectile.owner
+                );
+            }
+        }
+
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // 添加Buff
             target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300); // 幻星感染
 
-            // 检查是否启用了特效
-            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
-            {
-                // 360度中随机选择三个角度释放Spark弹幕
-                for (int i = 0; i < 3; i++)
-                {
-                    float randomAngle = Main.rand.NextFloat(MathHelper.TwoPi);
-                    Vector2 sparkVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * 10f; // 自定义速度
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, sparkVelocity, ModContent.ProjectileType<StarblightSootArrowSpark>(), (int)(damageDone * 0.5f), hit.Knockback, Projectile.owner);
-                }
-            }
-                
+            //// 360度中随机选择三个角度释放Spark弹幕
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    float randomAngle = Main.rand.NextFloat(MathHelper.TwoPi);
+            //    Vector2 sparkVelocity = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * 10f; // 自定义速度
+            //    Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, sparkVelocity, ModContent.ProjectileType<StarblightSootArrowSpark>(), (int)(damageDone * 0.5f), hit.Knockback, Projectile.owner);
+            //}
         }
 
         public override void AI()

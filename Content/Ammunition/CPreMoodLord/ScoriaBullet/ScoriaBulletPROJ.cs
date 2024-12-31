@@ -136,7 +136,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
                 Projectile.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<FuckYou>(), // 爆炸弹幕
-                (int)(Projectile.damage * 0.75f),      // 伤害倍率
+                (int)(Projectile.damage * 0.5f),      // 伤害倍率
                 Projectile.knockBack,
                 Projectile.owner
             );
@@ -147,20 +147,20 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
             // 计数器加 1
             killCounter++;
 
-            // 如果计数器达到 25，释放 SubductionFlameburst 弹幕
-            if (killCounter >= 25)
-            {
-                Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    Projectile.Center,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<ScoriaBulletFlameburst>(), // 释放的弹幕
-                    (int)(Projectile.damage * 15.0f),                   // 伤害倍率
-                    Projectile.knockBack,
-                    Projectile.owner
-                );
-                killCounter = 0; // 重置计数器
-            }
+            //// 如果计数器达到 100，释放 SubductionFlameburst 弹幕
+            //if (killCounter >= 100)
+            //{
+            //    Projectile.NewProjectile(
+            //        Projectile.GetSource_FromThis(),
+            //        Projectile.Center,
+            //        Vector2.Zero,
+            //        ModContent.ProjectileType<ScoriaBulletFlameburst>(), // 释放的弹幕
+            //        (int)(Projectile.damage * 20.0f),                   // 伤害倍率
+            //        Projectile.knockBack,
+            //        Projectile.owner
+            //    );
+            //    killCounter = 0; // 重置计数器
+            //}
         }
     }
 }

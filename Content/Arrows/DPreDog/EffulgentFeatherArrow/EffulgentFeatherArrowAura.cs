@@ -17,6 +17,8 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
         private const float radius = 98f;
         private const int framesX = 3;
         private const int framesY = 6;
+        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+
 
         public override void SetStaticDefaults()
         {
@@ -25,7 +27,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
 
         public override void SetDefaults()
         {
-            Projectile.width = Projectile.height = 218;
+            Projectile.width = Projectile.height = 250;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 18000;
             Projectile.tileCollide = false;

@@ -13,6 +13,7 @@
 	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\AerialiteBulletEBuff.png" />
 	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\AerialiteBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\APreHardMode\AerialiteBullet\天蓝弹.txt" />
+	  <None Remove="Content\Ammunition\APreHardMode\TinkleshardBullet\TinkleshardBullet.png" />
 	  <None Remove="Content\Ammunition\APreHardMode\WulfrimBullet\WulfrimBullet.png" />
 	  <None Remove="Content\Ammunition\APreHardMode\WulfrimBullet\WulfrimBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\BPrePlantera\CryonicBullet\CryonicBulletFragment.png" />
@@ -69,6 +70,7 @@
 	  <None Remove="Content\Arrows\APreHardMode\AerialiteArrow\AerialiteArrowWIND.png" />
 	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\BloodBeadsArrow.png" />
 	  <None Remove="Content\Arrows\APreHardMode\BloodBeadsArrow\血珠箭.txt" />
+	  <None Remove="Content\Arrows\APreHardMode\PrismArrow\PrismArrow.png" />
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\PurifiedGelArrow.png" />
 	  <None Remove="Content\Arrows\APreHardMode\PurifiedGelArrow\纯净凝胶箭.txt" />
 	  <None Remove="Content\Arrows\APreHardMode\WulfrimArrow\WulfrimArrow.png" />
@@ -81,6 +83,7 @@
 	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\GlitchArrow\GlitchArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\GlitchArrow\木头.png" />
+	  <None Remove="Content\DeveloperItems\Arrow\MarksmanArrow\MarksmanArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\PlasmaDriveCorePrototypeArrow\打算删除.txt" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShadowsArrow\闪光金羽弃用贴图.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShuangHuaArrow\打算删除.txt" />
@@ -137,11 +140,22 @@
 	  <None Remove="Content\Arrows\天蓝矢s\天蓝矢_Proje.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\ShuangHuaArrow\ShuangHuaArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\TheDrill\TheDrill.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\ApoctosisMagicBullet\ApoctosisMagicBullet.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\ApoctosisMagicBullet\ApoctosisMagicBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBullet.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\DestructionBullet\DestructionBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShot.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\GrapeShot\GrapeShotPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\ChineseChess\Pao\Xiangqi_cd1.svg.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\MonstrousBullet\1.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\MonstrousBullet\MonstrousBullet.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\MonstrousBullet\MonstrousBulletPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\NorthStar\NorthStar.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\NorthStar\PolarisBuff.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\NorthStar\PolarStarO.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\OrichalcumBullet\1.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\OrichalcumBullet\OrichalcumBullet.png" />
+	  <None Remove="Content\DeveloperItems\Bullet\OrichalcumBullet\OrichalcumBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\ShadowsBullet\ShadowsBullet.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\ShadowsBullet\ShadowsBulletPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\SuperCriticalBullet\SuperCriticalBullet.png" />
@@ -152,9 +166,13 @@
 	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDan.png" />
 	  <None Remove="Content\DeveloperItems\Bullet\YuanZiDan\YuanZiDanPROJ.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\BlindBirdCry\BlindBirdCry.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\BrassBeast\BrassBeast.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\PhotovisceratorRE\PhotovisceratorRE.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\DPYROItem.png" />
 	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastPROJ.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\Pyroblast\PyroblastRocket.png" />
 	  <None Remove="Content\DeveloperItems\炎爆.png" />
+	  <None Remove="Content\Gel\APreHardMode\AerialiteGel\AerialiteGelCloud.png" />
 	  <None Remove="Content\Gel\APreHardMode\AerialiteGel\天蓝凝胶.txt" />
 	  <None Remove="Content\Gel\APreHardMode\GeliticGel\GeliticGel.png" />
 	  <None Remove="Content\Gel\APreHardMode\GeliticGel\双色凝胶.txt" />
@@ -200,8 +218,6 @@
 	  <None Remove="Content\Gel\熔渣凝胶.png" />
 	  <None Remove="Content\Gel\钨钢凝胶.png" />
 	  <None Remove="Content\Gel\龙蒿凝胶.png" />
-	  <None Remove="Content\Weapon\45646.png" />
-	  <None Remove="Content\Weapon\UNGun.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGel.png" />
 	  <None Remove="Content\凝胶\WulfrimGels\WulfrimGelBuff.png" />
 	  <None Remove="Content\凝胶\寒元凝胶\寒元凝胶.png" />
@@ -219,7 +235,7 @@
 	  <Folder Include="Content\Arrows\CPreMoodLord\AstralArrow\废案\" />
 	  <Folder Include="Content\Arrows\EAfterDog\AuricArrow\废弃\" />
 	  <Folder Include="Content\DeveloperItems\Gel\新文件夹\" />
-	  <Folder Include="Content\Weapon\" />
+	  <Folder Include="Content\DeveloperItems\Weapon\Pyroblast\新文件夹\" />
 	</ItemGroup>
 
 	<!-- References -->

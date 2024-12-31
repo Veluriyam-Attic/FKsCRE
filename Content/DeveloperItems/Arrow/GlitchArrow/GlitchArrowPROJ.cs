@@ -124,7 +124,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.GlitchArrow
                         HitDirection = Main.rand.Next(0, 2) == 0 ? -1 : 1 // 随机方向
                     });
                 })); // 让所有敌人随机掉血
-                GlitchEffects.Add(p => Projectile.NewProjectile(p.GetSource_FromThis(), Main.player[Main.rand.Next(Main.player.Length)].Center, new Vector2(0, -5), ProjectileID.StarWrath, 50, 1, p.owner)); // 在随机玩家头顶生成星怒星星
+                GlitchEffects.Add(p => Projectile.NewProjectile(p.GetSource_FromThis(), Main.player[Main.rand.Next(Main.player.Length)].Center, new Vector2(0, -5), ProjectileID.StarWrath, 50, 1, p.owner)); // 在随机玩家头顶生成星星
                 GlitchEffects.Add(p => { p.velocity += Main.rand.NextVector2CircularEdge(5, 5); }); // 添加随机方向冲量
             }
 

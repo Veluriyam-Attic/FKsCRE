@@ -28,6 +28,9 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
         public ref float Time => ref Projectile.ai[0];
         public int MistType = -1;
 
+        // 添加接收的颜色信息
+        public Color FireColor { get; set; } = Color.White;
+
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 10;
@@ -104,17 +107,12 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
         //        Projectile.damage = 1;
         //}
 
-   
+
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D fire = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
             Texture2D mist = ModContent.Request<Texture2D>("CalamityMod/Particles/MediumMist").Value;
 
-            // The conga line of colors to sift through
-            Color color1 = new Color(255, 223, 0, 200); // 金色
-            Color color2 = new Color(218, 165, 32, 150); // 暗金色
-            Color color3 = new Color(184, 134, 11, 100); // 古铜金
-            Color color4 = new Color(139, 117, 0, 70); // 深金色
             float length = ((Time > Fadetime - 10f) ? 0.1f : 0.15f);
             float vOffset = Math.Min(Time, 20f);
             float timeRatio = Utils.GetLerpValue(0f, Lifetime, Time);
@@ -125,14 +123,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
 
             for (float j = 1f; j >= 0f; j -= length)
             {
-                // Color
-                Color fireColor = ((timeRatio < 0.1f) ? Color.Lerp(Color.Transparent, color1, Utils.GetLerpValue(0f, 0.1f, timeRatio)) :
-                ((timeRatio < 0.2f) ? Color.Lerp(color1, color2, Utils.GetLerpValue(0.1f, 0.2f, timeRatio)) :
-                ((timeRatio < 0.35f) ? color2 :
-                ((timeRatio < 0.7f) ? Color.Lerp(color2, color3, Utils.GetLerpValue(0.35f, 0.7f, timeRatio)) :
-                ((timeRatio < 0.85f) ? Color.Lerp(color3, color4, Utils.GetLerpValue(0.7f, 0.85f, timeRatio)) :
-                Color.Lerp(color4, Color.Transparent, Utils.GetLerpValue(0.85f, 1f, timeRatio)))))));
-                fireColor *= (1f - j) * Utils.GetLerpValue(0f, 0.2f, timeRatio, true);
+                // 使用传递的 FireColor 替代动态颜色
+                Color fireColor = FireColor * (1f - j) * Utils.GetLerpValue(0f, 0.2f, timeRatio, true);
 
                 // Positions and rotations
                 Vector2 firePos = Projectile.Center - Main.screenPosition - Projectile.velocity * vOffset * j;

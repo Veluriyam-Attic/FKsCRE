@@ -12,6 +12,7 @@ using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Projectiles.DraedonsArsenal;
 using Microsoft.Xna.Framework.Graphics;
 using FKsCRE.CREConfigs;
+using Terraria.Audio;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 {
@@ -35,7 +36,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             Projectile.ignoreWater = true;
             Projectile.penetrate = 2;  // 穿透次数为2
             Projectile.tileCollide = true;
-            Projectile.timeLeft = 600;  // 存活时间
+            Projectile.timeLeft = 300;  // 存活时间
             Projectile.light = 0.5f;
             Projectile.extraUpdates = 2;  // 更多帧更新
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
@@ -80,8 +81,12 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitNPC(target, hit, damageDone);
-            // 0.5% 概率生成 AuricArrowNPC
-            if (Main.rand.NextFloat() < 0.005f) // 0.5%
+
+            // 播放音效
+            SoundEngine.PlaySound(SoundID.Item91, Projectile.position);
+
+            // 1% 概率生成 AuricArrowNPC
+            if (Main.rand.NextFloat() < 0.01f)
             {
                 int npcIndex = NPC.NewNPC(Projectile.GetSource_FromThis(), Main.player[Projectile.owner].position.ToTileCoordinates().X * 16, Main.player[Projectile.owner].position.ToTileCoordinates().Y * 16, ModContent.NPCType<AuricArrowNPC>());
                 if (npcIndex >= 0 && Main.npc[npcIndex] != null)
@@ -93,36 +98,69 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
                     }
                 }
             }
-            // 生成爆炸弹幕
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 0.25f), Projectile.knockBack, Projectile.owner);
 
-            // 往四周生成6个AuricArrowBALL
-            int numBalls = 6;
-            float angleStep = MathHelper.TwoPi / numBalls;
-            for (int i = 0; i < numBalls; i++)
+            // 特效：法阵核心
+            for (int i = 0; i < 10; i++) // 扩散波纹粒子
             {
-                Vector2 velocity = new Vector2(2f, 0f).RotatedBy(angleStep * i);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
+                float angle = MathHelper.TwoPi / 10 * i; // 每个粒子的角度
+                Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Main.rand.NextFloat(60f, 80f); // 半径扩大为原来的3~4倍
+                Dust waveParticle = Dust.NewDustPerfect(target.Center + offset, DustID.GoldFlame, Vector2.Zero, 0, Color.Goldenrod, 1.5f);
+                waveParticle.noGravity = true; // 无重力
+                waveParticle.fadeIn = 1f; // 逐渐消失
             }
+
+            // 特效：符文环绕
+            for (int i = 0; i < 5; i++) // 生成5个符文粒子
+            {
+                Vector2 runeOffset = new Vector2(Main.rand.NextFloat(90f, 120f), 0).RotatedByRandom(MathHelper.TwoPi); // 半径扩大为原来的3~4倍
+                Dust runeParticle = Dust.NewDustPerfect(target.Center + runeOffset, DustID.IceTorch, runeOffset * -0.3f, 0, Color.LightYellow, 2f); // 调整速度
+                runeParticle.noGravity = true; // 无重力
+                runeParticle.fadeIn = 1f;
+            }
+
+            // 特效：电磁火花
+            for (int i = 0; i < 15; i++) // 随机生成火花
+            {
+                Vector2 sparkVelocity = Main.rand.NextVector2Circular(6f, 8f); // 扩散速度提高为原来的3~4倍
+                Dust sparkParticle = Dust.NewDustPerfect(target.Center, DustID.Electric, sparkVelocity, 100, Color.White, 1.2f);
+                sparkParticle.noGravity = true; // 无重力
+                sparkParticle.fadeIn = 1f;
+            }
+
+
+            //// 生成爆炸弹幕
+            //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), (int)(Projectile.damage * 0.25f), Projectile.knockBack, Projectile.owner);
+
+            //// 往四周生成6个AuricArrowBALL
+            //int numBalls = 6;
+            //float angleStep = MathHelper.TwoPi / numBalls;
+            //for (int i = 0; i < numBalls; i++)
+            //{
+            //    Vector2 velocity = new Vector2(2f, 0f).RotatedBy(angleStep * i);
+            //    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<AuricArrowBALL>(), (int)(Projectile.damage * 0.75f), Projectile.knockBack, Projectile.owner);
+            //}
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 使用计数器控制生成逻辑
-                plasmaGrenadeCounter++; // 增加计数器
-                if (plasmaGrenadeCounter >= 15) // 每x次生成一次
+                // 检查是否已有 PlasmaGrenadeSmallExplosion 存在
+                bool exists = false;
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type == ModContent.ProjectileType<PlasmaGrenadeSmallExplosion>())
+                    {
+                        exists = true;
+                        break; // 如果已找到一个，则直接退出检查
+                    }
+                }
+
+                // 如果不存在，则释放新的 PlasmaGrenadeSmallExplosion
+                if (!exists)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PlasmaGrenadeSmallExplosion>(), 0, 0, Projectile.owner);
-                    plasmaGrenadeCounter = 0; // 重置计数器
                 }
             }
         }
-
-
-
-
-        private int plasmaGrenadeCounter = 0; // 用于计数的变量
-
         public override void OnKill(int timeLeft)
         {
          

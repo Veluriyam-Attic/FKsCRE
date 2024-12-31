@@ -127,7 +127,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //target.AddBuff(ModContent.BuffType<CrushDepth>(), 300); // 深渊水压
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowVine>(), (int)(Projectile.damage * 0.6f), Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<UelibloomArrowVine>(), (int)(Projectile.damage * 0.025f), Projectile.knockBack, Projectile.owner);
 
         }
 

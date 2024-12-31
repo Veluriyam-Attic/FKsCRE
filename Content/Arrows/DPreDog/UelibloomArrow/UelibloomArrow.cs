@@ -15,7 +15,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
         public new string LocalizationCategory => "Arrows.DPreDog";
         public override void SetDefaults()
         {
-            Item.damage = 35;
+            Item.damage = 25;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

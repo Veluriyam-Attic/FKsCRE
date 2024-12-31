@@ -14,13 +14,34 @@ using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
+using Terraria.DataStructures;
+using Terraria.ModLoader.IO;
+using FKsCRE.Content.Gel.APreHardMode.AerialiteGel;
+using FKsCRE.Content.Gel.APreHardMode.GeliticGel;
+using FKsCRE.Content.Gel.APreHardMode.HurricaneGel;
+using FKsCRE.Content.Gel.APreHardMode.WulfrimGel;
+using FKsCRE.Content.Gel.BPrePlantera.CryonicGel;
+using FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel;
+using FKsCRE.Content.Gel.CPreMoodLord.AstralGel;
+using FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel;
+using FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel;
+using FKsCRE.Content.Gel.CPreMoodLord.PerennialGel;
+using FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel;
+using FKsCRE.Content.Gel.DPreDog.BloodstoneCoreGel;
+using FKsCRE.Content.Gel.DPreDog.DivineGeodeGel;
+using FKsCRE.Content.Gel.DPreDog.EffulgentFeatherGel;
+using FKsCRE.Content.Gel.DPreDog.PolterplasmGel;
+using FKsCRE.Content.Gel.DPreDog.UelibloomGel;
+using FKsCRE.Content.Gel.DPreDog.UnholyEssenceGel;
+using FKsCRE.Content.Gel.EAfterDog.AuricGel;
+using FKsCRE.Content.Gel.EAfterDog.CosmosGel;
+using FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
 {
     public class TheGoldenFire : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "DeveloperItems.TheGoldenFire";
-        public static readonly int OriginalUseTime = 30;
         //public override void SetStaticDefaults()
         //{
         //    ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -28,50 +49,33 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
         //public override bool AltFunctionUse(Player player) => true;
         public override void SetDefaults()
         {
-            Item.damage = 60;
+            Item.damage = 12;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = Item.useAnimation = OriginalUseTime;
-            Item.shoot = ModContent.ProjectileType<TheGoldenFireHoldOut>();
-            Item.shootSpeed = 15f;
+            //Item.useTime = 5;
+            //Item.useAnimation = 25;
+            //Item.useLimitPerAnimation = 5;
+
+            Item.useTime = 5;
+            Item.useAnimation = 5;
+            //Item.shoot = ModContent.ProjectileType<TheGoldenFireHoldOut>();
+            Item.shoot = ModContent.ProjectileType<TheGoldenFirePROJ>();
+            Item.shootSpeed = 10f;
             Item.knockBack = 6.5f;
 
             Item.width = 96;
             Item.height = 42;
             Item.noMelee = false;
             Item.channel = true;
-            Item.noUseGraphic = true;
+            Item.noUseGraphic = false;
             Item.useAmmo = AmmoID.Gel;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.autoReuse = true;
-
-
+            Item.UseSound = SoundID.Item34;
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
             Item.Calamity().devItem = true;
         }
-        private Color GetGelColor(Player player)
-        {
-            // 获取玩家使用的当前弹药类型
-            Item ammoItem = player.inventory[player.selectedItem]; // 当前手持物品
-            if (ammoItem.ammo == AmmoID.Gel)
-            {
-                // 根据 ItemID 返回不同的颜色
-                switch (ammoItem.type)
-                {
-                    case ItemID.Gel: // 标准凝胶
-                        return Color.Blue;
-                    //case ModContent.ItemType<XGel>(): // 示例：模组的特殊凝胶
-                    //    return Color.Green;
-                    //case ModContent.ItemType<XGel>(): // 示例：模组的特殊凝胶
-                    //    return Color.Blue;
-                    default:
-                        return Color.Gray; // 未知类型的默认颜色
-                }
-            }
 
-            // 如果不是凝胶，返回默认颜色
-            return Color.White;
-        }
         public static int TheFinalDamage = 0; // 用于存储最终计算的伤害值
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -152,34 +156,107 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             TheFinalDamage = (int)(Item.damage * damageMult);
         }
 
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
+        //public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 
         public override bool CanConsumeAmmo(Item ammo, Player player) => player.ownedProjectileCounts[Item.shoot] != 0;
 
         public override void HoldItem(Player player) => player.Calamity().mouseRotationListener = true;
 
+        //public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        //{
+        //    Projectile.NewProjectileDirect(
+        //        source,
+        //        player.MountedCenter,
+        //        Vector2.Zero,
+        //        ModContent.ProjectileType<TheGoldenFireHoldOut>(),
+        //        TheFinalDamage,
+        //        Item.knockBack,
+        //        player.whoAmI
+        //    ).velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+        //    return false;
+        //}
+
+
+        public static readonly Dictionary<int, Color> GelColors = new Dictionary<int, Color>
+        {
+            { ItemID.Gel, Color.Gold }, // 原版凝胶
+            { ModContent.ItemType<AerialiteGel>(), Color.LightSkyBlue }, // 模组中的天蓝色凝胶
+            { ModContent.ItemType<GeliticGel>(), Color.LightSkyBlue }, // 双色凝胶
+            { ModContent.ItemType<HurricaneGel>(), Color.BlueViolet }, // 棱镜凝胶
+            { ModContent.ItemType<WulfrimGel>(), new Color(153, 255, 102) }, // 钨钢凝胶
+            { ModContent.ItemType<CryonicGel>(), Color.LightSkyBlue }, // 寒元凝胶
+            { ModContent.ItemType<StarblightSootGel>(), Color.Orange }, // 调星凝胶
+            { ModContent.ItemType<AstralGel>(), Color.AliceBlue }, // 幻星凝胶
+            { ModContent.ItemType<LifeAlloyGel>(), Color.SpringGreen }, // 生命合金凝胶
+            { ModContent.ItemType<LivingShardGel>(), Color.ForestGreen }, // 生命碎片凝胶
+            { ModContent.ItemType<PerennialGel>(), Color.GreenYellow }, // 永恒凝胶
+            { ModContent.ItemType<ScoriaGel>(), Color.DarkOrange }, // 熔渣凝胶
+            { ModContent.ItemType<BloodstoneCoreGel>(), Color.MediumVioletRed }, // 血石核心凝胶
+            { ModContent.ItemType<DivineGeodeGel>(), Color.Gold }, // 神圣晶石凝胶
+            { ModContent.ItemType<EffulgentFeatherGel>(), Color.LightGray }, // 金羽凝胶
+            { ModContent.ItemType<PolterplasmGel>(), Color.LightPink }, // 灵质凝胶
+            { ModContent.ItemType<UelibloomGel>(), Color.DarkGreen }, // 龙蒿凝胶
+            { ModContent.ItemType<UnholyEssenceGel>(), Color.LightYellow }, // 烛火精华凝胶
+            { ModContent.ItemType<AuricGel>(), Color.LightGoldenrodYellow }, // 金元凝胶
+            { ModContent.ItemType<CosmosGel>(), Color.MediumPurple }, // 宇宙凝胶
+            { ModContent.ItemType<MiracleMatterGel>(), Color.GhostWhite } // 奇迹凝胶
+        };
+
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectileDirect(
-                source,
-                player.MountedCenter,
-                Vector2.Zero,
-                ModContent.ProjectileType<TheGoldenFireHoldOut>(),
-                TheFinalDamage,
-                Item.knockBack,
-                player.whoAmI
-            ).velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+            if (player.PickAmmo(player.HeldItem, out _, out _, out _, out _, out int ammoType))
+            {
+                // 获取对应的颜色
+                if (!GelColors.TryGetValue(ammoType, out Color fireColor))
+                {
+                    fireColor = Color.White; // 默认白色
+                }
+
+                // 发射火焰弹幕并传递颜色
+                for (int i = 0; i < 2; i++) // 发射两发弹幕
+                {
+                    Vector2 adjustedVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(5f));
+                    int projID = Projectile.NewProjectile(source, position, adjustedVelocity, type, damage, knockback, player.whoAmI);
+
+                    if (Main.projectile[projID].ModProjectile is TheGoldenFirePROJ fireProj)
+                    {
+                        fireProj.FireColor = fireColor;
+                    }
+                }
+
+                // 生成粒子特效
+                GenerateFireParticles(position, fireColor);
+            }
             return false;
         }
 
+        private void GenerateFireParticles(Vector2 position, Color fireColor)
+        {
+            Vector2 mousePosition = Main.MouseWorld; // 获取鼠标位置
+            Vector2 directionToMouse = (mousePosition - position).SafeNormalize(Vector2.UnitX); // 计算朝向鼠标的方向
 
+            for (int i = 0; i < 20; i++) // 每次射击生成20个粒子
+            {
+                float randomAngle = MathHelper.ToRadians(Main.rand.NextFloat(-15f, 15f)); // 随机偏移角度
+                Vector2 adjustedDirection = directionToMouse.RotatedBy(randomAngle); // 方向带有随机偏移
+                float speed = Main.rand.NextFloat(6f, 10f); // 随机速度
+                Vector2 velocity = adjustedDirection * speed;
+                int dustType = Main.rand.Next(new int[] { DustID.Torch, DustID.Lava, DustID.Smoke });
 
+                // 应用 fireColor 进行粒子染色
+                Dust.NewDustPerfect(position, dustType, velocity, 100, fireColor, 1.5f).noGravity = true;
+            }
+        }
+
+        public override Vector2? HoldoutOffset() => new Vector2(-20, 0);
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient<SparkSpreader>(1);
-            recipe.AddIngredient(ItemID.GoldBar, 10);
+            recipe.AddIngredient(ItemID.Gel, 10);
+            recipe.AddRecipeGroup("AnySilverBar", 10);
+            recipe.AddIngredient(ItemID.IllegalGunParts, 2);
             //recipe.AddCondition(Condition.DownedMoonLord);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

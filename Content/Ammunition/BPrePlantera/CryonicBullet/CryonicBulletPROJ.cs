@@ -162,7 +162,7 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
                     Projectile.Center,
                     velocity,
                     ModContent.ProjectileType<CryonicBulletFragment>(),
-                    (int)(Projectile.damage * 1.5f),
+                    (int)(Projectile.damage * 0.0375f),
                     Projectile.knockBack,
                     Projectile.owner,
                     ai0: decelerationFactor // 将减速度因子传递给碎片弹幕

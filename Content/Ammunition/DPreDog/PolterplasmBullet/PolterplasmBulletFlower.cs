@@ -68,7 +68,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 50;
             Projectile.penetrate = 200;
-            Projectile.extraUpdates = 2;
+            Projectile.extraUpdates = 1;
             Projectile.timeLeft = 600;
         }
 

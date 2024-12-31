@@ -8,12 +8,18 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using Terraria.DataStructures;
 
 namespace FKsCRE.Content.Gel.DPreDog.PolterplasmGel
 {
     internal class PolterplasmGel : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Gel.DPreDog";
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.AnimatesAsSoul[Type] = true;
+            Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 8));
+        }
         public override void SetDefaults()
         {
             //Item.damage = 85;

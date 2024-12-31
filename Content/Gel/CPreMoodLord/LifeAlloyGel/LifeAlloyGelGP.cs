@@ -54,24 +54,24 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
                 }
 
 
-                // 熔渣
-                // 启用 ScoriaGelGN 的标记和计时器
-                target.GetGlobalNPC<ScoriaGelGN>().IsMarkedByScoriaGel = true;
-                target.GetGlobalNPC<ScoriaGelGN>().MarkDuration = 300; // 持续 5 秒
+                //// 熔渣
+                //// 启用 ScoriaGelGN 的标记和计时器
+                //target.GetGlobalNPC<ScoriaGelGN>().IsMarkedByScoriaGel = true;
+                //target.GetGlobalNPC<ScoriaGelGN>().MarkDuration = 300; // 持续 5 秒
 
-                // 永恒
-                // 给所有玩家添加 1200 帧的 PerennialGelPBuff
-                foreach (Player player in Main.player)
-                {
-                    if (player.active)
-                    {
-                        player.AddBuff(ModContent.BuffType<PerennialGelPBuff>(), 1200);
-                    }
-                }
+                //// 永恒
+                //// 给所有玩家添加 1200 帧的 PerennialGelPBuff
+                //foreach (Player player in Main.player)
+                //{
+                //    if (player.active)
+                //    {
+                //        player.AddBuff(ModContent.BuffType<PerennialGelPBuff>(), 1200);
+                //    }
+                //}
 
-                // 寒元
-                // 施加 CryonicGelEDebuff，持续 300 帧（5 秒）
-                target.AddBuff(ModContent.BuffType<CryonicGelEDebuff>(), 300);
+                //// 寒元
+                //// 施加 CryonicGelEDebuff，持续 300 帧（5 秒）
+                //target.AddBuff(ModContent.BuffType<CryonicGelEDebuff>(), 300);
             }
         }
 

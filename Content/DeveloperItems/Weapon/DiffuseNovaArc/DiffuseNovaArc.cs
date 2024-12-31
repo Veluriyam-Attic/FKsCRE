@@ -14,6 +14,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using CalamityMod.Rarities;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.DiffuseNovaArc
 {
@@ -51,13 +52,15 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.DiffuseNovaArc
             Item.channel = true;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
-            Item.rare = ItemRarityID.Yellow;
             Item.UseSound = null;
             Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<DiffuseNovaArcHoldout>();
             Item.shootSpeed = 12f;
             Item.Calamity().canFirePointBlankShots = true;
+
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
+            Item.Calamity().devItem = true;
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;

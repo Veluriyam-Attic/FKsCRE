@@ -91,7 +91,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
                 //Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, velocity,
                 //    ModContent.ProjectileType<AerialiteArrowWIND>(), (int)(Projectile.damage * 0.3f), 0f, Projectile.owner);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos, Vector2.Zero, 
-                    ModContent.ProjectileType<AerialiteArrowWIND>(), (int)(Projectile.damage * 0.6f), 0f, Projectile.owner);// 初始速度设置为0
+                    ModContent.ProjectileType<AerialiteArrowWIND>(), (int)(Projectile.damage * 0.1f), 0f, Projectile.owner);// 初始速度设置为0
 
 
                 // 检查是否启用了特效

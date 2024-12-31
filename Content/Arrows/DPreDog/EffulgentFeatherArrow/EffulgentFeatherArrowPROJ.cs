@@ -96,7 +96,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
             Projectile.penetrate = -1; // 穿透力为x
-            Projectile.timeLeft = 600; // 弹幕存在时间为600帧
+            Projectile.timeLeft = 51; // 弹幕存在时间
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
             Projectile.ignoreWater = true; // 弹幕不受水影响
@@ -176,10 +176,26 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
                         dust.velocity = Vector2.Zero; // 初始速度为零
                     }
                 }
-            }
-            
-        }
 
+                if (Projectile.numUpdates % 3 == 0)
+                {
+                    // 每帧释放一个粒子
+                    Vector2 particleVelocity = Main.rand.NextVector2Circular(3f, 3f); // 随机方向
+                    float randomScale = Main.rand.NextFloat(1.1f, 1.5f); // 随机大小
+                    Particle bolt = new CrackParticle(
+                        Projectile.Center, // 粒子生成位置为弹幕中心
+                        particleVelocity, // 随机方向的粒子速度
+                        Color.Aqua * 0.65f, // 设置粒子的颜色和透明度
+                        Vector2.One * randomScale, // 设置粒子大小
+                        0, // 初始旋转速度
+                        0, // 初始角度偏移
+                        randomScale, // 粒子缩放比例
+                        11 // 粒子类型编号
+                    );
+                    GeneralParticleHandler.SpawnParticle(bolt);
+                }
+            }
+        }
 
         public override void OnKill(int timeLeft)
         {

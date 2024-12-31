@@ -45,18 +45,20 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
                     }
                 }
 
-                // 随机生成 1~2 个额外弹幕
-                int extraProjectiles = Main.rand.Next(1, 3);
+                // 随机生成 3~9 个额外弹幕
+                int extraProjectiles = Main.rand.Next(3, 10);
                 for (int i = 0; i < extraProjectiles; i++)
                 {
-                    float randomAngle = MathHelper.ToRadians(Main.rand.Next(1, 3)); // 随机角度
-                    Vector2 velocity = projectile.velocity.RotatedBy(randomAngle);
+                    // 随机生成 360 度方向
+                    float randomAngle = Main.rand.NextFloat(0, MathHelper.TwoPi); // 随机角度（弧度制）
+                    Vector2 velocity = randomAngle.ToRotationVector2() * 6f; // 固定初速度为 6f
+
                     Projectile.NewProjectile(
                         projectile.GetSource_FromThis(),
                         projectile.Center,
                         velocity,
-                        ModContent.ProjectileType<Aquashard>(),
-                        (int)(projectile.damage * 0.25f), // 伤害为原来的 25%
+                        ModContent.ProjectileType<HurricaneGelSplit>(),
+                        (int)(projectile.damage * 0.35f), // 伤害为原来的 35%
                         projectile.knockBack,
                         projectile.owner
                     );

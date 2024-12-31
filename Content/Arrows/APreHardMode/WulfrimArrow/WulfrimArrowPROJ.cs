@@ -47,6 +47,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
             Projectile.ignoreWater = true; // 弹幕不受水影响
             Projectile.arrow = true;
             Projectile.extraUpdates = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow; // 受重力影响
         }
 
         public override void AI()

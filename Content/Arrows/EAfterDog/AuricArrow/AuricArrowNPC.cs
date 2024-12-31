@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.Audio;
 
 namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 {
@@ -13,7 +14,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[NPC.type] = 5; // 设置为5帧动画
+            Main.npcFrameCount[NPC.type] = 4; // 设置为4帧动画
         }
 
         public float StoredDamage { get; set; } // Damage passed in from the projectile
@@ -52,12 +53,12 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
             {
                 NPC.frameCounter += 2D;
             }
-            if (NPC.frameCounter > 4D) // 使用了5帧的时间间隔
+            if (NPC.frameCounter > 3D) // 使用了4帧的时间间隔
             {
                 NPC.frameCounter = 0D;
                 NPC.frame.Y += frameHeight;
             }
-            if (NPC.frame.Y >= frameHeight * 4)
+            if (NPC.frame.Y >= frameHeight * 3) // 因为总共有4帧
             {
                 NPC.frame.Y = 0;
             }
@@ -87,14 +88,16 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 
         public override void OnKill()
         {
+            SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/Yharon/YharonInfernado"));
             float rotation = MathHelper.TwoPi / 3;
             for (int i = 0; i < 3; i++)
             {
                 Vector2 direction = Vector2.UnitY.RotatedBy(rotation * i);
                 Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 10f, ModContent.ProjectileType<AuricArrowPROJ>(), (int)StoredDamage, 0, Main.myPlayer);
             }
-
             Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<AuricArrowNPCDrop>());
         }
+
+
     }
 }

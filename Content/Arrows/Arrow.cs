@@ -45,9 +45,9 @@
 //    {
 //        public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
 //        {
-//            if(projectile.ModProjectile != null && projectile.ModProjectile.Name.Equals("天蓝矢_Proje"))
+//            if (projectile.ModProjectile != null && projectile.ModProjectile.Name.Equals("天蓝矢_Proje"))
 //            {
-//                if(projectile.maxPenetrate == 1)
+//                if (projectile.maxPenetrate == 1)
 //                {
 //                    modifiers.FinalDamage *= 0.5f;
 //                }
