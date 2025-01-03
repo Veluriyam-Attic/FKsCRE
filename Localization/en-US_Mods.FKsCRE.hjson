@@ -282,8 +282,12 @@ Ammunition: {
 		}
 
 		TinkleshardBullet: {
-			Tooltip: ""
-			DisplayName: Tinkleshard Bullet
+			Tooltip:
+				'''
+				发生破裂炸出4个棱晶碎片
+				“水下速掘”
+				'''
+			DisplayName: 棱晶弹
 		}
 	}
 
@@ -644,20 +648,6 @@ DeveloperItems: {
 		MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
 	}
 
-	SHPA: {
-		PlasmaDriveCorePrototypeArrow: {
-			DisplayName: SHPA
-			Tooltip:
-				'''
-				命中时引发小型等离子爆炸
-				“你再说一遍你是把什么东西打了出来？”
-				'''
-		}
-
-		PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
-		PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
-	}
-
 	ShadowsArrow: {
 		ShadowsArrow: {
 			DisplayName: 魔影箭
@@ -683,37 +673,6 @@ DeveloperItems: {
 
 		ShuangHuaArrowPROJ.DisplayName: Shuang Hua Arrow P R O J
 		ShuangHuaArrowSPLIT.DisplayName: Shuang Hua Arrow S P L I T
-	}
-
-	TheDrill: {
-		TheDrill: {
-			DisplayName: 赤金切削工具
-			Tooltip:
-				'''
-				可破坏方块
-				Boss存活或玩家持有创意震撼时无效
-				无论何时何地，只要摁下鼠标右键就可以直接清除所有场上的钻头
-				“是否厌倦了建造场地？该产品正适合您！”
-				'''
-		}
-
-		TheDrillPROJ.DisplayName: The Drill P R O J
-	}
-
-	TimeLeaper: {
-		TimeLeaper: {
-			DisplayName: 时空交叉箭
-			Tooltip:
-				'''
-				无限穿透，但在鼠标位置生成
-				但往玩家处回收，但没有击中敌人时给玩家回血
-				但击中的敌人越多越是会扣除玩家更多的血量
-				玩家可能会因为其而死亡
-				“生存还是毁灭，这是一个问题”
-				'''
-		}
-
-		TimeLeaperPROJ.DisplayName: Time Leaper P R O J
 	}
 
 	AllTheBirds: {
@@ -745,20 +704,6 @@ DeveloperItems: {
 
 		GrapeShotPROJ.DisplayName: Grape Shot P R O J
 		GrapeShotPROJSPIT.DisplayName: Grape Shot P R O J S P I T
-	}
-
-	TheEmpty: {
-		TheEmpty: {
-			DisplayName: 空弹
-			Tooltip:
-				'''
-				让敌人随地大小变，可改变碰撞箱
-				对于Boss也有效
-				“容易让游戏崩溃”
-				'''
-		}
-
-		TheEmptyPROJ.DisplayName: The Empty P R O J
 	}
 
 	UltraLowTemp: {
@@ -805,50 +750,6 @@ DeveloperItems: {
 				“想吃麻辣兔头吗？辣到爆炸（物理）的那种”
 				'''
 		}
-	}
-
-	YuanZiDan: {
-		YuanZiDan: {
-			DisplayName: 狂野气凝胶弹
-			Tooltip:
-				'''
-				撞击后弹至周围敌人并将自己的伤害乘以1.25
-				凝聚了微观原子学以及量子力学的力量
-				“足够轻！”
-				'''
-		}
-
-		YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
-	}
-
-	DestructionBullet: {
-		DestructionBullet: {
-			DisplayName: 混合血清弹
-			Tooltip:
-				'''
-				产生小范围炼金爆炸并对敌人施加大量Debuff
-				“我也就打碎了一个绿色的螺旋玻璃管，你们怎么都跑走了，这很贵吗？”
-				'''
-		}
-
-		DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
-		DestructionBulletEXP.DisplayName: Destruction Bullet E X P
-	}
-
-	Terratoarrow: {
-		Terratoarrow: {
-			DisplayName: 泰拉巨箭
-			Tooltip:
-				'''
-				快速飞行并分裂成多支强力追踪的分裂箭
-				直接命中敌人造成2.5倍伤害
-				“远古传奇”
-				'''
-		}
-
-		TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
-		TerratoarrowSlash.DisplayName: Terratoarrow Slash
-		TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
 	}
 
 	SuperCriticalBullet: {
@@ -930,59 +831,6 @@ DeveloperItems: {
 
 			ChePROJ.DisplayName: Che P R O J
 		}
-
-		Ma: {
-			Ma: {
-				DisplayName: 马
-				Tooltip:
-					'''
-					隔一段时间往左或往右拐弯一次
-					“灵活多变，哪里都行”
-					'''
-			}
-
-			MaPROJ.DisplayName: Ma P R O J
-		}
-
-		Shi: {
-			Shi: {
-				DisplayName: 士
-				Tooltip:
-					'''
-					围绕玩家快速旋转，无限穿透
-					“忠实的护卫，至死不渝”
-					'''
-			}
-
-			ShiPROJ.DisplayName: Shi P R O J
-		}
-
-		Xiang: {
-			Xiang: {
-				DisplayName: 象
-				Tooltip:
-					'''
-					往4个斜方位不断前进
-					直到碰到屏幕边缘为止
-					“不能过河，很河里”
-					'''
-			}
-
-			XiangPROJ.DisplayName: Xiang P R O J
-		}
-
-		Zu: {
-			Zu: {
-				DisplayName: 卒
-				Tooltip:
-					'''
-					快速减速并往周围释放飞刀
-					“没有用？”
-					'''
-			}
-
-			ZuPROJ.DisplayName: Zu P R O J
-		}
 	}
 
 	BlindBirdCry: {
@@ -1039,81 +887,7 @@ DeveloperItems: {
 		GlitchArrowPROJ.DisplayName: Glitch Arrow P R O J
 	}
 
-	NorthStar: {
-		// PolarStarO.DisplayName: Polar Star O
-		// ChargedBlast2PS.DisplayName: Charged Blast2 P S
-		
-		NorthStar: {
-			Tooltip:
-				'''
-				获得逐渐强化自身的能力
-				“对她好一点”
-				'''
-			DisplayName: 北极星之佑
-		}
-
-		PolarStarO.DisplayName: Polar Star O
-		ChargedBlast2PS.DisplayName: Charged Blast2 P S
-	}
-
-	OrichalcumBullet: {
-		// OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
-		
-		OrichalcumBullet: {
-			Tooltip:
-				'''
-				击中敌人后从周围召唤山铜花瓣
-				“曾经不可一世”
-				'''
-			DisplayName: 山铜空尖弹
-		}
-
-		OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
-	}
-
-	MonstrousBullet: {
-		// MonstrousBulletPROJ.DisplayName: Monstrous Bullet P R O J
-		
-		MonstrousBullet: {
-			Tooltip:
-				'''
-				命中后回复生命值
-				“心跳加速”
-				'''
-			DisplayName: 畸变血弹
-		}
-
-		MonstrousBulletPROJ.DisplayName: Monstrous Bullet P R O J
-	}
-
-	ApoctosisMagicBullet: {
-		// ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
-		
-		ApoctosisMagicBullet: {
-			Tooltip:
-				'''
-				消耗5魔力射出子弹命中后，根据现有魔力值提供伤害增幅
-				每一点魔力值提供0.5%的伤害增幅，无上限
-				“魔法射手”
-				'''
-			DisplayName: 凋亡弹
-		}
-
-		ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
-	}
-
-	MarksmanArrow: {
-		MarksmanArrow: {
-			Tooltip:
-				'''
-				能够命中空中的钱币并弹向周围敌人
-				“你就是这么玩你的钱的”
-				'''
-			DisplayName: 神射手箭
-		}
-
-		MarksmanArrowPROJ.DisplayName: Marksman Arrow P R O J
-	}
+	NorthStar.ChargedBlast2PS.DisplayName: Charged Blast2 P S
 }
 
 NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
@@ -1149,6 +923,7 @@ Projectile: {
 		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
 		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		DropThing.DisplayName: Drop Thing
 		WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
 		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
 		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
@@ -1219,7 +994,7 @@ Items: {
 	}
 
 	AuricArrowNPCDrop: {
-		Tooltip: 捡起后立刻消失并提供50%的伤害增幅
+		Tooltip: 捡起后立刻消失并将伤害乘以1.4倍，持续一段时间
 		DisplayName: 金源箭增益果实
 	}
 }
@@ -1245,4 +1020,195 @@ Projectiles: {
 	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
 	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
+}
+
+Weapons: {
+	RE: {
+		PhotovisceratorRE: {
+			Tooltip:
+				'''
+				左键射出激光和交叉追踪炸弹，右键直接射出追踪炸弹
+				该版本的星火解离者可以享受本模组的凝胶加成，而原灾的不行
+				'''
+			DisplayName: 星火解离者重置版
+		}
+	}
+}
+
+WeaponToAMMO: {
+	Arrow: {
+		MonstrousArrow: {
+			MonstrousArrow: {
+				Tooltip:
+					'''
+					命中后回复生命值
+					“心跳加速”
+					'''
+				DisplayName: 畸变血箭
+			}
+
+			MonstrousArrowPROJ.DisplayName: Monstrous Arrow P R O J
+		}
+
+		PlasmaDriveCorePrototypeArrow: {
+			PlasmaDriveCorePrototypeArrow: {
+				DisplayName: SHPA
+				Tooltip:
+					'''
+					命中时引发小型等离子爆炸
+					“你再说一遍你是把什么东西打了出来？”
+					'''
+			}
+
+			PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
+			PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
+		}
+
+		Terratoarrow: {
+			Terratoarrow: {
+				DisplayName: 泰拉巨箭
+				Tooltip:
+					'''
+					快速飞行并分裂成多支强力追踪的分裂箭
+					直接命中敌人造成2.5倍伤害
+					“远古传奇”
+					'''
+			}
+
+			TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
+			TerratoarrowSlash.DisplayName: Terratoarrow Slash
+			TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
+		}
+
+		TheDrill: {
+			TheDrill: {
+				DisplayName: 赤金切削工具
+				Tooltip:
+					'''
+					可破坏方块
+					Boss存活或玩家持有创意震撼时无效
+					无论何时何地，只要摁下鼠标右键就可以直接清除所有场上的钻头
+					“是否厌倦了建造场地？该产品正适合您！”
+					'''
+			}
+
+			TheDrillPROJ.DisplayName: The Drill P R O J
+		}
+
+		TimeLeaper: {
+			TimeLeaper: {
+				DisplayName: 时空交叉箭
+				Tooltip:
+					'''
+					无限穿透，但在鼠标位置生成
+					但往玩家处回收，但没有击中敌人时给玩家回血
+					但击中的敌人越多越是会扣除玩家更多的血量
+					玩家可能会因为其而死亡
+					“生存还是毁灭，这是一个问题”
+					'''
+			}
+
+			TimeLeaperPROJ.DisplayName: Time Leaper P R O J
+		}
+
+		TNTArrow: {
+			TNTArrow: {
+				Tooltip:
+					'''
+					命中敌人后爆炸并炸出火星子
+					同时天降几颗手榴弹
+					“中世纪技术与现代科技的结合，尽管相对野蛮”
+					'''
+				DisplayName: 炸药箭
+			}
+
+			TNTArrowPROJ.DisplayName: T N T Arrow P R O J
+		}
+	}
+
+	Bullet: {
+		ApoctosisMagicBullet: {
+			ApoctosisMagicBullet: {
+				Tooltip:
+					'''
+					消耗5魔力射出子弹命中后，根据现有魔力值提供伤害增幅
+					每一点魔力值提供0.5%的伤害增幅，无上限
+					“魔法射手”
+					'''
+				DisplayName: 凋亡弹
+			}
+
+			ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
+		}
+
+		DestructionBullet: {
+			DestructionBullet: {
+				DisplayName: 混合血清弹
+				Tooltip:
+					'''
+					产生小范围炼金爆炸并对敌人施加大量Debuff
+					“我也就打碎了一个绿色的螺旋玻璃管，你们怎么都跑走了，这很贵吗？”
+					'''
+			}
+
+			DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
+			DestructionBulletEXP.DisplayName: Destruction Bullet E X P
+		}
+
+		NorthStar: {
+			TheNorthStar: {
+				Tooltip:
+					'''
+					射出不穿透的激光，击中敌人时积攒能量
+					命中50次后升级自身弹幕，释放分裂光束
+					继续命中50次后升到最高级以获得强追踪
+					“你可以把那些子弹丢掉了，我比他们强太多了！”
+					'''
+				DisplayName: 北极星之佑
+			}
+
+			PolarStarO.DisplayName: Polar Star O
+		}
+
+		OrichalcumBullet: {
+			OrichalcumBullet: {
+				Tooltip:
+					'''
+					击中敌人后从周围召唤山铜花瓣
+					“曾经不可一世”
+					'''
+				DisplayName: 山铜空尖弹
+			}
+
+			OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
+		}
+
+		TheEmpty: {
+			TheEmpty: {
+				DisplayName: 空弹
+				Tooltip:
+					'''
+					让敌人随地大小变，可改变碰撞箱
+					对于Boss也有效
+					“容易让游戏崩溃”
+					'''
+			}
+
+			TheEmptyPROJ.DisplayName: The Empty P R O J
+		}
+
+		YuanZiDan: {
+			YuanZiDan: {
+				DisplayName: 狂野气凝胶弹
+				Tooltip:
+					'''
+					撞击后弹至周围敌人并将自己的伤害乘以1.25
+					凝聚了微观原子学以及量子力学的力量
+					“足够轻！”
+					'''
+			}
+
+			YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
+		}
+	}
 }

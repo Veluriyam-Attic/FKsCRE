@@ -20,8 +20,8 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.GlitchArrow
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
-            Item.maxStack = 9999;
-            Item.consumable = true; // 弹药是消耗品
+            Item.maxStack = 1;
+            Item.consumable = false; // 弹药是消耗品
             Item.knockBack = 3.5f;
             Item.value = 10;
             Item.rare = ItemRarityID.Blue;
@@ -32,7 +32,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.GlitchArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(1);
             recipe.AddIngredient<EssenceofHavoc>(1); // 混乱精华
             recipe.AddIngredient(ItemID.Nanites, 1); // 纳米机器人
             recipe.AddIngredient(ItemID.Cog, 1); // 齿轮

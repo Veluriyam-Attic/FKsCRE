@@ -72,7 +72,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
 
             Color burnColor = Main.rand.NextBool(4) ? Color.PaleGreen : Main.rand.NextBool(4) ? Color.PaleTurquoise : Color.OrangeRed;
             Particle shell = new TitaniumRailgunShell(shellPosition, anchorPos, Projectile.rotation + MathHelper.PiOver2, burnColor);
-            GeneralParticleHandler.SpawnParticle(shell);
+            //GeneralParticleHandler.SpawnParticle(shell);
         }
 
         private void CreateParticles()

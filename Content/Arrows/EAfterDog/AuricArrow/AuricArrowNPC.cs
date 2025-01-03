@@ -95,7 +95,33 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
                 Vector2 direction = Vector2.UnitY.RotatedBy(rotation * i);
                 Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 10f, ModContent.ProjectileType<AuricArrowPROJ>(), (int)StoredDamage, 0, Main.myPlayer);
             }
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<AuricArrowNPCDrop>());
+
+            //Projectile.NewProjectile(
+            //    NPC.GetSource_FromThis(),
+            //    NPC.Center,
+            //    Vector2.Zero, // 初始速度为零
+            //    ModContent.ProjectileType<DropThing>(),
+            //    1, // 设置伤害为1
+            //    0,
+            //    Main.myPlayer
+            //);
+
+            float rotationStep = MathHelper.TwoPi / 5; // 每两个弹幕之间的夹角
+            for (int i = 0; i < 5; i++)
+            {
+                Vector2 direction = Vector2.UnitY.RotatedBy(rotationStep * i); // 计算方向
+                Projectile.NewProjectile(
+                    NPC.GetSource_FromThis(),
+                    NPC.Center,
+                    direction * 15f, // 设置速度为
+                    ModContent.ProjectileType<DropThing>(),
+                    1, // 设置伤害为1
+                    0,
+                    Main.myPlayer
+                );
+            }
+
+            //Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<AuricArrowNPCDrop>());
         }
 
 

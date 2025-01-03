@@ -42,12 +42,13 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
-            Projectile.MaxUpdates = 2;
+            Projectile.MaxUpdates = 1;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
+            Projectile.scale = 0.5f;
         }
 
         public override void AI()
@@ -61,7 +62,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
                 Projectile.alpha = 0;
 
             // 飞行过程中生成冰蓝色特效
-            if (Main.rand.NextBool(3)) // 每帧有 1/3 概率生成粒子
+            if (Main.rand.NextBool(1)) // 每帧有 1/3 概率生成粒子
             {
                 Dust dust = Dust.NewDustPerfect(
                     Projectile.Center,
@@ -69,7 +70,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
                     -Projectile.velocity.RotatedByRandom(0.3f) * Main.rand.NextFloat(0.2f, 0.5f), // 添加随机偏移的速度
                     150,
                     Color.AliceBlue, // 颜色
-                    Main.rand.NextFloat(0.3f, 0.6f) // 随机大小
+                    Main.rand.NextFloat(0.9f, 1.6f) // 随机大小
                 );
                 dust.noGravity = true; // 粒子无重力
                 dust.fadeIn = 0.5f; // 逐渐淡入

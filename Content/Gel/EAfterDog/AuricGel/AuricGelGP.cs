@@ -68,7 +68,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.AuricGel
                             spawnPosition,
                             velocity,
                             ModContent.ProjectileType<AuricGelLighting>(),
-                            (int)(damageDone / 0.25 * 0.75f), // 75% 的伤害
+                            (int)(projectile.damage / 0.25 * 0.75f), // 75% 的伤害
                             0f,
                             projectile.owner,
                             velocity.ToRotation() // 将目标位置方向传递为初始旋转角度

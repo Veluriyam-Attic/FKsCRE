@@ -6,7 +6,6 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
 using CalamityMod.Rarities;
-using FKsCRE.Content.DeveloperItems.Bullet.TheEmpty;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,6 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using FKsCRE.Content.DeveloperItems.Bullet.YuanZiDan;
 using FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire;
 
 namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel

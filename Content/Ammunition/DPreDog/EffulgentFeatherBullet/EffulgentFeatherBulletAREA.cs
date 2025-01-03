@@ -1,6 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
-using FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet;
 using System;
 using System.Collections.Generic;
 using System.Linq;

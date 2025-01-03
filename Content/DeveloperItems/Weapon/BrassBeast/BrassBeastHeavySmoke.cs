@@ -62,8 +62,19 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
                 float angle = MathHelper.ToRadians(-45 + Main.rand.NextFloat(90)); // 随机角度范围 -45 至 45
                 Vector2 velocity = fixedMouseDirection.Value.RotatedBy(angle) * Main.rand.NextFloat(10f, 40f); // 高速粒子
                 int dustType = Main.rand.NextBool() ? DustID.Torch : DustID.Smoke; // Torch 和 Smoke 随机选择
-                Dust.NewDustPerfect(Projectile.Center, dustType, velocity, 100, default, Main.rand.NextFloat(3.5f, 6.0f)).noGravity = true;
+
+                // 创建粒子并随机化生命周期
+                Dust dust = Dust.NewDustPerfect(
+                    Projectile.Center,
+                    dustType,
+                    velocity,
+                    100,
+                    default,
+                    Main.rand.NextFloat(3.5f, 6.0f) * Main.rand.NextFloat(0.8f, 1.35f) // scale 随机化
+                );
+                dust.noGravity = true;
             }
+
 
             // 实时更新鼠标位置的喷射逻辑虽然很帅，但是不太推荐
             //{

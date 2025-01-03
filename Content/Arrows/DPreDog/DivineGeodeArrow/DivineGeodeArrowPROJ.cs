@@ -20,7 +20,6 @@ using CalamityMod.Particles;
 using FKsCRE.CREConfigs;
 using Terraria.Audio;
 using CalamityMod.Buffs.DamageOverTime;
-using FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet;
 
 namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
 {

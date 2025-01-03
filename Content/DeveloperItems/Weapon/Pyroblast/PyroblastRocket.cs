@@ -8,7 +8,6 @@ using CalamityMod.Particles;
 using CalamityMod.Buffs.StatDebuffs;
 using Terraria.Audio;
 using FKsCRE.CREConfigs;
-using FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 {

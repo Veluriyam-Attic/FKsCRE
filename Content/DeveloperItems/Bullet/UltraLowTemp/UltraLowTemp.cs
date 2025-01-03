@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Items.Weapons.Ranged;
-using FKsCRE.Content.DeveloperItems.Bullet.TheEmpty;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Items.Materials;
-using FKsCRE.Content.DeveloperItems.Bullet.DestructionBullet;
 using System;
 using System.Collections.Generic;
 using System.Linq;

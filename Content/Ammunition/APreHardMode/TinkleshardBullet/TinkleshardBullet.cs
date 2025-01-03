@@ -29,7 +29,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Item.value = Item.sellPrice(copper: 12);
             Item.rare = ItemRarityID.Pink;
             Item.shoot = ModContent.ProjectileType<TinkleshardBulletPROJ>();
-            Item.shootSpeed = 12f;
+            Item.shootSpeed = 16f;
             Item.ammo = AmmoID.Bullet;
         }
 

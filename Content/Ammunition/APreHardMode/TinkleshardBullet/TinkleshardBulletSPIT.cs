@@ -10,6 +10,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
 {
@@ -21,16 +23,68 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 1;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
+    //    public override bool PreDraw(ref Color lightColor)
+    //    {
+    //        SpriteBatch spriteBatch = Main.spriteBatch;
+
+    //        // 动态随机选择贴图
+    //        string[] textures = new[]
+    //        {
+    //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece1",
+    //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece2",
+    //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece3",
+    //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece4"
+    //};
+    //        string selectedTexture = textures[Main.rand.Next(textures.Length)];
+    //        Texture2D texture = ModContent.Request<Texture2D>(selectedTexture).Value;
+
+    //        // 计算绘制的原点和位置
+    //        Vector2 drawOrigin = new Vector2(texture.Width / 2, texture.Height / 2);
+    //        Vector2 drawPosition = Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+
+    //        // 绘制贴图
+    //        spriteBatch.Draw(texture, drawPosition, null, lightColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+
+    //        return false; // 禁用默认绘制
+    //    }
+
+        private string selectedTexture; // 存储随机选择的贴图路径
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            // 在弹幕生成时随机选择一次贴图
+            string[] textures = new[]
+            {
+                "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece1",
+                "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece2",
+                "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece3",
+                "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece4"
+            };
+
+            selectedTexture = textures[Main.rand.Next(textures.Length)];
+
+            Time = 0f; // 初始化计时器
+
+        }
+
         public override bool PreDraw(ref Color lightColor)
         {
-            // 检查是否启用了特效
-            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
-            {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
-                return false;
-            }
-            return true;
+            SpriteBatch spriteBatch = Main.spriteBatch;
+
+            // 加载固定的贴图
+            Texture2D texture = ModContent.Request<Texture2D>(selectedTexture).Value;
+
+            // 计算绘制的原点和位置
+            Vector2 drawOrigin = new Vector2(texture.Width / 2, texture.Height / 2);
+            Vector2 drawPosition = Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
+
+            // 绘制贴图
+            spriteBatch.Draw(texture, drawPosition, null, lightColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
+
+            return false; // 禁用默认绘制
         }
+
+
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -109,10 +163,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
 
         public override bool? CanDamage() => Time >= 2f; // 初始时不造成伤害，直到帧数达到 2
 
-        public override void OnSpawn(IEntitySource source)
-        {
-            Time = 0f; // 初始化计时器
-        }
+
 
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
