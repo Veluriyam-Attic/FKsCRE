@@ -143,12 +143,12 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 在结束时释放几个卡其色的小圆圈特效
-                for (int i = 0; i < 3; i++)
-                {
-                    Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.Khaki, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
-                    GeneralParticleHandler.SpawnParticle(pulse);
-                }
+                //// 在结束时释放几个卡其色的小圆圈特效
+                //for (int i = 0; i < 3; i++)
+                //{
+                //    Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.Khaki, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
+                //    GeneralParticleHandler.SpawnParticle(pulse);
+                //}
 
                 // 在结束时释放浅黄色的小型特效粒子
                 for (int i = 0; i <= 5; i++)

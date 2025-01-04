@@ -32,8 +32,9 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.ChlorophyteArrow, 333);
             recipe.AddIngredient<UelibloomBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

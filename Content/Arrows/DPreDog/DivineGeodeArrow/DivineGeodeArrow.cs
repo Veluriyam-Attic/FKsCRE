@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Ammo;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
@@ -31,9 +32,10 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(333);            
+            recipe.AddIngredient<ElysianArrow>(333);
             recipe.AddIngredient<DivineGeode>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

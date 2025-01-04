@@ -34,9 +34,10 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
-            recipe.AddIngredient<StarblightSoot>(5);
-            recipe.AddIngredient<TitanHeart>(1);
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient(ItemID.MeteorShot, 100);
+            recipe.AddIngredient<StarblightSoot>(1);
+            //recipe.AddIngredient<TitanHeart>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

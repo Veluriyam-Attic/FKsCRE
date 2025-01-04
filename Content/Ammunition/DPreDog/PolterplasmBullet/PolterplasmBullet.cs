@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Items.Ammo;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
 {
@@ -34,8 +35,10 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient<DryadsTear>(333);
+            recipe.AddIngredient(ItemID.Ectoplasm, 1);
             recipe.AddIngredient<Necroplasm>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

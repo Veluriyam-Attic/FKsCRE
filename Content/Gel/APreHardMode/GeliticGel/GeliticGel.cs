@@ -38,10 +38,10 @@ namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(50);
             recipe.AddIngredient<PurifiedGel>(1);
             recipe.AddIngredient<BlightedGel>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.Solidifier);
             recipe.Register();
         }
     }

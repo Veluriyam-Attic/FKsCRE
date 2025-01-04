@@ -12,12 +12,13 @@ using CalamityMod.Items.Ammo;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
-namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
+namespace FKsCRE.Content.Arrows.EAfterDog.EndothermicEnergyArrow
 {
-    public class ShuangHuaArrow : ModItem, ILocalizedModType
+    public class EndothermicEnergyArrow : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.ShuangHuaArrow";
+        public new string LocalizationCategory => "Arrows.EAfterDog";
         public override void SetDefaults()
         {
             Item.damage = 35;
@@ -31,17 +32,17 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
             Item.Calamity().devItem = true;
-            Item.shoot = ModContent.ProjectileType<ShuangHuaArrowPROJ>();
+            Item.shoot = ModContent.ProjectileType<EndothermicEnergyArrowPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
-            recipe.AddIngredient<IcicleArrow>(100);
+            Recipe recipe = CreateRecipe(999);
+            recipe.AddIngredient<IcicleArrow>(999);
             recipe.AddIngredient<EndothermicEnergy>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<CosmicAnvil>();
             recipe.Register();
         }
     }

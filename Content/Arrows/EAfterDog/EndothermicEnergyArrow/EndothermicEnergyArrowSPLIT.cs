@@ -11,11 +11,11 @@ using FKsCRE.CREConfigs;
 using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 
-namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
+namespace FKsCRE.Content.Arrows.EAfterDog.EndothermicEnergyArrow
 {
-    public class ShuangHuaArrowSPLIT : ModProjectile, ILocalizedModType
+    public class EndothermicEnergyArrowSPLIT : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.ShuangHuaArrow";
+        public new string LocalizationCategory => "Projectile.EAfterDog";
         public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
 
         public override void SetStaticDefaults()

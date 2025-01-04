@@ -30,7 +30,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.MonstrousArrow
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<MonstrousArrowPROJ>();
             Item.shootSpeed = 16f;
             Item.ammo = AmmoID.Arrow;

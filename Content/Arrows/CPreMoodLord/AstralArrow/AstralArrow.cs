@@ -4,6 +4,7 @@ using System.Text;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Pets;
 using CalamityMod.Projectiles.Rogue;
+using FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -32,9 +33,10 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.AstralArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient<StarblightSootArrow>(150);
             recipe.AddIngredient<AstralBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

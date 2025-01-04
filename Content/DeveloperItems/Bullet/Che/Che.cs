@@ -45,7 +45,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.Che
             recipe1.AddIngredient<ArmoredShell>(1);
             recipe1.AddIngredient<TwistingNether>(1);
             recipe1.AddIngredient<DarkPlasma>(1);
-            recipe1.AddTile(TileID.Anvils);
+            recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.Register();
         }
 

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet;
+using CalamityMod.Items.Ammo;
 
 namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 {
@@ -32,9 +35,13 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(3996);
+            recipe.AddIngredient<TinkleshardBullet>(999);
+            recipe.AddIngredient<CryonicBullet>(999);
+            recipe.AddIngredient<HyperiusBullet>(999);
+            recipe.AddIngredient<GodSlayerSlug>(999);
             recipe.AddIngredient<MiracleMatter>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<DraedonsForge>();
             recipe.Register();
         }
     }

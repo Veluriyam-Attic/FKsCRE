@@ -33,7 +33,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(100);
+            Recipe recipe = CreateRecipe(50);
+            recipe.AddIngredient(ItemID.WoodenArrow, 50);
             recipe.AddIngredient<AerialiteBar>();
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

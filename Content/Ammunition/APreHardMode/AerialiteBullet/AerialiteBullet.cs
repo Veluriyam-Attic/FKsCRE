@@ -34,7 +34,8 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.AerialiteBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(50);
+            recipe.AddIngredient(ItemID.MusketBall, 50);
             recipe.AddIngredient<AerialiteBar>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

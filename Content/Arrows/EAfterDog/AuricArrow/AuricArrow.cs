@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -31,9 +32,10 @@ namespace FKsCRE.Content.Arrows.EAfterDog.AuricArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(999);
+            recipe.AddIngredient(ItemID.WoodenArrow, 999);
             recipe.AddIngredient<AuricBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<CosmicAnvil>();
             recipe.Register();
         }
     }

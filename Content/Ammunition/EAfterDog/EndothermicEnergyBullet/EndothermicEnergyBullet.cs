@@ -12,12 +12,13 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using CalamityMod;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
-namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
+namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
 {
-    public class UltraLowTemp : ModItem, ILocalizedModType
+    public class EndothermicEnergyBullet : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.UltraLowTemp";
+        public new string LocalizationCategory => "Ammunition.EAfterDog";
         public override void SetDefaults()
         {
             Item.width = 12;
@@ -31,17 +32,17 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
             Item.Calamity().devItem = true;
-            Item.shoot = ModContent.ProjectileType<UltraLowTempPROJ>();
+            Item.shoot = ModContent.ProjectileType<EndothermicEnergyBulletPROJ>();
             Item.shootSpeed = 19f;
             Item.ammo = AmmoID.Bullet;
         }
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
-            recipe.AddIngredient<HailstormBullet>(100);
+            Recipe recipe = CreateRecipe(999);
+            recipe.AddIngredient<HailstormBullet>(999);
             recipe.AddIngredient<EndothermicEnergy>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<CosmicAnvil>();
             recipe.Register();
         }
 

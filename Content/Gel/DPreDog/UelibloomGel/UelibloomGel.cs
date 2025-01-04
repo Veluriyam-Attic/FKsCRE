@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
 {
@@ -39,8 +40,9 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.Gel, 333);
             recipe.AddIngredient<UelibloomBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

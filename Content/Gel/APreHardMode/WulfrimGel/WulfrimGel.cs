@@ -38,9 +38,9 @@ namespace FKsCRE.Content.Gel.APreHardMode.WulfrimGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(50);
             recipe.AddIngredient<EnergyCore>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.Solidifier);
             recipe.Register();
         }
     }

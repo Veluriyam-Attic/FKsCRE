@@ -29,7 +29,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.TheDrill
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<TheDrillPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药

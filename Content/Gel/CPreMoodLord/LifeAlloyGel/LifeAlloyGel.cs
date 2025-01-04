@@ -11,6 +11,7 @@ using FKsCRE.Content.Gel.CPreMoodLord.PerennialGel;
 using FKsCRE.Content.Gel.CPreMoodLord.ScoriaGel;
 using FKsCRE.Content.Gel.BPrePlantera.CryonicGel;
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
 {
@@ -44,9 +45,12 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(999);
+            recipe.AddIngredient<CryonicGel>(333);
+            recipe.AddIngredient<PerennialGel.PerennialGel>(333);
+            recipe.AddIngredient<ScoriaGel.ScoriaGel>(333);
             recipe.AddIngredient<LifeAlloy>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

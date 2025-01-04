@@ -2,7 +2,6 @@
 using CalamityMod.Items.Materials;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
-using FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +32,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.TNTArrow
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<TNTArrowPROJ>();
             Item.shootSpeed = 15f;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药

@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Ammo;
 using CalamityMod.Items.Materials;
+using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow;
+using FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -35,9 +40,13 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
         }
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(3996);
+            recipe.AddIngredient<WulfrimArrow>(999);
+            recipe.AddIngredient<VeriumBolt>(999);
+            recipe.AddIngredient<SproutingArrow>(999);
+            recipe.AddIngredient<PolterplasmArrow>(999);
             recipe.AddIngredient<MiracleMatter>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<DraedonsForge>();
             recipe.Register();
         }
     }

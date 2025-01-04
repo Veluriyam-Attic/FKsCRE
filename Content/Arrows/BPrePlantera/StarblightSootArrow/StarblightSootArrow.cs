@@ -31,9 +31,10 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
-            recipe.AddIngredient<StarblightSoot>(5);
-            recipe.AddIngredient<TitanHeart>(1);
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient(ItemID.WoodenArrow, 50);
+            recipe.AddIngredient<StarblightSoot>(1);
+            //recipe.AddIngredient<TitanHeart>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

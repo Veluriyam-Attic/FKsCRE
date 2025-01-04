@@ -1,7 +1,6 @@
 ﻿using CalamityMod.Items;
 using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Furniture.CraftingStations;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
@@ -15,6 +14,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
 {
@@ -46,9 +46,9 @@ namespace FKsCRE.Content.Gel.EAfterDog.CosmosGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(999);
             recipe.AddIngredient<CosmiliteBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

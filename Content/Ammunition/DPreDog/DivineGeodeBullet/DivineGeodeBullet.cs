@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.Pets;
 using FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet;
+using CalamityMod.Items.Ammo;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
 {
@@ -37,8 +38,9 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient<HolyFireBullet>(333);
             recipe.AddIngredient<DivineGeode>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

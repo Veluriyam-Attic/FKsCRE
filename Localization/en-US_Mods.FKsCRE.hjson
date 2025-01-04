@@ -14,83 +14,88 @@ Buffs: {
 	}
 
 	PolterplasmArrowEDeBuff: {
-		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff.Description
 		DisplayName: Polterplasm Arrow E De Buff
+		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff.Description
 	}
 
 	PolterplasmArrowEDeBuff2: {
-		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
 		DisplayName: Polterplasm Arrow E De Buff2
+		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
 	}
 
 	AerialiteBulletEBuff: {
-		Description: Mods.FKsCRE.Buffs.AerialiteBulletEBuff.Description
 		DisplayName: Aerialite Bullet E Buff
+		Description: Mods.FKsCRE.Buffs.AerialiteBulletEBuff.Description
 	}
 
 	AstralBulletEBuff: {
-		Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 		DisplayName: Astral Bullet E Buff
+		Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 	}
 
 	PerennialBulletPBuff: {
-		Description: Mods.FKsCRE.Buffs.PerennialBulletPBuff.Description
 		DisplayName: Perennial Bullet P Buff
+		Description: Mods.FKsCRE.Buffs.PerennialBulletPBuff.Description
 	}
 
 	EffulgentFeatherBulletPBuff: {
-		Description: Mods.FKsCRE.Buffs.EffulgentFeatherBulletPBuff.Description
 		DisplayName: Effulgent Feather Bullet P Buff
+		Description: Mods.FKsCRE.Buffs.EffulgentFeatherBulletPBuff.Description
 	}
 
 	PolterplasmBulletFlowerPBuff: {
-		Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
 		DisplayName: Polterplasm Bullet Flower P Buff
+		Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
 	}
 
 	WulfrimArrowEDebuff: {
-		Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
 		DisplayName: Wulfrim Arrow E Debuff
+		Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
 	}
 
 	DivineGeodeArrowPBuff: {
-		Description: Mods.FKsCRE.Buffs.DivineGeodeArrowPBuff.Description
 		DisplayName: Divine Geode Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.DivineGeodeArrowPBuff.Description
 	}
 
 	UelibloomArrowEBuff: {
-		Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
 		DisplayName: Uelibloom Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
 	}
 
 	AuricArrowPBuff: {
-		Description: Mods.FKsCRE.Buffs.AuricArrowPBuff.Description
 		DisplayName: Auric Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.AuricArrowPBuff.Description
 	}
 
 	DestructionBulletDestruction: {
-		Description: Mods.FKsCRE.Buffs.DestructionBulletDestruction.Description
 		DisplayName: Destruction Bullet Destruction
+		Description: Mods.FKsCRE.Buffs.DestructionBulletDestruction.Description
 	}
 
 	DestructionBulletPoisonIvy: {
-		Description: Mods.FKsCRE.Buffs.DestructionBulletPoisonIvy.Description
 		DisplayName: Destruction Bullet Poison Ivy
+		Description: Mods.FKsCRE.Buffs.DestructionBulletPoisonIvy.Description
 	}
 
 	PerennialGelPBuff: {
-		Description: Mods.FKsCRE.Buffs.PerennialGelPBuff.Description
 		DisplayName: Perennial Gel P Buff
+		Description: Mods.FKsCRE.Buffs.PerennialGelPBuff.Description
 	}
 
 	CosmosGelEDebuff: {
-		Description: Mods.FKsCRE.Buffs.CosmosGelEDebuff.Description
 		DisplayName: Cosmos Gel E Debuff
+		Description: Mods.FKsCRE.Buffs.CosmosGelEDebuff.Description
 	}
 
 	PolarisBuff: {
-		Description: Mods.FKsCRE.Buffs.PolarisBuff.Description
 		DisplayName: Polaris Buff
+		Description: Mods.FKsCRE.Buffs.PolarisBuff.Description
+	}
+
+	PlagueGelEDebuff: {
+		DisplayName: Plague Gel E Debuff
+		Description: Mods.FKsCRE.Buffs.PlagueGelEDebuff.Description
 	}
 }
 
@@ -104,9 +109,6 @@ Arrows: {
 				旋风会停滞一段时间后开始追踪
 				“抟扶摇而上者九万里. ”
 				'''
-		}
-
-		BloodBeadsArrow: {
 		}
 
 		WulfrimArrow: {
@@ -134,8 +136,7 @@ Arrows: {
 			Tooltip:
 				'''
 				造成幻星感染
-				击中后迸发出星空粒子
-				星空粒子不可穿透
+				出现时往前喷射一些星空粒子，不可穿透
 				“野马也，尘埃也，生物之以息相吹也. ”
 				'''
 		}
@@ -185,6 +186,16 @@ Arrows: {
 				“火山突兀赤亭口，火山五月火云厚. ”
 				'''
 		}
+
+		PlagueArrow: {
+			DisplayName: 瘟疫重甲箭
+			Tooltip:
+				'''
+				凋零枯花在场时自己会被强化，拥有追踪能力
+				造成瘟疫效果
+				“它们俩之间的爱情突破了次元壁”
+				'''
+		}
 	}
 
 	DPreDog: {
@@ -214,7 +225,7 @@ Arrows: {
 			Tooltip:
 				'''
 				小概率鬼叫并对敌人造成严重伤害
-				大概率什么也不会发生，哈哈
+				大概率什么也不会发生
 				“精神离形，各归其真. ”
 				'''
 		}
@@ -226,6 +237,16 @@ Arrows: {
 				击中敌人时产生追踪叶片和生命之光
 				叶片命中时造成藤蔓
 				“满园春色关不住，一枝红杏出墙来. ”
+				'''
+		}
+
+		ToothArrow: {
+			DisplayName: 渊牙箭
+			Tooltip:
+				'''
+				无视敌人防御力与伤害减免
+				直接造成本来应该造成的全部伤害
+				“敌人的护甲在它眼里如同一张纸”
 				'''
 		}
 	}
@@ -255,6 +276,15 @@ Arrows: {
 				“一步一登，挥手攀毛，七星灿烂光斑斑. ”
 				'''
 		}
+
+		EndothermicEnergyArrow: {
+			DisplayName: 霜华箭
+			Tooltip:
+				'''
+				击中后往上飞行，然后往下释放五道冰锥
+				“为了岩王帝君”
+				'''
+		}
 	}
 }
 
@@ -282,12 +312,12 @@ Ammunition: {
 		}
 
 		TinkleshardBullet: {
+			DisplayName: 棱晶弹
 			Tooltip:
 				'''
 				发生破裂炸出4个棱晶碎片
 				“水下速掘”
 				'''
-			DisplayName: 棱晶弹
 		}
 	}
 
@@ -320,7 +350,8 @@ Ammunition: {
 			Tooltip:
 				'''
 				击中敌人时以敌人为中心不断的释放彗星砸向这个倒霉蛋
-				彗星射击频率和圆圈大小会越来越小和快
+				彗星伤害为面板的2.5倍
+				其射击频率和圆圈大小会越来越小和快				
 				“纤云弄巧，飞星传恨，银汉迢迢暗度. ”
 				'''
 		}
@@ -339,10 +370,19 @@ Ammunition: {
 			DisplayName: 熔渣弹
 			Tooltip:
 				'''
-				产生爆炸，命中一定次数后产生火柱
-				命中后给予玩家可堆叠的加速度与伤害提升
+				产生爆炸，命中后给予玩家可堆叠的加速度与伤害提升
 				“比赛前得热热身，这就是一个很好的热身方式”
 				'''
+		}
+
+		PlagueBullet: {
+			Tooltip:
+				'''
+				如果敌人受到了瘟疫效果，那么造成2.2倍伤害
+				否则仅造成0.75倍伤害
+				“这是属于我们瘟疫家族的羁绊！”
+				'''
+			DisplayName: 瘟疫铁甲弹
 		}
 	}
 
@@ -386,6 +426,16 @@ Ammunition: {
 				“有内鬼，终止交易”
 				'''
 		}
+
+		ToothBullet: {
+			Tooltip:
+				'''
+				敌人每拥有1点防御力，都能为这次伤害额外提供0.75%的增幅
+				上限为75%
+				“破甲弹，现已装填！”
+				'''
+			DisplayName: 渊牙弹
+		}
 	}
 
 	EAfterDog: {
@@ -404,6 +454,16 @@ Ammunition: {
 				'''
 				第1次碰撞不造成伤害
 				随后左右扭曲飞行一段距离后强力追踪
+				'''
+		}
+
+		EndothermicEnergyBullet: {
+			DisplayName: 霜华弹
+			Tooltip:
+				'''
+				击中后在外围释放分裂弹幕，造成冰河时代
+				命中水时将水冻结成冰块
+				“凝冰渡河真君”
 				'''
 		}
 	}
@@ -442,13 +502,13 @@ Gel: {
 		}
 
 		AerialiteGel: {
+			DisplayName: 天蓝凝胶
 			Tooltip:
 				'''
 				每5秒在原地释放一个滞留的筋斗云产生极高伤害
 				同时把玩家以很大的速度往后推
 				“俺老孙来也！”
 				'''
-			DisplayName: 天然凝胶
 		}
 	}
 
@@ -531,6 +591,16 @@ Gel: {
 				“我缺的生命果这一块谁给我补啊？”
 				'''
 		}
+
+		PlagueGel: {
+			Tooltip:
+				'''
+				如果玩家处于丛林中，那么对敌人施加强化版本的瘟疫
+				强化版本的瘟疫能够造成比瘟疫更强的伤害
+				“我来控制住他们！”
+				'''
+			DisplayName: 瘟疫病毒凝胶储罐
+		}
 	}
 
 	DPreDog: {
@@ -595,6 +665,16 @@ Gel: {
 				“净化世界是我们的最终目标”
 				'''
 		}
+
+		ToothGel: {
+			DisplayName: 寒牙凝胶
+			Tooltip:
+				'''
+				减少5%喷火器伤害
+				让敌人防御力永久降低30，不可叠加
+				“都挤碎了，还这么害羞”
+				'''
+		}
 	}
 
 	EAfterDog: {
@@ -627,7 +707,17 @@ Gel: {
 				弹幕造成5s的超位崩解
 				命中敌人时从天降下一道闪电造成200%的伤害
 				闪电只能存在一道
-				“一次性能提供一艘福特级航空母舰的电量”
+				“一次性能提供一艘航空母舰的电量”
+				'''
+		}
+
+		EndothermicEnergyGel: {
+			DisplayName: 霜华凝胶
+			Tooltip:
+				'''
+				穿透次数降低至0
+				但对第1个敌人造成极高伤害
+				“这就是液氮”
 				'''
 		}
 	}
@@ -661,20 +751,6 @@ DeveloperItems: {
 		ShadowsArrowPROJ.DisplayName: Shadows Arrow P R O J
 	}
 
-	ShuangHuaArrow: {
-		ShuangHuaArrow: {
-			DisplayName: 霜华箭
-			Tooltip:
-				'''
-				击中后往上飞行，然后往下释放五道冰锥
-				“为了岩王帝君”
-				'''
-		}
-
-		ShuangHuaArrowPROJ.DisplayName: Shuang Hua Arrow P R O J
-		ShuangHuaArrowSPLIT.DisplayName: Shuang Hua Arrow S P L I T
-	}
-
 	AllTheBirds: {
 		AllTheBirds: {
 			DisplayName: 玄凤鹦鹉
@@ -706,21 +782,6 @@ DeveloperItems: {
 		GrapeShotPROJSPIT.DisplayName: Grape Shot P R O J S P I T
 	}
 
-	UltraLowTemp: {
-		UltraLowTemp: {
-			DisplayName: 霜华弹
-			Tooltip:
-				'''
-				击中后在外围释放分裂弹幕，造成冰河时代
-				命中水时将水冻结成冰块
-				“凝冰渡河真君”
-				'''
-		}
-
-		UltraLowTempSPIT.DisplayName: Ultra Low Temp S P I T
-		UltraLowTempPROJ.DisplayName: Ultra Low Temp P R O J
-	}
-
 	Pyroblast: {
 		Pyroblast: {
 			DisplayName: 炎爆
@@ -728,17 +789,18 @@ DeveloperItems: {
 				'''
 				握在手中倾泻出独特的爆炸子弹
 				持续射击5秒获得增强，发射激光或者火箭弹等
-				继续持续射击以强化这三种弹幕
+				继续持续射击以陆续强化这三种弹幕
 				切换武器将会清除所有等级
 				右键以玩家为中心射出8颗不断旋转的爆裂光球
+				一段时间后光球会追踪敌人
 				“把他们炸成碎片！”
 				'''
 		}
 
-		PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
-		PyroblastRocketEXP.DisplayName: Pyroblast Rocket E X P
-		PyroblastRocket.DisplayName: Pyroblast Rocket
 		PyroblastPROJ.DisplayName: Pyroblast P R O J
+		PyroblastRocket.DisplayName: Pyroblast Rocket
+		PyroblastRocketEXP.DisplayName: Pyroblast Rocket E X P
+		PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
 	}
 
 	ExplodingRabbit: {
@@ -835,13 +897,11 @@ DeveloperItems: {
 
 	BlindBirdCry: {
 		BlindBirdCry: {
-			Tooltip: ""
-			DisplayName: Blind Bird Cry
 		}
 
-		BlindBirdCryINVPROJ.DisplayName: Blind Bird Cry I N V P R O J
-		BlindBirdCryHoldOut.DisplayName: Blind Bird Cry Hold Out
 		BlindBirdCryCrods.DisplayName: Blind Bird Cry Crods
+		BlindBirdCryHoldOut.DisplayName: Blind Bird Cry Hold Out
+		BlindBirdCryINVPROJ.DisplayName: Blind Bird Cry I N V P R O J
 	}
 
 	BrassBeast: {
@@ -857,8 +917,8 @@ DeveloperItems: {
 				'''
 		}
 
-		BrassBeastPROJ.DisplayName: Brass Beast P R O J
 		BrassBeastHeavySmoke.DisplayName: Brass Beast Heavy Smoke
+		BrassBeastPROJ.DisplayName: Brass Beast P R O J
 	}
 
 	Pyrogeist: {
@@ -888,79 +948,6 @@ DeveloperItems: {
 	}
 
 	NorthStar.ChargedBlast2PS.DisplayName: Charged Blast2 P S
-}
-
-NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
-
-Projectile: {
-	APreHardMode: {
-		AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
-		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
-		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
-		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
-		PrismArrowPROJ.DisplayName: Prism Arrow P R O J
-		WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
-		TinkleshardBulletSPIT.DisplayName: Tinkleshard Bullet S P I T
-		TinkleshardBulletPROJ.DisplayName: Tinkleshard Bullet P R O J
-		AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
-	}
-
-	BPrePlantera: {
-		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
-		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
-		StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
-		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
-		CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
-	}
-
-	CPreMoodLord: {
-		AstralArrowMOON.DisplayName: Astral Arrow M O O N
-		AstralArrowPROJ.DisplayName: Astral Arrow P R O J
-		AstralArrowSUN.DisplayName: Astral Arrow S U N
-		CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
-		LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
-		PerennialArrowFlower.DisplayName: Perennial Arrow Flower
-		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
-		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
-		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
-		DropThing.DisplayName: Drop Thing
-		WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
-		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
-		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
-		AstralBulletSTAR.DisplayName: Astral Bullet S T A R
-		AstralBulletPROJ.DisplayName: Astral Bullet P R O J
-	}
-
-	DPreDog: {
-		DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
-		EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
-		EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
-		PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
-		PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
-		UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
-		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
-		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
-		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
-		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
-		DivineGeodeArrowEXP.DisplayName: Divine Geode Arrow E X P
-		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
-		UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
-		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
-		PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
-		EffulgentFeatherBulletPROJ.DisplayName: Effulgent Feather Bullet P R O J
-		EffulgentFeatherBulletAREA.DisplayName: Effulgent Feather Bullet A R E A
-		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
-	}
-
-	EAfterDog: {
-		AuricArrowBALL.DisplayName: Auric Arrow B A L L
-		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
-		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
-		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
-		MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
-		AuricBuletPROJ.DisplayName: Auric Bulet P R O J
-		AuricBuletBALL.DisplayName: Auric Bulet B A L L
-	}
 }
 
 Configs: {
@@ -999,29 +986,6 @@ Items: {
 	}
 }
 
-Projectiles: {
-	EAfterDog: {
-		MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
-		CosmosGelEater.DisplayName: Cosmos Gel Eater
-		AuricGelLighting.DisplayName: Auric Gel Lighting
-	}
-
-	CPreMoodLord: {
-		ScoriaGelFireBall.DisplayName: Scoria Gel Fire Ball
-		LivingShardGelHealPROJ.DisplayName: Living Shard Gel Heal P R O J
-		LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
-	}
-
-	APreHardMode: {
-		HurricaneGelSplit.DisplayName: Hurricane Gel Split
-		AerialiteGelCloud.DisplayName: Aerialite Gel Cloud
-	}
-
-	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
-	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
-	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
-}
-
 Weapons: {
 	RE: {
 		PhotovisceratorRE: {
@@ -1039,12 +1003,12 @@ WeaponToAMMO: {
 	Arrow: {
 		MonstrousArrow: {
 			MonstrousArrow: {
+				DisplayName: 畸变血箭
 				Tooltip:
 					'''
 					命中后回复生命值
 					“心跳加速”
 					'''
-				DisplayName: 畸变血箭
 			}
 
 			MonstrousArrowPROJ.DisplayName: Monstrous Arrow P R O J
@@ -1060,8 +1024,8 @@ WeaponToAMMO: {
 					'''
 			}
 
-			PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
 			PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
+			PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
 		}
 
 		Terratoarrow: {
@@ -1070,14 +1034,14 @@ WeaponToAMMO: {
 				Tooltip:
 					'''
 					快速飞行并分裂成多支强力追踪的分裂箭
-					直接命中敌人造成2.5倍伤害
+					直接命中敌人造成更高伤害
 					“远古传奇”
 					'''
 			}
 
-			TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
-			TerratoarrowSlash.DisplayName: Terratoarrow Slash
 			TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
+			TerratoarrowSlash.DisplayName: Terratoarrow Slash
+			TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
 		}
 
 		TheDrill: {
@@ -1113,13 +1077,13 @@ WeaponToAMMO: {
 
 		TNTArrow: {
 			TNTArrow: {
+				DisplayName: 炸药箭
 				Tooltip:
 					'''
 					命中敌人后爆炸并炸出火星子
 					同时天降几颗手榴弹
 					“中世纪技术与现代科技的结合，尽管相对野蛮”
 					'''
-				DisplayName: 炸药箭
 			}
 
 			TNTArrowPROJ.DisplayName: T N T Arrow P R O J
@@ -1131,7 +1095,7 @@ WeaponToAMMO: {
 			ApoctosisMagicBullet: {
 				Tooltip:
 					'''
-					消耗5魔力射出子弹命中后，根据现有魔力值提供伤害增幅
+					消耗5魔力射出子弹，命中后根据现有魔力值提供伤害增幅
 					每一点魔力值提供0.5%的伤害增幅，无上限
 					“魔法射手”
 					'''
@@ -1151,8 +1115,8 @@ WeaponToAMMO: {
 					'''
 			}
 
-			DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
 			DestructionBulletEXP.DisplayName: Destruction Bullet E X P
+			DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
 		}
 
 		NorthStar: {
@@ -1162,7 +1126,7 @@ WeaponToAMMO: {
 					射出不穿透的激光，击中敌人时积攒能量
 					命中50次后升级自身弹幕，释放分裂光束
 					继续命中50次后升到最高级以获得强追踪
-					“你可以把那些子弹丢掉了，我比他们强太多了！”
+					“你可以把那些子弹丢掉了，因为我比他们强太多了！”
 					'''
 				DisplayName: 北极星之佑
 			}
@@ -1210,5 +1174,109 @@ WeaponToAMMO: {
 
 			YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
 		}
+	}
+}
+
+NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
+
+Projectiles: {
+	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
+	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
+	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+
+	CPreMoodLord: {
+		LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
+		LivingShardGelHealPROJ.DisplayName: Living Shard Gel Heal P R O J
+		ScoriaGelFireBall.DisplayName: Scoria Gel Fire Ball
+	}
+
+	APreHardMode: {
+		AerialiteGelCloud.DisplayName: Aerialite Gel Cloud
+		HurricaneGelSplit.DisplayName: Hurricane Gel Split
+	}
+
+	EAfterDog: {
+		AuricGelLighting.DisplayName: Auric Gel Lighting
+		CosmosGelEater.DisplayName: Cosmos Gel Eater
+		MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
+	}
+}
+
+Projectile: {
+	APreHardMode: {
+		AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
+		TinkleshardBulletPROJ.DisplayName: Tinkleshard Bullet P R O J
+		TinkleshardBulletSPIT.DisplayName: Tinkleshard Bullet S P I T
+		WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
+		AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
+		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
+		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
+		PrismArrowPROJ.DisplayName: Prism Arrow P R O J
+		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
+	}
+
+	BPrePlantera: {
+		CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
+		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
+		StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
+		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
+		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+	}
+
+	CPreMoodLord: {
+		AstralBulletPROJ.DisplayName: Astral Bullet P R O J
+		AstralBulletSTAR.DisplayName: Astral Bullet S T A R
+		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
+		PlagueBulletPROJ.DisplayName: Plague Bullet P R O J
+		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
+		WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
+		AstralArrowMOON.DisplayName: Astral Arrow M O O N
+		AstralArrowPROJ.DisplayName: Astral Arrow P R O J
+		AstralArrowSUN.DisplayName: Astral Arrow S U N
+		CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
+		LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
+		PerennialArrowFlower.DisplayName: Perennial Arrow Flower
+		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
+		PlagueArrowPROJ.DisplayName: Plague Arrow P R O J
+		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
+		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		DropThing.DisplayName: Drop Thing
+	}
+
+	DPreDog: {
+		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+		EffulgentFeatherBulletAREA.DisplayName: Effulgent Feather Bullet A R E A
+		EffulgentFeatherBulletPROJ.DisplayName: Effulgent Feather Bullet P R O J
+		PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
+		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
+		ToothBulletPROJ.DisplayName: Tooth Bullet P R O J
+		UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
+		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+		DivineGeodeArrowEXP.DisplayName: Divine Geode Arrow E X P
+		DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
+		EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
+		EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
+		PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
+		PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
+		ToothArrowPROJ.DisplayName: Tooth Arrow P R O J
+		UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
+		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
+		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
+		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
+		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
+	}
+
+	EAfterDog: {
+		AuricBuletBALL.DisplayName: Auric Bulet B A L L
+		AuricBuletPROJ.DisplayName: Auric Bulet P R O J
+		EndothermicEnergyBulletPROJ.DisplayName: Endothermic Energy Bullet P R O J
+		EndothermicEnergyBulletSPIT.DisplayName: Endothermic Energy Bullet S P I T
+		MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
+		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
+		EndothermicEnergyArrowPROJ.DisplayName: Endothermic Energy Arrow P R O J
+		EndothermicEnergyArrowSPLIT.DisplayName: Endothermic Energy Arrow S P L I T
+		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
+		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+		AuricArrowBALL.DisplayName: Auric Arrow B A L L
 	}
 }

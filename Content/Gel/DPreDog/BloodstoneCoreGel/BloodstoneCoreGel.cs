@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.DPreDog.BloodstoneCoreGel
 {
@@ -39,8 +40,9 @@ namespace FKsCRE.Content.Gel.DPreDog.BloodstoneCoreGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.Gel, 333);
             recipe.AddIngredient<BloodstoneCore>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

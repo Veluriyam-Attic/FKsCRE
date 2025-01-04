@@ -35,7 +35,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
             Player player = Main.player[Projectile.owner];
 
             // 检查玩家是否取消了释放
-            if (player.channel && player.HeldItem.type == ModContent.ItemType<BlindBirdCry>())
+            //if (player.channel && player.HeldItem.type == ModContent.ItemType<BlindBirdCry>())
             {
                 Projectile.timeLeft = 2; // 持续刷新时间
                 Projectile.Center = player.MountedCenter; // 投射物跟随玩家
@@ -53,7 +53,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
                     );
                 }
             }
-            else
+            //else
             {
                 // 玩家松开左键或切换武器时，销毁当前投射物和绑定的子弹幕
                 if (linkedProj != -1 && Main.projectile[linkedProj].active && Main.projectile[linkedProj].type == ModContent.ProjectileType<BlindBirdCryINVPROJ>())

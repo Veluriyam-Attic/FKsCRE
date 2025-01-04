@@ -30,10 +30,12 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
         }
 
         public override void AddRecipes()
-        {
+        {            
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.JestersArrow, 333);
+            recipe.AddIngredient(ItemID.SoulofFlight, 1);
             recipe.AddIngredient<EffulgentFeather>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

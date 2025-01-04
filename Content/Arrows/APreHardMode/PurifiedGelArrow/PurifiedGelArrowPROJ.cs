@@ -12,6 +12,7 @@ using CalamityMod.Graphics.Primitives;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
 using FKsCRE.CREConfigs;
+using CalamityMod.Projectiles.Summon;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.PurifiedGelArrow
 {
@@ -24,9 +25,9 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PurifiedGelArrow
         public static int MaxUpdate = 1; // 弹幕每次更新的最大次数
         private int Lifetime = 110; // 弹幕的生命周期为110
 
-        private static Color ShaderColorOne = Color.Pink; // 着色器颜色1，设置为粉红色
-        private static Color ShaderColorTwo = Color.White; // 着色器颜色2，设置为白色
-        private static Color ShaderEndColor = Color.LightPink; // 着色器结束颜色，设置为浅粉红色
+        private static Color ShaderColorOne = Color.DarkGreen; // 着色器颜色1，设置为深绿色
+        private static Color ShaderColorTwo = Color.Black; // 着色器颜色2，设置为黑色
+        private static Color ShaderEndColor = Color.ForestGreen; // 着色器结束颜色，设置为森林绿色（另一种深绿色）
 
         private Vector2 altSpawn; // 定义备用生成位置向量
 
@@ -37,12 +38,6 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PurifiedGelArrow
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
 
-        //public override bool PreDraw(ref Color lightColor)
-        //{
-        //    // 保留原有的绘制逻辑
-        //    CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Type], lightColor, 1);
-        //    return false;
-        //}
 
         public override void SetDefaults()
         {
@@ -65,6 +60,32 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PurifiedGelArrow
 
             // 添加粉红色与白色渐变的光源效果
             Lighting.AddLight(Projectile.Center, Color.Pink.ToVector3() * 0.49f);
+
+            // 检查场上是否存在 WitherBlossom 弹幕
+            bool hasWitherBlossom = Main.projectile.Any(p => p.active && p.type == ModContent.ProjectileType<WitherBlossom>());
+
+            if (hasWitherBlossom)
+            {
+                // 前30帧不追踪，之后开始追踪敌人
+                if (Projectile.ai[1] > 30)
+                {
+                    NPC target = Projectile.Center.ClosestNPCAt(1800f); // 查找1800范围内最近的敌人
+                    if (target != null)
+                    {
+                        Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+                        Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 12f, 0.08f); // 追踪速度为12
+                    }
+                }
+                else
+                {
+                    Projectile.ai[1]++;
+                }
+            }
+            else
+            {
+                // 没有 WitherBlossom 弹幕时直接直线飞行
+                Projectile.ai[1]++;
+            }
         }
 
         private float PrimitiveWidthFunction(float completionRatio)

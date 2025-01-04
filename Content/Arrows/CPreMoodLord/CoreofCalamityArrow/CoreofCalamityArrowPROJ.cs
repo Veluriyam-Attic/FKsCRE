@@ -30,9 +30,13 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.CoreofCalamityArrow
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            // 画残影效果
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
-            return false;
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Type], lightColor, 1);
+                return false;
+            }
+            return true;
         }
         public override void SetDefaults()
         {

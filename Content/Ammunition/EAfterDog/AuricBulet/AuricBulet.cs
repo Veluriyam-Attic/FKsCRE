@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
 {
@@ -33,9 +34,10 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(999);
+            recipe.AddIngredient(ItemID.EmptyBullet, 999);
             recipe.AddIngredient<AuricBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<CosmicAnvil>();
             recipe.Register();
         }
     }

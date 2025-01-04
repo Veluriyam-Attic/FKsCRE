@@ -30,7 +30,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.YuanZiDan
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<YuanZiDanPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet;

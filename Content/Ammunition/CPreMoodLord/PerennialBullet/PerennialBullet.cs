@@ -33,9 +33,10 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(100);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient(ItemID.CursedBullet, 150);
             recipe.AddIngredient<PerennialBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

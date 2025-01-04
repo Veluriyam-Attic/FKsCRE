@@ -32,7 +32,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(100);
+            Recipe recipe = CreateRecipe(50);
+            recipe.AddIngredient(ItemID.WoodenArrow, 50);
             recipe.AddIngredient<WulfrumMetalScrap>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

@@ -35,7 +35,8 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(50);
+            recipe.AddIngredient(ItemID.MusketBall, 50);
             recipe.AddIngredient<SeaPrism>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

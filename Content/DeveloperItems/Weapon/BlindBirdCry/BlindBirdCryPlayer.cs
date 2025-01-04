@@ -22,7 +22,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
         public override void PostUpdate()
         {
             // 检查玩家是否手持 BlindBirdCry 武器
-            if (Player.HeldItem.type == ModContent.ItemType<BlindBirdCry>())
+            //if (Player.HeldItem.type == ModContent.ItemType<BlindBirdCry>())
             {
                 // 首先设置远程暴击率伤害为0
                 Player.GetDamage(DamageClass.Ranged) = new Terraria.ModLoader.StatModifier(0f, 1f, 0f, 1f);
@@ -49,7 +49,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
                 int MACrit = (int)Player.GetCritChance(DamageClass.Magic);
                 Player.GetCritChance(DamageClass.Ranged) += MACrit;
             }
-            else
+            //else
             {
                 // 如果玩家未手持 BlindBirdCry，重置倍率
                 whipTagMultiplier = 1f;

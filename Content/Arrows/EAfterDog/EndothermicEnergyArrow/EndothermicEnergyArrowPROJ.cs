@@ -12,12 +12,13 @@ using FKsCRE.CREConfigs;
 using CalamityMod.Particles;
 using Terraria.Audio;
 
-namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
+namespace FKsCRE.Content.Arrows.EAfterDog.EndothermicEnergyArrow
 {
-    public class ShuangHuaArrowPROJ : ModProjectile, ILocalizedModType
+    public class EndothermicEnergyArrowPROJ : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.ShuangHuaArrow";
-        public override string Texture => "FKsCRE/Content/DeveloperItems/Arrow/ShuangHuaArrow/ShuangHuaArrow";
+        public new string LocalizationCategory => "Projectile.EAfterDog";
+        public override string Texture => "FKsCRE/Content/Arrows/EAfterDog/EndothermicEnergyArrow/EndothermicEnergyArrow";
+
 
         public override void SetStaticDefaults()
         {
@@ -107,14 +108,14 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShuangHuaArrow
                 float angleStep = MathHelper.ToRadians(3); // 每两发之间的固定角度（原先是3度）
 
                 // 动态生成弹幕
-                for (int i = -(arrowCount / 2); i <= (arrowCount / 2); i++) // 从负到正，确保发射对称
+                for (int i = -(arrowCount / 2); i <= arrowCount / 2; i++) // 从负到正，确保发射对称
                 {
                     float offsetAngle = i * angleStep; // 根据索引计算偏移角度
                     Vector2 direction = baseDirection.RotatedBy(offsetAngle); // 相对绝对正下方生成新的方向
                     direction *= 8f; // 设定飞行速度
 
                     // 生成新的弹幕
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<ShuangHuaArrowSPLIT>(), (int)(Projectile.damage * 0.85f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<EndothermicEnergyArrowSPLIT>(), (int)(Projectile.damage * 0.85f), Projectile.knockBack, Projectile.owner);
                 }
                 // 销毁自身
                 Projectile.Kill();

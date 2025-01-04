@@ -92,7 +92,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.OrichalcumBullet
                 float speedMult = 24f / pathToTravel.Length();
                 pathToTravel *= speedMult;
                 //int petal = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, pathToTravel, ProjectileID.FlowerPetal, (int)((damageDone) * 0.55), 0f, Projectile.owner);
-                int petal = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, pathToTravel, ProjectileID.FlowerPetal, (int)(Projectile.damage * 1.1), 0f, Projectile.owner);
+                int petal = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, pathToTravel, ProjectileID.FlowerPetal, (int)(Projectile.damage * 0.75), 0f, Projectile.owner);
                 if (petal.WithinBounds(Main.maxProjectiles))
                     Main.projectile[petal].DamageType = DamageClass.Ranged; // 改为射手类伤害
             }

@@ -26,11 +26,10 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.ApoctosisMagicBullet
             Item.maxStack = 1;
             Item.consumable = false;
             Item.knockBack = 3f;
-            Item.mana = 8;
+            //Item.mana = 8;
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<ApoctosisMagicBulletPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet;

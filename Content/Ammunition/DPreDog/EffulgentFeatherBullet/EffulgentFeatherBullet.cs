@@ -35,8 +35,10 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.HighVelocityBullet, 333);
+            recipe.AddIngredient(ItemID.SoulofFlight, 1);
             recipe.AddIngredient<EffulgentFeather>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

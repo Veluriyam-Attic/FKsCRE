@@ -40,8 +40,9 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient(ItemID.MusketBall, 100);
             recipe.AddIngredient<CryonicBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

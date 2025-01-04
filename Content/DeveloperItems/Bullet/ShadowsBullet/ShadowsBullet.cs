@@ -19,7 +19,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ShadowsBullet
         public new string LocalizationCategory => "DeveloperItems.ShadowsBullet";
         public override void SetDefaults()
         {
-            Item.damage = 500;
+            Item.damage = 100;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

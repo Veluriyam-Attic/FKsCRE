@@ -30,7 +30,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.DestructionBullet
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<DestructionBulletPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet; // 这是子弹类型的弹药

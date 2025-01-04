@@ -11,11 +11,11 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using FKsCRE.CREConfigs;
 
-namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
+namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
 {
-    public class UltraLowTempSPIT : ModProjectile, ILocalizedModType
+    public class EndothermicEnergyBulletSPIT : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.UltraLowTemp";
+        public new string LocalizationCategory => "Projectile.EAfterDog";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;

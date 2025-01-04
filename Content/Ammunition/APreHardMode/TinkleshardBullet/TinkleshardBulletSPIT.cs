@@ -94,20 +94,21 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Projectile.tileCollide = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
-            Projectile.MaxUpdates = 3;
+            Projectile.MaxUpdates = 0;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
+            Projectile.aiStyle = ProjAIStyleID.Arrow; // 受重力影响
             Projectile.rotation = Main.rand.NextFloat(MathHelper.TwoPi); // 随机初始旋转
         }
-        private static readonly string[] Textures = new[]
-   {
-            "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece1",
-            "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece2",
-            "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece3",
-            "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece4"
-        };
-        public override string Texture => Textures[Main.rand.Next(Textures.Length)];
+        //private static readonly string[] Textures = new[]
+        //{
+        //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece1",
+        //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece2",
+        //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece3",
+        //    "FKsCRE/Content/Ammunition/APreHardMode/TinkleshardBullet/TinkleshardBullet_Piece4"
+        //};
+        //public override string Texture => Textures[Main.rand.Next(Textures.Length)];
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation();

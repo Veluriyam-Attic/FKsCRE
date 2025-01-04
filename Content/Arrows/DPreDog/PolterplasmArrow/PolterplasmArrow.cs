@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Ammo;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
@@ -32,8 +33,10 @@ namespace FKsCRE.Content.Arrows.DPreDog.PolterplasmArrow
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient<SproutingArrow>(333);
+            recipe.AddIngredient(ItemID.Ectoplasm, 1);
             recipe.AddIngredient<Necroplasm>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }

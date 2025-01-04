@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CalamityMod.Items.Ammo;
 using CalamityMod.Items.Materials;
+using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow;
+using FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow;
+
 
 namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
 {
@@ -31,9 +36,12 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(999);
+            recipe.AddIngredient<PerennialArrow.PerennialArrow>(333);
+            recipe.AddIngredient<ScoriaArrow.ScoriaArrow>(333);
+            recipe.AddIngredient<VeriumBolt>(333);
             recipe.AddIngredient<LifeAlloy>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

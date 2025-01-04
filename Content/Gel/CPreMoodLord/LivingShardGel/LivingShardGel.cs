@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel
 {
@@ -38,9 +39,10 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LivingShardGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient(ItemID.Gel, 150);
             recipe.AddIngredient<LivingShard>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

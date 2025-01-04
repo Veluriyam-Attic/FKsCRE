@@ -16,11 +16,11 @@ using Terraria.Audio;
 using CalamityMod.Buffs.StatDebuffs;
 using FKsCRE.CREConfigs;
 
-namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
+namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
 {
-    public class UltraLowTempPROJ : ModProjectile, ILocalizedModType
+    public class EndothermicEnergyBulletPROJ : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "DeveloperItems.UltraLowTemp";
+        public new string LocalizationCategory => "Projectile.EAfterDog";
         public override string Texture => "CalamityMod/Projectiles/LaserProj"; // 引用原始纹理
 
         public Color baseColor = Color.Cyan; // 冰元素的蓝色
@@ -173,7 +173,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.UltraLowTemp
                     Projectile.GetSource_FromThis(),
                     spawnPos,
                     direction * 10f,
-                    ModContent.ProjectileType<UltraLowTempSPIT>(),
+                    ModContent.ProjectileType<EndothermicEnergyBulletSPIT>(),
                     (int)(Projectile.damage * 0.6f),
                     Projectile.knockBack,
                     Main.myPlayer

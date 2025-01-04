@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
 {
@@ -38,10 +39,11 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
-            recipe.AddIngredient<StarblightSoot>(5);
-            recipe.AddIngredient<TitanHeart>(1); 
-            recipe.AddTile(TileID.Anvils);
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient(ItemID.Gel, 100);
+            //recipe.AddIngredient<StarblightSoot>(5);
+            recipe.AddIngredient<TitanHeart>(1);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

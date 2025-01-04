@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
 using Terraria.DataStructures;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 
 namespace FKsCRE.Content.Gel.DPreDog.UnholyEssenceGel
 {
@@ -45,8 +46,9 @@ namespace FKsCRE.Content.Gel.DPreDog.UnholyEssenceGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.Gel, 333);
             recipe.AddIngredient<UnholyEssence>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<StaticRefiner>();
             recipe.Register();
         }
     }

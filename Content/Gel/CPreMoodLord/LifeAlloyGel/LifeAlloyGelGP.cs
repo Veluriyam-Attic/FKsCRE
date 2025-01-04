@@ -44,7 +44,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.LifeAlloyGel
                         projectile.Center,
                         projectile.velocity.RotatedByRandom(0.5f) * 0.2f,
                         ModContent.ProjectileType<HyperiusSplit>(),
-                        (int)(projectile.damage / 0.75 * 0.21f), // 0.21 倍伤害
+                        (int)(projectile.damage / 0.75 * 0.35f), // 伤害
                         0f,
                         projectile.owner,
                         ai0: 0f,

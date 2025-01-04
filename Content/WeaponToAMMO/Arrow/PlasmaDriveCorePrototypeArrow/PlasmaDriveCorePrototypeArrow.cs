@@ -29,7 +29,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.PlasmaDriveCorePrototypeArrow
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<PlasmaDriveCorePrototypeArrowPROJ>();
             Item.shootSpeed = PlasmaDriveCorePrototypeArrowPROJ.InitialSpeed;
             Item.ammo = AmmoID.Arrow; // 这是箭矢类型的弹药

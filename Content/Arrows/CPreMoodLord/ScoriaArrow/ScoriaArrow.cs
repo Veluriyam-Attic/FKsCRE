@@ -31,9 +31,10 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.ScoriaArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient(ItemID.HellfireArrow, 150);
             recipe.AddIngredient<ScoriaBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

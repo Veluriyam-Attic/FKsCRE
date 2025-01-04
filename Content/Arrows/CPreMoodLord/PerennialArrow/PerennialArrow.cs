@@ -31,9 +31,10 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient(ItemID.WoodenArrow, 150);
             recipe.AddIngredient<PerennialBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

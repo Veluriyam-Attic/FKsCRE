@@ -31,7 +31,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PrismArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(50);
+            recipe.AddIngredient(ItemID.WoodenArrow, 50);
             recipe.AddIngredient<SeaPrism>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

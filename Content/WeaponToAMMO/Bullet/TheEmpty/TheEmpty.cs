@@ -22,7 +22,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.TheEmpty
         {
             Item.width = 12;
             Item.height = 18;
-            Item.damage = 20;
+            Item.damage = 7;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 1;
             Item.consumable = false;
@@ -30,7 +30,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.TheEmpty
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<TheEmptyPROJ>();
             Item.shootSpeed = 6f;
             Item.ammo = AmmoID.Bullet;

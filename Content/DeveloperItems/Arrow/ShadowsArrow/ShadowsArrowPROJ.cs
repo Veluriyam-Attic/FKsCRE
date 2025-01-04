@@ -122,18 +122,19 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
             frameCounter++;
             Projectile.velocity *= 1.02f; // 逐渐加速
 
-            // 在飞行过程中生成黑色粒子特效
-            for (int j = 0; j < 2; j++)
-            {
-                Vector2 particleVelocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(15 * (j % 2 == 0 ? 1 : -1))) * Main.rand.NextFloat(1f, 2.6f);
-                Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Smoke, particleVelocity, 0, Color.Black, Main.rand.NextFloat(0.9f, 1.6f));
-                dust.noGravity = true;
-            }
-
             if (frameCounter >= 10 && !hasSplit)
             {
                 SplitProjectile();
                 hasSplit = true; // 确保只分裂一次
+
+                // 在飞行过程中生成黑色粒子特效
+                for (int j = 0; j < 25; j++)
+                {
+                    Vector2 particleVelocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(15 * (j % 2 == 0 ? 1 : -1))) * Main.rand.NextFloat(1f, 2.6f);
+                    Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Smoke, particleVelocity, 0, Color.Black, Main.rand.NextFloat(0.9f, 1.6f));
+                    dust.noGravity = true;
+                }
+
             }
         }
 
@@ -151,19 +152,19 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
                 {
                     // 原版弹幕
                     int selectedVanilla = VanillaProjectiles[Main.rand.Next(VanillaProjectiles.Length)];
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedVanilla, (Projectile.damage) * 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedVanilla, (Projectile.damage) * 5, Projectile.knockBack, Projectile.owner);
                 }
                 else if (randomType == 1)
                 {
                     // Calamity 弹幕
                     int selectedCalamity = CalamityProjectiles[Main.rand.Next(CalamityProjectiles.Length)];
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedCalamity, (Projectile.damage) * 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, selectedCalamity, (Projectile.damage) * 5, Projectile.knockBack, Projectile.owner);
                 }
                 else
                 {
                     // 自定义模组弹幕
                     string selectedProjectile = CustomModProjectiles[Main.rand.Next(CustomModProjectiles.Length)];
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, Mod.Find<ModProjectile>(selectedProjectile).Type, (Projectile.damage) * 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVelocity, Mod.Find<ModProjectile>(selectedProjectile).Type, (Projectile.damage) * 5, Projectile.knockBack, Projectile.owner);
                 }
 
                 // 黑色粒子效果

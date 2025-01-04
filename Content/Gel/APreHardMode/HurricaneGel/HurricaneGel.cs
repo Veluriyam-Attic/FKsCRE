@@ -40,9 +40,10 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(50);
+            recipe.AddIngredient(ItemID.Gel, 50);
             recipe.AddIngredient<SeaPrism>(10);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.Solidifier);
             recipe.Register();
         }
     }

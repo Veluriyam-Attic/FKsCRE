@@ -9,6 +9,11 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using FKsCRE.Content.Gel.APreHardMode.GeliticGel;
+using FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel;
+using FKsCRE.Content.Gel.CPreMoodLord.AstralGel;
+using FKsCRE.Content.Gel.DPreDog.DivineGeodeGel;
 
 namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
 {
@@ -39,9 +44,13 @@ namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(333);
+            Recipe recipe = CreateRecipe(3996);
+            recipe.AddIngredient<GeliticGel>(999);
+            recipe.AddIngredient<StarblightSootGel>(999);
+            recipe.AddIngredient<AstralGel>(999);
+            recipe.AddIngredient<DivineGeodeGel>(999);
             recipe.AddIngredient<MiracleMatter>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<DraedonsForge>();
             recipe.Register();
         }
     }

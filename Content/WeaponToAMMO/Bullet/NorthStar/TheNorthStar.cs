@@ -31,7 +31,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.NorthStar
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<PolarStarO>();
             Item.shootSpeed = 10f;
             Item.ammo = AmmoID.Bullet;

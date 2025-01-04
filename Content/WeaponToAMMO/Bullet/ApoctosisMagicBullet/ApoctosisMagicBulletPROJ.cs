@@ -56,7 +56,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.ApoctosisMagicBullet
                 return;
             }
 
-            //player.statMana -= 5; // 消耗魔力值
+            player.statMana -= 5; // 消耗魔力值
             SoundEngine.PlaySound(SoundID.Item91); // 播放音效
         }
 
@@ -90,7 +90,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.ApoctosisMagicBullet
                 {
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
-                        Main.rand.NextBool() ? 130 : 134, // 粒子特效 ID 
+                        Main.rand.NextBool() ? 90 : 130, // 粒子特效 ID 
                         -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
                     );
                     dust.noGravity = true; // 粒子无重力
@@ -108,7 +108,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.ApoctosisMagicBullet
                 Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 50f; // 粒子偏移位置
                 Dust dust = Dust.NewDustPerfect(
                     target.Center + offset,
-                    DustID.Torch, // 红色粒子
+                    DustID.Electric, // 粒子
                     Vector2.Zero
                 );
                 dust.noGravity = true; // 粒子无重力

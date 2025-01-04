@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.Pets;
+using FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet;
 
 namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
 {
@@ -35,9 +36,10 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(100);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient<StarblightSootBullet>(150);
             recipe.AddIngredient<AstralBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

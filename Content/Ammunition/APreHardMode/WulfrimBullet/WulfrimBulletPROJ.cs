@@ -11,6 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using FKsCRE.CREConfigs;
+using CalamityMod;
 
 namespace FKsCRE.Content.Ammunition.APreHardMode.WulfrimBullet
 {
@@ -19,56 +20,19 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.WulfrimBullet
         public new string LocalizationCategory => "Projectile.APreHardMode";
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 16;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            // 获取 SpriteBatch 和投射物纹理
-            SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/APreHardMode/WulfrimBullet/WulfrimBulletPROJ").Value;
-
-            // 遍历投射物的旧位置数组，绘制光学拖尾效果
-            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 计算颜色插值值，使颜色在旧位置之间平滑过渡
-                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
-
-                // 使用天蓝色渐变
-                Color color = Color.Lerp(Color.Green, Color.LimeGreen, colorInterpolation) * 0.4f;
-                color.A = 0;
-
-                // 计算绘制位置，将位置调整到碰撞箱的中心
-                Vector2 drawPosition = Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
-
-                // 计算外部和内部的颜色
-                Color outerColor = color;
-                Color innerColor = color * 0.5f;
-
-                // 计算强度，使拖尾逐渐变弱
-                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
-                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
-                if (Projectile.timeLeft <= 60)
-                {
-                    intensity *= Projectile.timeLeft / 60f; // 如果弹幕即将消失，则拖尾也逐渐消失
-                }
-
-                // 计算外部和内部的缩放比例，使拖尾具有渐变效果
-                Vector2 outerScale = new Vector2(2f) * intensity;
-                Vector2 innerScale = new Vector2(2f) * intensity * 0.7f;
-                outerColor *= intensity;
-                innerColor *= intensity;
-
-                // 绘制外部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, outerColor, Projectile.rotation, lightTexture.Size() * 0.5f, outerScale * 0.6f, SpriteEffects.None, 0);
-
-                // 绘制内部的拖尾效果，并应用旋转
-                Main.EntitySpriteDraw(lightTexture, drawPosition, null, innerColor, Projectile.rotation, lightTexture.Size() * 0.5f, innerScale * 0.6f, SpriteEffects.None, 0);
+                // 画残影效果
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+                return false;
             }
-
-            // 绘制默认的弹幕，并应用旋转
-            Main.EntitySpriteDraw(lightTexture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), null, lightColor, Projectile.rotation, lightTexture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
-            return false;
+            return true;
         }
         public override void SetDefaults()
         {

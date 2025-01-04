@@ -33,8 +33,9 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(333);
+            recipe.AddIngredient(ItemID.ChlorophyteBullet, 333);
             recipe.AddIngredient<UelibloomBar>(1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
     }
