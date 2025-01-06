@@ -22,6 +22,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
         public override string Texture => "FKsCRE/Content/DeveloperItems/Weapon/Pyroblast/Pyroblast";
         public new string LocalizationCategory => "DeveloperItems.Pyroblast";
         public override int AssociatedItemID => ModContent.ItemType<Pyroblast>(); // 绑定武器
+        public override Vector2 GunTipPosition => Projectile.Center + Vector2.UnitX.RotatedBy(Projectile.rotation) * (Projectile.width * 0.5f + 10f);
         public override float MaxOffsetLengthFromArm => 15f; // 设置与手臂的距离
         public override float OffsetXUpwards => -12f; // 武器向上的偏移
         public override float BaseOffsetY => -10f; // 基础的Y轴偏移
@@ -72,7 +73,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
                 Vector2 direction = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX).RotatedByRandom(MathHelper.ToRadians(2));
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
-                    Projectile.Center,
+                    GunTipPosition,
                     direction * 12f,
                     ModContent.ProjectileType<PyroblastPROJ>(),
                     Projectile.damage,
@@ -164,7 +165,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
                 // 发射激光
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
-                    Projectile.Center,
+                    GunTipPosition,
                     randomizedDirection * 10f, // 设置速度为方向的 10 倍
                     ModContent.ProjectileType<PyroblastSolarBeam>(),
                     Projectile.damage,
@@ -182,7 +183,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
                 Vector2 direction = (Main.MouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX);
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
-                    Projectile.Center,
+                    GunTipPosition,
                     direction * 12f, // 设置速度为方向的12倍
                     ModContent.ProjectileType<PyroblastRocket>(),
                     (int)(Projectile.damage * 2.0f), // 伤害倍率为2.0

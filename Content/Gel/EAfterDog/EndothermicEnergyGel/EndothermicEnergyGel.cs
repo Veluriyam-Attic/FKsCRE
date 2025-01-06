@@ -40,7 +40,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.EndothermicEnergyGel
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(999);
-            recipe.AddIngredient(ItemID.Gel, 999);
+            //recipe.AddIngredient(ItemID.Gel, 999);
             recipe.AddIngredient<EndothermicEnergy>(1);
             recipe.AddTile<CosmicAnvil>();
             recipe.Register();

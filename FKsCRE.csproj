@@ -84,6 +84,7 @@
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrow.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\PlagueArrow\瘟疫箭（弹幕）.png" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPBuff.png" />
+	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\新灵质箭.png" />
 	  <None Remove="Content\Arrows\DPreDog\ToothArrow.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPC.png" />
 	  <None Remove="Content\Arrows\EAfterDog\AuricArrow\AuricArrowNPCDrop.png" />
@@ -91,6 +92,8 @@
 	  <None Remove="Content\DeveloperItems\Arrow\ExplodingRabbit\ExplodingRabbit.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\GlitchArrow\GlitchArrow.png" />
 	  <None Remove="Content\DeveloperItems\Arrow\GlitchArrow\木头.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\AlloyRailgun\AlloyRailgun.png" />
+	  <None Remove="Content\DeveloperItems\Weapon\AlloyRailgun\AlloyRailgunHold.png" />
 	  <None Remove="Content\Gel\CPreMoodLord\PlagueGel\PlagueGel.png" />
 	  <None Remove="Content\Gel\CPreMoodLord\PlagueGel\PlagueGelEDebuff.png" />
 	  <None Remove="Content\Gel\DPreDog\ToothGel\ToothGel.png" />

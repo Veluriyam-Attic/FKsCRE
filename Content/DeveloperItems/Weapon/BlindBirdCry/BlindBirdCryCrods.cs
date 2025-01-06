@@ -48,9 +48,9 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
             Projectile.width = Projectile.height = 16;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.penetrate = 200;
+            Projectile.penetrate = 1;
             Projectile.extraUpdates = 7;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 300;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 50;
             Projectile.DamageType = DamageClass.Ranged;
@@ -59,9 +59,20 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
 
         public override void OnSpawn(IEntitySource source)
         {
-
-
+            // 在弹幕出现时生成黑色椭圆形光圈
+            Particle pulse = new DirectionalPulseRing(
+                Projectile.Center, // 生成位置
+                Projectile.velocity * 0.75f, // 初始速度，朝正前方
+                Color.Black, // 光圈颜色
+                new Vector2(1f, 2.5f), // 椭圆比例
+                Projectile.rotation, // 旋转角度
+                0.2f, // 初始缩放
+                0.03f, // 最终缩放
+                20 // 持续时间
+            );
+            GeneralParticleHandler.SpawnParticle(pulse);
         }
+
         public bool ableToHit = true;
         public ref float Time => ref Projectile.ai[1];
         public override bool? CanDamage() => Time >= 80f; // 初始的时候不会造成伤害，直到x为止
@@ -81,31 +92,25 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
             }
 
 
-            if (Projectile.localAI[0] < 60) // 前 1 秒飞行
-            {
-                if (Projectile.localAI[0] % 3 == 0) // 每 x 帧
-                {
-                    //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.PiOver2);
-                    //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(4));
-                    Projectile.velocity *= 0.85f;
-                }
-                //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
-            }
-            else // 使用新的追踪逻辑
-            {
-                NPC target = Projectile.Center.ClosestNPCAt(5800);
-                if (target != null)
-                {
-                    Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 10f, 0.08f);
-                }
-            }
-
-            if (Projectile.penetrate < 200) // 如果弹幕已经击中敌人，停止追踪能力
-            {
-                if (Projectile.timeLeft > 60) { Projectile.timeLeft = 60; } // 弹幕开始缩小并减速
-                Projectile.velocity *= 0.88f;
-            }
+            //if (Projectile.localAI[0] < 60) // 前 1 秒飞行
+            //{
+            //    if (Projectile.localAI[0] % 3 == 0) // 每 x 帧
+            //    {
+            //        //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.PiOver2);
+            //        //Projectile.velocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(4));
+            //        Projectile.velocity *= 0.85f;
+            //    }
+            //    //Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 1.0f;
+            //}
+            //else // 使用新的追踪逻辑
+            //{
+            //    NPC target = Projectile.Center.ClosestNPCAt(5800);
+            //    if (target != null)
+            //    {
+            //        Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+            //        Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 10f, 0.08f);
+            //    }
+            //}
 
             if (Projectile.timeLeft <= 20) // 弹幕即将消失时停止造成伤害
             {
@@ -114,8 +119,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
             Time++;
 
 
-            // 前30帧不追踪，之后开始追踪敌人
-            if (Projectile.ai[1] > 130)
+            // 前x帧不追踪，之后开始追踪敌人
+            if (Projectile.ai[1] > 60)
             {
                 NPC target = Projectile.Center.ClosestNPCAt(5000); // 查找范围内最近的敌人
                 if (target != null)
@@ -127,58 +132,59 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
                 // 触发追踪能力激活的效果
                 if (Projectile.ai[1] == 120)
                 {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        float angle = MathHelper.ToRadians(120 * i);
-                        Vector2 particleVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 3f;
-                        Particle spark = new PointParticle(Projectile.Center, particleVelocity, false, 7, 1.5f, Color.LightYellow);
-                        GeneralParticleHandler.SpawnParticle(spark);
-                    }
+
+
+
                 }
             }
             else
             {
                 Projectile.ai[1]++;
             }
-            
 
-            // 在飞行期间生成浅黄色的粒子特效
-            if (Main.rand.NextBool(1)) // 随机生成粒子
-            {
-                Vector2 dustPosition = Projectile.position + new Vector2(Main.rand.NextFloat(Projectile.width), Main.rand.NextFloat(Projectile.height));
-                Dust dust = Dust.NewDustDirect(dustPosition, 0, 0, DustID.Torch, 0f, 0f, 100, Color.LightYellow, 1.5f);
-                dust.noGravity = true;
-            }
-        }
 
-        public override void OnKill(int timeLeft)
-        {
-            // 在死亡时向自己面向的反方向抛射出 15 个粉红色的原版粒子特效（Dust）
-            for (int i = 0; i < 15; i++)
-            {
-                float angle = MathHelper.ToRadians(Main.rand.NextFloat(-45f, 45f)); // 在 -45 到 45 度之间随机生成角度
-                Vector2 dustVelocity = Projectile.velocity.RotatedBy(angle) * -0.5f; // 反方向速度，加上随机旋转
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PinkTorch, dustVelocity.X, dustVelocity.Y);
-                dust.noGravity = true;
-                dust.scale = 1.5f;
-            }
-
+            // 每帧生成 186 号 Dust 粒子特效，形成旋转圆圈
             for (int i = 0; i < 3; i++)
             {
-                float angle = MathHelper.ToRadians(120 * i);
-                Vector2 particleVelocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 3f;
-                Particle spark = new PointParticle(Projectile.Center, particleVelocity, false, 7, 1.5f, Color.Yellow);
-                GeneralParticleHandler.SpawnParticle(spark);
+                float angle = MathHelper.TwoPi / 3 * i + Projectile.ai[1] * 0.1f; // 三个规则点，每帧旋转
+                Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 16f * 1; // 半径为 2×16
+                Vector2 position = Projectile.Center + offset;
+
+                Dust dust = Dust.NewDustPerfect(position, 186, Vector2.Zero, 0, Color.Black, 1.2f);
+                dust.noGravity = true; // 粒子无重力
             }
 
-            SoundEngine.PlaySound(SoundID.NPCHit51, Projectile.Center);
+        }
+        public override void OnKill(int timeLeft)
+        {
+            // 正前方、左偏 20 度、右偏 20 度方向
+            float[] angles = { 0f, -MathHelper.ToRadians(20f), MathHelper.ToRadians(20f) };
+            int particleCount = Main.rand.Next(15, 21); // 每个方向 15~20 个轻型烟雾
+
+            foreach (float angle in angles)
+            {
+                for (int i = 0; i < particleCount; i++)
+                {
+                    Vector2 dustVelocity = Projectile.velocity.RotatedBy(angle) * Main.rand.NextFloat(1f, 2.6f);
+                    Particle smoke = new HeavySmokeParticle(
+                        Projectile.Center,
+                        dustVelocity, // 初始速度
+                        Color.Black, // 烟雾颜色
+                        18, // 粒子寿命
+                        Main.rand.NextFloat(0.9f, 1.6f), // 缩放比例
+                        0.35f, // 透明度
+                        Main.rand.NextFloat(-1, 1), // 旋转速度
+                        true // 无重力
+                    );
+                    GeneralParticleHandler.SpawnParticle(smoke);
+                }
+            }
         }
 
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
-
+            target.AddBuff(ModContent.BuffType<BlindBirdCryEDebuff>(), 1200);
         }
 
 

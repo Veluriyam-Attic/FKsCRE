@@ -31,7 +31,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
+            //Item.Calamity().devItem = true;
             Item.shoot = ModContent.ProjectileType<EndothermicEnergyBulletPROJ>();
             Item.shootSpeed = 19f;
             Item.ammo = AmmoID.Bullet;

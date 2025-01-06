@@ -115,7 +115,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.ShadowsBullet
         public override void AI()
         {
             // 调整弹幕的旋转，使其在飞行时保持水平
-            //Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
+            Projectile.rotation = Projectile.velocity.ToRotation();
             frameCounter++;
             Projectile.velocity *= 1.006f; // 逐渐加速
 

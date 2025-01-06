@@ -177,7 +177,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.NorthStar
 
         public override Color? GetAlpha(Color lightColor) => new Color(100, 100, 255, 0);
 
-        //public override bool PreDraw(ref Color lightColor) => Projectile.DrawBeam(100f, 3f, lightColor);
         public override bool PreDraw(ref Color lightColor)
         {
             if (Projectile.ai[1] != 2f)
@@ -186,15 +185,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.NorthStar
             }
             return false;
         }
-
-        //public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        //{
-        //    Player player = Main.player[Projectile.owner];
-        //    //if ((target.damage > 5 || target.boss) && Projectile.owner == Main.myPlayer && !target.SpawnedFromStatue)
-        //    {
-        //        player.AddBuff(ModContent.BuffType<PolarisBuff>(), 480);
-        //    }
-        //}
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

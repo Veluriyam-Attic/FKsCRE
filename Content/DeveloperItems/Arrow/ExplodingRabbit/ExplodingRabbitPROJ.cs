@@ -18,7 +18,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ExplodingRabbit
     {
         public new string LocalizationCategory => "Projectile.DPreDog";
         public override string Texture => "FKsCRE/Content/DeveloperItems/Arrow/ExplodingRabbit/ExplodingRabbit";
-        private int bounceCount = 0; // Tracks the number of bounces
+        private int bounceCount = 0;
 
         public override void SetStaticDefaults()
         {

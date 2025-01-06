@@ -102,7 +102,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             for (int i = 0; i < 4; i++)
             {
                 float randomAngle = Main.rand.NextFloat(-MathHelper.PiOver2, MathHelper.PiOver2); // 随机前方 180 度内
-                Vector2 velocity = Projectile.velocity.RotatedBy(randomAngle) * 15f; // 速度
+                Vector2 velocity = Projectile.velocity.RotatedBy(randomAngle) * 5f; // 速度
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
                     Projectile.Center,

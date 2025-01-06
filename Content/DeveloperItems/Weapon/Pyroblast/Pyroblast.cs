@@ -217,7 +217,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
 
             // 第3阶段
             bool plantera = NPC.downedPlantBoss; // 花
-            bool calamitas = DownedBossSystem.downedCalamitas; // 灾厄之影
+            bool calamitas = DownedBossSystem.downedCalamitasClone; // 灾厄之影
             bool Leviathan = DownedBossSystem.downedLeviathan; // 利维坦
             bool astrumAureus = DownedBossSystem.downedAstrumAureus; // 白金
             bool golem = NPC.downedGolemBoss; // 石
@@ -243,7 +243,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             bool devourerOfGods = DownedBossSystem.downedDoG; // 神吞
             bool yharon = DownedBossSystem.downedYharon; // 龙
             bool exoMechs = DownedBossSystem.downedExoMechs; // 巨械
-            bool calamitasClone = DownedBossSystem.downedCalamitasClone; // 至尊灾厄
+            bool calamitasClone = DownedBossSystem.downedCalamitas; // 至尊灾厄
             bool BR = DownedBossSystem.downedBossRush; // BR
 
             // 这byd忍不了一点，单独列几个阴间的出来：
@@ -254,7 +254,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.Pyroblast
             // CragmawMire：伽玛史莱姆
             // downedDreadnautilus：恐惧鹦鹉螺
             // Mauler：渊海狂鲨
-            // CragmawMire：伽玛史莱姆           
+            // CragmawMire：伽玛史莱姆
+            // downedPrimordialWyrm：妖龙
         }
 
     }

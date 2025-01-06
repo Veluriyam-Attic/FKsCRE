@@ -104,10 +104,10 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             Particle heavySmoke = new HeavySmokeParticle(
                 smokePosition,
                 Main.rand.NextVector2Circular(2f, 2f),
-                Color.DarkGray, // 烟雾颜色
+                Color.Black, // 烟雾颜色
                 Main.rand.Next(20, 30), // 存活时间减半
-                Main.rand.NextFloat(0.75f, 1f), // 缩放减半
-                0.85f, // 透明度减半
+                Main.rand.NextFloat(0.75f, 0.85f), // 缩放减半
+                0.5f, // 透明度减半
                 MathHelper.ToRadians(Main.rand.NextFloat(0f, 2f)), // 随机旋转
                 true
             );

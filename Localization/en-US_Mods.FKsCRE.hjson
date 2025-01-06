@@ -97,6 +97,11 @@ Buffs: {
 		DisplayName: Plague Gel E Debuff
 		Description: Mods.FKsCRE.Buffs.PlagueGelEDebuff.Description
 	}
+
+	BlindBirdCryEDebuff: {
+		DisplayName: Blind Bird Cry E Debuff
+		Description: Mods.FKsCRE.Buffs.BlindBirdCryEDebuff.Description
+	}
 }
 
 Arrows: {
@@ -830,11 +835,101 @@ DeveloperItems: {
 	TheGoldenFire: {
 		TheGoldenFire: {
 			DisplayName: 虞金引焰
-			Tooltip:
+			Tooltip: "[Stage]"
+			TooltipS0:
 				'''
-				喷射出大量火焰
-				火焰颜色随使用的凝胶而改变
-				拥有惊人的成长能力
+				初始状态：武器正在等待成长
+				未来的战斗将为它注入力量
+				'''
+			TooltipS1:
+				'''
+				阶段1：
+				11111
+				'''
+			TooltipS2:
+				'''
+				阶段2：
+				22222
+				'''
+			TooltipS3:
+				'''
+				阶段3：
+				33333
+				'''
+			TooltipS4:
+				'''
+				阶段4：
+				44444
+				'''
+			TooltipS5:
+				'''
+				阶段5：
+				55555
+				'''
+			TooltipS6:
+				'''
+				阶段6：
+				66666
+				'''
+			TooltipS7:
+				'''
+				阶段7：
+				77777
+				'''
+			TooltipS8:
+				'''
+				阶段8：
+				88888
+				'''
+			TooltipS9:
+				'''
+				阶段9：
+				99999
+				'''
+			TooltipS10:
+				'''
+				阶段10：
+				101010
+				'''
+			TooltipS11:
+				'''
+				阶段11：
+				111111
+				'''
+			TooltipS12:
+				'''
+				阶段12：
+				121212
+				'''
+			TooltipS13:
+				'''
+				阶段13：
+				131313
+				'''
+			TooltipS14:
+				'''
+				阶段14：
+				141414
+				'''
+			TooltipS15:
+				'''
+				阶段15：
+				151515
+				'''
+			TooltipS16:
+				'''
+				阶段16：
+				161616
+				'''
+			TooltipS17:
+				'''
+				阶段17：
+				171717
+				'''
+			TooltipS18:
+				'''
+				阶段18：
+				181818
 				'''
 		}
 
@@ -897,6 +992,8 @@ DeveloperItems: {
 
 	BlindBirdCry: {
 		BlindBirdCry: {
+			Tooltip: ""
+			DisplayName: Blind Bird Cry
 		}
 
 		BlindBirdCryCrods.DisplayName: Blind Bird Cry Crods
@@ -983,6 +1080,11 @@ Items: {
 	AuricArrowNPCDrop: {
 		Tooltip: 捡起后立刻消失并将伤害乘以1.4倍，持续一段时间
 		DisplayName: 金源箭增益果实
+	}
+
+	AlloyRailgun: {
+		Tooltip: ""
+		DisplayName: Alloy Railgun
 	}
 }
 
@@ -1200,6 +1302,11 @@ Projectiles: {
 		CosmosGelEater.DisplayName: Cosmos Gel Eater
 		MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
 	}
+
+	AlloyRailgunRedBomb.DisplayName: Alloy Railgun Red Bomb
+	AlloyRailgunShot.DisplayName: Alloy Railgun Shot
+	AlloyRailgunScope.DisplayName: Alloy Railgun Scope
+	AlloyRailgunBEAM.DisplayName: Alloy Railgun B E A M
 }
 
 Projectile: {

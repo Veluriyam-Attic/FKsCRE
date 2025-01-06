@@ -30,10 +30,13 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
             Projectile.penetrate = -1; // 无限穿透
             Projectile.timeLeft = MaxFlightTime; // 初始飞行时间
             Projectile.DamageType = DamageClass.Magic; // 魔法伤害
+            Projectile.timeLeft = 300;
         }
 
         public override void AI()
         {
+            Projectile.timeLeft = 300; // 延长存活时间
+
             if (attachedNPC == null || !attachedNPC.active)
             {
                 SearchForTarget(); // 搜索最近的敌人
@@ -49,7 +52,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
         private void SearchForTarget()
         {
             NPC closestNPC = null;
-            float minDistance = 600f; // 搜索范围
+            float minDistance = 1600f; // 搜索范围
             foreach (NPC npc in Main.npc)
             {
                 if (npc.CanBeChasedBy(this) && !npc.friendly)
@@ -96,19 +99,19 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
         private void SummonProjectiles()
         {
             attackTimer++;
-            if (attackTimer >= 30) // 每30帧召唤一次弹幕
+            if (attackTimer >= 20) // 每30帧召唤一次弹幕
             {
                 attackTimer = 0;
 
                 // 从四个随机方向召唤弹幕
                 for (int i = 0; i < 4; i++)
                 {
-                    Vector2 spawnOffset = Main.rand.NextVector2Circular(300f, 300f); // 随机方向的初始偏移
+                    Vector2 spawnOffset = Main.rand.NextVector2Circular(3700f, 3700f); // 随机方向的初始偏移
                     Vector2 direction = (Projectile.Center - (Projectile.Center + spawnOffset)).SafeNormalize(Vector2.UnitY); // 朝向投射物中心
                     Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
                         Projectile.Center + spawnOffset,
-                        direction * 12f, // 速度为 12
+                        direction * 40f, // 速度
                         ModContent.ProjectileType<BlindBirdCryCrods>(), // 投射物类型
                         Projectile.damage,
                         Projectile.knockBack,

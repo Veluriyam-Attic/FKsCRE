@@ -8,62 +8,95 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Particles;
+using CalamityMod.Projectiles.Ranged;
+using Terraria.Audio;
+using CalamityMod.Projectiles.BaseProjectiles;
 
 namespace FKsCRE.Content.DeveloperItems.Weapon.BlindBirdCry
 {
-    public class BlindBirdCryHoldOut : ModProjectile, ILocalizedModType
+    public class BlindBirdCryHoldOut : BaseGunHoldoutProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "DeveloperItems.BlindBirdCry";
         public override string Texture => "FKsCRE/Content/DeveloperItems/Weapon/BlindBirdCry/BlindBirdCry";
 
-        public override void SetDefaults()
-        {
-            Projectile.width = 1;
-            Projectile.height = 1;
-            Projectile.friendly = false; // 仅用于绑定逻辑，不直接造成伤害
-            Projectile.hostile = false;
-            Projectile.ignoreWater = true;
-            Projectile.tileCollide = false; // 不与地形碰撞
-            Projectile.timeLeft = 2; // 持续刷新
-            Projectile.netImportant = true;
-        }
+        public override int AssociatedItemID => ModContent.ItemType<BlindBirdCry>();
 
-        private int linkedProj = -1; // 用于绑定的子弹幕ID
+        public override float MaxOffsetLengthFromArm => 15f; // 后坐力偏移
 
-        public override void AI()
+        public override Vector2 GunTipPosition => Projectile.Center + Vector2.UnitX.RotatedBy(Projectile.rotation) * (Projectile.width * 0.5f + 10f);
+
+        private bool hasFiredBlindBirdCryINVPROJ = false; // 确保只发射一次
+        public override void HoldoutAI()
         {
             Player player = Main.player[Projectile.owner];
 
-            // 检查玩家是否取消了释放
-            //if (player.channel && player.HeldItem.type == ModContent.ItemType<BlindBirdCry>())
+            if (!hasFiredBlindBirdCryINVPROJ)
             {
-                Projectile.timeLeft = 2; // 持续刷新时间
-                Projectile.Center = player.MountedCenter; // 投射物跟随玩家
-                if (linkedProj == -1 || !Main.projectile[linkedProj].active || Main.projectile[linkedProj].type != ModContent.ProjectileType<BlindBirdCryINVPROJ>())
+                // 播放音效
+                SoundEngine.PlaySound(SoundID.Item92, Projectile.Center);
+
+                // 发射弹幕
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    GunTipPosition, // 发射位置
+                    Vector2.UnitX.RotatedBy(Projectile.rotation) * 15f, // 固定方向和初始速度
+                    ModContent.ProjectileType<BlindBirdCryINVPROJ>(), // 弹幕类型
+                    Projectile.damage, // 固定伤害倍率为 1.0
+                    Projectile.knockBack, // 使用当前的击退值
+                    player.whoAmI // 发射者
+                );
+
+                // 在枪口位置生成黑色粒子边框
+                int particleCountPerSide = 10; // 每条边的粒子数量
+                float squareSize = 30f; // 正方形的边长
+
+                Vector2[] squareCorners = new Vector2[]
                 {
-                    // 如果子弹幕未生成或无效，则生成新的子弹幕
-                    linkedProj = Projectile.NewProjectile(
-                        Projectile.GetSource_FromThis(),
-                        Projectile.Center,
-                        Vector2.Zero,
-                        ModContent.ProjectileType<BlindBirdCryINVPROJ>(),
-                        Projectile.damage,
-                        Projectile.knockBack,
-                        Projectile.owner
-                    );
+                new Vector2(-squareSize / 2, -squareSize / 2), // 左上角
+                new Vector2(squareSize / 2, -squareSize / 2),  // 右上角
+                new Vector2(squareSize / 2, squareSize / 2),   // 右下角
+                new Vector2(-squareSize / 2, squareSize / 2)   // 左下角
+                };
+
+                for (int i = 0; i < squareCorners.Length; i++)
+                {
+                    Vector2 startCorner = squareCorners[i];
+                    Vector2 endCorner = squareCorners[(i + 1) % squareCorners.Length];
+                    Vector2 direction = (endCorner - startCorner) / particleCountPerSide;
+
+                    for (int j = 0; j < particleCountPerSide; j++)
+                    {
+                        Vector2 particlePosition = GunTipPosition + startCorner + direction * j;
+
+                        Particle particle = new SparkParticle(
+                            particlePosition, // 粒子位置
+                            (Main.MouseWorld - GunTipPosition).SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(2f, 5f), // 粒子速度，朝鼠标方向
+                            false,
+                            60, // 粒子寿命
+                            1f, // 粒子缩放
+                            Color.Black // 粒子颜色
+                        );
+
+                        GeneralParticleHandler.SpawnParticle(particle);
+                    }
                 }
+
+                hasFiredBlindBirdCryINVPROJ = true; // 标记为已发射
             }
-            //else
+
+            // 如果当前弹幕即将消失，销毁所有 BlindBirdCryINVPROJ 弹幕
+            if (Projectile.timeLeft <= 0 || !Projectile.active)
             {
-                // 玩家松开左键或切换武器时，销毁当前投射物和绑定的子弹幕
-                if (linkedProj != -1 && Main.projectile[linkedProj].active && Main.projectile[linkedProj].type == ModContent.ProjectileType<BlindBirdCryINVPROJ>())
+                foreach (Projectile proj in Main.projectile)
                 {
-                    Main.projectile[linkedProj].Kill();
+                    if (proj.active && proj.type == ModContent.ProjectileType<BlindBirdCryINVPROJ>())
+                    {
+                        proj.Kill(); // 销毁弹幕
+                    }
                 }
-                Projectile.Kill();
             }
         }
-
-        public override bool ShouldUpdatePosition() => false; // 禁止更新位置（由AI控制位置）
     }
 }

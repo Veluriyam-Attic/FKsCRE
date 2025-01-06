@@ -42,22 +42,13 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
     public class TheGoldenFire : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "DeveloperItems.TheGoldenFire";
-        //public override void SetStaticDefaults()
-        //{
-        //    ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
-        //}
-        //public override bool AltFunctionUse(Player player) => true;
+
         public override void SetDefaults()
         {
             Item.damage = 12;
             Item.DamageType = DamageClass.Ranged;
-            //Item.useTime = 5;
-            //Item.useAnimation = 25;
-            //Item.useLimitPerAnimation = 5;
-
             Item.useTime = 5;
             Item.useAnimation = 5;
-            //Item.shoot = ModContent.ProjectileType<TheGoldenFireHoldOut>();
             Item.shoot = ModContent.ProjectileType<TheGoldenFirePROJ>();
             Item.shootSpeed = 10f;
             Item.knockBack = 6.5f;
@@ -76,84 +67,203 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             Item.Calamity().devItem = true;
         }
 
-        public static int TheFinalDamage = 0; // 用于存储最终计算的伤害值
+        private int currentStage = 0; // 当前阶段
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            float damageMult = 1f; // 初始倍率
+            // 初始化面板基础值
+            int baseDamage = 6;
+            float baseShootSpeed = 3f;
+            float baseKnockBack = 0.5f;
 
-            // 第1阶段：每击败一个 Boss 提升 10%
-            int stage1BossesDefeated = 0;
-            stage1BossesDefeated += NPC.downedSlimeKing ? 1 : 0;
-            stage1BossesDefeated += NPC.downedBoss1 ? 1 : 0;
-            stage1BossesDefeated += DownedBossSystem.downedDesertScourge ? 1 : 0;
-            stage1BossesDefeated += DownedBossSystem.downedCrabulon ? 1 : 0;
-            stage1BossesDefeated += NPC.downedBoss2 ? 1 : 0;
-            stage1BossesDefeated += DownedBossSystem.downedHiveMind ? 1 : 0;
-            stage1BossesDefeated += DownedBossSystem.downedPerforator ? 1 : 0;
-            stage1BossesDefeated += NPC.downedQueenBee ? 1 : 0;
-            stage1BossesDefeated += NPC.downedBoss3 ? 1 : 0;
-            stage1BossesDefeated += NPC.downedDeerclops ? 1 : 0;
-            stage1BossesDefeated += DownedBossSystem.downedSlimeGod ? 1 : 0;
+            // 定义最终面板值
+            int finalDamage = baseDamage;
+            float finalShootSpeed = baseShootSpeed;
+            float finalKnockBack = baseKnockBack;
 
-            damageMult += stage1BossesDefeated * 0.1f;
+            // 从早到晚检测击败的最晚敌人
 
-            // 第2阶段：每击败一个 Boss 提升 20%
-            int stage2BossesDefeated = 0;
-            stage2BossesDefeated += Main.hardMode ? 1 : 0;
-            stage2BossesDefeated += NPC.downedQueenSlime ? 1 : 0;
-            stage2BossesDefeated += NPC.downedMechBoss1 ? 1 : 0;
-            stage2BossesDefeated += NPC.downedMechBoss2 ? 1 : 0;
-            stage2BossesDefeated += NPC.downedMechBoss3 ? 1 : 0;
-            stage2BossesDefeated += DownedBossSystem.downedBrimstoneElemental ? 1 : 0;
-            stage2BossesDefeated += DownedBossSystem.downedCryogen ? 1 : 0;
-            stage2BossesDefeated += DownedBossSystem.downedAquaticScourge ? 1 : 0;
+            // 击败了 克苏鲁之眼
+            if (NPC.downedBoss1)
+            {
+                finalDamage = 10;
+                finalShootSpeed = 3f;
+                finalKnockBack = 0.5f;
+                currentStage = 1;
+            }
 
-            damageMult += stage2BossesDefeated * 0.2f;
+            // 击败了 世吞或克脑 中的一个
+            if (NPC.downedBoss2)
+            {
+                finalDamage = 15;
+                finalShootSpeed = 4f;
+                finalKnockBack = 0.6f;
+                currentStage = 2;
+            }
 
-            // 第3阶段：每击败一个 Boss 提升 30%
-            int stage3BossesDefeated = 0;
-            stage3BossesDefeated += NPC.downedPlantBoss ? 1 : 0;
-            stage3BossesDefeated += DownedBossSystem.downedCalamitas ? 1 : 0;
-            stage3BossesDefeated += DownedBossSystem.downedLeviathan ? 1 : 0;
-            stage3BossesDefeated += DownedBossSystem.downedAstrumAureus ? 1 : 0;
-            stage3BossesDefeated += NPC.downedGolemBoss ? 1 : 0;
-            stage3BossesDefeated += NPC.downedEmpressOfLight ? 1 : 0;
-            stage3BossesDefeated += NPC.downedFishron ? 1 : 0;
-            stage3BossesDefeated += DownedBossSystem.downedPlaguebringer ? 1 : 0;
-            stage3BossesDefeated += DownedBossSystem.downedRavager ? 1 : 0;
-            stage3BossesDefeated += NPC.downedAncientCultist ? 1 : 0;
-            stage3BossesDefeated += DownedBossSystem.downedAstrumDeus ? 1 : 0;
+            // 击败了 腐巢意志或血肉宿主 中的一个
+            if (DownedBossSystem.downedHiveMind || DownedBossSystem.downedPerforator)
+            {
+                finalDamage = 20;
+                finalShootSpeed = 5f;
+                finalKnockBack = 0.7f;
+                currentStage = 3;
 
-            damageMult += stage3BossesDefeated * 0.3f;
+            }
 
-            // 第4阶段：每击败一个 Boss 提升 40%
-            int stage4BossesDefeated = 0;
-            stage4BossesDefeated += NPC.downedMoonlord ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedDragonfolly ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedGuardians ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedProvidence ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedCeaselessVoid ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedSignus ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedStormWeaver ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedPolterghast ? 1 : 0;
-            stage4BossesDefeated += DownedBossSystem.downedBoomerDuke ? 1 : 0;
+            // 击败了 骷髅王
+            if (NPC.downedBoss3)
+            {
+                finalDamage = 25;
+                finalShootSpeed = 6f;
+                finalKnockBack = 0.8f;
+                currentStage = 4;
+            }
 
-            damageMult += stage4BossesDefeated * 0.4f;
+            // 击败了 史莱姆之神
+            if (DownedBossSystem.downedSlimeGod)
+            {
+                finalDamage = 30;
+                finalShootSpeed = 7f;
+                finalKnockBack = 0.9f;
+                currentStage = 5;
 
-            // 第5阶段：每击败一个 Boss 提升 50%
-            int stage5BossesDefeated = 0;
-            stage5BossesDefeated += DownedBossSystem.downedDoG ? 1 : 0;
-            stage5BossesDefeated += DownedBossSystem.downedYharon ? 1 : 0;
-            stage5BossesDefeated += DownedBossSystem.downedExoMechs ? 1 : 0;
-            stage5BossesDefeated += DownedBossSystem.downedCalamitasClone ? 1 : 0;
-            stage5BossesDefeated += DownedBossSystem.downedBossRush ? 1 : 0;
+            }
 
-            damageMult += stage5BossesDefeated * 0.5f;
+            // 进入困难模式（击败肉山）
+            if (Main.hardMode)
+            {
+                finalDamage = 50;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1.0f;
+                currentStage = 6;
+            }
 
-            // 应用最终伤害倍率
-            damage *= damageMult;
-            TheFinalDamage = (int)(Item.damage * damageMult);
+            // 击败了 双子魔眼+机械蠕虫+机械骷髅王 的全部3折
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            {
+                finalDamage = 65;
+                finalShootSpeed = 9f;
+                finalKnockBack = 1.1f;
+                currentStage = 7;
+            }
+
+            // 击败了 灾厄之影
+            if (DownedBossSystem.downedCalamitasClone)
+            {
+                finalDamage = 75;
+                finalShootSpeed = 10f;
+                finalKnockBack = 1.2f;
+                currentStage = 8;
+            }
+
+            // 击败了 世纪之花
+            if (NPC.downedPlantBoss)
+            {
+                finalDamage = 90;
+                finalShootSpeed = 11f;
+                finalKnockBack = 1.3f;
+                currentStage = 9;
+            }
+
+            // 击败了 石巨人
+            if (NPC.downedGolemBoss)
+            {
+                finalDamage = 120;
+                finalShootSpeed = 12f;
+                finalKnockBack = 1.4f;
+                currentStage = 10;
+            }
+
+            // 击败了 拜月教邪教徒
+            if (NPC.downedAncientCultist)
+            {
+                finalDamage = 150;
+                finalShootSpeed = 13f;
+                finalKnockBack = 1.5f;
+                currentStage = 11;
+
+            }
+
+            // 击败了 亵渎天神
+            if (DownedBossSystem.downedProvidence)
+            {
+                finalDamage = 190;
+                finalShootSpeed = 14f;
+                finalKnockBack = 1.6f;
+                currentStage = 12;
+
+            }
+
+            // 击败了 西格纳斯+风暴编织者+无尽虚空 的全部三者
+            if (DownedBossSystem.downedSignus && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedCeaselessVoid)
+            {
+                finalDamage = 230;
+                finalShootSpeed = 15f;
+                finalKnockBack = 1.7f;
+                currentStage = 13;
+            }
+
+            // 击败了 花灵
+            if (DownedBossSystem.downedPolterghast)
+            {
+                finalDamage = 265;
+                finalShootSpeed = 16f;
+                finalKnockBack = 1.8f;
+                currentStage = 14;
+            }
+
+            // 击败了 神明吞噬者
+            if (DownedBossSystem.downedDoG)
+            {
+                finalDamage = 300;
+                finalShootSpeed = 17f;
+                finalKnockBack = 1.9f;
+                currentStage = 15;
+            }
+
+            // 击败了 龙
+            if (DownedBossSystem.downedYharon)
+            {
+                finalDamage = 400;
+                finalShootSpeed = 18f;
+                finalKnockBack = 2.0f;
+                currentStage = 16;
+            }
+
+            // 击败了超机械三兄弟（或卡拉米塔斯）
+            if (DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas)
+            {
+                finalDamage = 650;
+                finalShootSpeed = 19f;
+                finalKnockBack = 2.1f;
+                currentStage = 17;
+            }
+
+            // 击败了原初之龙
+            if (DownedBossSystem.downedPrimordialWyrm)
+            {
+                finalDamage = 1000;
+                finalShootSpeed = 20f;
+                finalKnockBack = 2.2f;
+                currentStage = 18;
+            }
+
+            // 设置最终的伤害倍率
+            damage.Base = finalDamage;
+
+            // 如果需要，修改 shootSpeed 和 knockBack（假设它们可以通过某种方式动态调整）
+            Item.shootSpeed = finalShootSpeed;
+            Item.knockBack = finalKnockBack;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            // 根据当前阶段动态替换书签对应的 Tooltip
+            string stageKey = $"TooltipS{currentStage}"; // 生成对应阶段的书签键，例如 TooltipS0, TooltipS1
+
+            // 在提示信息中查找并替换书签 [Stage]
+            list.FindAndReplace("[Stage]", this.GetLocalizedValue(stageKey));
         }
 
         //public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
@@ -161,21 +271,6 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
         public override bool CanConsumeAmmo(Item ammo, Player player) => player.ownedProjectileCounts[Item.shoot] != 0;
 
         public override void HoldItem(Player player) => player.Calamity().mouseRotationListener = true;
-
-        //public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        //{
-        //    Projectile.NewProjectileDirect(
-        //        source,
-        //        player.MountedCenter,
-        //        Vector2.Zero,
-        //        ModContent.ProjectileType<TheGoldenFireHoldOut>(),
-        //        TheFinalDamage,
-        //        Item.knockBack,
-        //        player.whoAmI
-        //    ).velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
-        //    return false;
-        //}
-
 
         public static readonly Dictionary<int, Color> GelColors = new Dictionary<int, Color>
         {
@@ -257,7 +352,6 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             recipe.AddIngredient(ItemID.Gel, 10);
             recipe.AddRecipeGroup("AnySilverBar", 10);
             recipe.AddIngredient(ItemID.IllegalGunParts, 2);
-            //recipe.AddCondition(Condition.DownedMoonLord);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
@@ -265,61 +359,3 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
     }
 }
 
-// 左右键逻辑专用
-//public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
-
-//public override bool CanUseItem(Player player)
-//{
-//    if (player.altFunctionUse == 2) // 如果是右键
-//    {
-//        Item.useTime = Item.useAnimation = 10; // 调整右键使用速度
-//        Item.shoot = ProjectileID.Flames ; // 发射 x
-//        Item.shootSpeed = 8f; // 调整右键弹幕速度
-//        Item.useAmmo = AmmoID.Gel; // 右键消耗凝胶弹药
-//        Item.useTime = 3;
-//        Item.useAnimation = 24;
-//        Item.channel = false;
-//    }
-//    else // 左键
-//    {
-//        Item.useTime = Item.useAnimation = OriginalUseTime;
-//        Item.shoot = ModContent.ProjectileType<TheGoldenFireHoldOut>();
-//        Item.shootSpeed = 15f;
-//        Item.useAmmo = AmmoID.Gel;
-//        Item.channel = true;
-//        Item.useTime = Item.useAnimation = OriginalUseTime;
-//    }
-//    return base.CanUseItem(player);
-//}
-
-
-//public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-//{
-//    if (player.altFunctionUse == 2) // 右键逻辑
-//    {
-//        Vector2 newPos = position + velocity.SafeNormalize(Vector2.UnitX) * 36f;
-//        Color gelColor = GetGelColor(player); // 获取当前凝胶颜色
-//        for (int i = 0; i < 3; i++) // 发射三颗火焰弹幕
-//        {
-//            Vector2 newVel = velocity.RotatedByRandom(MathHelper.ToRadians(5f)); // 随机角度偏移
-//            int projID = Projectile.NewProjectile(source, newPos, newVel, type, damage, knockback, player.whoAmI);
-//            Main.projectile[projID].localAI[0] = gelColor.R; // 存储 R 通道值
-//            Main.projectile[projID].localAI[1] = gelColor.G; // 存储 G 通道值
-//            Main.projectile[projID].ai[0] = gelColor.B;       // 存储 B 通道值
-//        }
-//        return false;
-//    }
-//    else // 左键逻辑
-//    {
-//        Projectile.NewProjectileDirect(
-//            source,
-//            player.MountedCenter,
-//            Vector2.Zero,
-//            ModContent.ProjectileType<TheGoldenFireHoldOut>(),
-//            Item.damage,
-//            Item.knockBack,
-//            player.whoAmI
-//        ).velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
-//        return false;
-//    }
-//}

@@ -60,7 +60,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.DiffuseNovaArc
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.Calamity().devItem = true;
+            Item.Calamity().donorItem = true;
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;

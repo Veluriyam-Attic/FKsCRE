@@ -94,7 +94,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Projectile.tileCollide = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
-            Projectile.MaxUpdates = 0;
+            Projectile.extraUpdates = 0;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;

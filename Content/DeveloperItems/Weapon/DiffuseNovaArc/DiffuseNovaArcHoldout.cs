@@ -36,7 +36,7 @@ namespace CalamityMod.Projectiles.Ranged
             if (Owner.CantUseHoldout(false) || HeldItem.type != Owner.ActiveItem().type)
                 Projectile.Kill();
         }
-        // 新增字段，确保大光球只发射一次
+        // 确保大光球只发射一次
         private bool hasFiredBigShot = false;
         // 阶段二的发射次数计数器
         private int stageTwoShotsFired = 0;
