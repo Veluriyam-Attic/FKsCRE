@@ -87,7 +87,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (NPC.downedBoss1)
             {
                 finalDamage = 10;
-                finalShootSpeed = 3f;
+                finalShootSpeed = 7f;
                 finalKnockBack = 0.5f;
                 currentStage = 1;
             }
@@ -96,7 +96,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (NPC.downedBoss2)
             {
                 finalDamage = 15;
-                finalShootSpeed = 4f;
+                finalShootSpeed = 7f;
                 finalKnockBack = 0.6f;
                 currentStage = 2;
             }
@@ -105,17 +105,16 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (DownedBossSystem.downedHiveMind || DownedBossSystem.downedPerforator)
             {
                 finalDamage = 20;
-                finalShootSpeed = 5f;
+                finalShootSpeed = 7f;
                 finalKnockBack = 0.7f;
                 currentStage = 3;
-
             }
 
             // 击败了 骷髅王
             if (NPC.downedBoss3)
             {
                 finalDamage = 25;
-                finalShootSpeed = 6f;
+                finalShootSpeed = 7f;
                 finalKnockBack = 0.8f;
                 currentStage = 4;
             }
@@ -134,16 +133,16 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (Main.hardMode)
             {
                 finalDamage = 50;
-                finalShootSpeed = 8f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.0f;
                 currentStage = 6;
             }
 
-            // 击败了 双子魔眼+机械蠕虫+机械骷髅王 的全部3折
+            // 击败了 双子魔眼+机械蠕虫+机械骷髅王 的全部3者
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
                 finalDamage = 65;
-                finalShootSpeed = 9f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.1f;
                 currentStage = 7;
             }
@@ -152,7 +151,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (DownedBossSystem.downedCalamitasClone)
             {
                 finalDamage = 75;
-                finalShootSpeed = 10f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.2f;
                 currentStage = 8;
             }
@@ -161,7 +160,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (NPC.downedPlantBoss)
             {
                 finalDamage = 90;
-                finalShootSpeed = 11f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.3f;
                 currentStage = 9;
             }
@@ -179,88 +178,103 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             if (NPC.downedAncientCultist)
             {
                 finalDamage = 150;
-                finalShootSpeed = 13f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.5f;
                 currentStage = 11;
+            }
 
+            // 击败了 月球领主
+            if (NPC.downedMoonlord)
+            {
+                finalDamage = 170;
+                finalShootSpeed = 12f;
+                finalKnockBack = 1.5f;
+                currentStage = 12;
             }
 
             // 击败了 亵渎天神
             if (DownedBossSystem.downedProvidence)
             {
                 finalDamage = 190;
-                finalShootSpeed = 14f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.6f;
-                currentStage = 12;
-
+                currentStage = 13;
             }
 
             // 击败了 西格纳斯+风暴编织者+无尽虚空 的全部三者
             if (DownedBossSystem.downedSignus && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedCeaselessVoid)
             {
                 finalDamage = 230;
-                finalShootSpeed = 15f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.7f;
-                currentStage = 13;
+                currentStage = 14;
             }
 
             // 击败了 花灵
             if (DownedBossSystem.downedPolterghast)
             {
                 finalDamage = 265;
-                finalShootSpeed = 16f;
+                finalShootSpeed = 12f;
                 finalKnockBack = 1.8f;
-                currentStage = 14;
+                currentStage = 15;
             }
 
             // 击败了 神明吞噬者
             if (DownedBossSystem.downedDoG)
             {
                 finalDamage = 300;
-                finalShootSpeed = 17f;
+                finalShootSpeed = 15f;
                 finalKnockBack = 1.9f;
-                currentStage = 15;
+                currentStage = 16;
             }
 
             // 击败了 龙
             if (DownedBossSystem.downedYharon)
             {
                 finalDamage = 400;
-                finalShootSpeed = 18f;
+                finalShootSpeed = 15f;
                 finalKnockBack = 2.0f;
-                currentStage = 16;
-            }
-
-            // 击败了超机械三兄弟（或卡拉米塔斯）
-            if (DownedBossSystem.downedExoMechs || DownedBossSystem.downedCalamitas)
-            {
-                finalDamage = 650;
-                finalShootSpeed = 19f;
-                finalKnockBack = 2.1f;
                 currentStage = 17;
             }
 
-            // 击败了原初之龙
+            // 击败了 巨械+终灾 的全部2者
+            if (DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas)
+            {
+                finalDamage = 650;
+                finalShootSpeed = 15f;
+                finalKnockBack = 2.1f;
+                currentStage = 18;
+            }
+
+            // 击败了原初夜灵巨龙
             if (DownedBossSystem.downedPrimordialWyrm)
             {
                 finalDamage = 1000;
-                finalShootSpeed = 20f;
+                finalShootSpeed = 15f;
                 finalKnockBack = 2.2f;
-                currentStage = 18;
+                currentStage = 19;
             }
 
             // 设置最终的伤害倍率
             damage.Base = finalDamage;
 
-            // 如果需要，修改 shootSpeed 和 knockBack（假设它们可以通过某种方式动态调整）
+            // 修改 shootSpeed 和 knockBack
             Item.shootSpeed = finalShootSpeed;
             Item.knockBack = finalKnockBack;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            // 根据当前阶段动态替换书签对应的 Tooltip
-            string stageKey = $"TooltipS{currentStage}"; // 生成对应阶段的书签键，例如 TooltipS0, TooltipS1
+            //// 根据当前阶段动态替换书签对应的 Tooltip
+            //string stageKey = $"TooltipS{currentStage}"; // 生成对应阶段的书签键，例如 TooltipS0, TooltipS1
+
+            // 根据当前阶段动态生成书签对应的 Tooltip 键
+            string stageKey = currentStage switch
+            {
+                1 => WorldGen.crimson ? "TooltipS1S" : "TooltipS1F", // 阶段2：根据猩红或腐化选择
+                2 => WorldGen.crimson ? "TooltipS2S" : "TooltipS2F", // 阶段3：根据猩红或腐化选择
+                _ => $"TooltipS{currentStage}" // 其他阶段使用默认键
+            };
 
             // 在提示信息中查找并替换书签 [Stage]
             list.FindAndReplace("[Stage]", this.GetLocalizedValue(stageKey));
