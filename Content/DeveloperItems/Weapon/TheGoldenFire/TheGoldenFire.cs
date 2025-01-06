@@ -63,7 +63,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             Item.autoReuse = true;
             Item.UseSound = SoundID.Item34;
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.rare = -13;
             Item.Calamity().devItem = true;
         }
 
