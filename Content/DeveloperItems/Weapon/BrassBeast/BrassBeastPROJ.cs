@@ -28,7 +28,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害
             Projectile.penetrate = 1; // 穿
             Projectile.MaxUpdates = 30; // 最大更新帧数
-            Projectile.timeLeft = 240; // 存活时间
+            Projectile.timeLeft = 150; // 存活时间
             Projectile.usesIDStaticNPCImmunity = true; // 开启静态NPC击中冷却
             Projectile.idStaticNPCHitCooldown = 6; // 每6帧可击中一次相同NPC
         }
@@ -79,8 +79,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             float rotationSpeed = MathHelper.PiOver4 * 2.5f; // 旋转速度增加至原来的2.5倍
             int dustType = DustID.Smoke;
 
-            // 两个螺旋点，数量翻倍
-            for (int i = 0; i < 4; i++) // 原来是2，现在翻倍到4
+            // 两个螺旋点
+            for (int i = 0; i < 16; i++)
             {
                 float rotation = (Main.GameUpdateCount * rotationSpeed + MathHelper.PiOver2 * i) % MathHelper.TwoPi;
                 Vector2 offset = offsetMagnitude * new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation));
@@ -89,7 +89,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
             }
 
             // 粒子随机喷射
-            for (int i = 0; i < 6; i++) // 原来的逻辑是3，这里数量翻倍到6
+            for (int i = 0; i < 24; i++)
             {
                 int sideDustType = Main.rand.Next(new int[] { 195, 191, 240 });
                 Vector2 randomDirection = Main.rand.NextVector2Circular(1.5f, 1.5f); // 随机方向
@@ -123,7 +123,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
                 Particle heavySmoke = new HeavySmokeParticle(
                     smokePosition,
                     Main.rand.NextVector2Circular(3f, 3f),
-                    Color.Gray, // 烟雾颜色为灰色
+                    Color.Black, // 烟雾颜色
                     Main.rand.Next(20, 30), // 存活时间减半
                     Main.rand.NextFloat(0.75f, 1f), // 缩放减半
                     0.5f, // 透明度减半
@@ -133,20 +133,20 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.BrassBeast
                 GeneralParticleHandler.SpawnParticle(heavySmoke);
             }
 
-            // 尖字型粒子特效
-            for (int i = 0; i < 6; i++)
-            {
-                Vector2 offset = Main.rand.NextVector2Circular(15f, 15f);
-                PointParticle spikeParticle = new PointParticle(
-                    Projectile.Center + offset,
-                    Main.rand.NextVector2Circular(2f, 2f), // 粒子速度
-                    false,
-                    25, // 粒子存活时间
-                    1.5f, // 粒子大小倍率
-                    Color.OrangeRed // 颜色为橙红色
-                );
-                GeneralParticleHandler.SpawnParticle(spikeParticle);
-            }
+            //// 尖字型粒子特效
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    Vector2 offset = Main.rand.NextVector2Circular(15f, 15f);
+            //    PointParticle spikeParticle = new PointParticle(
+            //        Projectile.Center + offset,
+            //        Main.rand.NextVector2Circular(2f, 2f), // 粒子速度
+            //        false,
+            //        25, // 粒子存活时间
+            //        1.5f, // 粒子大小倍率
+            //        Color.OrangeRed // 颜色为橙红色
+            //    );
+            //    GeneralParticleHandler.SpawnParticle(spikeParticle);
+            //}
         }
 
 

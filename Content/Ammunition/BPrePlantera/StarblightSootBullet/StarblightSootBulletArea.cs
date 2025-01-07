@@ -22,13 +22,13 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
             Projectile.height = 1000;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 600; // 存在 x 秒
+            Projectile.timeLeft = 400; // 存在 x 秒
             Projectile.tileCollide = false; // 不与方块碰撞
         }
         public override void AI()
         {
             // 提高粒子生成频率
-            for (int i = 0; i < 50; i++) // 一帧生成 50 个粒子
+            for (int i = 0; i < 25; i++) // 一帧生成 x 个粒子
             {
                 // 在圆周上生成粒子
                 Vector2 position = Projectile.Center + Main.rand.NextVector2CircularEdge(500f, 500f); // 半径调整为 500f

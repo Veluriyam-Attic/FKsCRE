@@ -37,6 +37,7 @@
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\DivineGeodeBulletPROJ.png" />
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\圣晶石弹.txt" />
 	  <None Remove="Content\Ammunition\DPreDog\DivineGeodeBullet\神圣之矛弹幕.png" />
+	  <None Remove="Content\Ammunition\DPreDog\EffulgentFeatherBullet\1.png" />
 	  <None Remove="Content\Ammunition\DPreDog\EffulgentFeatherBullet\EffulgentFeatherBullet.png" />
 	  <None Remove="Content\Ammunition\DPreDog\EffulgentFeatherBullet\EffulgentFeatherBulletPBuff.png" />
 	  <None Remove="Content\Ammunition\DPreDog\EffulgentFeatherBullet\EffulgentFeatherBulletPROJ.png" />
@@ -82,6 +83,7 @@
 	  <None Remove="Content\Arrows\APreHardMode\WulfrimArrow\WulfrimArrowEDebuff.png" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\1.png" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\StarblightSootArrow.png" />
+	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\1.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\PlagueArrow\瘟疫箭（弹幕）.png" />
 	  <None Remove="Content\Arrows\DPreDog\DivineGeodeArrow\DivineGeodeArrowPBuff.png" />
 	  <None Remove="Content\Arrows\DPreDog\PolterplasmArrow\新灵质箭.png" />
@@ -113,7 +115,6 @@
 	  <None Remove="Content\WeaponToAMMO\Arrow\PlasmaDriveCorePrototypeArrow\PlasmaDriveCorePrototypeArrowPROJ.png" />
 	  <None Remove="Content\WeaponToAMMO\Arrow\PlasmaDriveCorePrototypeArrow\等离子驱动核心箭.txt" />
 	  <None Remove="Content\Arrows\BPrePlantera\StarblightSootArrow\调星箭.txt" />
-	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrow.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowMOON.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowPBuff.png" />
 	  <None Remove="Content\Arrows\CPreMoodLord\AstralArrow\AstralArrowSTAR.png" />

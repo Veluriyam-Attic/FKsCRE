@@ -66,7 +66,7 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.CryonicBullet
                 {
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
-                        67, // 粒子 ID
+                        185, // 粒子 ID
                         Main.rand.NextVector2Circular(1f, 1f), // 随机方向速度
                         150, // 透明度
                         Color.White, // 粒子颜色

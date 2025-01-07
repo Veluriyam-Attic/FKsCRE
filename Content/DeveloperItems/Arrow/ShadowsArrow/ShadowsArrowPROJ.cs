@@ -113,6 +113,7 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
             Projectile.tileCollide = false;
             Projectile.extraUpdates = 1; // 增加更新次数
             Projectile.arrow = true;
+            Projectile.alpha = 1;
         }
 
         public override void AI()
@@ -126,9 +127,10 @@ namespace FKsCRE.Content.DeveloperItems.Arrow.ShadowsArrow
             {
                 SplitProjectile();
                 hasSplit = true; // 确保只分裂一次
+                Projectile.alpha = 255;
 
                 // 在飞行过程中生成黑色粒子特效
-                for (int j = 0; j < 25; j++)
+                for (int j = 0; j < 15; j++)
                 {
                     Vector2 particleVelocity = Projectile.velocity.RotatedBy(MathHelper.ToRadians(15 * (j % 2 == 0 ? 1 : -1))) * Main.rand.NextFloat(1f, 2.6f);
                     Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Smoke, particleVelocity, 0, Color.Black, Main.rand.NextFloat(0.9f, 1.6f));
