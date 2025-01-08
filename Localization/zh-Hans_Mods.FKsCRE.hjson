@@ -1552,7 +1552,7 @@ Projectiles: {
 
 	APreHardMode: {
 		AerialiteGelCloud.DisplayName: Aerialite Gel Cloud
-		HurricaneGelSplit.DisplayName: Hurricane Gel Split
+		HurricaneGelSplit.DisplayName: 棱晶碎片
 	}
 
 	EAfterDog: {

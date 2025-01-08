@@ -42,7 +42,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             Projectile.MaxUpdates = 4;
             Projectile.timeLeft = Lifetime; // 24 effectively
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
+            Projectile.localNPCHitCooldown = 25;
         }
 
         public override void AI()

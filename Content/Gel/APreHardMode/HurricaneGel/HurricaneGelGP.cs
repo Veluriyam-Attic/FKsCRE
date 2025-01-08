@@ -45,8 +45,8 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
                     }
                 }
 
-                // 随机生成 3~9 个额外弹幕
-                int extraProjectiles = Main.rand.Next(3, 10);
+                // 随机生成 1-2 个额外弹幕
+                int extraProjectiles = Main.rand.Next(1, 3);
                 for (int i = 0; i < extraProjectiles; i++)
                 {
                     // 随机生成 360 度方向
@@ -58,7 +58,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
                         projectile.Center,
                         velocity,
                         ModContent.ProjectileType<HurricaneGelSplit>(),
-                        (int)(projectile.damage * 0.35f), // 伤害为原来的 35%
+                        (int)(projectile.damage * 0.1f), // 伤害为原来的 35%
                         projectile.knockBack,
                         projectile.owner
                     );

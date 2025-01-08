@@ -16,7 +16,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
         {
             if (hurricaneGelAttackSpeedTimer > 0)
             {
-                Player.GetAttackSpeed(DamageClass.Generic) -= 0.2f;
+                Player.GetAttackSpeed(DamageClass.Generic) -= 0.1f;
                 hurricaneGelAttackSpeedTimer--;
             }
         }
