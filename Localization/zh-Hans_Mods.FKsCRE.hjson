@@ -14,93 +14,93 @@ Buffs: {
 	}
 
 	PolterplasmArrowEDeBuff: {
-		// DisplayName: Polterplasm Arrow E De Buff
-		// Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff.Description
+		DisplayName: Polterplasm Arrow E De Buff
+		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff.Description
 	}
 
 	PolterplasmArrowEDeBuff2: {
-		// DisplayName: Polterplasm Arrow E De Buff2
-		// Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
+		DisplayName: Polterplasm Arrow E De Buff2
+		Description: Mods.FKsCRE.Buffs.PolterplasmArrowEDeBuff2.Description
 	}
 
 	AerialiteBulletEBuff: {
-		// DisplayName: Aerialite Bullet E Buff
-		// Description: Mods.FKsCRE.Buffs.AerialiteBulletEBuff.Description
+		DisplayName: Aerialite Bullet E Buff
+		Description: Mods.FKsCRE.Buffs.AerialiteBulletEBuff.Description
 	}
 
 	AstralBulletEBuff: {
-		// DisplayName: Astral Bullet E Buff
-		// Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
+		DisplayName: Astral Bullet E Buff
+		Description: Mods.FKsCRE.Buffs.AstralBulletEBuff.Description
 	}
 
 	PerennialBulletPBuff: {
-		// DisplayName: Perennial Bullet P Buff
-		// Description: Mods.FKsCRE.Buffs.PerennialBulletPBuff.Description
+		DisplayName: Perennial Bullet P Buff
+		Description: Mods.FKsCRE.Buffs.PerennialBulletPBuff.Description
 	}
 
 	EffulgentFeatherBulletPBuff: {
-		// DisplayName: Effulgent Feather Bullet P Buff
-		// Description: Mods.FKsCRE.Buffs.EffulgentFeatherBulletPBuff.Description
+		DisplayName: Effulgent Feather Bullet P Buff
+		Description: Mods.FKsCRE.Buffs.EffulgentFeatherBulletPBuff.Description
 	}
 
 	PolterplasmBulletFlowerPBuff: {
-		// DisplayName: Polterplasm Bullet Flower P Buff
-		// Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
+		DisplayName: Polterplasm Bullet Flower P Buff
+		Description: Mods.FKsCRE.Buffs.PolterplasmBulletFlowerPBuff.Description
 	}
 
 	WulfrimArrowEDebuff: {
-		// DisplayName: Wulfrim Arrow E Debuff
-		// Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
+		DisplayName: Wulfrim Arrow E Debuff
+		Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
 	}
 
 	DivineGeodeArrowPBuff: {
-		// DisplayName: Divine Geode Arrow P Buff
-		// Description: Mods.FKsCRE.Buffs.DivineGeodeArrowPBuff.Description
+		DisplayName: Divine Geode Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.DivineGeodeArrowPBuff.Description
 	}
 
 	UelibloomArrowEBuff: {
-		// DisplayName: Uelibloom Arrow E Buff
-		// Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
+		DisplayName: Uelibloom Arrow E Buff
+		Description: Mods.FKsCRE.Buffs.UelibloomArrowEBuff.Description
 	}
 
 	AuricArrowPBuff: {
-		// DisplayName: Auric Arrow P Buff
-		// Description: Mods.FKsCRE.Buffs.AuricArrowPBuff.Description
+		DisplayName: Auric Arrow P Buff
+		Description: Mods.FKsCRE.Buffs.AuricArrowPBuff.Description
 	}
 
 	DestructionBulletDestruction: {
-		// DisplayName: Destruction Bullet Destruction
-		// Description: Mods.FKsCRE.Buffs.DestructionBulletDestruction.Description
+		DisplayName: Destruction Bullet Destruction
+		Description: Mods.FKsCRE.Buffs.DestructionBulletDestruction.Description
 	}
 
 	DestructionBulletPoisonIvy: {
-		// DisplayName: Destruction Bullet Poison Ivy
-		// Description: Mods.FKsCRE.Buffs.DestructionBulletPoisonIvy.Description
+		DisplayName: Destruction Bullet Poison Ivy
+		Description: Mods.FKsCRE.Buffs.DestructionBulletPoisonIvy.Description
 	}
 
 	PerennialGelPBuff: {
-		// DisplayName: Perennial Gel P Buff
-		// Description: Mods.FKsCRE.Buffs.PerennialGelPBuff.Description
+		DisplayName: Perennial Gel P Buff
+		Description: Mods.FKsCRE.Buffs.PerennialGelPBuff.Description
 	}
 
 	CosmosGelEDebuff: {
-		// DisplayName: Cosmos Gel E Debuff
-		// Description: Mods.FKsCRE.Buffs.CosmosGelEDebuff.Description
+		DisplayName: Cosmos Gel E Debuff
+		Description: Mods.FKsCRE.Buffs.CosmosGelEDebuff.Description
 	}
 
 	PolarisBuff: {
-		// DisplayName: Polaris Buff
-		// Description: Mods.FKsCRE.Buffs.PolarisBuff.Description
+		DisplayName: Polaris Buff
+		Description: Mods.FKsCRE.Buffs.PolarisBuff.Description
 	}
 
 	PlagueGelEDebuff: {
-		// DisplayName: Plague Gel E Debuff
-		// Description: Mods.FKsCRE.Buffs.PlagueGelEDebuff.Description
+		DisplayName: Plague Gel E Debuff
+		Description: Mods.FKsCRE.Buffs.PlagueGelEDebuff.Description
 	}
 
 	BlindBirdCryEDebuff: {
-		// DisplayName: Blind Bird Cry E Debuff
-		// Description: Mods.FKsCRE.Buffs.BlindBirdCryEDebuff.Description
+		DisplayName: Blind Bird Cry E Debuff
+		Description: Mods.FKsCRE.Buffs.BlindBirdCryEDebuff.Description
 	}
 }
 
@@ -740,7 +740,7 @@ DeveloperItems: {
 				'''
 		}
 
-		MaoMaoChongPROJ.DisplayName: Mao Mao Chong P R O J
+		MaoMaoChongPROJ.DisplayName: 猫猫虫咖波
 	}
 
 	ShadowsArrow: {
@@ -802,10 +802,10 @@ DeveloperItems: {
 				'''
 		}
 
-		// PyroblastPROJ.DisplayName: Pyroblast P R O J
-		// PyroblastRocket.DisplayName: Pyroblast Rocket
-		// PyroblastRocketEXP.DisplayName: Pyroblast Rocket E X P
-		// PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
+		PyroblastPROJ.DisplayName: Pyroblast P R O J
+		PyroblastRocket.DisplayName: Pyroblast Rocket
+		PyroblastRocketEXP.DisplayName: Pyroblast Rocket E X P
+		PyroblastSolarBeam.DisplayName: Pyroblast Solar Beam
 	}
 
 	ExplodingRabbit: {
@@ -829,7 +829,7 @@ DeveloperItems: {
 				'''
 		}
 
-		// SuperCriticalBulletPROJ.DisplayName: Super Critical Bullet P R O J
+		SuperCriticalBulletPROJ.DisplayName: Super Critical Bullet P R O J
 	}
 
 	TheGoldenFire: {
@@ -1179,7 +1179,7 @@ DeveloperItems: {
 				'''
 		}
 
-		// TheGoldenFirePROJ.DisplayName: The Golden Fire P R O J
+		TheGoldenFirePROJ.DisplayName: The Golden Fire P R O J
 	}
 
 	ShadowsBullet: {
@@ -1219,7 +1219,7 @@ DeveloperItems: {
 					'''
 			}
 
-			// PaoPROJ.DisplayName: Pao P R O J
+			PaoPROJ.DisplayName: Pao P R O J
 		}
 
 		Che: {
@@ -1232,7 +1232,7 @@ DeveloperItems: {
 					'''
 			}
 
-			// ChePROJ.DisplayName: Che P R O J
+			ChePROJ.DisplayName: Che P R O J
 		}
 	}
 
@@ -1248,8 +1248,8 @@ DeveloperItems: {
 			DisplayName: 无目鸟啼鸣
 		}
 
-		// BlindBirdCryCrods.DisplayName: Blind Bird Cry Crods
-		// BlindBirdCryINVPROJ.DisplayName: Blind Bird Cry I N V P R O J
+		BlindBirdCryCrods.DisplayName: Blind Bird Cry Crods
+		BlindBirdCryINVPROJ.DisplayName: Blind Bird Cry I N V P R O J
 	}
 
 	BrassBeast: {
@@ -1265,8 +1265,8 @@ DeveloperItems: {
 				'''
 		}
 
-		// BrassBeastHeavySmoke.DisplayName: Brass Beast Heavy Smoke
-		// BrassBeastPROJ.DisplayName: Brass Beast P R O J
+		BrassBeastHeavySmoke.DisplayName: Brass Beast Heavy Smoke
+		BrassBeastPROJ.DisplayName: Brass Beast P R O J
 	}
 
 	Pyrogeist: {
@@ -1279,7 +1279,7 @@ DeveloperItems: {
 				'''
 		}
 
-		// PyrogeistPROJ.DisplayName: Pyrogeist P R O J
+		PyrogeistPROJ.DisplayName: Pyrogeist P R O J
 	}
 
 	GlitchArrow: {
@@ -1292,10 +1292,10 @@ DeveloperItems: {
 				'''
 		}
 
-		// GlitchArrowPROJ.DisplayName: Glitch Arrow P R O J
+		GlitchArrowPROJ.DisplayName: Glitch Arrow P R O J
 	}
 
-	// NorthStar.ChargedBlast2PS.DisplayName: Charged Blast2 P S
+	NorthStar.ChargedBlast2PS.DisplayName: Charged Blast2 P S
 }
 
 Configs: {
@@ -1371,7 +1371,7 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// MonstrousArrowPROJ.DisplayName: Monstrous Arrow P R O J
+			MonstrousArrowPROJ.DisplayName: Monstrous Arrow P R O J
 		}
 
 		PlasmaDriveCorePrototypeArrow: {
@@ -1384,8 +1384,8 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
-			// PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
+			PlasmaDriveCorePrototypeArrowEXP.DisplayName: Plasma Drive Core Prototype Arrow E X P
+			PlasmaDriveCorePrototypeArrowPROJ.DisplayName: Plasma Drive Core Prototype Arrow P R O J
 		}
 
 		Terratoarrow: {
@@ -1399,9 +1399,9 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
-			// TerratoarrowSlash.DisplayName: Terratoarrow Slash
-			// TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
+			TerratoarrowPROJ.DisplayName: Terratoarrow P R O J
+			TerratoarrowSlash.DisplayName: Terratoarrow Slash
+			TerratoarrowSPIT.DisplayName: Terratoarrow S P I T
 		}
 
 		TheDrill: {
@@ -1416,7 +1416,7 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// TheDrillPROJ.DisplayName: The Drill P R O J
+			TheDrillPROJ.DisplayName: The Drill P R O J
 		}
 
 		TimeLeaper: {
@@ -1432,7 +1432,7 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// TimeLeaperPROJ.DisplayName: Time Leaper P R O J
+			TimeLeaperPROJ.DisplayName: Time Leaper P R O J
 		}
 
 		TNTArrow: {
@@ -1446,7 +1446,7 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// TNTArrowPROJ.DisplayName: T N T Arrow P R O J
+			TNTArrowPROJ.DisplayName: T N T Arrow P R O J
 		}
 	}
 
@@ -1462,7 +1462,7 @@ WeaponToAMMO: {
 				DisplayName: 凋亡弹
 			}
 
-			// ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
+			ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
 		}
 
 		DestructionBullet: {
@@ -1475,8 +1475,8 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// DestructionBulletEXP.DisplayName: Destruction Bullet E X P
-			// DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
+			DestructionBulletEXP.DisplayName: Destruction Bullet E X P
+			DestructionBulletPROJ.DisplayName: Destruction Bullet P R O J
 		}
 
 		NorthStar: {
@@ -1491,7 +1491,7 @@ WeaponToAMMO: {
 				DisplayName: 北极星之佑
 			}
 
-			// PolarStarO.DisplayName: Polar Star O
+			PolarStarO.DisplayName: Polar Star O
 		}
 
 		OrichalcumBullet: {
@@ -1504,7 +1504,7 @@ WeaponToAMMO: {
 				DisplayName: 山铜空尖弹
 			}
 
-			// OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
+			OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
 		}
 
 		TheEmpty: {
@@ -1518,7 +1518,7 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// TheEmptyPROJ.DisplayName: The Empty P R O J
+			TheEmptyPROJ.DisplayName: The Empty P R O J
 		}
 
 		YuanZiDan: {
@@ -1532,7 +1532,7 @@ WeaponToAMMO: {
 					'''
 			}
 
-			// YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
+			YuanZiDanPROJ.DisplayName: Yuan Zi Dan P R O J
 		}
 	}
 }
@@ -1545,107 +1545,107 @@ Projectiles: {
 	// Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 	
 	CPreMoodLord: {
-		// LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
-		// LivingShardGelHealPROJ.DisplayName: Living Shard Gel Heal P R O J
-		// ScoriaGelFireBall.DisplayName: Scoria Gel Fire Ball
+		LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
+		LivingShardGelHealPROJ.DisplayName: Living Shard Gel Heal P R O J
+		ScoriaGelFireBall.DisplayName: Scoria Gel Fire Ball
 	}
 
 	APreHardMode: {
-		// AerialiteGelCloud.DisplayName: Aerialite Gel Cloud
-		// HurricaneGelSplit.DisplayName: Hurricane Gel Split
+		AerialiteGelCloud.DisplayName: Aerialite Gel Cloud
+		HurricaneGelSplit.DisplayName: Hurricane Gel Split
 	}
 
 	EAfterDog: {
-		// AuricGelLighting.DisplayName: Auric Gel Lighting
-		// CosmosGelEater.DisplayName: Cosmos Gel Eater
-		// MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
+		AuricGelLighting.DisplayName: Auric Gel Lighting
+		CosmosGelEater.DisplayName: Cosmos Gel Eater
+		MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
 	}
 
-	// PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
-	// StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
-	// Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
-	// AlloyRailgunBEAM.DisplayName: Alloy Railgun B E A M
-	// AlloyRailgunRedBomb.DisplayName: Alloy Railgun Red Bomb
-	// AlloyRailgunShot.DisplayName: Alloy Railgun Shot
+	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
+	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
+	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+	AlloyRailgunBEAM.DisplayName: Alloy Railgun B E A M
+	AlloyRailgunRedBomb.DisplayName: Alloy Railgun Red Bomb
+	AlloyRailgunShot.DisplayName: Alloy Railgun Shot
 }
 
 Projectile: {
 	APreHardMode: {
-		// AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
-		// TinkleshardBulletPROJ.DisplayName: Tinkleshard Bullet P R O J
-		// TinkleshardBulletSPIT.DisplayName: Tinkleshard Bullet S P I T
-		// WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
-		// AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
-		// AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
-		// BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
-		// PrismArrowPROJ.DisplayName: Prism Arrow P R O J
-		// PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
+		AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
+		TinkleshardBulletPROJ.DisplayName: Tinkleshard Bullet P R O J
+		TinkleshardBulletSPIT.DisplayName: Tinkleshard Bullet S P I T
+		WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
+		AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
+		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
+		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
+		PrismArrowPROJ.DisplayName: Prism Arrow P R O J
+		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
 	}
 
 	BPrePlantera: {
-		// CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
-		// CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
-		// StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
-		// StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
-		// StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+		CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
+		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
+		StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
+		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
+		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
 	}
 
 	CPreMoodLord: {
-		// AstralBulletPROJ.DisplayName: Astral Bullet P R O J
-		// AstralBulletSTAR.DisplayName: Astral Bullet S T A R
-		// PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
-		// PlagueBulletPROJ.DisplayName: Plague Bullet P R O J
-		// ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
-		// WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
-		// AstralArrowMOON.DisplayName: Astral Arrow M O O N
-		// AstralArrowPROJ.DisplayName: Astral Arrow P R O J
-		// AstralArrowSUN.DisplayName: Astral Arrow S U N
-		// CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
-		// LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
-		// PerennialArrowFlower.DisplayName: Perennial Arrow Flower
-		// PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
-		// PlagueArrowPROJ.DisplayName: Plague Arrow P R O J
-		// ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
-		// ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
-		// DropThing.DisplayName: Drop Thing
+		AstralBulletPROJ.DisplayName: Astral Bullet P R O J
+		AstralBulletSTAR.DisplayName: Astral Bullet S T A R
+		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
+		PlagueBulletPROJ.DisplayName: Plague Bullet P R O J
+		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
+		WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
+		AstralArrowMOON.DisplayName: Astral Arrow M O O N
+		AstralArrowPROJ.DisplayName: Astral Arrow P R O J
+		AstralArrowSUN.DisplayName: Astral Arrow S U N
+		CoreofCalamityArrowPROJ.DisplayName: Coreof Calamity Arrow P R O J
+		LifeAlloyArrowPROJ.DisplayName: Life Alloy Arrow P R O J
+		PerennialArrowFlower.DisplayName: Perennial Arrow Flower
+		PerennialArrowPROJ.DisplayName: Perennial Arrow P R O J
+		PlagueArrowPROJ.DisplayName: Plague Arrow P R O J
+		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
+		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
+		DropThing.DisplayName: Drop Thing
 	}
 
 	DPreDog: {
-		// DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
-		// EffulgentFeatherBulletAREA.DisplayName: Effulgent Feather Bullet A R E A
-		// EffulgentFeatherBulletPROJ.DisplayName: Effulgent Feather Bullet P R O J
-		// PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
-		// PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
-		// ToothBulletPROJ.DisplayName: Tooth Bullet P R O J
-		// UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
-		// UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
-		// DivineGeodeArrowEXP.DisplayName: Divine Geode Arrow E X P
-		// DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
-		// EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
-		// EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
-		// PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
-		// PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
-		// ToothArrowPROJ.DisplayName: Tooth Arrow P R O J
-		// UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
-		// UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
-		// UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
-		// UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
-		// ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
+		DivineGeodeBulletPROJ.DisplayName: Divine Geode Bullet P R O J
+		EffulgentFeatherBulletAREA.DisplayName: Effulgent Feather Bullet A R E A
+		EffulgentFeatherBulletPROJ.DisplayName: Effulgent Feather Bullet P R O J
+		PolterplasmBulletFlower.DisplayName: Polterplasm Bullet Flower
+		PolterplasmBulletPROJ.DisplayName: Polterplasm Bullet P R O J
+		ToothBulletPROJ.DisplayName: Tooth Bullet P R O J
+		UelibloomBulletLEAF.DisplayName: Uelibloom Bullet L E A F
+		UelibloomBulletPROJ.DisplayName: Uelibloom Bullet P R O J
+		DivineGeodeArrowEXP.DisplayName: Divine Geode Arrow E X P
+		DivineGeodeArrowPROJ.DisplayName: Divine Geode Arrow P R O J
+		EffulgentFeatherArrowAura.DisplayName: Effulgent Feather Arrow Aura
+		EffulgentFeatherArrowPROJ.DisplayName: Effulgent Feather Arrow P R O J
+		PolterplasmArrowPROJ.DisplayName: Polterplasm Arrow P R O J
+		PolterplasmArrowsSoul.DisplayName: Polterplasm Arrows Soul
+		ToothArrowPROJ.DisplayName: Tooth Arrow P R O J
+		UelibloomArrowLeaf.DisplayName: Uelibloom Arrow Leaf
+		UelibloomArrowLight.DisplayName: Uelibloom Arrow Light
+		UelibloomArrowPROJ.DisplayName: Uelibloom Arrow P R O J
+		UelibloomArrowVine.DisplayName: Uelibloom Arrow Vine
+		ExplodingRabbitPROJ.DisplayName: Exploding Rabbit P R O J
 	}
 
 	EAfterDog: {
-		// AuricBuletBALL.DisplayName: Auric Bulet B A L L
-		// AuricBuletPROJ.DisplayName: Auric Bulet P R O J
-		// EndothermicEnergyBulletPROJ.DisplayName: Endothermic Energy Bullet P R O J
-		// EndothermicEnergyBulletSPIT.DisplayName: Endothermic Energy Bullet S P I T
-		// MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
-		// AuricArrowPROJ.DisplayName: Auric Arrow P R O J
-		// EndothermicEnergyArrowPROJ.DisplayName: Endothermic Energy Arrow P R O J
-		// EndothermicEnergyArrowSPLIT.DisplayName: Endothermic Energy Arrow S P L I T
-		// MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
-		// MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
-		// AuricArrowBALL.DisplayName: Auric Arrow B A L L
+		AuricBuletBALL.DisplayName: Auric Bulet B A L L
+		AuricBuletPROJ.DisplayName: Auric Bulet P R O J
+		EndothermicEnergyBulletPROJ.DisplayName: Endothermic Energy Bullet P R O J
+		EndothermicEnergyBulletSPIT.DisplayName: Endothermic Energy Bullet S P I T
+		MiracleMatterBulletPROJ.DisplayName: Miracle Matter Bullet P R O J
+		AuricArrowPROJ.DisplayName: Auric Arrow P R O J
+		EndothermicEnergyArrowPROJ.DisplayName: Endothermic Energy Arrow P R O J
+		EndothermicEnergyArrowSPLIT.DisplayName: Endothermic Energy Arrow S P L I T
+		MiracleMatterArrowFire.DisplayName: Miracle Matter Arrow Fire
+		MiracleMatterArrowPROJ.DisplayName: Miracle Matter Arrow P R O J
+		AuricArrowBALL.DisplayName: Auric Arrow B A L L
 	}
 }
 
-// NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
+NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
