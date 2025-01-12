@@ -1,15 +1,15 @@
 Buffs: {
 	AstralArrowPBuff: {
-		DisplayName: 明星之佑
-		Description: “一颗明星从天堂……等等，这是[c/FFA500:太阳]和[c/87CEFF:月亮]？”
+		DisplayName: Stellar Ward
+		Description: “A star falls...wait, is that the [c/FFA500:太阳] and [c/87CEFF:月亮]？”
 	}
 
 	PerennialArrowEBuff: {
-		DisplayName: 拥抱永恒……
+		DisplayName: Perennial Embrace
 		Description:
 			'''
-			给予你3点生命回复
-			“鬼知道呢？总不能是突变体给的吧？”
+			+3 life regen
+			Ever blossoming
 			'''
 	}
 
@@ -107,187 +107,187 @@ Buffs: {
 Arrows: {
 	APreHardMode: {
 		AerialiteArrow: {
-			DisplayName: 飓之矢
+			DisplayName: Hurricane Arrow
 			Tooltip:
 				'''
-				命中时召唤旋风
-				旋风会停滞一段时间后开始追踪
-				“抟扶摇而上者九万里. ”
+				Summons wirlwinds on hit
+				Wirlwinds home in after a moment.
+				“Ride the winds into the sky and beyond!”
 				'''
 		}
 
 		WulfrimArrow: {
-			DisplayName: 钨钢矢
+			DisplayName: Wulfrim Arrow
 			Tooltip:
 				'''
-				击中敌人后释放电火花
-				“嘉登造物亦如此……”
+				Relaeses sparks on hit.
+				“Worthy of Draedon's creations...”
 				'''
 		}
 
 		PrismArrow: {
-			DisplayName: 棱晶箭
+			DisplayName: Prism Arrow
 			Tooltip:
 				'''
-				在水中不受重力影响，陆地上下坠更快
-				“阿基米德原理”
+				Unaffected by gravity in water, but falls faster in air.
+				“Because Archimedes said so.”
 				'''
 		}
 	}
 
 	BPrePlantera: {
 		StarblightSootArrow: {
-			DisplayName: 星沫箭
+			DisplayName: Star Speckled Arrow
 			Tooltip:
 				'''
-				造成幻星感染
-				出现时往前喷射一些星空粒子，不可穿透
-				“野马也，尘埃也，生物之以息相吹也. ”
+				Inflicts Astral Infection
+				Sprays stars on use
+				“Witness the creation of life.”
 				'''
 		}
 	}
 
 	CPreMoodLord: {
 		AstralArrow: {
-			DisplayName: 明星箭
+			DisplayName: Astral Arrow
 			Tooltip:
 				'''
-				击中敌人时给予玩家持续的「[c/CAE1FF:明星之佑]」效果
-				存在期间召唤[c/FFA500:太阳]和[c/87CEFF:月亮]并围绕玩家旋转
-				穿过[c/FFA500:太阳]将造成聚变爆炸，
-				穿过[c/87CEFF:月亮]将获得强追踪效果
-				日月强化仅对炫星箭有效
-				“推此志也，虽与日月争光可也. ”
+				Gives the「[c/CAE1FF:明星之佑]」effect on hit
+				Summons the [c/FFA500:太阳] and [c/87CEFF:月亮] around the player
+				Arrows that go through the [c/FFA500:太阳] explode in nuclear fusion
+				Arrows that go through the [c/87CEFF:月亮] gain powerful homing
+				Only works on this arrow
+				“A star in the palm of your hand.”
 				'''
 		}
 
 		LifeAlloyArrow: {
-			DisplayName: 生命合金箭
+			DisplayName: Life Arrow
 			Tooltip:
 				'''
-				三份力量收敛了自己的光芒后凝聚成的物质……
-				“一即全，全即一. ”
+				The cumulative creation of three different forces...
+				“One is All and All is One. ”
 				'''
 		}
 
 		PerennialArrow: {
-			DisplayName: 永恒箭
+			DisplayName: Perennial Arrow
 			Tooltip:
 				'''
-				标记敌人，长出一朵丛林之花
-				丛林之花持续造成伤害并粘附在敌人身上
-				一段时间后治疗玩家
-				“但将膏血求，岂觉性命轻. ”
+				Sticks into enemies and blossoms into a jungle flower
+				Deals continuous damage
+				Heals the player after some time
+				“Medics and gardeners would kill for this. ”
 				'''
 		}
 
 		ScoriaArrow: {
-			DisplayName: 熔渣箭
+			DisplayName: Scoria Arrow
 			Tooltip:
 				'''
-				速度非常慢
-				击中时产生爆炸并快速下落
-				最后释放追踪熔岩
-				“火山突兀赤亭口，火山五月火云厚. ”
+				Flies extermely slow
+				Explodes on hit, then drops down
+				Releases homing magma on death
+				“Rumbling with the force of a volcano. ”
 				'''
 		}
 
 		PlagueArrow: {
-			DisplayName: 瘟疫重甲箭
+			DisplayName: Plague Arrow
 			Tooltip:
 				'''
-				凋零枯花在场时自己会被强化，拥有追踪能力
-				造成瘟疫效果
-				“它们俩之间的爱情突破了次元壁”
+				Gains homing if you have the Wither Blossoms
+				Inflicts Plague
+				“Their love transcends the 4th wall.”
 				'''
 		}
 	}
 
 	DPreDog: {
 		DivineGeodeArrow: {
-			DisplayName: 神圣晶石箭
+			DisplayName: Divine Geode Arrow
 			Tooltip:
 				'''
-				以神圣之力把敌人炸成碎片
-				赋予玩家「净化邪神」增益
-				这将大幅提升你的飞行时间
-				“神圣之火再也不能点燃你的翅膀……”
+				Blow your enemies apart with holy power!
+				Grants the Goddesse's Purification buff
+				Which greately lengthens your flight time.
+				“Divine flames will no longer ignite your wings...”
 				'''
 		}
 
 		EffulgentFeatherArrow: {
-			DisplayName: 闪耀金羽箭
+			DisplayName: Effulgent Arrow
 			Tooltip:
 				'''
-				携带着特斯拉电场快速前进
-				无限穿透
-				“盛夏之时，雷电迅疾. ”
+				Streaks forward in a tesla electromagnetic field
+				Pierces infinitely
+				“The Flash.”
 				'''
 		}
 
 		PolterplasmArrow: {
-			DisplayName: 灵质箭
+			DisplayName: Polterplasm Arrow
 			Tooltip:
 				'''
-				小概率鬼叫并对敌人造成严重伤害
-				大概率什么也不会发生
-				“精神离形，各归其真. ”
+				Chance to release a shriek and deal huge damage
+				Most of the time it just does nothing tho
+				“It deals psychic damage to you, too.”
 				'''
 		}
 
 		UelibloomArrow: {
-			DisplayName: 龙蒿箭
+			DisplayName: Uelibloom Arrow
 			Tooltip:
 				'''
-				击中敌人时产生追踪叶片和生命之光
-				叶片命中时造成藤蔓
-				“满园春色关不住，一枝红杏出墙来. ”
+				Releases homing leaves and life lights on hit
+				Leaves grow into thorned vines
+				“Don't try to figure out the biologicals...”
 				'''
 		}
 
 		ToothArrow: {
-			DisplayName: 渊牙箭
+			DisplayName: Abyssal Slicer
 			Tooltip:
 				'''
-				无视敌人防御力与伤害减免
-				直接造成本来应该造成的全部伤害
-				“敌人的护甲在它眼里如同一张纸”
+				Ignores defence and damage reduction
+				Deals true damage
+				“Armor? What's that?”
 				'''
 		}
 	}
 
 	EAfterDog: {
 		AuricArrow: {
-			DisplayName: 圣金源箭
+			DisplayName: Auric Arrow
 			Tooltip:
 				'''
-				对你的敌人释放电磁爆炸
-				小概率在玩家处产生一个拥有生命力的火球
-				火球会尝试碰撞敌人并造成自爆伤害
-				随后留下一个给予大幅伤害提升的宝物
-				“策勋十二转，赏赐百千强. ”
+				Releases an electromagnetic explosion on hit
+				Small chance to spawn a ball of living flame where the player is
+				It will chase enemies and explode
+				Then drops an item that boosts damage
+				“This is the boon of the gods. ”
 				'''
 		}
 
 		MiracleMatterArrow: {
-			DisplayName: 幻光斑景
+			DisplayName: Kaleidoscopic Phantasmagoria
 			Tooltip:
 				'''
-				命中后释放强力追踪的光球能量弹
-				星流箭本体距离敌人较近时可被提前引爆
-				那名掌握至尊死灵术的魔女似乎不喜欢这个和一把来自天堂的神器
-				所以你不应该在战斗中同时使用这两个？
-				试试更差的武器吧！
-				“一步一登，挥手攀毛，七星灿烂光斑斑. ”
+				Explodes when an enemy is near
+				Releases homing energy bolts on death
+				The Witch doesn't like this...
+				Best not to use this with Heaven's Wind against her.
+				Try something else!
+				“Shine brighter than the stars in the sky.”
 				'''
 		}
 
 		EndothermicEnergyArrow: {
-			DisplayName: 霜华箭
+			DisplayName: Endothermic Arrow
 			Tooltip:
 				'''
-				击中后往上飞行，然后往下释放五道冰锥
-				“为了岩王帝君”
+				Flies on hit and rains down icicles
+				“For the Rock Emperor!”
 				'''
 		}
 	}
@@ -296,179 +296,179 @@ Arrows: {
 Ammunition: {
 	APreHardMode: {
 		AerialiteBullet: {
-			DisplayName: 天蓝弹
+			DisplayName: Aerialite Bullet
 			Tooltip:
 				'''
-				被打出去的时候给玩家一个轻轻的后坐力
-				如果玩家速度接近矿车的最高行驶速度则不会被施加后坐力
-				命中敌人后尝试牵引周围的小怪
-				“风劲帆方疾，风回棹却迟. ”
+				Has a slight recoil
+				Recoil lessens when player is moving at high speeds
+				Sucks lesser enemies in on hit
+				“May the winds guide you.”
 				'''
 		}
 
 		WulfrimBullet: {
-			DisplayName: 钨钢弹
+			DisplayName: Wulfrim Bullet
 			Tooltip:
 				'''
-				距离敌人越近，越是能爆发出更大的能量
-				距离超过一定值则会降低这次命中的伤害
-				“远看山有色，近听水无声. ”
+				Powerful at point-blank range
+				Effectiveness greatly affected by distance
+				“Come 'ere! I've got somethin' to show ya.”
 				'''
 		}
 
 		TinkleshardBullet: {
-			DisplayName: 棱晶弹
+			DisplayName: Prism Round
 			Tooltip:
 				'''
-				发生破裂炸出4个棱晶碎片
-				“水下速掘”
+				Splites into prism shards on hit
+				“Aqua affinity.”
 				'''
 		}
 	}
 
 	BPrePlantera: {
 		CryonicBullet: {
-			DisplayName: 寒元弹
+			DisplayName: Cryonic Bullet
 			Tooltip:
 				'''
-				赋予敌人冰冷的标记并增加伤害
-				弹射出逐渐在空中停下来的冰刺
-				“北国风光，千里冰封，万里雪飘. ”
+				Marks enemies and make them take more damage
+				Shoots icicles midair
+				“Winter is here.”
 				'''
 		}
 
 		StarblightSootBullet: {
-			DisplayName: 凋星弹
+			DisplayName: Blight Star Round
 			Tooltip:
 				'''
-				击中敌人后，给予敌人即将灭亡的标记
-				等待敌人死亡，随后释放强大的幻星立场
-				幻星立场里的任意一个敌人受到伤害都会将伤害转移给其他敌人
-				“星汉灿烂，若出其里”
+				Marks enemies
+				When a marked enemy dies, an astral field will appear
+				Enemies in the field share all damage they take with other enemies
+				“A dying star's last breath.”
 				'''
 		}
 	}
 
 	CPreMoodLord: {
 		AstralBullet: {
-			DisplayName: 炫星弹
+			DisplayName: Astral Bullet
 			Tooltip:
 				'''
-				击中敌人时以敌人为中心不断的释放彗星砸向这个倒霉蛋
-				彗星伤害为面板的2.5倍
-				其射击频率和圆圈大小会越来越小和快				
-				“纤云弄巧，飞星传恨，银汉迢迢暗度. ”
+				Stars and comets will bombard the struck enemy
+				They deal 250% base damage
+				Gradually increases frequency				
+				“The whole universe blinks for you.”
 				'''
 		}
 
 		PerennialBullet: {
-			DisplayName: 永恒弹
+			DisplayName: Perennial Bullet
 			Tooltip:
 				'''
-				不断的命中能使玩家提升防御力，上限为20点
-				对敌人造成严重的致命毒素
-				“马色如杂花，铠光若流水”
+				Successive hits will raise the player's defence, up to +20
+				Inflicts Venom
+				“Brave the storm.”
 				'''
 		}
 
 		ScoriaBullet: {
-			DisplayName: 熔渣弹
+			DisplayName: Scoria Bullet
 			Tooltip:
 				'''
-				产生爆炸，命中后给予玩家可堆叠的加速度与伤害提升
-				“比赛前得热热身，这就是一个很好的热身方式”
+				Explodes and gives the player stackable speed and damage boost
+				“A good warmup.”
 				'''
 		}
 
 		PlagueBullet: {
 			Tooltip:
 				'''
-				如果敌人受到了瘟疫效果，那么造成2.2倍伤害
-				否则仅造成0.75倍伤害
-				“这是属于我们瘟疫家族的羁绊！”
+				Deals 220% damage if the enemy is affected by the Plague
+				If not, deal 75% damage
+				“Effective on rats”
 				'''
-			DisplayName: 瘟疫铁甲弹
+			DisplayName: Plague Plated Bullet
 		}
 	}
 
 	DPreDog: {
 		UelibloomBullet: {
-			DisplayName: 龙蒿弹
+			DisplayName: Uelibloom Bullet
 			Tooltip:
 				'''
-				爆发出强大并且具有追踪性的生命之光
-				“它是生命，也是毁灭”
+				Releases powerful homing life lights
+				“What brings creation can also bring destruction.”
 				'''
 		}
 
 		PolterplasmBullet: {
-			DisplayName: 花灵弹
+			DisplayName: Polterplasm Bullet
 			Tooltip:
 				'''
-				命中后释放多个弧线飞行并强力追踪的花灵
-				花灵再次命中敌人后给予玩家【末路狂花】效果
-				存在期间，玩家可以进行强而有力的冲刺
-				“你说当天你夜闯秋名山看见的就是这家伙？”
+				Summons homing polterplasmic spirits on hit
+				which gives the player the Postmortem Charge buff
+				The buff grants a powerful dash
+				“Fast and furious!...and dead.”
 				'''
 		}
 
 		EffulgentFeatherBullet: {
-			DisplayName: 闪耀金羽弹
+			DisplayName: Effulgent Bullet
 			Tooltip:
 				'''
-				击中后让玩家获得2秒的法拉第笼效果
-				可以产生高压电场伤害周围的敌人
-				“你为什么自己没事？”
+				Gives the Farady Cage buff
+				Electrifies nearby enemies
+				“Physics.”
 				'''
 		}
 
 		DivineGeodeBullet: {
-			DisplayName: 圣晶石子弹
+			DisplayName: Divine Geode Bullet
 			Tooltip:
 				'''
-				永久降低敌人的10点防御，不可叠加
-				在专家模式下有5%的概率回复敌人200血
-				“有内鬼，终止交易”
+				Lowers enemy defence by 10. Not stackable.
+				Has a 5% chance of healing the enemy in Expert mode or above.
+				“sus.”
 				'''
 		}
 
 		ToothBullet: {
 			Tooltip:
 				'''
-				敌人每拥有1点防御力，都能为这次伤害额外提供0.75%的增幅
-				上限为75%
-				“破甲弹，现已装填！”
+				Deals 0.75% more damage with each 1 point of defence the enemy has
+				Capped at 75%
+				“Piercing rounds loaded!”
 				'''
-			DisplayName: 渊牙弹
+			DisplayName: Abyssal Piercer
 		}
 	}
 
 	EAfterDog: {
 		AuricBulet: {
-			DisplayName: 金源弹
+			DisplayName: Auric Bullet
 			Tooltip:
 				'''
-				击中敌人时爆发出多个不断在原地公转的金源珠
-				“百鬼夜行”
+				On hit, releases Auric orbs that orbit their point of origin
+				“The Parade of Light.”
 				'''
 		}
 
 		MiracleMatterBullet: {
-			DisplayName: 星流弹
+			DisplayName: Exo Round
 			Tooltip:
 				'''
-				第1次碰撞不造成伤害
-				随后左右扭曲飞行一段距离后强力追踪
+				Deals no damage on the initial hit
+				Pierces, then flies erratically and agressively homes in
 				'''
 		}
 
 		EndothermicEnergyBullet: {
-			DisplayName: 霜华弹
+			DisplayName: Endothermic Bullet
 			Tooltip:
 				'''
-				击中后在外围释放分裂弹幕，造成冰河时代
-				命中水时将水冻结成冰块
-				“凝冰渡河真君”
+				Splits into more projectiles on hit and inflicts Ice Age
+				Hitting water will freeze it into ice
+				“You know, there's a simpler way than parting the sea...”
 				'''
 		}
 	}
@@ -477,252 +477,252 @@ Ammunition: {
 Gel: {
 	APreHardMode: {
 		GeliticGel: {
-			DisplayName: 双色凝胶
+			DisplayName: Duality Gel
 			Tooltip:
 				'''
-				在邪恶地形造成血肉沸腾和大脑溃烂
-				在神圣地形造成神圣之火和困惑
-				在任意地形造成史莱姆减益
-				“给你的敌人两种颜色（物理）瞧瞧”
+				Inflicts Slimed
+				Inflicts Boiling Flesh and Brain Rot in evil biomes
+				Inflicts Holy Fire in the Hallow
+				“The colors, duke, the colors!”
 				'''
 		}
 
 		HurricaneGel: {
-			DisplayName: 棱晶凝胶
+			DisplayName: Prism Gel
 			Tooltip:
 				'''
-				降低10%全局攻速
-				击中敌人时爆出水晶碎片
-				“什么？你说这是他们的肾结石？”
+				Decreases attack speed by 10%
+				Sprays prism shards on hit
+				“Like when you put a rock into a snowball...”
 				'''
 		}
 
 		WulfrimGel: {
-			DisplayName: 钨钢凝胶
+			DisplayName: Wulfrim Gel
 			Tooltip:
 				'''
-				每一秒额外造成5点奖励伤害
-				“你什么时候奖励自己”
+				Deals an additional 5 damage every second
+				“Doubles as lubricant.”
 				'''
 		}
 
 		AerialiteGel: {
-			DisplayName: 天蓝凝胶
+			DisplayName: Aero Gel
 			Tooltip:
 				'''
-				每5秒在原地释放一个滞留的筋斗云产生极高伤害
-				同时把玩家以很大的速度往后推
-				“俺老孙来也！”
+				Fires a cloud every 5 seconds for great damage
+				Will also push the player back when it happens
+				“The Great Sage has come!”
 				'''
 		}
 	}
 
 	BPrePlantera: {
 		CryonicGel: {
-			DisplayName: 寒元凝胶
+			DisplayName: Cryonic Gel
 			Tooltip:
 				'''
-				减少30%喷火器伤害
-				击中敌人后让敌人防御力永久降低15，不可叠加
-				“破甲流派”
+				Decreases flamethrower damage by 30%
+				Lowers enemy defence by 30. Does not stack.
+				“Feel the cold creep inside your armor.”
 				'''
 		}
 
 		StarblightSootGel: {
-			DisplayName: 调星凝胶
+			DisplayName: Startuner Gel
 			Tooltip:
 				'''
-				减少10%喷火器伤害
-				命中敌人后增加10%远程类伤害
-				命中的越多增伤越厉害，最多提升60%
-				连续5秒未击中敌人或者切换手中武器将清空等级
-				“打中有奖励，打不中有惩罚”
+				Decreases flamethrower damage by 10%
+				Increase ranged damage guadually
+				Stacks up to 60%
+				Loses the buff after 5 seconds of not hitting enemies or swiching weapons
+				“Full perfect!”
 				'''
 		}
 	}
 
 	CPreMoodLord: {
 		AstralGel: {
-			DisplayName: 炫星凝胶
+			DisplayName: Astralite Gel
 			Tooltip:
 				'''
-				减少15%喷火器伤害
-				造成幻星感染减益
-				飞行一段固定距离后令弹幕停滞在空中两秒
-				时停期间造成较低伤害
+				Decreases flamethrower damage by 15%
+				Inflicts Astral Infection
+				Stays in place for 2 seconds before dissapearing
+				Deals low damage while staying in place
 				“The！World！”
 				'''
 		}
 
 		PerennialGel: {
-			DisplayName: 永恒凝胶
+			DisplayName: Perennial Gel
 			Tooltip:
 				'''
-				降低25%喷火器伤害
-				基于玩家生命回复加3的效果
-				“提高血液流动速度”
+				Decreases flamethrower damage by 25%
+				Boosts health regen by 3
+				“Vitalized blood”
 				'''
 		}
 
 		ScoriaGel: {
-			DisplayName: 熔渣凝胶
+			DisplayName: Scoria Gel
 			Tooltip:
 				'''
-				降低5%喷火器伤害
-				命中敌人后产生标记
-				被标记的敌人死亡时会炸出弹跳火球
-				“所以你是把火球放到了敌人的体内吗？”
+				Decreases flamethrower damage by 5%
+				Marks enemies
+				Marked enemies explode into bouncing fireballs on death
+				“Did you just put that inside them?”
 				'''
 		}
 
 		LifeAlloyGel: {
-			DisplayName: 生命合金凝胶
+			DisplayName: Life Gel
 			Tooltip:
 				'''
-				减少20%喷火器伤害
-				命中敌人之后会弹射出各种颜色的小光球
-				“你应该不是把那三个仙灵请了过来吧”
+				Decreases flamethrower damage by 20%
+				Shoots orbs of light on hit
+				“Looks like they have some uses besides finding chests!”
 				'''
 		}
 
 		LivingShardGel: {
-			DisplayName: 生命碎片凝胶
+			DisplayName: Living Shard Gel
 			Tooltip:
 				'''
-				减少5%喷火器伤害
-				命中敌人时有2%概率生成生命碎片
-				生命碎片可以追踪玩家并给玩家回复不稳定的血量
-				追踪期间无限穿透敌人并造成较高的伤害
-				“我缺的生命果这一块谁给我补啊？”
+				Decreases flamethrower damage by 5%
+				2% chance on hit to spawn a living shard
+				The shard will home in on the player, healing health
+				While dealing high damage to any enemy it touches
+				“Dunno, I think Life Fruits are better.”
 				'''
 		}
 
 		PlagueGel: {
 			Tooltip:
 				'''
-				如果玩家处于丛林中，那么对敌人施加强化版本的瘟疫
-				强化版本的瘟疫能够造成比瘟疫更强的伤害
-				“我来控制住他们！”
+				Inflicts a stronger version of the Plague in the jungle
+				Deals more damage
+				“Leave it to me.”
 				'''
-			DisplayName: 瘟疫病毒凝胶储罐
+			DisplayName: Virus Gelatin Petri-can
 		}
 	}
 
 	DPreDog: {
 		UelibloomGel: {
-			DisplayName: 龙蒿凝胶
+			DisplayName: Uelibloom Gel
 			Tooltip:
 				'''
-				减少25%喷火器伤害
-				命中敌人时释放四面八方来的生命之光
-				“生~态~环~保~绿↗↘”
+				Decreases flamethrower damage by 25%
+				Summons life lights from all over on hit
+				“How dare you!”
 				'''
 		}
 
 		BloodstoneCoreGel: {
-			DisplayName: 血石核心凝胶
+			DisplayName: Blood Gel
 			Tooltip:
 				'''
-				减少85%喷火器伤害
-				每次命中敌人都会回复许多血量
-				“深度治疗-专精三”
+				Decreases flamethrower damage by 85%
+				Heals you on hit
+				“The Dummy's Guide to Healing - Book Three”
 				'''
 		}
 
 		DivineGeodeGel: {
-			DisplayName: 神圣晶石凝胶
+			DisplayName: Divine Gel
 			Tooltip:
 				'''
-				减少75%喷火器伤害
-				造成更长时间的神圣之火
-				令弹幕获得无限穿透能力
-				每次击中敌人还会在原地释放较大的爆炸
-				“应该不需要我提醒你这是用来对付谁的吧？”
+				Decreases flamethrower damage by 75%
+				Inflicts Holy Fire for a long duration
+				Pierces Infinitely
+				Explodes on hit
+				“One roasted DoG, coming right up!”
 				'''
 		}
 
 		EffulgentFeatherGel: {
-			DisplayName: 闪耀金羽凝胶
+			DisplayName: Effulgent Gel
 			Tooltip:
 				'''
-				减少10%喷火器伤害
-				击中后爆发出电火花弹幕
-				“这是靠摩擦产生的静电”
+				Decreases flamethrower damage by 10%
+				Releases sparks on hit
+				“Static!”
 				'''
 		}
 
 		PolterplasmGel: {
-			DisplayName: 灵质凝胶
+			DisplayName: Polterplasm Gel
 			Tooltip:
 				'''
-				减少10%喷火器伤害
-				奴役那些地牢灵魂让他们使弹幕具备弱追踪能力
-				“哟西，回天型载人鱼雷，大大滴好”
+				Decreases flamethrower damage by 10%
+				Dungeon spirits within gives this slight homing!
+				“Kamikaze spirits. Soga.”
 				'''
 		}
 
 		UnholyEssenceGel: {
-			DisplayName: 烛火精华凝胶
+			DisplayName: Unholy Gel
 			Tooltip:
 				'''
-				增加25%喷火器伤害
-				造成神圣之火
-				“净化世界是我们的最终目标”
+				Increases flamethrower damage by 25%
+				Inflicts Holy Fire
+				“We will purge the world.”
 				'''
 		}
 
 		ToothGel: {
-			DisplayName: 寒牙凝胶
+			DisplayName: Abyssal Coagulator
 			Tooltip:
 				'''
-				减少5%喷火器伤害
-				让敌人防御力永久降低30，不可叠加
-				“都挤碎了，还这么害羞”
+				Decreases flamethrower damage by 5%
+				Decreases enemy defence by 30. Does not stack.
+				“Congeal, freeze, shatter.”
 				'''
 		}
 	}
 
 	EAfterDog: {
 		CosmosGel: {
-			DisplayName: 宇宙凝胶
+			DisplayName: Cosmic Gel
 			Tooltip:
 				'''
-				减少30%喷火器伤害
-				喷射出追踪敌人的宇宙小吞噬者
-				“很明显，它会让你喷射出的火焰对某些生物来说非常美味”
+				Decreases flamethrower damage by 30%
+				Lures in mini cosmos eaters to chase afer your enemies
+				“More delicious than regular gel!”
 				'''
 		}
 
 		AuricGel: {
-			DisplayName: 圣金源凝胶
+			DisplayName: Auric Gel
 			Tooltip:
 				'''
-				减少75%喷火器伤害
-				每隔两秒从屏幕边缘打出共计10道金色闪电
-				每条金色闪电75%伤害，持续1.5秒
-				“什么，出金了？让我看看看看看看看看”
+				Decreases flamethrower damage by 75%
+				Every 2 seconds, summon a total of 10 Auric lightning bolts
+				They deal 75% damage each
+				“Struck gold.”
 				'''
 		}
 
 		MiracleMatterGel: {
-			DisplayName: 奇迹凝胶
+			DisplayName: Miracle Gel
 			Tooltip:
 				'''
-				减少95%喷火器伤害
-				弹幕造成5s的超位崩解
-				命中敌人时从天降下一道闪电造成200%的伤害
-				闪电只能存在一道
-				“一次性能提供一艘航空母舰的电量”
+				Decreases flamethrower damage by 95%
+				Inflicts Miracle Blight for 5s
+				On hit, calls down a lightning bolt for 200% damage
+				Only one bolt can exist at a time
+				“Each of them is enough to power an entire aircraft carrier.”
 				'''
 		}
 
 		EndothermicEnergyGel: {
-			DisplayName: 霜华凝胶
+			DisplayName: Endothermic Gel
 			Tooltip:
 				'''
-				穿透次数降低至0
-				但对第1个敌人造成极高伤害
-				“这就是液氮”
+				Does not pierce
+				Deals extremely high damage
+				“To put it bluntly, it's liquid nitrogen.”
 				'''
 		}
 	}
@@ -731,12 +731,12 @@ Gel: {
 DeveloperItems: {
 	MaoMaoChong: {
 		MaoMaoChong: {
-			DisplayName: 猫猫虫咖波
+			DisplayName: Capoo
 			Tooltip:
 				'''
-				发出猫叫
-				碰到敌人或方块时反弹
-				“猫猫虫？ 猫猫虫！”
+				Meow!
+				Bounces off tiles and enemies
+				“Bugcat? Bugcat!”
 				'''
 		}
 
@@ -745,11 +745,11 @@ DeveloperItems: {
 
 	ShadowsArrow: {
 		ShadowsArrow: {
-			DisplayName: 魔影箭
+			DisplayName: Demonshade Arrow
 			Tooltip:
 				'''
-				飞行一段时间分裂出随机的箭
-				“你早饭吃了什么？”
+				Splits into random arrows
+				“What the hell did you eat for breakfast?”
 				'''
 		}
 
@@ -758,12 +758,12 @@ DeveloperItems: {
 
 	AllTheBirds: {
 		AllTheBirds: {
-			DisplayName: 玄凤鹦鹉
+			DisplayName: All the Birds
 			Tooltip:
 				'''
-				较为自然的随机曲线转向飞行
-				但无论如何都会必定命中
-				“一大群鸟”
+				Flies in curves
+				Will hit, no matter what
+				“A whole bunch of them.”
 				'''
 		}
 
@@ -772,14 +772,14 @@ DeveloperItems: {
 
 	GrapeShot: {
 		GrapeShot: {
-			DisplayName: 散霰弹
+			DisplayName: Grapeshot
 			Tooltip:
 				'''
-				爆裂出碎片
-				每攻击50次就会提高一个碎片数量等级
-				停止攻击每1秒就会下降一个碎片等级
-				碎片数量上限为10，达到上限之后不会再提升
-				“如风暴般撕裂你的敌人！”
+				Explodes into shards
+				After 50 hits, gain a Storm Count, capped at 10
+				Storm Counts increases the number of shards
+				Lose Storm Counts by 1 per second when you stop attacking
+				“We need Mindbreak Trap”
 				'''
 		}
 
@@ -789,16 +789,16 @@ DeveloperItems: {
 
 	Pyroblast: {
 		Pyroblast: {
-			DisplayName: 炎爆
+			DisplayName: Pyroblast
 			Tooltip:
 				'''
-				握在手中倾泻出独特的爆炸子弹
-				持续射击5秒获得增强，发射激光或者火箭弹等
-				继续持续射击以陆续强化这三种弹幕
-				切换武器将会清除所有等级
-				右键以玩家为中心射出8颗不断旋转的爆裂光球
-				一段时间后光球会追踪敌人
-				“把他们炸成碎片！”
+				Fires an array of unique explosive projectiles
+				Empowers after firing for 5 seconds, and fires lazers and rockets
+				Keep firing to strengthen these attacks
+				Swiching weapons will cause you to lose all buildup
+				Right click to fire 8 lingt bombs that orbit the player
+				Homes in on enemies after a while
+				“Blow them to pieces!”
 				'''
 		}
 
@@ -810,22 +810,22 @@ DeveloperItems: {
 
 	ExplodingRabbit: {
 		ExplodingRabbit: {
-			DisplayName: 自爆兔
+			DisplayName: High-Explosive Bunny
 			Tooltip:
 				'''
-				击中敌人时产生爆炸并弹飞
-				“想吃麻辣兔头吗？辣到爆炸（物理）的那种”
+				Explodes and launches enemies into the air!
+				“That's one dynamic rabbit.”
 				'''
 		}
 	}
 
 	SuperCriticalBullet: {
 		SuperCriticalBullet: {
-			DisplayName: 超暴击弹
+			DisplayName: Supercrit Round
 			Tooltip:
 				'''
-				无限穿透，基础暴击率极高
-				如果你足够幸运，那么能够触发那万里挑一的效果
+				Pierces infinitely and has high base crit
+				There's also a hidden effect - see if you can trigger it!
 				'''
 		}
 
@@ -834,19 +834,20 @@ DeveloperItems: {
 
 	TheGoldenFire: {
 		TheGoldenFire: {
-			DisplayName: 虞金引焰
+			DisplayName: Gilded Igniter
 			Tooltip: "[Stage]"
 			TooltipS0:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:壹]
-				世事沧桑，历史的车轮滚滚向前……
-				即便已经过去了许久，它们仍在畏惧着你！
-				一个血淋淋的眼睛奉旨来监视你
-				[c/7D03A9:你将选择继续忍耐，还是振臂高举反叛之剑，向苍穹呐喊？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:壹]
+				[c/FFD700:世事沧桑，历史的车轮滚滚向前……]
+				[c/FFD700:即便已经过去了许久，它们仍在畏惧着你！]
+				[c/FFD700:一个血淋淋的眼睛奉旨来监视你]
+				[c/D00000:你将选择继续忍耐，还是振臂高举反叛之剑，向苍穹呐喊？]
 				[c/CB0000:“我曾看到，神抛弃了这个世界”]
 				'''
 			TooltipS1S:
@@ -854,180 +855,192 @@ DeveloperItems: {
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:貳]
-				昔日的主宰已经沦落至如此不堪之境
-				曾经的争斗已成为过眼云烟
-				善恶错乱之世，同病相怜之人
-				放下旧日的仇恨吧！
-				现在，那个血腥大脑要为自己的兄弟报仇！
-				威胁已至，不要沉浸在过去
-				[c/7D03A9:你是否要去解决这一切？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:貳]
+				[c/FFD700:昔日的主宰已经沦落至如此不堪之境]
+				[c/FFD700:曾经的争斗已成为过眼云烟]
+				[c/FFD700:善恶错乱之世，同病相怜之人]
+				[c/FFD700:放下旧日的仇恨吧！]
+				[c/FFD700:现在，那个血腥大脑要为自己的兄弟报仇！]
+				[c/FFD700:威胁已至，不要沉浸在过去]
+				[c/D00000:你是否要去解决这一切？]
 				'''
 			TooltipS1F:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:貳]
-				昔日的主宰已经沦落至如此不堪之境
-				曾经的争斗已成为过眼云烟
-				善恶错乱之世，同病相怜之人
-				放下旧日的仇恨吧！
-				现在，那条黑色巨蟒要为自己的兄弟报仇！
-				威胁已至，不要沉浸在过去
-				[c/7D03A9:你是否要去解决这一切？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:貳]
+				[c/FFD700:昔日的主宰已经沦落至如此不堪之境]
+				[c/FFD700:曾经的争斗已成为过眼云烟]
+				[c/FFD700:善恶错乱之世，同病相怜之人]
+				[c/FFD700:放下旧日的仇恨吧！]
+				[c/FFD700:现在，那条黑色巨蟒要为自己的兄弟报仇！]
+				[c/FFD700:威胁已至，不要沉浸在过去]
+				[c/D00000:你是否要去解决这一切？]
 				'''
 			TooltipS2S:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:弎]
-				你的行为触犯了管理猩红的盟主
-				所谓盟主，不过是被绑在势力最高点的走狗而已
-				而且是身不由己的走狗
-				尝试摧毁它留在猩红之地的眼线
-				这或许是让它解脱的最好办法
-				叛君离道之道，愈远愈悲……
-				[c/7D03A9:你是否要去终结这个悲剧？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:弎]
+				[c/FFD700:你的行为触犯了管理猩红的领主]
+				[c/FFD700:所谓领主，不过是被绑在势力最高点的走狗而已]
+				[c/FFD700:而且是身不由己的走狗]
+				[c/FFD700:尝试摧毁它留在猩红之地的眼线]
+				[c/FFD700:这或许是让它解脱的最好办法]
+				[c/FFD700:叛君离道之道，愈远愈悲……]
+				[c/D00000:你是否要去终结这个悲剧？]
 				'''
 			TooltipS2F:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:弎]
-				你的行为触犯了管理腐化的盟主
-				所谓盟主，不过是被绑在势力最高点的走狗而已
-				而且是身不由己的走狗
-				尝试摧毁它留在腐化之地的眼线
-				这或许是让它解脱的最好办法
-				叛君离道之道，愈远愈悲……
-				[c/7D03A9:你是否要去终结这个悲剧？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:弎]
+				[c/FFD700:你的行为触犯了管理腐化的领主]
+				[c/FFD700:所谓领主，不过是被绑在势力最高点的走狗而已]
+				[c/FFD700:而且是身不由己的走狗]
+				[c/FFD700:尝试摧毁它留在腐化之地的眼线]
+				[c/FFD700:这或许是让它解脱的最好办法]
+				[c/FFD700:叛君离道之道，愈远愈悲……]
+				[c/D00000:你是否要去终结这个悲剧？]
 				'''
 			TooltipS3:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:肆]
-				为了在世事争纷中存活下来
-				曾经的浪客逃到了一处遗迹
-				终日不可得食，褪去身形，便留苍骷
-				渐渐的，它成为了此地的地缚灵
-				直到一名逃亡的裁缝来到此地
-				裁缝想要将这里开放，给无处可归的人们一个家
-				浪客并不认同裁缝的做法
-				裁缝最终承受了浪客的诅咒，并强行开放了这里
-				现在，裁缝就守在遗迹门口
-				[c/7D03A9:你是否要去探寻那些骷髅兵的秘密？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:肆]
+				[c/FFD700:为了在世事争纷中存活下来]
+				[c/FFD700:曾经的浪客逃到了一处遗迹]
+				[c/FFD700:终日不可得食，褪去身形，便留苍骷]
+				[c/FFD700:渐渐的，它成为了此地的地缚灵]
+				[c/FFD700:直到一名逃亡的裁缝来到此地]
+				[c/FFD700:裁缝想要将这里开放，给无处可归的人们一个家]
+				[c/FFD700:浪客并不认同裁缝的做法]
+				[c/FFD700:裁缝最终承受了浪客的诅咒，并强行开放了这里]
+				[c/FFD700:现在，裁缝就守在遗迹门口]
+				[c/D00000:你是否要去探寻那些骷髅兵的秘密？]
 				'''
 			TooltipS4:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:伍]
-				胡闹！这简直就是一场胡闹！
-				让一个史莱姆成为神明？
-				人们日益增长的狂热信仰让这个史莱姆逐渐改变……
-				越是单纯的人越会在现实的压榨下寻求极端
-				[c/7D03A9:你难道会允许这样的事情出现？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:伍]
+				[c/FFD700:胡闹！这简直就是一场胡闹！]
+				[c/FFD700:让一个史莱姆成为神明？]
+				[c/FFD700:人们日益增长的狂热信仰让这个史莱姆逐渐改变……]
+				[c/FFD700:越是单纯的人越会在现实的压榨下寻求极端]
+				[c/D00000:你难道会允许这样的事情出现？]
 				'''
 			TooltipS5:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:陆]
-				数亿的血肉凝聚于此
-				它们来到地狱，只为了获得更多的肮脏物质
-				古老的光明与黑暗之魂
-				一颗明星从天堂中陨落！
-				沉沦海洋在蠢蠢欲动……
-				黑暗，将由我带进坟墓
-				      光明，会因你伸向未来
-				      [c/7D03A9:就像那残酷的天使一样]
-				      [c/7D03A9:少年哟！变成神话吧！]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:陆]
+				[c/FFD700:数亿的血肉凝聚于此]
+				[c/FFD700:它们来到地狱，只为了获得更多的肮脏物质]
+				[c/FFD700:古老的光明与黑暗之魂]
+				[c/FFD700:一颗明星从天堂中陨落！]
+				[c/FFD700:沉沦海洋在蠢蠢欲动……]
+				[c/FFD700:黑暗，将由我带进坟墓]
+				[c/FFD700:光明，会因你伸向未来]
+			    [c/D00000:就像那残酷的天使一样]
+				[c/D00000:少年哟！变成神话吧！]
 				'''
 			TooltipS6:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:柒]
-				嘉登创造出的机械造物无不令人头疼
-				几千年前便是如此，几千年后仍没有一点长进
-				现在，这些机械造物正在大地上作威作福
-				[c/7D03A9:逐个击破它们吧！]
-				[c/7D03A9:或者，一鼓作气，来场热血的机械混战？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:柒]
+				[c/FFD700:嘉登创造出的机械造物无不令人头疼]
+				[c/FFD700:几千年前便是如此，几千年后仍没有一点长进]
+				[c/FFD700:现在，这些机械造物正在大地上作威作福]
+				[c/D00000:逐个击破它们吧！]
+				[c/D00000:或者，一鼓作气，来场热血的机械混战？]
 				'''
 			TooltipS7:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:捌]
-				硫火女巫失败的克隆体之一罢了
-				它还不足以让你畏惧
-				生命将因死亡而得到进化，并由此重获新生
-				[c/7D03A9:趁着还没有实验成功的克隆体]
-				[c/7D03A9:现在就去击破它吧！]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:捌]
+				[c/FFD700:硫火女巫失败的克隆体之一罢了]
+				[c/FFD700:它还不足以让你畏惧]
+				[c/FFD700:生命将因死亡而得到进化，并由此重获新生]
+				[c/D00000:趁着还没有实验成功的克隆体]
+				[c/D00000:现在就去击破它吧！]
 				'''
 			TooltipS8:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:玖]
-				从农田中抽枝发芽，蔓生在丛林深处的畸形怪花
-				在神明的惠土上耕种并非人民的错误
-				神明的狡黠造就了这个怪物
-				世界如此混沌，它既不公平，也不合理
-				这朵花从此封锁了丛林
-				人们失去了土地
-				[c/7D03A9:你是否要为了人民去铲除这个怪花吗？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:玖]
+				[c/FFD700:从农田中抽枝发芽，蔓生在丛林深处的畸形怪花]
+				[c/FFD700:在神明的惠土上耕种并非人民的错误]
+				[c/FFD700:神明的狡黠造就了这个怪物]
+				[c/FFD700:世界如此混沌，它既不公平，也不合理]
+				[c/FFD700:这朵花从此封锁了丛林]
+				[c/FFD700:人们失去了土地]
+				[c/D00000:你是否要为了人民去铲除这个怪花吗？]
 				'''
 			TooltipS9:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾]
-				就像是命运
-				在可怖之花诞生后不久
-				丛林深处接连不断地发生着异变
-				人们迫于深处那朵花的力量不敢前去探索
-				当你击破了那个怪物后，一个钥匙出现在你的手中
-				指引着你前去曾经的禁区中，打开那尘封的秘密
-				[c/7D03A9:你是否要去扯下蜥蜴人最后一块遮羞布？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾]
+				[c/FFD700:就像是命运]
+				[c/FFD700:在可怖之花诞生后不久]
+				[c/FFD700:丛林深处接连不断地发生着异变]
+				[c/FFD700:人们迫于深处那朵花的力量不敢前去探索]
+				[c/FFD700:当你击破了那个怪物后，一个钥匙出现在你的手中]
+				[c/FFD700:指引着你前去曾经的禁区中，打开那尘封的秘密]
+				[c/D00000:你是否要去扯下蜥蜴人最后一块遮羞布？]
 				'''
 			TooltipS10:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾壹]
-				在它失去了一切价值后被彻底的抛去了
-				它被传成异端的邪教徒
-				但是，这个凡人所做出的功绩不可磨灭
-				即使被抛弃，它对皓月的信仰也从未改变
-				浪迹天涯之时，恰逢碰见了你与浪客的战斗
-				你离去后，它立马占据了这里
-				它的身上有着联系月球的唯一办法
-				一个人只有让自己残酷起来，才能有机会保留自己的温柔
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾壹]
+				[c/FFD700:在它失去了一切价值后被彻底的抛去了]
+				[c/FFD700:它被传成异端的邪教徒]
+				[c/FFD700:但是，这个凡人所做出的功绩不可磨灭]
+				[c/FFD700:即使被抛弃，它对皓月的信仰也从未改变]
+				[c/FFD700:浪迹天涯之时，恰逢碰见了你与浪客的战斗]
+				[c/FFD700:你离去后，它立马占据了这里]
+				[c/FFD700:它的身上有着联系月球的唯一办法]
+				[c/FFD700:一个人只有让自己残酷起来，才能有机会保留自己的温柔]
 				[c/CB0000:你是否要杀死这个人？？？]
 				'''
 			TooltipS11:
@@ -1035,125 +1048,133 @@ DeveloperItems: {
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾貳]
-				今夜的月色严厉而冰冷，一如寒彻的锋刃，照耀将死之人的面孔
-				月亮领主并不在乎那个人的[c/CB0000:死亡]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾貳]
+				[c/FFD700:今夜的月色严厉而冰冷，一如寒彻的锋刃，照耀将死之人的面孔]
+				[c/FFD700:月亮领主并不在乎那个人的][c/CB0000:死亡]
 				[c/CB0000:但是，那个人的死亡是否影响到了你？]
-				现在，天界生物已然入侵
-				天下四方动荡之时，你又怎能不顾？
-				现在你不能被那个人的死亡影响到！
-				只有经历过最黑暗的长夜，才能凝望破晓时的光明
-				[c/7D03A9:用你最勇猛的火焰，抵御外来者的入侵吧！]
+				[c/FFD700:现在，天界生物已然入侵]
+				[c/FFD700:天下四方动荡之时，你又怎能不顾？]
+				[c/FFD700:现在你不能被那个人的死亡影响到！]
+				[c/FFD700:只有经历过最黑暗的长夜，才能凝望破晓时的光明]
+				[c/D00000:用你最勇猛的火焰，抵御外来者的入侵吧！]
 				'''
 			TooltipS12:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾弎]
-				月亮领主的消亡引起了宇宙的注视……
-				你无法理解，这个星球的无数次变迁从来没被它人注意过
-				而这个星球的卫星！
-				卫星的主人被人击败了！
-				这却引起了极大的关注
-				战胜渎火之主或许是现在最轻松的
-				这里埋藏着太多的历史、太多的秘密
-				但别担心，无论路有多长，虞金引焱始终都会在你身边……
-				[c/7D03A9:前会都看将是更诱人的奖励，亦或是更痛苦的深渊？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾弎]
+				[c/FFD700:月亮领主的消亡引起了宇宙的注视……]
+				[c/FFD700:你无法理解，这个星球的无数次变迁从来没被它人注意过]
+				[c/FFD700:而这个星球的卫星！]
+				[c/FFD700:卫星的主人被人击败了！]
+				[c/FFD700:这却引起了极大的关注！]
+				[c/FFD700:战胜渎火之主或许是现在最轻松的]
+				[c/FFD700:这里埋藏着太多的历史、太多的秘密]
+				[c/FFD700:但别担心，无论路有多长，虞金引焱始终都会在你身边……]
+				[c/D00000:前会都看将是更诱人的奖励，亦或是更痛苦的深渊？]
 				'''
 			TooltipS13:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾肆]
-				宇宙生物们来到这里做了很多对你的限制
-				封印遗迹、监视天空、把守地狱
-				它们跟随着那个寰宇巨虫
-				[c/7D03A9:想要驱逐宇宙的敌人，这是你的必由这路……]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾肆]
+				[c/FFD700:宇宙生物们来到这里做了很多对你的限制]
+				[c/FFD700:封印遗迹、监视天空、把守地狱]
+				[c/FFD700:它们跟随着那个寰宇巨虫]
+				[c/D00000:想要驱逐宇宙的敌人，这是你的必由这路……]
 				'''
 			TooltipS14:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾伍]
-				虚无的进入让遗迹中的骷髅兵消亡了很多
-				这些怨死者的亡魂越积越多
-				最终成为了现在你所看到的怨兽凝魂
-				无尽的复仇是正义的吗？
-				你不知道
-				[c/7D03A9:你是否要让骷髅兵们安息？]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾伍]
+				[c/FFD700:虚无的进入让遗迹中的骷髅兵消亡了很多]
+				[c/FFD700:这些怨死者的亡魂越积越多]
+				[c/FFD700:最终成为了现在你所看到的怨兽凝魂]
+				[c/FFD700:无尽的复仇是正义的吗？]
+				[c/FFD700:你不知道]
+				[c/D00000:你是否要让骷髅兵们安息？]
 				'''
 			TooltipS15:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾陆]
-				一条寰宇巨虫
-				自傲、不驯、强大等无数的形容词都一定符合它
-				文明本就是由一代代人的尸骨与遗言构成
-				你不前进，那就无法进步
-				[c/7D03A9:尝试猎杀这个巨虫]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾陆]
+				[c/FFD700:一条寰宇巨虫]
+				[c/FFD700:自傲、不驯、强大等无数的形容词都一定符合它]
+				[c/FFD700:文明本就是由一代代人的尸骨与遗言构成]
+				[c/FFD700:你不前进，那就无法进步]
+				[c/D00000:尝试猎杀这个巨虫]
 				'''
 			TooltipS16:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾柒]
-				无穷尽的黑暗和孤独之中
-				不断回忆着往日的爱和希望
-				却让她的灵魂逐渐褪去了金色
-				最终，屠龙者还是成为了龙……
-				[c/7D03A9:尝试屠戮虚伪之龙]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+				
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾柒]
+				[c/FFD700:无穷尽的黑暗和孤独之中]
+				[c/FFD700:不断回忆着往日的爱和希望]
+				[c/FFD700:却让她的灵魂逐渐褪去了金色]
+				[c/FFD700:最终，屠龙者还是成为了龙……]
+				[c/D00000:尝试屠戮变节之龙]
 				'''
 			TooltipS17:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾捌]
-				如今剩下的，便是嘉登和硫火女巫
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾捌]
+				[c/FFD700:如今剩下的，便是嘉登和硫火女巫]
 
 				   [c/9F9F9F:嘉登，一位卓越的匠人]
-				   但是它完全就是一个全无道德的野兽
-				   人性？同情？你根本不可能从他身上看到丝毫！
+				   [c/FFD700:但是它完全就是一个全无道德的野兽]
+				   [c/FFD700:人性？同情？你根本不可能从他身上看到丝毫！]
 				   [c/FFA500:灾厄，一位厄运的巫师]
-				   曾几何时，她也是个惹人怜爱的女孩
-				   而今变成了彻底的女巫
+				   [c/FFD700:曾几何时，她也是个惹人怜爱的女孩]
+				   [c/FFD700:而今变成了彻底的女巫]
 				   
-				[c/7D03A9:请你与它们完成一场演出]
+				[c/D00000:请你与它们完成一场演出]
 				'''
 			TooltipS18:
 				'''
 				曾记否？
 				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
 				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:拾玖]
-				混沌精本不是这个世界的生物
-				它们不能控制自己的力量，偶然来到此地
-				不知为何，寒泉冽冽之中唯一能够存活的生物对此有极大的反应
-				[c/7D03A9:请你去解开这最后的谜团]
+				[c/FFDB39:而今，凤凰涅槃，重获新生……]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:拾玖]
+				[c/FFD700:混沌精本不是这个世界的生物]
+				[c/FFD700:它们不能控制自己的力量，偶然来到此地]
+				[c/FFD700:不知为何，寒泉冽冽之中唯一能够存活的生物对此有极大的反应]
+				[c/D00000:请你去解开这最后的谜团]
 				'''
 			TooltipS19:
 				'''
-				曾记否？
-				往昔的辉煌，和那于翻天覆地的变革叱咤的身影？
-				辉煌得以延续，沉寂的土地在岁月的洗礼中，悄然焕发出新的生机
-				而今，[c/FFDB39:凤凰涅槃，重获新生……]
-				[c/FFF1B0:登神长阶] - [c/FFE8E8:终]
-				告别过去，是为了走向未来
-				此后，将有群星闪耀，因为我如今来过 此后，将有百花绽放，因为我从未离去
+				[c/FF0000:你还要继续前行吗？]
+				[c/FF0000:我是命运的信徒，命运如此，那我便无怨言]
+
+				[c/EE00FF:〔登神长阶〕] - [c/FFE8E8:终]
+				[c/FFD700:告别过去，是为了走向未来]
+				[c/FFD700:此后，将有群星闪耀，因为我如今来过]
+				[c/FFD700:此后，将有百花绽放，因为我从未离去]
 				[c/CB0000:“而今天，神也将臣服于我”]
 				'''
 		}
@@ -1163,11 +1184,11 @@ DeveloperItems: {
 
 	ShadowsBullet: {
 		ShadowsBullet: {
-			DisplayName: 魔影弹
+			DisplayName: Demonshade Bullet
 			Tooltip:
 				'''
-				飞行一段时间分裂出随机的弹
-				“好看吗？帧数换的”
+				Splits into random bullets
+				“Oh my pccccccc!”
 				'''
 		}
 
@@ -1176,12 +1197,12 @@ DeveloperItems: {
 
 	DiffuseNovaArc: {
 		DiffuseNovaArc: {
-			DisplayName: 散漫星弧
+			DisplayName: Diffuse Nova Arc
 			Tooltip:
 				'''
-				充能并快速发射新星能量矢
-				一级充能可以直接发射毁灭性的新星冲击波
-				二级充能将提升能量矢发射速率
+				Charges up and rapidly fires Nova Bolts
+				If fully charged, fires a destructive Nova Wave
+				If doubly charged, fires even more bolts
 				'''
 		}
 	}
@@ -1189,12 +1210,12 @@ DeveloperItems: {
 	ChineseChess: {
 		Pao: {
 			Pao: {
-				DisplayName: 砲
+				DisplayName: Pao
 				Tooltip:
 					'''
-					击中敌人后仅造成很弱的伤害
-					随后将自己传送到后方释放极为猛烈的爆炸
-					“他需要一个炮架”
+					Deals little damage on the initial hit
+					Then teleports forward and explodes voilently
+					“You need something in between.”
 					'''
 			}
 
@@ -1203,11 +1224,11 @@ DeveloperItems: {
 
 		Che: {
 			Che: {
-				DisplayName: 车
+				DisplayName: Che
 				Tooltip:
 					'''
-					横冲直撞，无限穿透
-					“最早的数值怪”
+					Smashes through enemies and pierces infinitely
+					“Unstoppable Juggernaut”
 					'''
 			}
 
@@ -1224,7 +1245,7 @@ DeveloperItems: {
 				名缰利锁偏不爱，生性逍遥贪自在
 				九重云台却嫌窄，风月舒喉谢款待
 				'''
-			DisplayName: 无目鸟啼鸣
+			DisplayName: Cry of the Blind Bird
 		}
 
 		BlindBirdCryCrods.DisplayName: Blind Bird Cry Crods
@@ -1233,14 +1254,14 @@ DeveloperItems: {
 
 	BrassBeast: {
 		BrassBeast: {
-			DisplayName: 黄铜野兽
+			DisplayName: Brass Beast
 			Tooltip:
 				'''
-				左键快速喷发出蒸汽束燃烧敌人
-				右键在枪口引发进攻性散热爆炸
-				对范围内的所有敌人均造成伤害
-				月球领主的存在限制了他的能力
-				“这头野兽彻底愤怒了”
+				Left click to fire a stream of steam and scald enemies
+				Right click to expel a heat explosion
+				Deals damage to all enemies around you
+				Abilities limited by Moon Lord
+				“The beast is angered.”
 				'''
 		}
 
@@ -1250,11 +1271,11 @@ DeveloperItems: {
 
 	Pyrogeist: {
 		Pyrogeist: {
-			DisplayName: 游魂焰
+			DisplayName: Pyrogeist
 			Tooltip:
 				'''
-				喷出火焰伴随着灵魂的哀嚎，有几率发射造成剧烈爆炸的游魂
-				“某个偏远贫瘠世界的人们发现了游魂的怨念是一种极其高效的燃料”
+				Emits flames and ghastly wails. Chance to fire an explosive wraith.
+				“The residents of a remote and desolate world found geists to be a highly efficient fuel.”
 				'''
 		}
 
@@ -1263,11 +1284,11 @@ DeveloperItems: {
 
 	GlitchArrow: {
 		GlitchArrow: {
-			DisplayName: 故障箭
+			DisplayName: Glitch Arrow
 			Tooltip:
 				'''
-				它好像出了亿点点小问题
-				你能把它修好吗？
+				It seems we have a "little" problem
+				Think you kan fix it?
 				'''
 		}
 
@@ -1279,23 +1300,23 @@ DeveloperItems: {
 
 Configs: {
 	CREsConfigs: {
-		DisplayName: CREs中心
+		DisplayName: CREs Configs
 
 		EnableSpecialEffects: {
-			Label: 特效总控
+			Label: Special Effects
 			Tooltip:
 				'''
-				可以一键开启或关闭所有特效
-				部分特效不可关闭
+				Make special effects visible/invisible
+				Some special effects are not affected
 				'''
 		}
 
 		EnableAmmoChecking: {
-			Label: 弹药检查
+			Label: Ammo Checking
 			Tooltip:
 				'''
-				开启后会在左下角显示当前使用的弹药
-				(目前没做)
+				Displays the ammo you're currently using on the left corner
+				(Doesn't work yet)
 				'''
 		}
 	}
@@ -1303,25 +1324,25 @@ Configs: {
 
 Items: {
 	TestDASH: {
-		Tooltip: 带上它来直接体验末路狂花的冲刺效果
-		DisplayName: 测试冲刺
+		Tooltip: Grants the effects of Postmortem Dash
+		DisplayName: Test Dash
 	}
 
 	AuricArrowNPCDrop: {
-		Tooltip: 捡起后立刻消失并将伤害乘以1.4倍，持续一段时间
-		DisplayName: 金源箭增益果实
+		Tooltip: Picking this up will multiply your damage by 1.4 for a short while
+		DisplayName: Auric Boon
 	}
 
 	AlloyRailgun: {
 		Tooltip:
 			'''
-			长按左键进行三秒长的蓄力松开左键后释放四道无限穿透的红色激光
-			红色激光每命中一次敌人都会发射玩家的弹药，消失时会发生大量弹药
-			与此同时释放4颗红色炸弹，炸弹爆炸时造成群体伤害并释放四道蓝色激光
-			蓝色激光命中敌人时能提升下一次对该敌人的伤害
-			“作为一把轨道炮，终于也是能用上玩家的子弹了”
+			Hold left click for 3 seconds to charge up four piercing red lazers
+			With each hit, it will fire ammo from your inventory
+			At the same time, fires 4 red bombs and 4 blue lazers
+			Enemies hit by Blue lazers will take more damage
+			“We have addressed the problem of railguns shooting bullets.”
 			'''
-		DisplayName: 合金轨道炮
+		DisplayName: Alloy Railgun
 	}
 }
 
@@ -1330,10 +1351,10 @@ Weapons: {
 		PhotovisceratorRE: {
 			Tooltip:
 				'''
-				左键射出激光和交叉追踪炸弹，右键直接射出追踪炸弹
-				该版本的星火解离者可以享受本模组的凝胶加成，而原灾的不行
+				Just Photoviscerator
+				But it can get the special effects of gels from this mod now!
 				'''
-			DisplayName: 星火解离者重置版
+			DisplayName: Photoviscerator Reconstructed
 		}
 	}
 }
@@ -1342,11 +1363,11 @@ WeaponToAMMO: {
 	Arrow: {
 		MonstrousArrow: {
 			MonstrousArrow: {
-				DisplayName: 畸变血箭
+				DisplayName: Monstrous Arrow
 				Tooltip:
 					'''
-					命中后回复生命值
-					“心跳加速”
+					Heals you on hit
+					“You make my heart beat.”
 					'''
 			}
 
@@ -1358,8 +1379,8 @@ WeaponToAMMO: {
 				DisplayName: SHPA
 				Tooltip:
 					'''
-					命中时引发小型等离子爆炸
-					“你再说一遍你是把什么东西打了出来？”
+					Releases a small plasma explosion on hit
+					“What did you just fire?!”
 					'''
 			}
 
@@ -1369,12 +1390,12 @@ WeaponToAMMO: {
 
 		Terratoarrow: {
 			Terratoarrow: {
-				DisplayName: 泰拉巨箭
+				DisplayName: Terratoarrow
 				Tooltip:
 					'''
-					快速飞行并分裂成多支强力追踪的分裂箭
-					直接命中敌人造成更高伤害
-					“远古传奇”
+					Flies fast and splits into homing bolts after a while
+					Striking an enemy before it splits deals more damage
+					“An old legend...”
 					'''
 			}
 
@@ -1385,13 +1406,13 @@ WeaponToAMMO: {
 
 		TheDrill: {
 			TheDrill: {
-				DisplayName: 赤金切削工具
+				DisplayName: Gilded Omnidrill
 				Tooltip:
 					'''
-					可破坏方块
-					Boss存活或玩家持有创意震撼时无效
-					无论何时何地，只要摁下鼠标右键就可以直接清除所有场上的钻头
-					“是否厌倦了建造场地？该产品正适合您！”
+					Can break blocks
+					Doesn't work when a boss is alive or when you have Creative Shock
+					Right click to erase al drills from existence
+					“Tired of clearing out arenas by hand?”
 					'''
 			}
 
@@ -1400,14 +1421,14 @@ WeaponToAMMO: {
 
 		TimeLeaper: {
 			TimeLeaper: {
-				DisplayName: 时空交叉箭
+				DisplayName: Time Leaper
 				Tooltip:
 					'''
-					无限穿透，但在鼠标位置生成
-					但往玩家处回收，但没有击中敌人时给玩家回血
-					但击中的敌人越多越是会扣除玩家更多的血量
-					玩家可能会因为其而死亡
-					“生存还是毁灭，这是一个问题”
+					Appears at mouse position
+					Flies toward the player, pierces infinitely
+					Heals the player, but also damages the player depending on how many enemies it hit
+					You may be killed by it
+					“To be or not to be...”
 					'''
 			}
 
@@ -1416,12 +1437,12 @@ WeaponToAMMO: {
 
 		TNTArrow: {
 			TNTArrow: {
-				DisplayName: 炸药箭
+				DisplayName: TNT Arrow
 				Tooltip:
 					'''
-					命中敌人后爆炸并炸出火星子
-					同时天降几颗手榴弹
-					“中世纪技术与现代科技的结合，尽管相对野蛮”
+					Explodes into sparks on hit
+					Calls down grenedes from the sky
+					“A barbaric mix of medieval and modern technology”
 					'''
 			}
 
@@ -1434,11 +1455,11 @@ WeaponToAMMO: {
 			ApoctosisMagicBullet: {
 				Tooltip:
 					'''
-					消耗5魔力射出子弹，命中后根据现有魔力值提供伤害增幅
-					每一点魔力值提供0.5%的伤害增幅，无上限
-					“魔法射手”
+					Each bullet costs 5 mana
+					Each 1 point of remaining mana you have provides 0.5% more damage
+					“You think I am Mage, but I am Ranger da!”
 					'''
-				DisplayName: 凋亡弹
+				DisplayName: Apoctosis Bullet
 			}
 
 			ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
@@ -1446,11 +1467,11 @@ WeaponToAMMO: {
 
 		DestructionBullet: {
 			DestructionBullet: {
-				DisplayName: 混合血清弹
+				DisplayName: Destruction Bullet
 				Tooltip:
 					'''
-					产生小范围炼金爆炸并对敌人施加大量Debuff
-					“我也就打碎了一个绿色的螺旋玻璃管，你们怎么都跑走了，这很贵吗？”
+					Creates a small alchemical explosion and inflict a variety of debuffs
+					“So I broke a green tube, so what? Why are you running away?”
 					'''
 			}
 
@@ -1462,12 +1483,12 @@ WeaponToAMMO: {
 			TheNorthStar: {
 				Tooltip:
 					'''
-					射出不穿透的激光，击中敌人时积攒能量
-					命中50次后升级自身弹幕，释放分裂光束
-					继续命中50次后升到最高级以获得强追踪
-					“你可以把那些子弹丢掉了，因为我比他们强太多了！”
+					Fires a lazer, accumulating energy as it hits
+					After 50 successful hits, fires splitting beams
+					After another 50 successful hits, the beams home in
+					“Throw your bullets away. This is much better.”
 					'''
-				DisplayName: 北极星之佑
+				DisplayName: The North Star
 			}
 
 			PolarStarO.DisplayName: Polar Star O
@@ -1477,10 +1498,10 @@ WeaponToAMMO: {
 			OrichalcumBullet: {
 				Tooltip:
 					'''
-					击中敌人后从周围召唤山铜花瓣
-					“曾经不可一世”
+					Summons Orichalcum petals on hit
+					“It was so good.”
 					'''
-				DisplayName: 山铜空尖弹
+				DisplayName: Orichalcum Bullet
 			}
 
 			OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
@@ -1488,12 +1509,12 @@ WeaponToAMMO: {
 
 		TheEmpty: {
 			TheEmpty: {
-				DisplayName: 空弹
+				DisplayName: Empty
 				Tooltip:
 					'''
-					让敌人随地大小变，可改变碰撞箱
-					对于Boss也有效
-					“容易让游戏崩溃”
+					Change enemies' size when hit
+					Works on bosses
+					“May crash the game.”
 					'''
 			}
 
@@ -1502,12 +1523,12 @@ WeaponToAMMO: {
 
 		YuanZiDan: {
 			YuanZiDan: {
-				DisplayName: 狂野气凝胶弹
+				DisplayName: Particle
 				Tooltip:
 					'''
-					撞击后弹至周围敌人并将自己的伤害乘以1.25
-					凝聚了微观原子学以及量子力学的力量
-					“足够轻！”
+					Ricochets between enemies, multiplying damage by 1.25 on each hit
+					The power of mocroatomics and quantum mechanics
+					“It's light enough!”
 					'''
 			}
 
@@ -1516,12 +1537,12 @@ WeaponToAMMO: {
 	}
 }
 
-// NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
+NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
 
 Projectiles: {
-	// PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
-	// StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
-	// Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
+	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
+	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 	
 	CPreMoodLord: {
 		LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
