@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Melee;
-using FKsCRE.Content.Arrows.WulfrimArrow;
+using FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
 {
@@ -34,7 +34,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
                 {
                     Vector2 velocity = new Vector2(0, -1f).RotatedBy(MathHelper.PiOver4 * i) * 4f; // 均匀分布方向
                     Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, velocity,
-                        ModContent.ProjectileType<WulfrimSpark>(), LastKnownDamage, 0f, Main.myPlayer);
+                        ModContent.ProjectileType<Spark>(), LastKnownDamage, 0f, Main.myPlayer);
                 }
             }
         }
