@@ -16,11 +16,11 @@ namespace FKsCRE.Content.Gel.DPreDog.EffulgentFeatherGel
     internal class EffulgentFeatherGel : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Gel.DPreDog";
-        public override void SetStaticDefaults()
-        {
-            ItemID.Sets.AnimatesAsSoul[Type] = true;
-            Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 10));
-        }
+        //public override void SetStaticDefaults()
+        //{
+        //    ItemID.Sets.AnimatesAsSoul[Type] = true;
+        //    Main.RegisterItemAnimation(Type, new DrawAnimationVertical(5, 10));
+        //}
         public override void SetDefaults()
         {
             //Item.damage = 85;

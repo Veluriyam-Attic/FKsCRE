@@ -47,11 +47,11 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
         {
             Item.damage = 12;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = 5;
             Item.useAnimation = 5;
             Item.shoot = ModContent.ProjectileType<TheGoldenFirePROJ>();
-            Item.shootSpeed = 10f;
             Item.knockBack = 6.5f;
+            Item.shootSpeed = 5f;
+            Item.useTime = 5;
 
             Item.width = 96;
             Item.height = 42;
@@ -72,160 +72,186 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             // 初始化面板基础值
-            int baseDamage = 6;
-            float baseShootSpeed = 3f;
+            int baseDamage = 8;
+            float baseShootSpeed = 3.5f;
             float baseKnockBack = 0.5f;
+            int baseUseTime = 4;
 
             // 定义最终面板值
             int finalDamage = baseDamage;
             float finalShootSpeed = baseShootSpeed;
             float finalKnockBack = baseKnockBack;
+            int finalUseTime = baseUseTime;
+
+            // 设置最终的伤害倍率
+            damage.Base = finalDamage;
+
+            // 修改 shootSpeed 和 knockBack
+            Item.shootSpeed = finalShootSpeed;
+            Item.knockBack = finalKnockBack;
+            Item.useTime = finalUseTime;
 
             // 从早到晚检测击败的最晚敌人
 
             // 击败了 克苏鲁之眼
             if (NPC.downedBoss1)
             {
-                finalDamage = 10;
-                finalShootSpeed = 7f;
+                finalDamage = 13;
+                finalShootSpeed = 3.5f;
                 finalKnockBack = 0.5f;
                 currentStage = 1;
+                finalUseTime = 5;
             }
 
             // 击败了 世吞或克脑 中的一个
             if (NPC.downedBoss2)
             {
-                finalDamage = 15;
-                finalShootSpeed = 7f;
+                finalDamage = 17;
+                finalShootSpeed = 5.5f;
                 finalKnockBack = 0.6f;
                 currentStage = 2;
+                finalUseTime = 5;
             }
 
             // 击败了 腐巢意志或血肉宿主 中的一个
             if (DownedBossSystem.downedHiveMind || DownedBossSystem.downedPerforator)
             {
-                finalDamage = 20;
-                finalShootSpeed = 7f;
-                finalKnockBack = 0.7f;
+                finalDamage = 25;
+                finalShootSpeed = 6f;
+                finalKnockBack = 0.6f;
                 currentStage = 3;
+                finalUseTime = 5;
             }
 
             // 击败了 骷髅王
             if (NPC.downedBoss3)
             {
-                finalDamage = 25;
-                finalShootSpeed = 7f;
-                finalKnockBack = 0.8f;
+                finalDamage = 37;
+                finalShootSpeed = 6.5f;
+                finalKnockBack = 0.6f;
                 currentStage = 4;
+                finalUseTime = 5;
             }
 
             // 击败了 史莱姆之神
             if (DownedBossSystem.downedSlimeGod)
             {
-                finalDamage = 30;
+                finalDamage = 45;
                 finalShootSpeed = 7f;
                 finalKnockBack = 0.9f;
                 currentStage = 5;
+                finalUseTime = 4;
 
             }
 
             // 进入困难模式（击败肉山）
             if (Main.hardMode)
             {
-                finalDamage = 50;
-                finalShootSpeed = 12f;
+                finalDamage = 56;
+                finalShootSpeed = 8f;
                 finalKnockBack = 1.0f;
                 currentStage = 6;
+                finalUseTime = 2;
             }
 
             // 击败了 双子魔眼+机械蠕虫+机械骷髅王 的全部3者
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
-                finalDamage = 65;
-                finalShootSpeed = 12f;
-                finalKnockBack = 1.1f;
+                finalDamage = 68;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
                 currentStage = 7;
+                finalUseTime = 2;
             }
 
             // 击败了 灾厄之影
             if (DownedBossSystem.downedCalamitasClone)
             {
-                finalDamage = 75;
-                finalShootSpeed = 12f;
-                finalKnockBack = 1.2f;
+                finalDamage = 86;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
                 currentStage = 8;
+                finalUseTime = 2;
             }
 
             // 击败了 世纪之花
             if (NPC.downedPlantBoss)
             {
-                finalDamage = 90;
-                finalShootSpeed = 12f;
-                finalKnockBack = 1.3f;
+                finalDamage = 97;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
                 currentStage = 9;
+                finalUseTime = 2;
             }
 
             // 击败了 石巨人
             if (NPC.downedGolemBoss)
             {
-                finalDamage = 120;
-                finalShootSpeed = 12f;
-                finalKnockBack = 1.4f;
+                finalDamage = 110;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
                 currentStage = 10;
+                finalUseTime = 2;
             }
 
             // 击败了 拜月教邪教徒
             if (NPC.downedAncientCultist)
             {
-                finalDamage = 150;
-                finalShootSpeed = 12f;
-                finalKnockBack = 1.5f;
+                finalDamage = 135;
+                finalShootSpeed = 10f;
+                finalKnockBack = 1f;
                 currentStage = 11;
+                finalUseTime = 1;
             }
 
             // 击败了 月球领主
             if (NPC.downedMoonlord)
             {
-                finalDamage = 170;
+                finalDamage = 243;
                 finalShootSpeed = 12f;
                 finalKnockBack = 1.5f;
                 currentStage = 12;
+                finalUseTime = 1;
             }
 
             // 击败了 亵渎天神
             if (DownedBossSystem.downedProvidence)
             {
-                finalDamage = 190;
+                finalDamage = 270;
                 finalShootSpeed = 12f;
                 finalKnockBack = 1.6f;
                 currentStage = 13;
+                finalUseTime = 1;
             }
 
             // 击败了 西格纳斯+风暴编织者+无尽虚空 的全部三者
             if (DownedBossSystem.downedSignus && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedCeaselessVoid)
             {
-                finalDamage = 230;
+                finalDamage = 336;
                 finalShootSpeed = 12f;
                 finalKnockBack = 1.7f;
                 currentStage = 14;
+                finalUseTime = 1;
             }
 
             // 击败了 花灵
             if (DownedBossSystem.downedPolterghast)
             {
-                finalDamage = 265;
+                finalDamage = 374;
                 finalShootSpeed = 12f;
                 finalKnockBack = 1.8f;
                 currentStage = 15;
+                finalUseTime = 1;
             }
 
             // 击败了 神明吞噬者
             if (DownedBossSystem.downedDoG)
             {
-                finalDamage = 300;
+                finalDamage = 401;
                 finalShootSpeed = 15f;
                 finalKnockBack = 1.9f;
                 currentStage = 16;
+                finalUseTime = 1;
             }
 
             // 击败了 龙
@@ -235,15 +261,17 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
                 finalShootSpeed = 15f;
                 finalKnockBack = 2.0f;
                 currentStage = 17;
+                finalUseTime = 1;
             }
 
             // 击败了 巨械+终灾 的全部2者
             if (DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas)
             {
-                finalDamage = 650;
+                finalDamage = 604;
                 finalShootSpeed = 15f;
                 finalKnockBack = 2.1f;
                 currentStage = 18;
+                finalUseTime = 1;
             }
 
             // 击败了原初夜灵巨龙
@@ -253,14 +281,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
                 finalShootSpeed = 15f;
                 finalKnockBack = 2.2f;
                 currentStage = 19;
+                finalUseTime = 1;
             }
-
-            // 设置最终的伤害倍率
-            damage.Base = finalDamage;
-
-            // 修改 shootSpeed 和 knockBack
-            Item.shootSpeed = finalShootSpeed;
-            Item.knockBack = finalKnockBack;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -291,7 +313,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             { ItemID.Gel, Color.Gold }, // 原版凝胶
             { ModContent.ItemType<AerialiteGel>(), Color.LightSkyBlue }, // 模组中的天蓝色凝胶
             { ModContent.ItemType<GeliticGel>(), Color.LightSkyBlue }, // 双色凝胶
-            { ModContent.ItemType<HurricaneGel>(), Color.BlueViolet }, // 棱镜凝胶
+            { ModContent.ItemType<HurricaneGel>(), Color.Blue }, // 棱镜凝胶
             { ModContent.ItemType<WulfrimGel>(), new Color(153, 255, 102) }, // 钨钢凝胶
             { ModContent.ItemType<CryonicGel>(), Color.LightSkyBlue }, // 寒元凝胶
             { ModContent.ItemType<StarblightSootGel>(), Color.Orange }, // 调星凝胶
@@ -318,7 +340,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
                 // 获取对应的颜色
                 if (!GelColors.TryGetValue(ammoType, out Color fireColor))
                 {
-                    fireColor = Color.White; // 默认白色
+                    fireColor = Color.Gold; // 默认白色
                 }
 
                 // 发射火焰弹幕并传递颜色

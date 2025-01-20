@@ -49,8 +49,8 @@ Buffs: {
 	}
 
 	WulfrimArrowEDebuff: {
-		DisplayName: Wulfrim Arrow E Debuff
-		Description: Mods.FKsCRE.Buffs.WulfrimArrowEDebuff.Description
+		DisplayName: 钨钢震颤
+		Description: 身上冒出了电火花！
 	}
 
 	DivineGeodeArrowPBuff: {
@@ -129,7 +129,8 @@ Arrows: {
 			DisplayName: 棱晶箭
 			Tooltip:
 				'''
-				在水中不受重力影响，陆地上下坠更快
+				在水中不受重力影响
+				在陆地上下坠更快
 				“阿基米德原理”
 				'''
 		}
@@ -1181,7 +1182,7 @@ DeveloperItems: {
 				'''
 		}
 
-		TheGoldenFirePROJ.DisplayName: The Golden Fire P R O J
+		TheGoldenFirePROJ.DisplayName: 虞金引焱
 	}
 
 	ShadowsBullet: {
@@ -1374,6 +1375,7 @@ WeaponToAMMO: {
 			}
 
 			MonstrousArrowPROJ.DisplayName: Monstrous Arrow P R O J
+			EtherealArrowPROJ.DisplayName: Ethereal Arrow P R O J
 		}
 
 		PlasmaDriveCorePrototypeArrow: {
@@ -1450,18 +1452,25 @@ WeaponToAMMO: {
 
 			TNTArrowPROJ.DisplayName: T N T Arrow P R O J
 		}
+
+		EtherealArrow: {
+			EtherealArrow: {
+				DisplayName: Ethereal Arrow
+				Tooltip: ""
+			}
+		}
 	}
 
 	Bullet: {
 		ApoctosisMagicBullet: {
 			ApoctosisMagicBullet: {
-				DisplayName: 凋亡弹
 				Tooltip:
 					'''
 					消耗5魔力射出子弹，命中后根据现有魔力值提供伤害增幅
 					每一点魔力值提供0.5%的伤害增幅，无上限
 					“一个不会用魔法发射子弹的射手不是一名好法师”
 					'''
+				DisplayName: 凋亡弹
 			}
 
 			ApoctosisMagicBulletPROJ.DisplayName: Apoctosis Magic Bullet P R O J
@@ -1483,7 +1492,6 @@ WeaponToAMMO: {
 
 		NorthStar: {
 			TheNorthStar: {
-				DisplayName: 北极星之佑
 				Tooltip:
 					'''
 					射出不穿透的激光，击中敌人时积攒能量
@@ -1491,6 +1499,7 @@ WeaponToAMMO: {
 					继续命中50次后升到最高级以获得强追踪
 					“你可以把那些子弹丢掉了，因为我比他们强太多了！”
 					'''
+				DisplayName: 北极星之佑
 			}
 
 			PolarStarO.DisplayName: Polar Star O
@@ -1498,12 +1507,12 @@ WeaponToAMMO: {
 
 		OrichalcumBullet: {
 			OrichalcumBullet: {
-				DisplayName: 山铜空尖弹
 				Tooltip:
 					'''
 					击中敌人后从周围召唤山铜花瓣
 					“这难道就是传说中的植物魔法吗”
 					'''
+				DisplayName: 山铜空尖弹
 			}
 
 			OrichalcumBulletPROJ.DisplayName: Orichalcum Bullet P R O J
@@ -1539,20 +1548,42 @@ WeaponToAMMO: {
 	}
 }
 
-// NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
+NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
 
 Projectiles: {
 	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
 	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
-	CPreMoodLord.LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
+	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
+
+	CPreMoodLord: {
+		LifeAlloyArrowPROJSPLIT.DisplayName: Life Alloy Arrow P R O J S P L I T
+		LivingShardGelHealPROJ.DisplayName: Living Shard Gel Heal P R O J
+		ScoriaGelFireBall.DisplayName: Scoria Gel Fire Ball
+	}
+
+	APreHardMode: {
+		AerialiteGelCloud.DisplayName: Aerialite Gel Cloud
+		HurricaneGelSplit.DisplayName: Hurricane Gel Split
+	}
+
+	EAfterDog: {
+		AuricGelLighting.DisplayName: Auric Gel Lighting
+		CosmosGelEater.DisplayName: Cosmos Gel Eater
+		MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
+	}
+
+	AlloyRailgunBEAM.DisplayName: Alloy Railgun B E A M
+	AlloyRailgunRedBomb.DisplayName: Alloy Railgun Red Bomb
+	AlloyRailgunShot.DisplayName: Alloy Railgun Shot
+	Melee.WulfrimSpark.DisplayName: 电火花
 }
 
 Projectile: {
 	APreHardMode: {
 		AerialiteBulletPROJ.DisplayName: Aerialite Bullet P R O J
-		TinkleshardBulletPROJ.DisplayName: Tinkleshard Bullet P R O J
-		TinkleshardBulletSPIT.DisplayName: Tinkleshard Bullet S P I T
-		WulfrimBulletPROJ.DisplayName: Wulfrim Bullet P R O J
+		TinkleshardBulletPROJ.DisplayName: 棱晶弹
+		TinkleshardBulletSPIT.DisplayName: 棱晶碎片
+		WulfrimBulletPROJ.DisplayName: 钨钢弹
 		AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
 		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
 		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
@@ -1575,9 +1606,8 @@ Projectile: {
 		AstralBulletSTAR.DisplayName: Astral Bullet S T A R
 		PerennialBulletPROJ.DisplayName: Perennial Bullet P R O J
 		PlagueBulletPROJ.DisplayName: Plague Bullet P R O J
-		// ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 		ScoriaBulletPROJ.DisplayName: Scoria Bullet P R O J
-		WulfrimArrowPROJ.DisplayName: Wulfrim Arrow P R O J
+		WulfrimArrowPROJ.DisplayName: 钨钢箭
 		AstralArrowMOON.DisplayName: Astral Arrow M O O N
 		AstralArrowPROJ.DisplayName: Astral Arrow P R O J
 		AstralArrowSUN.DisplayName: Astral Arrow S U N
@@ -1589,6 +1619,7 @@ Projectile: {
 		ScoriaArrowFireball.DisplayName: Scoria Arrow Fireball
 		ScoriaArrowPROJ.DisplayName: Scoria Arrow P R O J
 		DropThing.DisplayName: Drop Thing
+		ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 		LivingShardGelHealPROJ.DisplayName: Living Shard Gel Heal P R O J
 		ScoriaGelFireBall.DisplayName: Scoria Gel Fire Ball
 	}
@@ -1633,5 +1664,3 @@ Projectile: {
 		MiracleMatterGelLighting.DisplayName: Miracle Matter Gel Lighting
 	}
 }
-
-NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C

@@ -131,7 +131,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.AerialiteBullet
             // 因此，65 mph 转换为像素/ 帧的速度上限为 65 * 0.022352 ≈ 1.45388 像素 / 帧
 
             // 定义速度上
-            float speedLimit = 65f * 0.022352f * 9;
+            float speedLimit = 65f * 0.022352f * 7;
 
             // 检查玩家当前速度是否超过上限
             if (player.velocity.Length() > speedLimit)
@@ -150,53 +150,53 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.AerialiteBullet
 
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            base.OnHitNPC(target, hit, damageDone); // 保留基类行为
+        //public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        //{
+        //    base.OnHitNPC(target, hit, damageDone); // 保留基类行为
 
-            // 施加 AerialiteBulletEBuff，持续 3 秒（180 帧）
-            target.AddBuff(ModContent.BuffType<AerialiteBulletEBuff>(), 180);
+        //    // 施加 AerialiteBulletEBuff，持续 3 秒（180 帧）
+        //    target.AddBuff(ModContent.BuffType<AerialiteBulletEBuff>(), 180);
 
-            // 吸引逻辑
-            float attractionRange = 600f; // 吸引范围
-            Vector2 projectileCenter = Projectile.Center; // 弹幕中心位置
+        //    // 吸引逻辑
+        //    float attractionRange = 600f; // 吸引范围
+        //    Vector2 projectileCenter = Projectile.Center; // 弹幕中心位置
 
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC npc = Main.npc[i];
-                // 筛选符合条件的敌人（排除被击中的敌人）
-                if (npc.active
-                    && npc != target // 忽略被击中的敌人
-                    && npc.CanBeChasedBy(Projectile, false)
-                    && Collision.CanHit(projectileCenter, 1, 1, npc.Center, 1, 1)
-                    && !npc.friendly)
-                {
-                    // 计算与弹幕的距离
-                    float distance = Vector2.Distance(projectileCenter, npc.Center);
-                    if (distance < attractionRange)
-                    {
-                        // 应用吸引力逻辑
-                        if (npc.position.X < projectileCenter.X)
-                        {
-                            npc.velocity.X += 0.15f; // 吸引到中心的水平速度调整
-                        }
-                        else
-                        {
-                            npc.velocity.X -= 0.15f;
-                        }
+        //    for (int i = 0; i < Main.maxNPCs; i++)
+        //    {
+        //        NPC npc = Main.npc[i];
+        //        // 筛选符合条件的敌人（排除被击中的敌人）
+        //        if (npc.active
+        //            && npc != target // 忽略被击中的敌人
+        //            && npc.CanBeChasedBy(Projectile, false)
+        //            && Collision.CanHit(projectileCenter, 1, 1, npc.Center, 1, 1)
+        //            && !npc.friendly)
+        //        {
+        //            // 计算与弹幕的距离
+        //            float distance = Vector2.Distance(projectileCenter, npc.Center);
+        //            if (distance < attractionRange)
+        //            {
+        //                // 应用吸引力逻辑
+        //                if (npc.position.X < projectileCenter.X)
+        //                {
+        //                    npc.velocity.X += 0.15f; // 吸引到中心的水平速度调整
+        //                }
+        //                else
+        //                {
+        //                    npc.velocity.X -= 0.15f;
+        //                }
 
-                        if (npc.position.Y < projectileCenter.Y)
-                        {
-                            npc.velocity.Y += 0.15f; // 吸引到中心的垂直速度调整
-                        }
-                        else
-                        {
-                            npc.velocity.Y -= 0.15f;
-                        }
-                    }
-                }
-            }
-        }
+        //                if (npc.position.Y < projectileCenter.Y)
+        //                {
+        //                    npc.velocity.Y += 0.15f; // 吸引到中心的垂直速度调整
+        //                }
+        //                else
+        //                {
+        //                    npc.velocity.Y -= 0.15f;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         public override void OnKill(int timeLeft)
         {

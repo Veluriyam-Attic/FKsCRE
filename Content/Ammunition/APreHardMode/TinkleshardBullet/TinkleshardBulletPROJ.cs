@@ -43,7 +43,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.tileCollide = true;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 30;
             Projectile.MaxUpdates = 1;
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
@@ -108,7 +108,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
                     Projectile.Center,
                     velocity,
                     ModContent.ProjectileType<TinkleshardBulletSPIT>(),
-                    (int)(Projectile.damage * 0.35f), // 伤害倍率为 0.25
+                    (int)(Projectile.damage * 0.1f), // 伤害倍率为 0.25
                     Projectile.knockBack,
                     Projectile.owner
                 );

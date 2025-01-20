@@ -16,7 +16,6 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
     {
         public new string LocalizationCategory => "Ammunition.APreHardMode";
 
-
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -35,8 +34,8 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(50);
-            recipe.AddIngredient(ItemID.MusketBall, 50);
+            Recipe recipe = CreateRecipe(150);
+            recipe.AddIngredient(ItemID.MusketBall, 150);
             recipe.AddIngredient<SeaPrism>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

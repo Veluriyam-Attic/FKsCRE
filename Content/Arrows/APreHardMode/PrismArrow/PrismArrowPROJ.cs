@@ -70,6 +70,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PrismArrow
             // 液体中的独特行为
             if (Projectile.wet)
             {
+                Projectile.originalDamage = Projectile.damage;
                 // 提高伤害至原始伤害的 1.5 倍
                 Projectile.damage = (int)(Projectile.originalDamage * 1.5f);
 

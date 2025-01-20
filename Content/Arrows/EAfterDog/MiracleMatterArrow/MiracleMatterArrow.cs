@@ -41,7 +41,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.MiracleMatterArrow
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(3996);
-            recipe.AddIngredient<WulfrimArrow>(999);
+            recipe.AddIngredient<APreHardMode.WulfrimArrow.WulfrimArrow>(999);
             recipe.AddIngredient<VeriumBolt>(999);
             recipe.AddIngredient<SproutingArrow>(999);
             recipe.AddIngredient<PolterplasmArrow>(999);

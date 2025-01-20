@@ -40,11 +40,9 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = -1;
             Projectile.MaxUpdates = 4;
-            Projectile.timeLeft = Lifetime;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 15;
-            //Projectile.usesIDStaticNPCImmunity = true;
-            //Projectile.idStaticNPCHitCooldown = 15;
+            Projectile.timeLeft = Lifetime; // 24 effectively
+            Projectile.usesIDStaticNPCImmunity = true;
+            Projectile.idStaticNPCHitCooldown = 8;
         }
 
         public override void AI()

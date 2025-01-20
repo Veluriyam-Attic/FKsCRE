@@ -2,12 +2,13 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Melee;
+using FKsCRE.Content.Arrows.WulfrimArrow;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
 {
     public class WulfrimArrowEDebuff : ModBuff
     {
-        private static int LastKnownDamage = 10; // 默认值
+        private static int LastKnownDamage = 1; // 默认值
 
         public override void SetStaticDefaults()
         {
@@ -17,14 +18,14 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            // 每帧检测场上的 WulfrimArrowPROJ
-            foreach (var proj in Main.projectile)
-            {
-                if (proj.active && proj.type == ModContent.ProjectileType<WulfrimArrowPROJ>())
-                {
-                    LastKnownDamage = (int)(proj.damage * 0.25f); // 更新伤害值为最后一个 WulfrimArrowPROJ 的 25%
-                }
-            }
+            // // 每帧检测场上的 WulfrimArrowPROJ
+            // foreach (var proj in Main.projectile)
+            // {
+            //     if (proj.active && proj.type == ModContent.ProjectileType<WulfrimArrowPROJ>())
+            //     {
+            //         LastKnownDamage = 10; // 更新伤害值为最后一个 WulfrimArrowPROJ 的 25%
+            //     }
+            // }
 
             // 计时器逻辑
             if (npc.buffTime[buffIndex] % 30 == 0) // 每30帧释放一次
@@ -33,7 +34,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.WulfrimArrow
                 {
                     Vector2 velocity = new Vector2(0, -1f).RotatedBy(MathHelper.PiOver4 * i) * 4f; // 均匀分布方向
                     Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, velocity,
-                        ModContent.ProjectileType<Spark>(), LastKnownDamage, 0f, Main.myPlayer);
+                        ModContent.ProjectileType<WulfrimSpark>(), LastKnownDamage, 0f, Main.myPlayer);
                 }
             }
         }

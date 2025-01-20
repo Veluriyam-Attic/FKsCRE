@@ -13,6 +13,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PrismArrow
     internal class PrismArrow : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Arrows.APreHardMode";
+
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -31,8 +32,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PrismArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(50);
-            recipe.AddIngredient(ItemID.WoodenArrow, 50);
+            Recipe recipe = CreateRecipe(100);
+            recipe.AddIngredient(ItemID.WoodenArrow, 100);
             recipe.AddIngredient<SeaPrism>(1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
