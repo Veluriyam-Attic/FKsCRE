@@ -72,235 +72,235 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-           // 初始化面板基础值
-           int baseDamage = 8;
-           float baseShootSpeed = 3.5f;
-           float baseKnockBack = 0.5f;
-           int baseUseTime = 4;
+            // 初始化面板基础值
+            int baseDamage = 8;
+            float baseShootSpeed = 3.5f;
+            float baseKnockBack = 0.5f;
+            int baseUseTime = 4;
 
-           // 定义最终面板值
-           int finalDamage = baseDamage;
-           float finalShootSpeed = baseShootSpeed;
-           float finalKnockBack = baseKnockBack;
-           int finalUseTime = baseUseTime;
+            // 定义最终面板值
+            int finalDamage = baseDamage;
+            float finalShootSpeed = baseShootSpeed;
+            float finalKnockBack = baseKnockBack;
+            int finalUseTime = baseUseTime;
 
-           // 设置最终的伤害倍率
-           damage.Base = finalDamage;
+            // 设置最终的伤害倍率
+            damage.Base = finalDamage;
 
-           // 修改 shootSpeed 和 knockBack
-           Item.shootSpeed = finalShootSpeed;
-           Item.knockBack = finalKnockBack;
-           Item.useTime = finalUseTime;
+            // 修改 shootSpeed 和 knockBack
+            Item.shootSpeed = finalShootSpeed;
+            Item.knockBack = finalKnockBack;
+            Item.useTime = finalUseTime;
 
-           // 从早到晚检测击败的最晚敌人
+            // 从早到晚检测击败的最晚敌人
 
-           // 击败了 克苏鲁之眼
-           if (NPC.downedBoss1)
-           {
-               finalDamage = 13;
-               finalShootSpeed = 3.5f;
-               finalKnockBack = 0.5f;
-               currentStage = 1;
-               finalUseTime = 5;
-           }
+            // 击败了 克苏鲁之眼
+            if (NPC.downedBoss1)
+            {
+                finalDamage = 13;
+                finalShootSpeed = 3.5f;
+                finalKnockBack = 0.5f;
+                currentStage = 1;
+                finalUseTime = 5;
+            }
 
-           // 击败了 世吞或克脑 中的一个
-           if (NPC.downedBoss2)
-           {
-               finalDamage = 17;
-               finalShootSpeed = 5.5f;
-               finalKnockBack = 0.6f;
-               currentStage = 2;
-               finalUseTime = 5;
-           }
+            // 击败了 世吞或克脑 中的一个
+            if (NPC.downedBoss2)
+            {
+                finalDamage = 17;
+                finalShootSpeed = 5.5f;
+                finalKnockBack = 0.6f;
+                currentStage = 2;
+                finalUseTime = 5;
+            }
 
-           // 击败了 腐巢意志或血肉宿主 中的一个
-           if (DownedBossSystem.downedHiveMind || DownedBossSystem.downedPerforator)
-           {
-               finalDamage = 18;
-               finalShootSpeed = 6f;
-               finalKnockBack = 0.6f;
-               currentStage = 3;
-               finalUseTime = 5;
-           }
+            // 击败了 腐巢意志或血肉宿主 中的一个
+            if (DownedBossSystem.downedHiveMind || DownedBossSystem.downedPerforator)
+            {
+                finalDamage = 18;
+                finalShootSpeed = 6f;
+                finalKnockBack = 0.6f;
+                currentStage = 3;
+                finalUseTime = 5;
+            }
 
-           // 击败了 骷髅王
-           if (NPC.downedBoss3)
-           {
-               finalDamage = 19;
-               finalShootSpeed = 6.5f;
-               finalKnockBack = 0.6f;
-               currentStage = 4;
-               finalUseTime = 5;
-           }
+            // 击败了 骷髅王
+            if (NPC.downedBoss3)
+            {
+                finalDamage = 19;
+                finalShootSpeed = 6.5f;
+                finalKnockBack = 0.6f;
+                currentStage = 4;
+                finalUseTime = 5;
+            }
 
-           // 击败了 史莱姆之神
-           if (DownedBossSystem.downedSlimeGod)
-           {
-               finalDamage = 23;
-               finalShootSpeed = 7f;
-               finalKnockBack = 0.9f;
-               currentStage = 5;
-               finalUseTime = 4;
+            // 击败了 史莱姆之神
+            if (DownedBossSystem.downedSlimeGod)
+            {
+                finalDamage = 23;
+                finalShootSpeed = 7f;
+                finalKnockBack = 0.9f;
+                currentStage = 5;
+                finalUseTime = 4;
 
-           }
+            }
 
-           // 进入困难模式（击败肉山）
-           if (Main.hardMode)
-           {
-               finalDamage = 43;
-               finalShootSpeed = 8f;
-               finalKnockBack = 1.0f;
-               currentStage = 6;
-               finalUseTime = 2;
-           }
+            // 进入困难模式（击败肉山）
+            if (Main.hardMode)
+            {
+                finalDamage = 43;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1.0f;
+                currentStage = 6;
+                finalUseTime = 2;
+            }
 
-           // 击败了 双子魔眼+机械蠕虫+机械骷髅王 的全部3者
-           if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-           {
-               finalDamage = 58;
-               finalShootSpeed = 8f;
-               finalKnockBack = 1f;
-               currentStage = 7;
-               finalUseTime = 2;
-           }
+            // 击败了 双子魔眼+机械蠕虫+机械骷髅王 的全部3者
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            {
+                finalDamage = 58;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
+                currentStage = 7;
+                finalUseTime = 2;
+            }
 
-           // 击败了 灾厄之影
-           if (DownedBossSystem.downedCalamitasClone)
-           {
-               finalDamage = 65;
-               finalShootSpeed = 8f;
-               finalKnockBack = 1f;
-               currentStage = 8;
-               finalUseTime = 2;
-           }
+            // 击败了 灾厄之影
+            if (DownedBossSystem.downedCalamitasClone)
+            {
+                finalDamage = 65;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
+                currentStage = 8;
+                finalUseTime = 2;
+            }
 
-           // 击败了 世纪之花
-           if (NPC.downedPlantBoss)
-           {
-               finalDamage = 77;
-               finalShootSpeed = 8f;
-               finalKnockBack = 1f;
-               currentStage = 9;
-               finalUseTime = 2;
-           }
+            // 击败了 世纪之花
+            if (NPC.downedPlantBoss)
+            {
+                finalDamage = 77;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
+                currentStage = 9;
+                finalUseTime = 2;
+            }
 
-           // 击败了 石巨人
-           if (NPC.downedGolemBoss)
-           {
-               finalDamage = 112;
-               finalShootSpeed = 8f;
-               finalKnockBack = 1f;
-               currentStage = 10;
-               finalUseTime = 2;
-           }
+            // 击败了 石巨人
+            if (NPC.downedGolemBoss)
+            {
+                finalDamage = 112;
+                finalShootSpeed = 8f;
+                finalKnockBack = 1f;
+                currentStage = 10;
+                finalUseTime = 2;
+            }
 
-           // 击败了 拜月教邪教徒
-           if (NPC.downedAncientCultist)
-           {
-               finalDamage = 122;
-               finalShootSpeed = 10f;
-               finalKnockBack = 1f;
-               currentStage = 11;
-               finalUseTime = 1;
-           }
+            // 击败了 拜月教邪教徒
+            if (NPC.downedAncientCultist)
+            {
+                finalDamage = 122;
+                finalShootSpeed = 10f;
+                finalKnockBack = 1f;
+                currentStage = 11;
+                finalUseTime = 1;
+            }
 
-           // 击败了 月球领主
-           if (NPC.downedMoonlord)
-           {
-               finalDamage = 287;
-               finalShootSpeed = 14f;
-               finalKnockBack = 1.5f;
-               currentStage = 12;
-               finalUseTime = 1;
-           }
+            // 击败了 月球领主
+            if (NPC.downedMoonlord)
+            {
+                finalDamage = 287;
+                finalShootSpeed = 14f;
+                finalKnockBack = 1.5f;
+                currentStage = 12;
+                finalUseTime = 1;
+            }
 
-           // 击败了 亵渎天神
-           if (DownedBossSystem.downedProvidence)
-           {
-               finalDamage = 270;
-               finalShootSpeed = 12f;
-               finalKnockBack = 1.6f;
-               currentStage = 13;
-               finalUseTime = 1;
-           }
+            // 击败了 亵渎天神
+            if (DownedBossSystem.downedProvidence)
+            {
+                finalDamage = 270;
+                finalShootSpeed = 14f;
+                finalKnockBack = 1.6f;
+                currentStage = 13;
+                finalUseTime = 1;
+            }
 
-           // 击败了 西格纳斯+风暴编织者+无尽虚空 的全部三者
-           if (DownedBossSystem.downedSignus && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedCeaselessVoid)
-           {
-               finalDamage = 336;
-               finalShootSpeed = 12f;
-               finalKnockBack = 1.7f;
-               currentStage = 14;
-               finalUseTime = 1;
-           }
+            // 击败了 西格纳斯+风暴编织者+无尽虚空 的全部三者
+            if (DownedBossSystem.downedSignus && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedCeaselessVoid)
+            {
+                finalDamage = 303;
+                finalShootSpeed = 14f;
+                finalKnockBack = 1.7f;
+                currentStage = 14;
+                finalUseTime = 1;
+            }
 
-           // 击败了 花灵
-           if (DownedBossSystem.downedPolterghast)
-           {
-               finalDamage = 374;
-               finalShootSpeed = 12f;
-               finalKnockBack = 1.8f;
-               currentStage = 15;
-               finalUseTime = 1;
-           }
+            // 击败了 花灵
+            if (DownedBossSystem.downedPolterghast)
+            {
+                finalDamage = 374;
+                finalShootSpeed = 14f;
+                finalKnockBack = 1.8f;
+                currentStage = 15;
+                finalUseTime = 1;
+            }
 
-           // 击败了 神明吞噬者
-           if (DownedBossSystem.downedDoG)
-           {
-               finalDamage = 401;
-               finalShootSpeed = 15f;
-               finalKnockBack = 1.9f;
-               currentStage = 16;
-               finalUseTime = 1;
-           }
+            // 击败了 神明吞噬者
+            if (DownedBossSystem.downedDoG)
+            {
+                finalDamage = 401;
+                finalShootSpeed = 15f;
+                finalKnockBack = 1.9f;
+                currentStage = 16;
+                finalUseTime = 1;
+            }
 
-           // 击败了 龙
-           if (DownedBossSystem.downedYharon)
-           {
-               finalDamage = 400;
-               finalShootSpeed = 15f;
-               finalKnockBack = 2.0f;
-               currentStage = 17;
-               finalUseTime = 1;
-           }
+            // 击败了 龙
+            if (DownedBossSystem.downedYharon)
+            {
+                finalDamage = 400;
+                finalShootSpeed = 15f;
+                finalKnockBack = 2.0f;
+                currentStage = 17;
+                finalUseTime = 1;
+            }
 
-           // 击败了 巨械+终灾 的全部2者
-           if (DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas)
-           {
-               finalDamage = 604;
-               finalShootSpeed = 15f;
-               finalKnockBack = 2.1f;
-               currentStage = 18;
-               finalUseTime = 1;
-           }
+            // 击败了 巨械+终灾 的全部2者
+            if (DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas)
+            {
+                finalDamage = 604;
+                finalShootSpeed = 15f;
+                finalKnockBack = 2.1f;
+                currentStage = 18;
+                finalUseTime = 1;
+            }
 
-           // 击败了原初夜灵巨龙
-           if (DownedBossSystem.downedPrimordialWyrm)
-           {
-               finalDamage = 1000;
-               finalShootSpeed = 15f;
-               finalKnockBack = 2.2f;
-               currentStage = 19;
-               finalUseTime = 1;
-           }
+            // 击败了原初夜灵巨龙
+            if (DownedBossSystem.downedPrimordialWyrm)
+            {
+                finalDamage = 1000;
+                finalShootSpeed = 15f;
+                finalKnockBack = 2.2f;
+                currentStage = 19;
+                finalUseTime = 1;
+            }
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-           //// 根据当前阶段动态替换书签对应的 Tooltip
-           //string stageKey = $"TooltipS{currentStage}"; // 生成对应阶段的书签键，例如 TooltipS0, TooltipS1
+            //// 根据当前阶段动态替换书签对应的 Tooltip
+            //string stageKey = $"TooltipS{currentStage}"; // 生成对应阶段的书签键，例如 TooltipS0, TooltipS1
 
-           // 根据当前阶段动态生成书签对应的 Tooltip 键
-           string stageKey = currentStage switch
-           {
-               1 => WorldGen.crimson ? "TooltipS1S" : "TooltipS1F", // 阶段2：根据猩红或腐化选择
-               2 => WorldGen.crimson ? "TooltipS2S" : "TooltipS2F", // 阶段3：根据猩红或腐化选择
-               _ => $"TooltipS{currentStage}" // 其他阶段使用默认键
-           };
+            // 根据当前阶段动态生成书签对应的 Tooltip 键
+            string stageKey = currentStage switch
+            {
+                1 => WorldGen.crimson ? "TooltipS1S" : "TooltipS1F", // 阶段2：根据猩红或腐化选择
+                2 => WorldGen.crimson ? "TooltipS2S" : "TooltipS2F", // 阶段3：根据猩红或腐化选择
+                _ => $"TooltipS{currentStage}" // 其他阶段使用默认键
+            };
 
-           // 在提示信息中查找并替换书签 [Stage]
-           list.FindAndReplace("[Stage]", this.GetLocalizedValue(stageKey));
+            // 在提示信息中查找并替换书签 [Stage]
+            list.FindAndReplace("[Stage]", this.GetLocalizedValue(stageKey));
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;

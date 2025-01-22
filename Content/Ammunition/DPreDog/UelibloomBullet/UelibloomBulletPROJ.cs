@@ -102,7 +102,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
                     Projectile.Center,               // 生成位置
                     velocity,                        // 固定初始速度
                     ModContent.ProjectileType<UelibloomBulletLEAF>(), // UelibloomBulletLEAF 弹幕类型
-                    (int)(Projectile.damage * 0.9f), // 伤害倍率
+                    (int)(Projectile.damage * 0.07f), // 伤害倍率
                     Projectile.knockBack,            // 使用当前弹幕的击退力
                     Projectile.owner                 // 拥有者
                 );

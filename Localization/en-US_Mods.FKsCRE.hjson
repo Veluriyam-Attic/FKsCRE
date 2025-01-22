@@ -1,3 +1,9 @@
+RecipeGroup: {
+	Arrow: 任意箭矢（原版、Calamity箭矢、本Mod箭矢）
+	Bullet: 任意子弹（原版、Calamity子弹、本Mod子弹）
+	Gel: 任意凝胶（原版、本Mod凝胶）
+}
+
 Buffs: {
 	AstralArrowPBuff: {
 		DisplayName: Stellar Ward
