@@ -161,7 +161,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
                     // 调用player文件获取最后一次存在的子弹的伤害
                     Player player = Main.player[npc.target];
                     var astralBulletPlayer = player.GetModPlayer<AstralBulletPlayer>();
-                    cachedAstralBulletDamage = (int)((astralBulletPlayer.LastAstralBulletDamage) * 0.025); // 仅造成2.5%的伤害
+                    cachedAstralBulletDamage = (int)((astralBulletPlayer.LastAstralBulletDamage) * 0.1); // 仅造成2.5%的伤害
 
                     SummonComet(npc, currentRadius); // 使用动态半径
                 }

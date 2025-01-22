@@ -522,7 +522,6 @@ Gel: {
 			DisplayName: Cryonic Gel
 			Tooltip:
 				'''
-				Decreases flamethrower damage by 30%
 				Lowers enemy defence by 30. Does not stack.
 				“Feel the cold creep inside your armor.”
 				'''
@@ -1549,7 +1548,7 @@ NPCs.AuricArrowNPC.DisplayName: Auric Arrow N P C
 
 Projectiles: {
 	PolterplasmArrowINV.DisplayName: Polterplasm Arrow I N V
-	StarblightSootBulletArea.DisplayName: Starblight Soot Bullet Area
+	StarblightSootBulletArea.DisplayName: 凋星箭立场
 	Rogue.ScoriaBulletFlameburst.DisplayName: Scoria Bullet Flameburst
 
 	CPreMoodLord: {
@@ -1581,8 +1580,8 @@ Projectile: {
 		TinkleshardBulletPROJ.DisplayName: Tinkleshard Bullet P R O J
 		TinkleshardBulletSPIT.DisplayName: Tinkleshard Bullet S P I T
 		WulfrimBulletPROJ.DisplayName: 钨钢弹
-		AerialiteArrowPROJ.DisplayName: Aerialite Arrow P R O J
-		AerialiteArrowWIND.DisplayName: Aerialite Arrow W I N D
+		AerialiteArrowPROJ.DisplayName: 飓之矢
+		AerialiteArrowWIND.DisplayName: 旋风
 		BloodBeadsArrowPROJ.DisplayName: Blood Beads Arrow P R O J
 		PrismArrowPROJ.DisplayName: Prism Arrow P R O J
 		PurifiedGelArrowPROJ.DisplayName: Purified Gel Arrow P R O J
@@ -1593,9 +1592,9 @@ Projectile: {
 	BPrePlantera: {
 		CryonicBulletFragment.DisplayName: Cryonic Bullet Fragment
 		CryonicBulletPROJ.DisplayName: Cryonic Bullet P R O J
-		StarblightSootBulletPROJ.DisplayName: Starblight Soot Bullet P R O J
-		StarblightSootArrowPROJ.DisplayName: Starblight Soot Arrow P R O J
-		StarblightSootArrowSpark.DisplayName: Starblight Soot Arrow Spark
+		StarblightSootBulletPROJ.DisplayName: 凋星弹
+		StarblightSootArrowPROJ.DisplayName: 凋星箭
+		StarblightSootArrowSpark.DisplayName: 凋星箭粒子
 	}
 
 	CPreMoodLord: {

@@ -80,7 +80,7 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
                 {
                     staticTimer++;
 
-                    if (staticTimer >= 480) // 静止2秒后
+                    if (staticTimer >= 120 * projectile.MaxUpdates) // 静止2秒后
                     {
                         projectile.Kill(); // 强制销毁弹幕
                     }

@@ -17,7 +17,7 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
         public new string LocalizationCategory => "Arrows.APreHardMode";
         public override void SetDefaults()
         {
-            Item.damage = 9;
+            Item.damage = 13;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
@@ -33,8 +33,8 @@ namespace FKsCRE.Content.Arrows.APreHardMode.AerialiteArrow
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(50);
-            recipe.AddIngredient(ItemID.WoodenArrow, 50);
+            Recipe recipe = CreateRecipe(200);
+            recipe.AddIngredient(ItemID.WoodenArrow, 200);
             recipe.AddIngredient<AerialiteBar>();
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

@@ -61,7 +61,7 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
             // 根据当前层级动态增加远程伤害
             if (item.DamageType == DamageClass.Ranged && damageTier > 0)
             {
-                damage += damageTier * 0.1f; // 每层级增加 10% 远程伤害
+                damage *= (1+(damageTier * 0.1f)); // 每层级增加 10% 远程伤害+
             }
         }
 

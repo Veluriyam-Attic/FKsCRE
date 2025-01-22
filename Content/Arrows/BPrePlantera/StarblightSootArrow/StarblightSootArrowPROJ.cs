@@ -82,7 +82,7 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
                     Projectile.Center,
                     sparkVelocity,
                     ModContent.ProjectileType<StarblightSootArrowSpark>(),
-                    (int)(Projectile.damage * 0.03f),
+                    (int)(Projectile.damage * 0.05f),// 伤害
                     Projectile.knockBack,
                     Projectile.owner
                 );

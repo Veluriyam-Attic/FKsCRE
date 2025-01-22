@@ -94,7 +94,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
             Vector2 rightDirection = direction.RotatedBy(angleOffset); // 向右偏转5度
 
             // 生成 UelibloomArrowLeaf 弹幕
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, frontDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), (int)((Projectile.damage) * 0.5), Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, frontDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), (int)((Projectile.damage) * 0.04f), Projectile.knockBack, Projectile.owner);
             //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, leftDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, rightDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
 

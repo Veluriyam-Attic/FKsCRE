@@ -22,7 +22,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UnholyEssenceGel
             if (source is EntitySource_ItemUse_WithAmmo ammoSource && ammoSource.AmmoItemIdUsed == ModContent.ItemType<UnholyEssenceGel>())
             {
                 IsUnholyEssenceGelInfused = true;
-                projectile.damage = (int)(projectile.damage * 1.25f); // 增加 25% 伤害
+                projectile.damage = (int)(projectile.damage * 1f); // 增加 25% 伤害
                 projectile.netUpdate = true;
             }
             base.OnSpawn(projectile, source);

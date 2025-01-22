@@ -15,7 +15,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.PerennialArrow
         public new string LocalizationCategory => "Arrows.CPreMoodLord";
         public override void SetDefaults()
         {
-            Item.damage = 15;
+            Item.damage = 14;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

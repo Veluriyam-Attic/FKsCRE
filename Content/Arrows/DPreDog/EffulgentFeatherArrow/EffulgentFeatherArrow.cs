@@ -15,7 +15,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
         public new string LocalizationCategory => "Arrows.DPreDog";
         public override void SetDefaults()
         {
-            Item.damage = 23;
+            Item.damage = 36;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;

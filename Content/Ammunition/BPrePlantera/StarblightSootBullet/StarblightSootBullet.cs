@@ -20,7 +20,7 @@ namespace FKsCRE.Content.Ammunition.BPrePlantera.StarblightSootBullet
         {
             Item.width = 8;
             Item.height = 18;
-            Item.damage = 16;
+            Item.damage = 20;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

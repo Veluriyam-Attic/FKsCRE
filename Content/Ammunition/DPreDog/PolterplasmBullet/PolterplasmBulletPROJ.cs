@@ -127,7 +127,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
                 Vector2 direction = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi).SafeNormalize(Vector2.Zero);
 
                 // 计算初始速度为当前弹幕速度的 x 倍
-                Vector2 initialVelocity = direction * Projectile.velocity.Length() * 1.0f;
+                Vector2 initialVelocity = direction * Projectile.velocity.Length() * 0.15f;
 
                 // 创建新弹幕
                 Projectile.NewProjectile(
@@ -135,7 +135,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
                     Projectile.Center,
                     initialVelocity, // 使用初始速度
                     ModContent.ProjectileType<PolterplasmBulletFlower>(),
-                    (int)((Projectile.damage)*0.75), // 伤害倍率
+                    (int)((Projectile.damage)*0.35), // 伤害倍率
                     Projectile.knockBack,
                     Projectile.owner
                 );

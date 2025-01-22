@@ -27,7 +27,7 @@ namespace FKsCRE.Content.Gel.BPrePlantera.CryonicGel
             {
                 IsCryonicGelInfused = true; // 标记为附魔状态
                 projectile.netUpdate = true;
-                projectile.damage = (int)(projectile.damage * 0.8f); // 减少 20% 伤害
+                //projectile.damage = (int)(projectile.damage * 0.8f); // 减少 20% 伤害
             }
             base.OnSpawn(projectile, source);
         }  

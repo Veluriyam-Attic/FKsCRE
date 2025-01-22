@@ -131,7 +131,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.AerialiteBullet
             // 因此，65 mph 转换为像素/ 帧的速度上限为 65 * 0.022352 ≈ 1.45388 像素 / 帧
 
             // 定义速度上
-            float speedLimit = 65f * 0.022352f * 7;
+            float speedLimit = 65f * 0.022352f * 5;
 
             // 检查玩家当前速度是否超过上限
             if (player.velocity.Length() > speedLimit)

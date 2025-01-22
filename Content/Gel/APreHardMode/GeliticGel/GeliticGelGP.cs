@@ -23,7 +23,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.GeliticGel
             {
                 IsGeliticGelInfused = true;
                 projectile.netUpdate = true;
-                //projectile.damage = (int)(projectile.damage * 1.1f); // 减少 -10% 伤害
+                projectile.damage = (int)(projectile.damage * 0.975f);
             }
             base.OnSpawn(projectile, source);
         }

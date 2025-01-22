@@ -39,9 +39,9 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe(100);
-            recipe.AddIngredient(ItemID.Gel, 100);
-            //recipe.AddIngredient<StarblightSoot>(5);
+            Recipe recipe = CreateRecipe(500);
+            recipe.AddIngredient(ItemID.Gel, 500);
+            recipe.AddIngredient<StarblightSoot>(1);
             recipe.AddIngredient<TitanHeart>(1);
             recipe.AddTile<StaticRefiner>();
             recipe.Register();

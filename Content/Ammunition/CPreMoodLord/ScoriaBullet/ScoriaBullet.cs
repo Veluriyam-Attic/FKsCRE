@@ -17,9 +17,9 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.ScoriaBullet
 
         public override void SetDefaults()
         {
-            Item.width = 8;
+            Item.width =  14;
             Item.height = 18;
-            Item.damage = 14;
+            Item.damage = 8;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

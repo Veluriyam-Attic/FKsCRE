@@ -17,7 +17,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
 {
     public class PolterplasmBulletFlower : ModProjectile, ILocalizedModType
     {
-        public override string Texture => "FKsCRE/Content/Ammunition/DPreDog/PolterplasmBullet/PolterplasmBullet";
+        public override string Texture => "FKsCRE/Content/Ammunition/DPreDog/PolterplasmBullet/PolterplasmBulletFlower";
         public new string LocalizationCategory => "Projectile.DPreDog";
         public override void SetStaticDefaults()
         {
@@ -29,7 +29,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/PolterplasmBullet/PolterplasmBullet").Value;
+                Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/Ammunition/DPreDog/PolterplasmBullet/PolterplasmBulletFlower").Value;
                 for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {
                     float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
@@ -90,7 +90,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.PolterplasmBullet
                 if (target != null)
                 {
                     Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
-                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 18f, 0.08f); // 追踪速度为12f，调整跟随效果
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 4f, 0.08f); // 追踪速度为12f，调整跟随效果
                 }
             }
             else

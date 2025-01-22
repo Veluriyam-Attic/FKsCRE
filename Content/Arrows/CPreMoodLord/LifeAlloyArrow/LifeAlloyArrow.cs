@@ -20,7 +20,7 @@ namespace FKsCRE.Content.Arrows.CPreMoodLord.LifeAlloyArrow
         public new string LocalizationCategory => "Arrows.CPreMoodLord";
         public override void SetDefaults()
         {
-            Item.damage = 6;
+            Item.damage = 7;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
