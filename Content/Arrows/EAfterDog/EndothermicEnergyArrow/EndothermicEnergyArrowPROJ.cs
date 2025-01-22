@@ -115,7 +115,7 @@ namespace FKsCRE.Content.Arrows.EAfterDog.EndothermicEnergyArrow
                     direction *= 8f; // 设定飞行速度
 
                     // 生成新的弹幕
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<EndothermicEnergyArrowSPLIT>(), (int)(Projectile.damage * 0.85f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<EndothermicEnergyArrowSPLIT>(), (int)(Projectile.damage * 0.35f), Projectile.knockBack, Projectile.owner);
                 }
                 // 销毁自身
                 Projectile.Kill();

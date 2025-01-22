@@ -47,7 +47,7 @@ namespace FKsCRE.Content.Gel.DPreDog.UelibloomGel
                         spawnPosition,
                         directionToTarget * 10f, // 设置飞行速度
                         ModContent.ProjectileType<UelibloomArrowLight>(),
-                        (int)(projectile.damage / 0.75 * 1.00f),
+                        (int)(projectile.damage * 0.4f),
                         projectile.knockBack,
                         projectile.owner
                     );

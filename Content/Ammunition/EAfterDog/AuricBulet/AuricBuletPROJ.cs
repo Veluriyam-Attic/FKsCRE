@@ -166,7 +166,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
                 Vector2 spawnPosition = Projectile.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius;
 
                 // 生成AuricBuletBALL
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<AuricBuletBALL>(), (int)(Projectile.damage * 0.095f), Projectile.knockBack, Main.myPlayer);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<AuricBuletBALL>(), (int)(Projectile.damage * 0.3f), Projectile.knockBack, Main.myPlayer);
                 // 生成AuricBuletBALL并通过ai参数传递公转半径
                 //int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, Vector2.Zero, ModContent.ProjectileType<AuricBuletBALL>(), (int)(Projectile.damage * 1.25f), Projectile.knockBack, Main.myPlayer, radius);
 

@@ -216,7 +216,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.MiracleMatterBullet
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            modifiers.FinalDamage *= 0.085f;
+            modifiers.FinalDamage *= 1.25f;
         }
 
 

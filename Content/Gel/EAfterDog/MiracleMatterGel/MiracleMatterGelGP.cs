@@ -52,7 +52,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.MiracleMatterGel
                         lightningSpawnPosition,
                         lightningShootVelocity,
                         ModContent.ProjectileType<MiracleMatterGelLighting>(),
-                        (int)(projectile.damage / 0.05 * 2.0), // 200% 伤害
+                        (int)(projectile.damage / 0.11 * 2.0), // 200% 伤害
                         0f,
                         projectile.owner
                     );

@@ -208,7 +208,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 月球领主
             if (NPC.downedMoonlord)
             {
-                finalDamage = 287;
+                finalDamage = 248;
                 finalShootSpeed = 14f;
                 finalKnockBack = 1.5f;
                 currentStage = 12;
@@ -218,7 +218,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 亵渎天神
             if (DownedBossSystem.downedProvidence)
             {
-                finalDamage = 270;
+                finalDamage = 252;
                 finalShootSpeed = 14f;
                 finalKnockBack = 1.6f;
                 currentStage = 13;
@@ -228,7 +228,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 西格纳斯+风暴编织者+无尽虚空 的全部三者
             if (DownedBossSystem.downedSignus && DownedBossSystem.downedStormWeaver && DownedBossSystem.downedCeaselessVoid)
             {
-                finalDamage = 303;
+                finalDamage = 261;
                 finalShootSpeed = 14f;
                 finalKnockBack = 1.7f;
                 currentStage = 14;
@@ -238,7 +238,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 花灵
             if (DownedBossSystem.downedPolterghast)
             {
-                finalDamage = 374;
+                finalDamage = 270;
                 finalShootSpeed = 14f;
                 finalKnockBack = 1.8f;
                 currentStage = 15;
@@ -248,8 +248,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 神明吞噬者
             if (DownedBossSystem.downedDoG)
             {
-                finalDamage = 401;
-                finalShootSpeed = 15f;
+                finalDamage = 666;
+                finalShootSpeed = 16f;
                 finalKnockBack = 1.9f;
                 currentStage = 16;
                 finalUseTime = 1;
@@ -258,8 +258,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 龙
             if (DownedBossSystem.downedYharon)
             {
-                finalDamage = 400;
-                finalShootSpeed = 15f;
+                finalDamage = 721;
+                finalShootSpeed = 16f;
                 finalKnockBack = 2.0f;
                 currentStage = 17;
                 finalUseTime = 1;
@@ -268,8 +268,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了 巨械+终灾 的全部2者
             if (DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas)
             {
-                finalDamage = 604;
-                finalShootSpeed = 15f;
+                finalDamage = 888;
+                finalShootSpeed = 20f;
                 finalKnockBack = 2.1f;
                 currentStage = 18;
                 finalUseTime = 1;
@@ -278,8 +278,8 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             // 击败了原初夜灵巨龙
             if (DownedBossSystem.downedPrimordialWyrm)
             {
-                finalDamage = 1000;
-                finalShootSpeed = 15f;
+                finalDamage = 1145;
+                finalShootSpeed = 20f;
                 finalKnockBack = 2.2f;
                 currentStage = 19;
                 finalUseTime = 1;
@@ -303,9 +303,7 @@ namespace FKsCRE.Content.DeveloperItems.Weapon.TheGoldenFire
             list.FindAndReplace("[Stage]", this.GetLocalizedValue(stageKey));
         }
 
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] == 0;
 
-        public override bool CanConsumeAmmo(Item ammo, Player player) => player.ownedProjectileCounts[Item.shoot] != 0;
 
         public override void HoldItem(Player player) => player.Calamity().mouseRotationListener = true;
 

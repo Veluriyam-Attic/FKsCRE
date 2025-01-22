@@ -17,7 +17,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.ToothArrow
         public new string LocalizationCategory => "Arrows.DPreDog";
         public override void SetDefaults()
         {
-            Item.damage = 30;
+            Item.damage = 24;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 14;
             Item.height = 32;
