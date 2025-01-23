@@ -28,7 +28,7 @@ namespace FKsCRE.Content.Gel.DPreDog.BloodstoneCoreGel
             {
                 IsBloodstoneCoreGelInfused = true;
                 projectile.netUpdate = true;
-                projectile.damage = (int)(projectile.damage * 0.15f); // 减少 85% 伤害
+                projectile.damage = (int)(projectile.damage * 0.65f); // 减少 85% 伤害
             }
             base.OnSpawn(projectile, source);
         }

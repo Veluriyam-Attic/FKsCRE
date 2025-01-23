@@ -135,7 +135,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.DivineGeodeArrow
                     Projectile.GetSource_FromThis(),
                     Projectile.Center, Vector2.Zero,
                     ModContent.ProjectileType<DivineGeodeArrowEXP>(),
-                    (int)(Projectile.damage * 0.5f), Projectile.knockBack,
+                    (int)(Projectile.damage * 4f), Projectile.knockBack,
                     Projectile.owner
                 );
             }

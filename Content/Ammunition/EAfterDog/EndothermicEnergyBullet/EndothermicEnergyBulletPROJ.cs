@@ -174,7 +174,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
                     spawnPos,
                     direction * 10f,
                     ModContent.ProjectileType<EndothermicEnergyBulletSPIT>(),
-                    (int)(Projectile.damage * 0.6f),
+                    (int)(Projectile.damage * 0.03f),
                     Projectile.knockBack,
                     Main.myPlayer
                 );
