@@ -3,7 +3,7 @@ RecipeGroup: {
 	Bullet: 任意子弹（原版、Calamity子弹、本Mod子弹）
 	Gel: 任意凝胶（原版、本Mod凝胶）
 }
-
+Mods.FKsCRE.RecipeGroup.Bullet
 Buffs: {
 	AstralArrowPBuff: {
 		DisplayName: 明星之佑

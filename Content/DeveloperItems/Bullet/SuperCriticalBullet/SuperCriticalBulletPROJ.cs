@@ -28,7 +28,7 @@ namespace FKsCRE.Content.DeveloperItems.Bullet.SuperCriticalBullet
         {
             // 获取 SpriteBatch 和投射物纹理
             SpriteBatch spriteBatch = Main.spriteBatch;
-            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Bullet/YuanZiDan/YuanZiDanPROJ").Value;
+            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/DeveloperItems/Bullet/SuperCriticalBullet/SuperCriticalBulletPROJ").Value;
 
             // 遍历投射物的旧位置数组，绘制光学拖尾效果
             for (int i = 0; i < Projectile.oldPos.Length; i++)

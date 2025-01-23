@@ -38,7 +38,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.TheEmpty
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(1);
-            recipe.AddIngredient<NullificationPistol>(3);
+            recipe.AddIngredient<NullificationPistol>(1);
             recipe.AddCondition(Condition.NearShimmer);
             //recipe.AddTile(TileID.Anvils);
             recipe.Register();

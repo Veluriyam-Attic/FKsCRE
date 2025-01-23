@@ -49,22 +49,6 @@ using Terraria.UI;
 
 namespace FKsCRE
 {
-    public class ModTime : ModSystem
-    {
-        public static int Time = 0;
-        public override void UpdateUI(GameTime gameTime)
-        {
-            if (!Main.gamePaused)
-            {
-                Time++;
-            }
-            if (Time >= 86400)
-            {
-                Time = 0;
-            }
-            base.UpdateUI(gameTime);
-        }
-    }
     public class AnyRecipes : ModSystem
     {
         public override void AddRecipeGroups()
