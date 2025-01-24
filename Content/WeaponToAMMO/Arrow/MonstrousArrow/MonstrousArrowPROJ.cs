@@ -18,7 +18,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.MonstrousArrow
     internal class MonstrousArrowPROJ : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "WeaponToAMMO.Arrow.MonstrousArrow";
-        public override string Texture => "FKsCRE/Content/WeaponToAMMO/Arrow/MonstrousArrow";
+        public override string Texture => "FKsCRE/Content/WeaponToAMMO/Arrow/MonstrousArrow/MonstrousArrow";
 
         public override void SetStaticDefaults()
         {
