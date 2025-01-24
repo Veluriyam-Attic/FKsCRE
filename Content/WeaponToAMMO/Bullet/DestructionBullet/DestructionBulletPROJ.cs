@@ -104,13 +104,14 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.DestructionBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 添加黄色主题的飞行粒子
-                if (Main.rand.NextBool(3)) // 随机 1/3 概率
+                // 添加随机粒子特效
+                //if (Main.rand.NextBool(3)) // 随机 1/3 概率
                 {
+                    int randomDustID = Main.rand.Next(1, 324); // 随机选择 1 到 323 的 DustID
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
-                        DustID.GoldFlame, // 使用金色粒子
-                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
+                        randomDustID, // 使用随机 DustID
+                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f) // 粒子速度
                     );
                     dust.noGravity = true; // 无重力
                     dust.scale = Main.rand.NextFloat(0.6f, 1.0f); // 随机大小
@@ -146,12 +147,18 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.DestructionBullet
             {
                 // 消亡时释放爆炸特效
                 Particle bloodsplosion2 = new CustomPulse(
-                Projectile.Center, Vector2.Zero, Color.LightYellow,
-                "CalamityMod/Particles/DustyCircleHardEdge",
-                Vector2.One * 0.7f, Main.rand.NextFloat(-15f, 15f),
-                0.03f, 0.155f, 40
-            );
+                    Projectile.Center,
+                    Vector2.Zero,
+                    new Color(Main.rand.Next(256), Main.rand.Next(256), Main.rand.Next(256)), // 随机生成 RGB 颜色
+                    "CalamityMod/Particles/DustyCircleHardEdge",
+                    Vector2.One * 0.7f,
+                    Main.rand.NextFloat(-15f, 15f),
+                    0.03f,
+                    0.155f,
+                    40
+                );
                 GeneralParticleHandler.SpawnParticle(bloodsplosion2);
+
 
                 // 消亡时释放额外弹幕
                 if (Main.myPlayer == Projectile.owner)

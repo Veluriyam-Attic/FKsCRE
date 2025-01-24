@@ -9,6 +9,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using FKsCRE.CREConfigs;
+using Terraria.DataStructures;
+using Terraria.WorldBuilding;
+using CalamityMod.Particles;
 
 namespace FKsCRE.Content.Arrows.APreHardMode.PrismArrow
 {
@@ -43,82 +46,111 @@ namespace FKsCRE.Content.Arrows.APreHardMode.PrismArrow
             Projectile.timeLeft = 300; // 弹幕存在时间为x帧
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
-            Projectile.ignoreWater = true; // 弹幕不受水影响
+            Projectile.ignoreWater = false; // 弹幕不受水影响
             Projectile.arrow = true;
             Projectile.extraUpdates = 0;
-            Projectile.aiStyle = ProjAIStyleID.Arrow; // 受重力影响
-        }
-
-        public override void AI()
-        {
-            // 实时检测是否在液体中，并动态调整 aiStyle
+            // 检测是否在液体中，并调整 aiStyle
             if (Projectile.wet) // 在水中时
             {
-                Projectile.aiStyle = ProjAIStyleID.Arrow; // 启用重力影响
+                Projectile.aiStyle = -1; // 不会重力影响
             }
             else // 不在水中
             {
-                Projectile.aiStyle = -1; // 禁用重力影响
+                Projectile.aiStyle = ProjAIStyleID.Arrow; // 受到重力影响
             }
-
-            // 调整弹幕的旋转，使其在飞行时保持水平
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
-
-            // Lighting - 添加天蓝色光源，光照强度为 0.49
-            Lighting.AddLight(Projectile.Center, Color.LightSkyBlue.ToVector3() * 0.49f);
-
-            // 液体中的独特行为
+        }
+        public override void OnSpawn(IEntitySource source)
+        {
+            // 检测是否在液体中，并调整 aiStyle
+            if (Projectile.wet) // 在水中时
+            {
+                Projectile.aiStyle = -1; // 不会重力影响
+            }
+            else // 不在水中
+            {
+                Projectile.aiStyle = ProjAIStyleID.Arrow; // 受到重力影响
+            }
+        }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
             if (Projectile.wet)
             {
-                Projectile.originalDamage = Projectile.damage;
-                // 提高伤害至原始伤害的 1.5 倍
-                Projectile.damage = (int)(Projectile.originalDamage * 1.5f);
-
-                // 提升速度至原速度的 2.5 倍
-                Projectile.velocity *= 2.5f;
-
-                // 模拟液体中的抛物线行为
-                Projectile.velocity.Y += 0.02f; // 逐渐增加垂直速度
+                // 如果在水中，造成 1.45 倍伤害
+                modifiers.SourceDamage *= 1.45f;
             }
             else
             {
-                // 恢复原始伤害
-                Projectile.damage = Projectile.originalDamage;
-
-                // 垂直方向速度逐渐增加，模拟重力影响
-                Projectile.velocity.Y += 0.25f;
+                // 不在水中，造成 1 倍伤害
+                modifiers.SourceDamage *= 1f;
             }
         }
 
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-
-        }
         public override void OnKill(int timeLeft)
         {
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 释放天蓝色的水系粒子特效
-                for (int i = 0; i < 10; i++)
+                if (Projectile.wet)
                 {
-                    // 随机生成粒子发射的速度和方向，沿着箭矢的朝向发射
-                    Vector2 particleVelocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(10)) * Main.rand.NextFloat(0.5f, 1.5f);
+                    // 如果在水中，生成五边形扩散粒子
+                    for (int i = 0; i < 25; i++)
+                    {
+                        float angle = MathHelper.TwoPi / 5 * i; // 计算五边形的角度
+                        Vector2 particleVelocity = angle.ToRotationVector2() * Main.rand.NextFloat(0.5f, 1.5f);
 
-                    // 创建天蓝色粒子，并调整缩放和亮度
-                    Dust waterDust = Dust.NewDustPerfect(Projectile.Center, DustID.Water, particleVelocity, 0, Color.LightSkyBlue, 2f); // 设置颜色为天蓝色，缩放为2倍
-                    waterDust.noGravity = true; // 无重力效果
-                    waterDust.fadeIn = 1.5f; // 增加粒子的亮度和淡入效果
+                        // 创建粒子特效
+                        Dust waterDust = Dust.NewDustPerfect(Projectile.Center, DustID.Water, particleVelocity, 0, Color.LightSkyBlue, 2f);
+                        waterDust.noGravity = true; // 无重力效果
+                        waterDust.fadeIn = 1.5f; // 亮度增加效果
+                    }
+                }
+                else
+                {
+                    // 保留现有的粒子特效
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Vector2 particleVelocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(10)) * Main.rand.NextFloat(0.5f, 1.5f);
+
+                        Dust waterDust = Dust.NewDustPerfect(Projectile.Center, DustID.Water, particleVelocity, 0, Color.LightSkyBlue, 2f);
+                        waterDust.noGravity = true;
+                        waterDust.fadeIn = 1.5f;
+                    }
                 }
             }
         }
 
+        public override void AI()
+        {
+            // 调整弹幕的旋转
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
 
+            // 在水中每帧增加速度
+            if (Projectile.wet)
+            {
+                Projectile.velocity *= 1.01f;
+                if (Projectile.numUpdates % 3 == 0)
+                {
+                    // 将火花的颜色改为水元素的颜色
+                    Color outerSparkColor = new Color(0, 105, 148);
+                    float scaleBoost = MathHelper.Clamp(Projectile.ai[0] * 0.005f, 0f, 2f);
+                    float outerSparkScale = 0.7f + scaleBoost;
+                    SparkParticle spark = new SparkParticle(Projectile.Center, Projectile.velocity, false, 7, outerSparkScale, outerSparkColor);
+                    GeneralParticleHandler.SpawnParticle(spark);
+                }
+            }
+            else
+            {
+                // 不在水中，增加重力效果
+                Projectile.velocity.Y += 0.15f; // 每帧增加一个小值，模拟更强的重力
+            }
 
+            // 添加天蓝色光源
+            Lighting.AddLight(Projectile.Center, Color.LightSkyBlue.ToVector3() * 0.49f);
+        }
 
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
 
-
-
+        }     
     }
 }

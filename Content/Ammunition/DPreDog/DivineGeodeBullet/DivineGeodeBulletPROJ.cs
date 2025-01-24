@@ -151,43 +151,99 @@ namespace FKsCRE.Content.Ammunition.DPreDog.DivineGeodeBullet
 
         public override void OnKill(int timeLeft)
         {
-            if (Main.rand.NextBool(3))
-            {
-                for (int i = 0; i < 36; i++) // 36 个点形成魔法阵
-                {
-                    float angle = MathHelper.TwoPi / 36 * i; // 均匀分布
-                    Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10; // 魔法阵半径为10
+            //if (Main.rand.NextBool(3))
+            //{
+            //    for (int i = 0; i < 36; i++) // 36 个点形成魔法阵
+            //    {
+            //        float angle = MathHelper.TwoPi / 36 * i; // 均匀分布
+            //        Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10; // 魔法阵半径为10
 
+            //        Dust dust = Dust.NewDustPerfect(
+            //            Projectile.Center + offset,
+            //            Main.rand.NextBool() ? 262 : 87, // 粒子特效编号
+            //            offset.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(0.5f, 1.5f), // 向外速度
+            //            0,
+            //            Color.Lime, // 粒子颜色
+            //            Main.rand.NextFloat(0.8f, 1.2f) // 粒子大小
+            //        );
+            //        dust.noGravity = true;
+            //    }
+            //}
+
+            //if (Main.rand.NextBool(15))
+            //{
+            //    for (int i = 0; i < 10; i++) // 中心区域附加特效
+            //    {
+            //        float angle = MathHelper.TwoPi / 10 * i;
+            //        Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Main.rand.NextFloat(1f, 2f);
+
+            //        Dust dust = Dust.NewDustPerfect(
+            //            Projectile.Center,
+            //            278, // 粒子特效编号
+            //            velocity, // 随机偏移
+            //            0,
+            //            Color.Orange, // 粒子颜色
+            //            Main.rand.NextFloat(0.6f, 1f) // 粒子大小
+            //        );
+            //        dust.noGravity = true;
+            //    }
+            //}
+
+
+            // 保留现有的小圆圈效果
+            for (int i = 0; i < 36; i++) // 36 个点形成魔法阵
+            {
+                float angle = MathHelper.TwoPi / 36 * i; // 均匀分布
+                Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 10; // 魔法阵半径为10
+
+                Dust dust = Dust.NewDustPerfect(
+                    Projectile.Center + offset,
+                    Main.rand.NextBool() ? 262 : 87, // 粒子特效编号
+                    offset.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(0.5f, 1.5f), // 向外速度
+                    0,
+                    default, // 默认颜色
+                    Main.rand.NextFloat(0.8f, 1.2f) // 粒子大小
+                );
+                dust.noGravity = true;
+            }
+
+
+            // 绘制三个扇形的粒子特效
+            float radius = 7 * 16f; // 扇形的半径
+            float arcAngle = MathHelper.Pi / 3; // 每个扇形的弧度（60 度）
+            float baseOffsetAngle = -MathHelper.PiOver2; // 起始角度偏移（从正上方开始）
+
+            // 每个扇形的中心角度
+            float[] arcBaseAngles = new float[]
+            {
+    baseOffsetAngle - MathHelper.Pi / 3, // 左上角
+    baseOffsetAngle + MathHelper.Pi / 3, // 右上角
+    baseOffsetAngle + MathHelper.Pi // 正下方
+            };
+
+            foreach (float arcBaseAngle in arcBaseAngles)
+            {
+                for (int i = 0; i < 24; i++) // 每个扇形生成 24 个粒子
+                {
+                    float angle = arcBaseAngle + (-arcAngle / 2) + (arcAngle / 24) * i; // 每个粒子的角度
+                    Vector2 direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+
+                    Vector2 particlePosition = Projectile.Center + direction * radius; // 粒子的位置
                     Dust dust = Dust.NewDustPerfect(
-                        Projectile.Center + offset,
+                        particlePosition,
                         Main.rand.NextBool() ? 262 : 87, // 粒子特效编号
-                        offset.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(0.5f, 1.5f), // 向外速度
+                        direction * Main.rand.NextFloat(1.5f, 2.5f), // 粒子向外辐射的速度
                         0,
-                        Color.Lime, // 粒子颜色
-                        Main.rand.NextFloat(0.8f, 1.2f) // 粒子大小
+                        default, // 默认颜色
+                        Main.rand.NextFloat(1.5f, 1.65f) // 粒子大小
                     );
-                    dust.noGravity = true;
+                    dust.noGravity = true; // 无重力
                 }
             }
 
-            if (Main.rand.NextBool(15))
-            {
-                for (int i = 0; i < 10; i++) // 中心区域附加特效
-                {
-                    float angle = MathHelper.TwoPi / 10 * i;
-                    Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Main.rand.NextFloat(1f, 2f);
 
-                    Dust dust = Dust.NewDustPerfect(
-                        Projectile.Center,
-                        278, // 粒子特效编号
-                        velocity, // 随机偏移
-                        0,
-                        Color.Orange, // 粒子颜色
-                        Main.rand.NextFloat(0.6f, 1f) // 粒子大小
-                    );
-                    dust.noGravity = true;
-                }
-            }
+
+
         }
     }
 }

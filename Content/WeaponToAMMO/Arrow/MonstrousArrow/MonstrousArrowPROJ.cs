@@ -18,7 +18,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.MonstrousArrow
     internal class MonstrousArrowPROJ : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "WeaponToAMMO.Arrow.MonstrousArrow";
-        //public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => "FKsCRE/Content/WeaponToAMMO/Arrow/MonstrousArrow";
 
         public override void SetStaticDefaults()
         {
@@ -60,19 +60,22 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.MonstrousArrow
             // Lighting - 添加深橙色光源，光照强度为 0.55
             Lighting.AddLight(Projectile.Center, Color.Orange.ToVector3() * 0.55f);
 
+
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 添加粒子特效，随机 1/3 概率
-                if (Main.rand.NextBool(2))
+                // 添加粒子特效
+                for (int i = 0; i < 2; i++) // 每帧生成 2 个粒子
                 {
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
-                        Main.rand.NextBool() ? 5 : 12, // 粒子特效 ID 5 和 12 交替
-                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
+                        Main.rand.NextBool() ? DustID.Blood : 105, // 随机选择两种特效
+                        new Vector2(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-1.5f, 1.5f)), // 初始速度
+                        150, // 粒子透明度
+                        default,
+                        Main.rand.NextFloat(1.5f, 1.75f) // 粒子缩放大小
                     );
-                    dust.noGravity = true; // 粒子无重力
-                    dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // 随机大小
+                    dust.noGravity = true; // 无重力效果
                 }
             }
         }
@@ -80,32 +83,30 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.MonstrousArrow
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // 吸血逻辑
-            int heal = (int)Math.Round(hit.Damage * Main.rand.NextFloat(0.03f, 0.05f)); // 治疗量为伤害的 3%-5%
-            if (heal > 100)
-                heal = 100;
+            int heal = (int)Math.Round(hit.Damage * Main.rand.NextFloat(0.03f, 0.17f)); // 治疗量为伤害的 3%-17%
+            if (heal > 1000)
+                heal = 1000;
 
             if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
                 return;
 
             CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, 3000f);
-
-
         }
 
         public override void OnKill(int timeLeft)
         {
             // 生成红色粒子效果，以三角形速度扩散
-            for (int i = 0; i < 20; i++) // 生成 20 个粒子
+            for (int i = 0; i < 55; i++) // 生成 x 个粒子
             {
                 float angle = MathHelper.TwoPi / 20 * i; // 计算粒子角度
-                Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Main.rand.NextFloat(2f, 4f); // 三角形扩散速度
+                Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Main.rand.NextFloat(2f, 14f); // 三角形扩散速度
                 Dust dust = Dust.NewDustPerfect(
                     Projectile.Center,
                     DustID.Blood, // 红色粒子特效
                     velocity
                 );
                 dust.noGravity = true; // 粒子无重力
-                dust.scale = Main.rand.NextFloat(1f, 1.5f); // 粒子缩放大小
+                dust.scale = Main.rand.NextFloat(1f, 2.1f); // 粒子缩放大小
             }
         }
 

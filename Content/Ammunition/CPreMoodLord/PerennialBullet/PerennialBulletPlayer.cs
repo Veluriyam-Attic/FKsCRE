@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.ModLoader;
+using System;
 
 namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
 {
@@ -35,20 +36,30 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
 
             if (increaseStackCountCalls >= 50) // 当调用次数达到 50 时触发效果
             {
-                StackCount += Main.getGoodWorld ? 10 : 1; // 正常加1，如果是荣耀世界则加10
+                if (StackCount < 10) // 等级最多提升至 10
+                {
+                    StackCount++; // 提升一级
+                    int maxHealthIncrease = Main.getGoodWorld ? 100 : 10; // 每级增加的生命值
+                    //Player.statLifeMax2 += maxHealthIncrease; // 提升最大生命值
+                }
                 Player.AddBuff(ModContent.BuffType<PerennialBulletPBuff>(), 600); // 刷新 10 秒的 Buff
 
-                // 防御力成功提升，生成绿色粒子特效
-                for (int i = 0; i < 8; i++) // 生成 8 个粒子
+                // 生成心形扩散粒子效果
+                for (int i = 0; i < 40; i++) // 总粒子数 40
                 {
-                    Vector2 particleVelocity = Main.rand.NextVector2CircularEdge(2f, 2f) * 1.5f; // 较快速度，圆形边界
+                    double angle = Math.PI * 2 * i / 40; // 计算心形的点位置
+                    float x = (float)(16 * Math.Sin(angle) * Math.Sin(angle) * Math.Sin(angle)); // x 坐标公式
+                    float y = (float)(13 * Math.Cos(angle) - 5 * Math.Cos(2 * angle) - 2 * Math.Cos(3 * angle) - Math.Cos(4 * angle)); // y 坐标公式
+                    Vector2 particlePosition = new Vector2(x, y) * 0.5f; // 缩放心形大小
+
+                    Vector2 particleVelocity = particlePosition * Main.rand.NextFloat(0.5f, 1.5f); // 速度沿心形方向扩散
                     Dust dust = Dust.NewDustPerfect(
-                        Player.Center,              // 粒子生成位置
-                        DustID.GreenFairy,          // 绿色粒子
-                        particleVelocity,           // 粒子速度
-                        150,                        // 透明度
-                        Color.LightGreen,           // 粒子颜色
-                        Main.rand.NextFloat(1.2f, 1.6f) // 粒子大小
+                        Player.Center + particlePosition, // 以玩家为中心
+                        DustID.GreenFairy,                // 绿色粒子
+                        particleVelocity,                 // 粒子速度
+                        150,                              // 透明度
+                        Color.LightGreen,                 // 粒子颜色
+                        Main.rand.NextFloat(1.2f, 1.6f)   // 粒子大小
                     );
                     dust.noGravity = true; // 粒子不受重力影响
                 }

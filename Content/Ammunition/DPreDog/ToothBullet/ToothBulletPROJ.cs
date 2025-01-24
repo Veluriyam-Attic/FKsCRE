@@ -11,6 +11,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Particles;
 
 namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
 {
@@ -27,7 +28,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;
@@ -64,7 +65,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 // 添加飞行粒子特效
-                if (Main.rand.NextBool(2)) // 1/3 概率生成粒子
+                if (Main.rand.NextBool(1)) // 1/X 概率生成粒子
                 {
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
@@ -76,7 +77,26 @@ namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
                 }
             }
 
-            Projectile.localAI[0]++; // 更新局部 AI
+            //// 检查是否启用了特效
+            //if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects && Projectile.localAI[0] % 4 == 0) // 每 4 帧调用一次
+            //{
+            //    // 添加飞行粒子特效（尖刺型），转动角度为原来的 4 倍
+            //    float oscillationAngle = MathHelper.ToRadians(15) * (float)Math.Sin((Projectile.localAI[0] / 4) * MathHelper.Pi / 180 * 4); // 左右摆动角度（加速摆动）
+            //    Vector2 particleDirection = Projectile.velocity.RotatedBy(MathHelper.Pi + oscillationAngle).SafeNormalize(Vector2.Zero);
+
+            //    PointParticle spark = new PointParticle(
+            //        Projectile.Center,
+            //        particleDirection * 5f, // 固定方向与速度
+            //        false,
+            //        20,
+            //        1.3f,
+            //        Color.DeepSkyBlue // 深海深渊的海蓝色
+            //    );
+            //    GeneralParticleHandler.SpawnParticle(spark);
+            //}
+
+            // 更新局部 AI 计数器
+            Projectile.localAI[0]++;
         }
 
         public override void OnSpawn(IEntitySource source)
@@ -85,9 +105,19 @@ namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            float defenseBonus = Math.Min(target.defense * 0.0075f, 0.5f); // 防御力加成，每点防御增加0.75%，最大50%
-            modifiers.SourceDamage *= 1 + defenseBonus; // 增加伤害            
+            // 根据敌人的防御力计算加成，每点防御增加 0.75%
+            float defenseBonus = target.defense * 0.0075f;
+
+            // 根据敌人的伤害减免（DR）计算加成，每点 DR 增加 0.25%
+            float drBonus = target.Calamity().DR * 0.0025f;
+
+            // 计算总加成，且加成不能超过 125%
+            float totalBonus = Math.Min(defenseBonus + drBonus, 1.25f); // 最大加成为 125%（即 2.25 倍）
+
+            // 应用最终伤害加成
+            modifiers.SourceDamage *= 1 + totalBonus;
         }
+
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -98,7 +128,6 @@ namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
 
         public override void OnKill(int timeLeft)
         {
-            // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 int numParticles = 20; // 粒子数量
@@ -129,7 +158,35 @@ namespace FKsCRE.Content.Ammunition.DPreDog.ToothBullet
                     );
                     dust.noGravity = true; // 粒子无重力
                 }
+
+
+                // 绘制一条随机方向的虚拟线
+                float randomRotation = Main.rand.NextFloat(0f, MathHelper.TwoPi);
+                Vector2 lineDirection = new Vector2((float)Math.Cos(randomRotation), (float)Math.Sin(randomRotation));
+                Vector2 lineStart = Projectile.Center - lineDirection * 2.5f * 16f; // 起点
+                Vector2 lineEnd = Projectile.Center + lineDirection * 2.5f * 16f;  // 终点
+
+                // 在线正上方和正下方生成 5 个尖刺特效
+                for (int offset = -1; offset <= 1; offset += 2) // 上下两个方向
+                {
+                    for (int i = 0; i < 5; i++) // 每个方向生成 5 个尖刺
+                    {
+                        float progress = i / 4f; // 计算粒子位置比例
+                        Vector2 particlePosition = Vector2.Lerp(lineStart, lineEnd, progress) + lineDirection.RotatedBy(MathHelper.PiOver2 * offset) * 2 * 16f;
+
+                        PointParticle spark = new PointParticle(
+                            particlePosition,
+                            lineDirection * Main.rand.NextFloat(3f, 6f), // 速度朝向虚拟线方向
+                            false,
+                            30,
+                            1.5f,
+                            Color.DeepSkyBlue // 深海深渊的海蓝色
+                        );
+                        GeneralParticleHandler.SpawnParticle(spark);
+                    }
+                }
             }
         }
+
     }
 }

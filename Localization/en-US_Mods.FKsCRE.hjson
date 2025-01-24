@@ -7,7 +7,11 @@ RecipeGroup: {
 Buffs: {
 	AstralArrowPBuff: {
 		DisplayName: Stellar Ward
-		Description: “A star falls...wait, is that the [c/FFA500:太阳] and [c/87CEFF:月亮]？”
+		Description:
+			'''
+			“A star falls...
+			wait, is that the [c/FFA500:太阳] and [c/87CEFF:月亮]？”
+			'''
 	}
 
 	PerennialArrowEBuff: {

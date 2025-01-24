@@ -36,7 +36,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 // 判断 timeLeft 是否小于或等于 x
-                if (Projectile.timeLeft <= 200)
+                if (Projectile.timeLeft <= 280)
                 {
                     Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
                     CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
@@ -73,7 +73,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.EndothermicEnergyBullet
             Lighting.AddLight(Projectile.Center, Color.Lerp(Color.Blue, Color.AliceBlue, 0.5f).ToVector3() * 0.49f);
 
             // 子弹在出现之后很短一段时间会变得可见
-            if (Projectile.timeLeft == 255)
+            if (Projectile.timeLeft == 280)
                 Projectile.alpha = 0;
 
             if (baseColor == Color.Cyan)

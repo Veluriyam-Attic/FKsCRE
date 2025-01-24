@@ -96,7 +96,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
             Projectile.penetrate = -1; // 穿透力为x
-            Projectile.timeLeft = 51; // 弹幕存在时间
+            Projectile.timeLeft = 80; // 弹幕存在时间
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
             Projectile.ignoreWater = true; // 弹幕不受水影响
@@ -106,7 +106,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
         }
         public override void OnSpawn(IEntitySource source)
         {
-            //Projectile.velocity *= 0.4f;
+            Projectile.velocity *= 0.6f;
         }
         public override void AI()
         {
@@ -156,36 +156,52 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
                     rotationAngle -= MathHelper.TwoPi;
                 }
 
-                int particleCount = 1; // 粒子数量设为2
-                float[] angles = { 0f, MathHelper.Pi }; // 粒子间隔180度公转
+                // 更新旋转角度，控制粒子公转（速度提高 2.5 倍）
+                rotationAngle += rotationSpeed * 2.5f;
+                if (rotationAngle > MathHelper.TwoPi)
+                {
+                    rotationAngle -= MathHelper.TwoPi;
+                }
+
+                int particleCount = 1; // 每次生成 1 个粒子
+                float[] angles = { 0f, MathHelper.Pi }; // 粒子间隔 180 度
 
                 foreach (float initialAngle in angles)
                 {
-                    // 计算粒子的当前角度和位置，公转半径缩小为2格（2*16像素）
+                    // 计算粒子的当前角度和位置，公转半径缩小为 X 格（X*16 像素）
                     float angle = initialAngle + rotationAngle;
-                    Vector2 position = Projectile.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 2 * 16f;
+                    Vector2 position = Projectile.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 1.5f * 16f;
 
                     // 创建粒子特效
-                    for (int j = 0; j < 1; j++) // 每个点生成1个粒子
+                    for (int j = 0; j < 1; j++)
                     {
-                        Dust dust = Dust.NewDustPerfect(position, DustID.Torch); // 使用Torch粒子以获得浅橙色外观
+                        int dustType = Main.rand.NextBool() ? DustID.RedTorch : DustID.YellowTorch; // 随机粒子类型
+                        Dust dust = Dust.NewDustPerfect(position, dustType);
                         dust.noGravity = true; // 粒子无重力效果
-                        dust.scale = 1.5f; // 粒子大小设置为1.5f，稍微缩小
+                        dust.scale = 1.5f; // 粒子大小
                         dust.fadeIn = 1.2f; // 粒子淡入效果
                         dust.rotation = Main.rand.NextFloat(MathHelper.TwoPi); // 随机初始旋转
                         dust.velocity = Vector2.Zero; // 初始速度为零
                     }
                 }
 
-                if (Projectile.numUpdates % 3 == 0)
+                if (Projectile.numUpdates % 12 == 0) // 频率
                 {
-                    // 每帧释放一个粒子
-                    Vector2 particleVelocity = Main.rand.NextVector2Circular(3f, 3f); // 随机方向
-                    float randomScale = Main.rand.NextFloat(1.1f, 1.5f); // 随机大小
+                    // 在后方 2X 度范围内随机生成粒子
+                    // 定义弧度范围，便于随时调整
+                    float angleRange = MathHelper.ToRadians(25f); // X 度
+                    // 在指定范围内随机生成角度
+                    float randomAngle = Main.rand.NextFloat(-angleRange, angleRange); // 后方 -angleRange 到 +angleRange
+                    Vector2 particleVelocity = Projectile.velocity.RotatedBy(MathHelper.Pi + randomAngle).SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(2f, 4f); // 粒子速度
+
+                    // 随机选择浅黄色或浅红色
+                    Color particleColor = Main.rand.NextBool() ? Color.LightYellow : Color.LightSalmon;
+
+                    float randomScale = Main.rand.NextFloat(0.6f, 1.0f); // 随机大小
                     Particle bolt = new CrackParticle(
                         Projectile.Center, // 粒子生成位置为弹幕中心
-                        particleVelocity, // 随机方向的粒子速度
-                        Color.Aqua * 0.65f, // 设置粒子的颜色和透明度
+                        particleVelocity, // 粒子速度
+                        particleColor * 0.65f, // 设置粒子的颜色和透明度
                         Vector2.One * randomScale, // 设置粒子大小
                         0, // 初始旋转速度
                         0, // 初始角度偏移
@@ -205,8 +221,8 @@ namespace FKsCRE.Content.Arrows.DPreDog.EffulgentFeatherArrow
                 // 在结束时释放几个卡其色的小圆圈特效
                 for (int i = 0; i < 3; i++)
                 {
-                    Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.OrangeRed, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
-                    GeneralParticleHandler.SpawnParticle(pulse);
+                    //Particle pulse = new DirectionalPulseRing(Projectile.Center, Projectile.velocity * 0.75f, Color.OrangeRed, new Vector2(1f, 2.5f), Projectile.rotation, 0.2f, 0.03f, 20);
+                    //GeneralParticleHandler.SpawnParticle(pulse);
                 }
             }
     

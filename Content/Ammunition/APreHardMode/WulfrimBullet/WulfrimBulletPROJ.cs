@@ -119,7 +119,35 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.WulfrimBullet
 
         public override void OnKill(int timeLeft)
         {
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 在死亡位置为中心，半径 2×16 的圆圈上随机生成 3~4 个点
+                int particleCount = Main.rand.Next(3, 5); // 随机生成 3 到 4 个粒子
+                float radius = 2 * 16f; // 半径为 2×16
 
+                for (int i = 0; i < particleCount; i++)
+                {
+                    // 随机生成一个点的位置
+                    float randomAngle = Main.rand.NextFloat(0, MathHelper.TwoPi); // 随机角度
+                    Vector2 randomPosition = Projectile.Center + new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * radius;
+
+                    // 计算粒子向中心的速度
+                    Vector2 directionToCenter = (Projectile.Center - randomPosition).SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(2f, 4f);
+
+                    // 创建粒子特效
+                    Dust dust = Dust.NewDustPerfect(
+                        randomPosition, // 粒子生成位置
+                        DustID.Electric, // 使用 Electric 粒子特效编号
+                        directionToCenter, // 粒子速度
+                        0, // 无透明度偏移
+                        default, // 默认颜色
+                        Main.rand.NextFloat(1.2f, 1.8f) // 粒子大小
+                    );
+                    dust.noGravity = true; // 禁用重力
+                }
+            }
         }
+
     }
 }

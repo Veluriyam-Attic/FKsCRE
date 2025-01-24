@@ -91,7 +91,7 @@ namespace FKsCRE.Content.Arrows.BPrePlantera.StarblightSootArrow
             {
                 // 生成随机的粒子特效
                 int[] dustColors = { DustID.OrangeTorch, DustID.BlueTorch, DustID.WhiteTorch, DustID.CrimsonTorch };
-                int dustIndex = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustColors[Main.rand.Next(dustColors.Length)], 0f, 0f, 100, default, 1f);
+                int dustIndex = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustColors[Main.rand.Next(dustColors.Length)], 0f, 0f, 100, default, 1.6f);
                 Dust dust = Main.dust[dustIndex];
                 dust.noGravity = true; // 粒子不受重力影响
                 dust.velocity *= 1.5f; // 增强粒子的速度以模拟快速释放

@@ -11,6 +11,9 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Particles;
 using FKsCRE.CREConfigs;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Buffs.StatDebuffs;
 
 namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
 {
@@ -27,7 +30,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;
@@ -93,8 +96,18 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PerennialBullet
             base.OnHitNPC(target, hit, damageDone);
 
             // 给予玩家可以堆叠的 PerennialBulletPBuff
-            var player = Main.player[Projectile.owner].GetModPlayer<PerennialBulletPlayer>();
-            player.IncreaseStackCount(); // 每次击中敌人时增加堆叠
+            //var player = Main.player[Projectile.owner].GetModPlayer<PerennialBulletPlayer>();
+            //player.IncreaseStackCount(); // 每次击中敌人时增加堆叠
+
+            // 永远施加 Buff，维持效果
+            Player player = Main.player[Projectile.owner];
+            player.AddBuff(ModContent.BuffType<PerennialBulletPBuff>(), 300); // 每次刷新 Buff 持续时间，确保不停覆盖
+            player.GetModPlayer<PerennialBulletPlayer>().IncreaseStackCount(); // 增加堆叠
+
+            target.AddBuff(ModContent.BuffType<AbsorberAffliction> (), 300); // 西晋之痛【阴阳吸金石专属】
+            target.AddBuff(BuffID.Poisoned, 300);
+            target.AddBuff(BuffID.Venom, 300);
+            target.AddBuff(ModContent.BuffType<SagePoison>(), 300); // 鼠尾草中毒【剧毒芽孢专属】
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)

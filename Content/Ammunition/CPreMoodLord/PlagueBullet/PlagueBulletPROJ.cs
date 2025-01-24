@@ -29,7 +29,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PlagueBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;
@@ -99,41 +99,76 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.PlagueBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
+                // 判断敌人是否有瘟疫效果，并调整特效参数
                 int particleCount = target.HasBuff(ModContent.BuffType<Plague>()) ? 10 : 5; // 瘟疫时特效更华丽
+                float baseLength = 4 * 16f; // 基础弧线长度
+                float arcLength = target.HasBuff(ModContent.BuffType<Plague>()) ? baseLength * 1.5f : baseLength; // 根据瘟疫效果调整长度
                 float velocityMultiplier = target.HasBuff(ModContent.BuffType<Plague>()) ? 3f : 1.5f;
 
-                for (int i = 0; i < particleCount; i++)
+                // 每两条弧线之间的夹角为 120 度
+                for (int arcIndex = 0; arcIndex < 3; arcIndex++)
                 {
-                    for (int j = 0; j < 2; j++) // 每个顶点生成2个粒子
-                    {
-                        Vector2 velocity = new Vector2(
-                            (float)Math.Cos(MathHelper.TwoPi / 3 * i),
-                            (float)Math.Sin(MathHelper.TwoPi / 3 * i)
-                        ) * velocityMultiplier + Main.rand.NextVector2Circular(2f, 2f);
+                    float baseAngle = MathHelper.TwoPi / 3 * arcIndex; // 每条弧线的起始角度
 
+                    // 生成弧线粒子
+                    for (int i = 0; i < particleCount; i++)
+                    {
+                        // 弧线内粒子的角度分布
+                        float angle = baseAngle + (-MathF.PI / 6f) + (MathF.PI / 6f) * (i / (float)(particleCount - 1));
+                        Vector2 direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)).SafeNormalize(Vector2.Zero);
+
+                        // 粒子生成位置
+                        Vector2 position = Projectile.Center + direction * (arcLength / particleCount * i);
+
+                        // 创建粒子特效
                         Dust plague = Dust.NewDustDirect(
-                            Projectile.Center,
-                            Projectile.width / 2,
-                            Projectile.height / 2,
-                            DustID.TerraBlade
+                            position,
+                            0, 0, // 粒子生成范围为 1×1 像素
+                            DustID.TerraBlade // 粒子特效编号
                         );
-                        plague.velocity = velocity;
-                        plague.color = Color.Olive;
-                        plague.noGravity = true;
-                        plague.scale = Main.rand.NextFloat(1f, 1.5f);
+                        plague.velocity = direction * velocityMultiplier + Main.rand.NextVector2Circular(2f, 2f); // 粒子速度
+                        plague.color = Color.DarkGreen; // 粒子颜色
+                        plague.noGravity = true; // 无重力
+                        plague.scale = Main.rand.NextFloat(1f, 1.5f); // 粒子大小
                     }
                 }
             }
         }
+
 
         public override void OnKill(int timeLeft)
         {
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-               
+                // 1. 生成五边形的 DirectionalPulseRing 特效
+                float radius = 2 * 16f; // 五边形距离中心点的半径
+                int pulseCount = 5; // 五边形的顶点数量
+                float baseAngle = Main.rand.NextFloat(0, MathF.PI * 2); // 随机生成基准角度
+
+                for (int i = 0; i < pulseCount; i++)
+                {
+                    // 计算每个顶点的位置
+                    float angle = baseAngle + MathF.PI * 2 / pulseCount * i; // 每个顶点的角度，加上基准角度
+                    Vector2 position = Projectile.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius;
+
+                    // 创建 DirectionalPulseRing
+                    float pulseScale = Main.rand.NextFloat(0.3f, 0.4f);
+                    DirectionalPulseRing pulse = new DirectionalPulseRing(
+                        position,
+                        new Vector2(2, 2).RotatedByRandom(MathF.PI * 2) * Main.rand.NextFloat(0.2f, 1.1f),
+                        (Main.rand.NextBool(3) ? Color.LimeGreen : Color.Green) * 0.8f,
+                        new Vector2(1, 1),
+                        pulseScale - 0.25f,
+                        pulseScale,
+                        0f,
+                        15
+                    );
+                    GeneralParticleHandler.SpawnParticle(pulse);
+                }
             }
         }
+
 
 
 

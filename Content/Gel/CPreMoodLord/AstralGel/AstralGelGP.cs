@@ -32,25 +32,6 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
             base.OnSpawn(projectile, source);
         }
 
-        //public override void AI(Projectile projectile)
-        //{
-        //    if (IsAstralGelInfused)
-        //    {
-        //        staticTimer++;
-
-        //        if (staticTimer == 105) // 1.75 秒后（60 帧/秒）
-        //        {
-        //            projectile.velocity = Vector2.Zero; // 强制静止
-        //            isStatic = true;
-        //        }
-
-        //        if (isStatic && staticTimer >= 225) // 静止 2 秒后（225 = 105 + 120）
-        //        {
-        //            projectile.Kill(); // 强制销毁弹幕
-        //        }
-        //    }
-        //}
-
         public override void AI(Projectile projectile)
         {
             if (IsAstralGelInfused)
@@ -79,8 +60,8 @@ namespace FKsCRE.Content.Gel.CPreMoodLord.AstralGel
                 if (isStatic)
                 {
                     staticTimer++;
-
-                    if (staticTimer >= 120 * projectile.MaxUpdates) // 静止2秒后
+                    projectile.timeLeft = 180 * projectile.MaxUpdates;
+                    if (staticTimer >= 180 * projectile.MaxUpdates) // 静止X秒后
                     {
                         projectile.Kill(); // 强制销毁弹幕
                     }

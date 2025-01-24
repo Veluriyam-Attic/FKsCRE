@@ -37,7 +37,7 @@ namespace FKsCRE.Content.Gel.APreHardMode.HurricaneGel
                 int sparkCount = 0;
                 foreach (Projectile proj in Main.projectile)
                 {
-                    if (proj.active && proj.type == ModContent.ProjectileType<Aquashard>())
+                    if (proj.active && proj.type == ModContent.ProjectileType<HurricaneGelSplit>())
                     {
                         sparkCount++;
                         if (sparkCount >= 1)

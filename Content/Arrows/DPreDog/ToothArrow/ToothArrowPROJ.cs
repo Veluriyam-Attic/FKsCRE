@@ -14,6 +14,7 @@ using CalamityMod.Graphics.Primitives;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
 using CalamityMod.Particles;
+using Terraria.Audio;
 
 namespace FKsCRE.Content.Arrows.DPreDog.ToothArrow
 {
@@ -59,7 +60,7 @@ namespace FKsCRE.Content.Arrows.DPreDog.ToothArrow
             Projectile.height = 24; // 弹幕高度
             Projectile.friendly = true; // 对敌人有效
             Projectile.DamageType = DamageClass.Ranged; // 远程伤害类型
-            Projectile.penetrate = 1; // 穿透力为1，击中一个敌人就消失
+            Projectile.penetrate = 2; // 穿透力为2，击中2个敌人就消失
             Projectile.timeLeft = 300; // 弹幕存在时间为x帧
             Projectile.usesLocalNPCImmunity = true; // 弹幕使用本地无敌帧
             Projectile.localNPCHitCooldown = 14; // 无敌帧冷却时间为14帧
@@ -82,21 +83,6 @@ namespace FKsCRE.Content.Arrows.DPreDog.ToothArrow
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            //// 只造成 1 点伤害
-            //modifiers.FinalDamage = new Terraria.ModLoader.StatModifier(0, 0, 1, 1);
-
-            //// 强制造成额外伤害，基于自身面板伤害的 1.0 倍
-            //if (Projectile.owner == Main.myPlayer) // 确保在本地执行，避免多人模式冲突
-            //{
-            //    int forcedDamage = Projectile.damage; // 自身面板伤害
-            //    var damageInfo = target.CalculateHitInfo(forcedDamage, Main.player[Projectile.owner].direction, false, 0);
-            //    target.StrikeNPC(damageInfo);
-
-            //    // 在目标上方显示强制伤害数值
-            //    CombatText.NewText(target.getRect(), Color.BlueViolet, forcedDamage, true);
-            //}
-
-            // 以下内容来自旧版本暴政之终-狙击弹的代码，它的功能是突破敌人的各种防御机制，直接造成伤害
             // 不会对4种类型的敌人造成伤害：具有超级护甲，防御力大于999，伤害减免大于95%，拥有不可破坏护甲
             //if (modifiers.SuperArmor || target.defense > 999 || target.Calamity().DR >= 0.95f || target.Calamity().unbreakableDR)
             //    return;
@@ -110,10 +96,6 @@ namespace FKsCRE.Content.Arrows.DPreDog.ToothArrow
     
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300); // 深渊水压
-        }
-        public override void OnKill(int timeLeft)
         {
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
@@ -133,6 +115,12 @@ namespace FKsCRE.Content.Arrows.DPreDog.ToothArrow
                     GeneralParticleHandler.SpawnParticle(trail);
                 }
             }
+            SoundEngine.PlaySound(SoundID.Item110, Projectile.position);
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300); // 深渊水压
+        }
+        public override void OnKill(int timeLeft)
+        {
+
         }
 
 

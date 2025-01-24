@@ -162,7 +162,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
 
         public ref float Time => ref Projectile.ai[1];
 
-        //public override bool? CanDamage() => Time >= 2f; // 初始时不造成伤害，直到帧数达到 2
+        public override bool? CanDamage() => Time >= 5f; // 初始时不造成伤害，直到帧数达到 X
 
 
 

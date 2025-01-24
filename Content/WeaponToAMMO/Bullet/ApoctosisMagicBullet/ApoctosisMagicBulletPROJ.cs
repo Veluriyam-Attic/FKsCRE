@@ -102,18 +102,18 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.ApoctosisMagicBullet
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // 生成红色法阵
-            for (int i = 0; i < 36; i++) // 36 个粒子均匀分布成一个圆环
-            {
-                float angle = MathHelper.TwoPi / 36 * i; // 计算粒子的角度
-                Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 50f; // 粒子偏移位置
-                Dust dust = Dust.NewDustPerfect(
-                    target.Center + offset,
-                    DustID.SomethingRed, // 粒子
-                    Vector2.Zero
-                );
-                dust.noGravity = true; // 粒子无重力
-                dust.scale = 1.5f; // 粒子大小
-            }
+            //for (int i = 0; i < 36; i++) // 36 个粒子均匀分布成一个圆环
+            //{
+            //    float angle = MathHelper.TwoPi / 36 * i; // 计算粒子的角度
+            //    Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 50f; // 粒子偏移位置
+            //    Dust dust = Dust.NewDustPerfect(
+            //        target.Center + offset,
+            //        DustID.SomethingRed, // 粒子
+            //        Vector2.Zero
+            //    );
+            //    dust.noGravity = true; // 粒子无重力
+            //    dust.scale = 1.5f; // 粒子大小
+            //}
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -124,9 +124,64 @@ namespace FKsCRE.Content.WeaponToAMMO.Bullet.ApoctosisMagicBullet
 
         public override void OnKill(int timeLeft)
         {
-            base.OnKill(timeLeft);
-        }
+            // 检查是否启用了特效
+            if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
+            {
+                // 定义正方形边长（等于原半径）
+                float sideLength = 50f; // 原粒子圆环的半径
 
+                // 正方形粒子特效
+                for (int i = 0; i < 4; i++) // 正方形的 4 条边
+                {
+                    Vector2 startPoint = Projectile.Center + new Vector2(
+                        (i == 1 || i == 2 ? 1 : -1) * sideLength,
+                        (i == 2 || i == 3 ? 1 : -1) * sideLength
+                    ); // 每条边的起点
+                    Vector2 direction = new Vector2(
+                        i % 2 == 0 ? 0 : (i == 1 ? -1 : 1),
+                        i % 2 != 0 ? 0 : (i == 0 ? 1 : -1)
+                    ); // 边的方向
+
+                    for (int j = 0; j <= 15; j++) // 每条边生成 x 个粒子
+                    {
+                        Vector2 position = startPoint + direction * (j / 15f) * 2 * sideLength;
+                        Dust dust = Dust.NewDustPerfect(
+                            position,
+                            DustID.SomethingRed, // 粒子特效编号
+                            Vector2.Zero
+                        );
+                        dust.noGravity = true;
+                        dust.scale = 1.5f; // 粒子大小
+                    }
+                }
+
+                // 菱形粒子特效
+                float rotatedSideLength = sideLength * (float)Math.Sqrt(2) / 2; // 菱形的边长（正方形对角线）
+                for (int i = 0; i < 4; i++) // 菱形的 4 条边
+                {
+                    Vector2 startPoint = Projectile.Center + new Vector2(
+                        (i == 1 || i == 2 ? 1 : -1) * rotatedSideLength,
+                        (i == 2 || i == 3 ? 1 : -1) * rotatedSideLength
+                    ).RotatedBy(MathHelper.PiOver4); // 旋转 45 度
+                    Vector2 direction = new Vector2(
+                        i % 2 == 0 ? 0 : (i == 1 ? -1 : 1),
+                        i % 2 != 0 ? 0 : (i == 0 ? 1 : -1)
+                    ).RotatedBy(MathHelper.PiOver4); // 方向旋转 45 度
+
+                    for (int j = 0; j <= 10; j++) // 每条边生成 10 个粒子
+                    {
+                        Vector2 position = startPoint + direction * (j / 10f) * 2 * rotatedSideLength;
+                        Dust dust = Dust.NewDustPerfect(
+                            position,
+                            DustID.SomethingRed, // 粒子特效编号
+                            Vector2.Zero
+                        );
+                        dust.noGravity = true;
+                        dust.scale = 1.5f; // 粒子大小
+                    }
+                }
+            }
+        }
 
     }
 }

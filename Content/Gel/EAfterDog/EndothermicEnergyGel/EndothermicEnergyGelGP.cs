@@ -25,7 +25,7 @@ namespace FKsCRE.Content.Gel.EAfterDog.EndothermicEnergyGel
                 IsEndothermicEnergyGelInfused = true;
                 projectile.timeLeft *= 2; // 弹幕寿命翻倍
                 projectile.extraUpdates += 1; // 更新次数增加 1
-                projectile.damage = (int)(projectile.damage * 1.25f); // 伤害变为原来的 1.25 倍
+                projectile.damage = (int)(projectile.damage * 1.25f); // 伤害变为原来的 X 倍
                 projectile.penetrate = 1; // 穿透次数设为 1
                 projectile.netUpdate = true;
             }
@@ -37,8 +37,26 @@ namespace FKsCRE.Content.Gel.EAfterDog.EndothermicEnergyGel
         {
             if (IsEndothermicEnergyGelInfused && target.active && !target.friendly)
             {
-
+                projectile.timeLeft = 3;
+                projectile.Kill();
             }
         }
+        // 是否已造成伤害
+        private bool hasDealtDamage = false;
+        //public override bool? CanDamage(Projectile projectile)
+        //{
+        //    if (IsEndothermicEnergyGelInfused)
+        //    {
+        //        // 如果已造成伤害，禁用伤害能力
+        //        if (hasDealtDamage)
+        //        {
+        //            return false;
+        //        }
+
+        //        // 如果未造成伤害，允许伤害
+        //        return base.CanDamage(projectile);
+        //    }
+        //    return true;
+        //}
     }
 }

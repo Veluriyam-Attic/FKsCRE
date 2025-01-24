@@ -30,7 +30,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;
@@ -48,7 +48,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Projectile.alpha = 255;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 14;
-            Projectile.scale = 0.5f;
+            Projectile.scale = 1f;
         }
 
         public override void AI()
@@ -58,7 +58,7 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             Lighting.AddLight(Projectile.Center, Color.Lerp(Color.Blue, Color.AliceBlue, 0.5f).ToVector3() * 0.49f);
 
             // Projectile becomes visible after a few frames
-            if (Projectile.timeLeft == 298)
+            if (Projectile.timeLeft == 29)
                 Projectile.alpha = 0;
 
             // 飞行过程中生成冰蓝色特效
@@ -101,19 +101,21 @@ namespace FKsCRE.Content.Ammunition.APreHardMode.TinkleshardBullet
             // 发射 4 发弹幕
             for (int i = 0; i < 4; i++)
             {
-                float randomAngle = Main.rand.NextFloat(-MathHelper.PiOver2, MathHelper.PiOver2); // 随机前方 180 度内
-                Vector2 velocity = Projectile.velocity.RotatedBy(randomAngle) * 3f; // 速度
+                // 随机角度在当前弹幕前方方向基础上扩散（左右各 45 度）
+                float randomAngle = Main.rand.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4); // -45 度到 +45 度
+                Vector2 velocity = Projectile.velocity.RotatedBy(randomAngle).SafeNormalize(Vector2.Zero) * 13f; // 基于当前方向旋转并固定速度为 13f
                 Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
                     Projectile.Center,
                     velocity,
                     ModContent.ProjectileType<TinkleshardBulletSPIT>(),
-                    (int)(Projectile.damage * 0.1f), // 伤害倍率为 0.25
+                    (int)(Projectile.damage * 0.1f), // 伤害倍率为 0.1
                     Projectile.knockBack,
                     Projectile.owner
                 );
             }
         }
+
 
     }
 }

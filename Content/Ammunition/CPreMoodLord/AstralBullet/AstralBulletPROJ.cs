@@ -32,7 +32,7 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;
@@ -68,20 +68,31 @@ namespace FKsCRE.Content.Ammunition.CPreMoodLord.AstralBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                if (Main.rand.NextBool(2))
+                // 每帧生成两个粒子，释放频率翻倍
+                for (int k = 0; k < 2; k++)
                 {
                     int randomDust = Utils.SelectRandom(Main.rand, new int[]
                     {
-                    ModContent.DustType<AstralOrange>(),
-                    ModContent.DustType<AstralBlue>()
+            ModContent.DustType<AstralOrange>(),
+            ModContent.DustType<AstralBlue>()
                     });
-                    int astral = Dust.NewDust(Projectile.position, 1, 1, randomDust, 0f, 0f, 0, default, 0.5f);
+
+                    // 创建粒子特效
+                    int astral = Dust.NewDust(Projectile.position, 1, 1, randomDust, 0f, 0f, 0, default, Main.rand.NextFloat(0.5f, 0.75f)); // 调整大小范围
                     Main.dust[astral].alpha = Projectile.alpha;
-                    Main.dust[astral].velocity *= 0f;
+
+                    // 设置粒子的初始速度（前后随机偏移）
+                    Vector2 initialVelocity = Projectile.velocity * Main.rand.NextFloat(-0.04f, 0.04f); // 随机前后偏移速度
+                    Main.dust[astral].velocity += initialVelocity;
+
+                    // 禁用重力
                     Main.dust[astral].noGravity = true;
+
+                    // 设置旋转效果和逐渐消失
+                    Main.dust[astral].fadeIn = 0.1f; // 逐渐淡入
+                    Main.dust[astral].rotation += Main.rand.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4); // 随机初始旋转
                 }
             }
-
         }
 
         public override void OnSpawn(IEntitySource source)

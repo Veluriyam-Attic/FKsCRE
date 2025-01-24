@@ -114,7 +114,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
                 {
                     Dust dust = Dust.NewDustPerfect(
                         Projectile.Center,
-                        Main.rand.NextBool() ? DustID.YellowTorch : DustID.YellowStarDust,
+                        Main.rand.NextBool() ? DustID.YellowTorch : DustID.RedTorch,
                         -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.1f, 0.3f)
                     );
                     dust.noGravity = true; // 无重力
@@ -142,22 +142,52 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 2. 在原地喷射粒子
-                for (int i = 0; i < 10; i++) // 随机生成 10 个粒子
+                // ⚡ 在目标位置生成一条随机方向的闪电线
+                // 设置闪电的起点
+                Vector2 startPoint = target.Center;
+
+                // 随机生成方向和长度
+                float randomDirection = Main.rand.NextFloat(0f, MathHelper.TwoPi); // 随机生成一个 0 到 2π 的方向
+                float randomLength = Main.rand.NextFloat(10f, 20f) * 16f; // 随机长度为 10 到 20 tile
+                Vector2 endPoint = startPoint + new Vector2((float)Math.Cos(randomDirection), (float)Math.Sin(randomDirection)) * randomLength;
+
+                // 在起点到终点之间生成粒子效果
+                int particleCount = Main.rand.Next(10, 15); // 随机粒子数量
+                for (int j = 0; j < particleCount; j++)
                 {
+                    // 根据进度插值计算每个粒子的位置，增加随机偏移
+                    float progress = j / (float)(particleCount - 1);
+                    Vector2 position = Vector2.Lerp(startPoint, endPoint, progress) + Main.rand.NextVector2Circular(4f, 4f); // 增加随机偏移
+
+                    // 随机选择粒子类型
+                    int dustType = Main.rand.NextBool() ? DustID.Electric : DustID.BlueTorch;
+
+                    // 创建粒子特效
                     Dust dust = Dust.NewDustPerfect(
-                        Projectile.Center,
-                        Main.rand.NextBool() ? DustID.Electric : DustID.BlueTorch,
-                        Main.rand.NextVector2Circular(2f, 2f),
+                        position,
+                        dustType,
+                        Main.rand.NextVector2Circular(1f, 1f), // 粒子微小速度偏移
                         150,
                         default,
-                        Main.rand.NextFloat(1.2f, 1.8f)
+                        Main.rand.NextFloat(1.2f, 1.8f) // 粒子大小随机
                     );
-                    dust.noGravity = true;
+                    dust.noGravity = true; // 禁用重力
                 }
             }
 
-
+            // 检查当前场上的 EffulgentFeatherBulletAREA 数量
+            int existingProjectileCount = 0;
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (proj.active && proj.type == ModContent.ProjectileType<EffulgentFeatherBulletAREA>())
+                {
+                    existingProjectileCount++;
+                    if (existingProjectileCount >= 2)
+                    {
+                        return; // 如果已经存在两个，则不再生成新弹幕
+                    }
+                }
+            }
 
             // 3. 在玩家位置释放 EffulgentFeatherBulletAREA
             Projectile.NewProjectile(
@@ -165,7 +195,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.EffulgentFeatherBullet
                 player.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<EffulgentFeatherBulletAREA>(),
-                (int)(Projectile.damage * 0.2f), // 伤害倍率为 0.2
+                (int)(Projectile.damage * 0.5f), // 伤害倍率为 0.5
                 0f,
                 Projectile.owner
             );

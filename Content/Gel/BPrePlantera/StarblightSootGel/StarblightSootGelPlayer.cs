@@ -2,6 +2,7 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using System;
 
 namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
 {
@@ -61,7 +62,9 @@ namespace FKsCRE.Content.Gel.BPrePlantera.StarblightSootGel
             // 根据当前层级动态增加远程伤害
             if (item.DamageType == DamageClass.Ranged && damageTier > 0)
             {
-                damage *= (1+(damageTier * 0.1f)); // 每层级增加 10% 远程伤害+
+                //damage *= (1+(damageTier * 0.1f)); // 每层级增加 10% 远程伤害+
+                // 每层级远程伤害 乘以1.1倍
+                damage *= (float)Math.Pow(1.1f, damageTier);
             }
         }
 

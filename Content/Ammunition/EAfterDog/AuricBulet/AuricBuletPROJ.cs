@@ -17,6 +17,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
 {
     public class AuricBuletPROJ : ModProjectile, ILocalizedModType
     {
+        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
         public new string LocalizationCategory => "Projectile.EAfterDog";
         public override void SetStaticDefaults()
         {
@@ -28,7 +29,7 @@ namespace FKsCRE.Content.Ammunition.EAfterDog.AuricBulet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;

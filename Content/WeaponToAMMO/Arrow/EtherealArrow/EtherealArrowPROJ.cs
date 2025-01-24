@@ -11,6 +11,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace FKsCRE.Content.WeaponToAMMO.Arrow.EtherealArrow
 {
@@ -26,10 +27,31 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.EtherealArrow
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
-
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            NPC target;
+            target = Projectile.Center.ClosestNPCAt(2800);
+            if (target != null)
+            {
+                Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+                Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 28f, 0.08f);
+            }
+
+            Texture2D lightTexture = ModContent.Request<Texture2D>("FKsCRE/Content/WeaponToAMMO/Arrow/EtherealArrow/EtherealArrow").Value;
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 32f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
+                Color color = Color.Lerp(Color.Cyan, Color.LightBlue, colorInterpolation) * 0.4f;
+                color.A = 0;
+
+                Vector2 drawPosition = Projectile.oldPos[i] + lightTexture.Size() * 0.5f - Main.screenPosition;
+                float intensity = 0.9f + 0.15f * (float)Math.Cos(Main.GlobalTimeWrappedHourly % 60f * MathHelper.TwoPi);
+                intensity *= MathHelper.Lerp(0.15f, 1f, 1f - i / (float)Projectile.oldPos.Length);
+                Vector2 scale = new Vector2(1f) * intensity * 0.6f;
+
+                // 使用 Projectile.rotation 调整粒子特效的朝向
+                Main.EntitySpriteDraw(lightTexture, drawPosition, null, color, Projectile.rotation, lightTexture.Size() * 0.5f, scale, SpriteEffects.None, 0);
+            }
             return false;
         }
 
@@ -40,7 +62,7 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.EtherealArrow
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 1; // 根据模式设置穿透次数
+            Projectile.penetrate = 200;
             Projectile.timeLeft = 200;
             Projectile.light = 0.5f;
             Projectile.ignoreWater = true;
@@ -51,31 +73,116 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.EtherealArrow
         }
         public override void OnSpawn(IEntitySource source)
         {
-            base.OnSpawn(source);
+            // 弹幕随机生成在以玩家为中心半径 5*16 的圆周上
+            //Player player = Main.player[Projectile.owner];
+            //float randomAngle = Main.rand.NextFloat(0, MathHelper.TwoPi);
+            //Vector2 spawnOffset = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle)) * 5 * 16;
+            //Projectile.position = player.Center + spawnOffset - new Vector2(Projectile.width / 2, Projectile.height / 2);
+
+            //// 调整 Rotation 面向玩家
+            //Projectile.rotation = (player.Center - Projectile.Center).ToRotation();
+
+            // 释放 Dust 特效
+            for (int i = 0; i < 10; i++)
+            {
+                Dust.NewDustPerfect(
+                    Projectile.Center,
+                    Main.rand.NextBool() ? 206 : 180, // 特效类型
+                    Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(30)) * Main.rand.NextFloat(0.5f, 1.5f), // 随机速度
+                    150,
+                    default,
+                    Main.rand.NextFloat(0.8f, 1.5f) // 随机大小
+                ).noGravity = true;
+            }
         }
+        private int aiPhase = 0; // 阶段标记
+
         public override void AI()
         {
-            // 保持弹幕旋转
-            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
+            //switch (aiPhase)
+            //{
+            //    case 0: // 阶段 1：减速
+            //        // 保持弹幕旋转
+            //        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
+            //        // Lighting - 添加深橙色光源，光照强度为 0.55
+            //        Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.55f);
+            //        Projectile.velocity *= 0.91f;
+            //        if (++Projectile.ai[0] >= 12)
+            //        {
+            //            aiPhase = 1; // 进入阶段 2
+            //            Projectile.ai[0] = 0;
+            //        }
+            //        break;
 
+            //    case 1: // 阶段 2：调整角度
+            //        // 保持弹幕旋转
+            //        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
+            //        // Lighting - 添加深橙色光源，光照强度为 0.55
+            //        Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.55f);
+            //        target = Projectile.Center.ClosestNPCAt(2800);
+            //        if (target != null)
+            //        {
+            //            float targetAngle = (target.Center - Projectile.Center).ToRotation();
+            //            float difference = MathHelper.WrapAngle(targetAngle - Projectile.rotation);
+            //            Projectile.rotation += MathHelper.Clamp(difference, -MathHelper.ToRadians(1), MathHelper.ToRadians(1)); // 限制旋转角度
+            //        }
+            //        if (++Projectile.ai[0] >= 12)
+            //        {
+            //            aiPhase = 2; // 进入阶段 3
+            //            Projectile.ai[0] = 0;
+            //        }
+            //        break;
+
+            //    case 2: // 阶段 3：超强追踪
+            //        // 保持弹幕旋转
+            //        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
+            //        // Lighting - 添加深橙色光源，光照强度为 0.55
+            //        Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.55f);
+            //        target = Projectile.Center.ClosestNPCAt(2800);
+            //        if (target != null)
+            //        {
+            //            Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+            //            Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 28f, 0.08f);
+            //        }
+            //        if (Projectile.penetrate < 200)
+            //        {
+            //            if (Projectile.timeLeft > 60) { Projectile.timeLeft = 60; }
+            //            Projectile.velocity *= 0.88f;
+            //        }
+            //        break;
+            //}
+
+
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.Pi;
             // Lighting - 添加深橙色光源，光照强度为 0.55
-            Lighting.AddLight(Projectile.Center, Color.Orange.ToVector3() * 0.55f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.55f);
+
+            if (Projectile.penetrate < 200)
+            {
+                if (Projectile.timeLeft > 60) { Projectile.timeLeft = 60; }
+                Projectile.velocity *= 0.88f;
+            }
+            else
+            {
+                NPC target;
+                target = Projectile.Center.ClosestNPCAt(2800);
+                if (target != null)
+                {
+                    Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.Zero);
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, direction * 28f, 0.08f);
+                }
+            }
+
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                // 添加粒子特效，随机 1/3 概率
-                if (Main.rand.NextBool(2))
-                {
-                    Dust dust = Dust.NewDustPerfect(
-                        Projectile.Center,
-                        Main.rand.NextBool() ? 5 : 12, // 粒子特效 ID 5 和 12 交替
-                        -Projectile.velocity.RotatedByRandom(0.1f) * Main.rand.NextFloat(0.01f, 0.3f)
-                    );
-                    dust.noGravity = true; // 粒子无重力
-                    dust.scale = Main.rand.NextFloat(0.5f, 0.9f); // 随机大小
-                }
+
             }
+
+
+
+
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -86,21 +193,6 @@ namespace FKsCRE.Content.WeaponToAMMO.Arrow.EtherealArrow
 
         public override void OnKill(int timeLeft)
         {
-            // 生成红色粒子效果，以三角形速度扩散
-            for (int i = 0; i < 20; i++) // 生成 20 个粒子
-            {
-                float angle = MathHelper.TwoPi / 20 * i; // 计算粒子角度
-                Vector2 velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * Main.rand.NextFloat(2f, 4f); // 三角形扩散速度
-                Dust dust = Dust.NewDustPerfect(
-                    Projectile.Center,
-                    DustID.Blood, // 红色粒子特效
-                    velocity
-                );
-                dust.noGravity = true; // 粒子无重力
-                dust.scale = Main.rand.NextFloat(1f, 1.5f); // 粒子缩放大小
-            }
-
-
 
 
 

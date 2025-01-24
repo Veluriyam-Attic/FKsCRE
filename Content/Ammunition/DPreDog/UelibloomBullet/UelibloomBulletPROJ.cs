@@ -26,7 +26,7 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
-                CalamityUtils.DrawAfterimagesFromEdge(Projectile, 0, Color.White);
+                CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
                 return false;
             }
             return true;
@@ -116,29 +116,36 @@ namespace FKsCRE.Content.Ammunition.DPreDog.UelibloomBullet
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
             {
                 // 创建叶子形状的粒子特效
-                for (int i = -1; i <= 1; i += 2) // 两条曲线，正方向和反方向
+                int leafCount = 12; // 每个叶子的粒子数量
+                float leafLength = 8 * 16f; // 叶子的长度
+                float leafWidth = 4 * 16f; // 叶子的宽度（控制曲线范围）
+
+                for (int i = -1; i <= 1; i += 2) // 两片叶子，正方向和反方向
                 {
-                    for (int j = 0; j < 8; j++) // 每条曲线 x 个粒子
+                    for (int j = 0; j < leafCount; j++) // 每片叶子的粒子
                     {
-                        float progress = j / 20f; // 进度 0 到 1
-                        float angle = progress * MathHelper.PiOver2 * i; // 曲线弯曲程度
-                        Vector2 direction = Projectile.velocity.RotatedBy(angle).SafeNormalize(Vector2.UnitY) * (2f + progress * 5f); // 曲线方向和速度
+                        // 计算每个粒子的角度和位置
+                        float progress = j / (float)(leafCount - 1); // 从 0 到 1 的进度
+                        float angleOffset = (progress - 0.5f) * MathHelper.Pi * i; // 叶子弧度偏移
+                        float x = progress * leafLength; // 沿叶子长度方向的分布
+                        float y = (float)Math.Sin(angleOffset) * leafWidth * (0.5f - Math.Abs(progress - 0.5f)); // 曲线形状
+
+                        Vector2 position = Projectile.Center + new Vector2(x, y);
+                        Vector2 velocity = (position - Projectile.Center).SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(2f, 4f);
 
                         Dust dust = Dust.NewDustPerfect(
-                            Projectile.Center, // 粒子生成位置
-                            DustID.GreenTorch,
-                            direction, // 速度
-                            100, // 透明度
-                            Color.LimeGreen, // 绿色
+                            position,
+                            DustID.GreenTorch, // 绿色叶子特效
+                            velocity,
+                            100,
+                            Color.LimeGreen, // 粒子颜色
                             Main.rand.NextFloat(1.2f, 1.8f) // 粒子大小
                         );
-                        dust.noGravity = true; // 粒子不受重力影响
+                        dust.noGravity = true; // 粒子无重力
                         dust.fadeIn = 0.1f; // 快速淡入效果
                     }
                 }
             }
-
-
         }
     }
 }

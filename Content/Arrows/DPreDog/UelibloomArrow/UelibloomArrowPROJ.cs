@@ -79,26 +79,24 @@ namespace FKsCRE.Content.Arrows.DPreDog.UelibloomArrow
 
         public override void OnKill(int timeLeft)
         {
-            // 射出三片叶子
-            // 获取弹幕的当前方向
+            // 获取弹幕的当前方向和速度
             Vector2 direction = Projectile.velocity.SafeNormalize(Vector2.Zero); // 归一化方向向量
-            float speed = Projectile.velocity.Length(); // 保持初始速度
+            float speed = Projectile.velocity.Length() * 0.5f; // 初始速度为原速度的一半
 
-            // 计算角度偏移
-            float angleOffset = MathHelper.ToRadians(5); // 5度偏移量
+            // 随机选择一个角度（-90度到90度之间，即180度扇形范围）
+            float randomAngle = MathHelper.ToRadians(Main.rand.NextFloat(-90f, 90f));
+            Vector2 randomDirection = direction.RotatedBy(randomAngle); // 随机旋转方向
 
-            // 创建三个弹幕
-            Vector2 frontDirection = direction; // 正前方方向
-            Vector2 leftDirection = direction.RotatedBy(-angleOffset); // 向左偏转5度
-            Vector2 rightDirection = direction.RotatedBy(angleOffset); // 向右偏转5度
-
-            // 生成 UelibloomArrowLeaf 弹幕
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, frontDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), (int)((Projectile.damage) * 0.5f), Projectile.knockBack, Projectile.owner);
-            //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, leftDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-            //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, rightDirection * speed, ModContent.ProjectileType<UelibloomArrowLeaf>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-
-
-
+            // 生成一发 UelibloomArrowLeaf 弹幕
+            Projectile.NewProjectile(
+                Projectile.GetSource_FromThis(),
+                Projectile.Center,
+                randomDirection * speed, // 随机方向和初始速度
+                ModContent.ProjectileType<UelibloomArrowLeaf>(),
+                (int)((Projectile.damage) * 1f), // 保持原始伤害
+                Projectile.knockBack,
+                Projectile.owner
+            );
 
             // 检查是否启用了特效
             if (ModContent.GetInstance<CREsConfigs>().EnableSpecialEffects)
